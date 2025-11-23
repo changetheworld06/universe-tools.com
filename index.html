@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Universe Tools – Outils en ligne simples et rapides</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Universe Tools : une collection d'outils en ligne simples, rapides et gratuits : convertisseurs, calculatrices, générateurs et plus encore." />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.12);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #ef4444;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease-out;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.92),
+        rgba(15, 23, 42, 0.75),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow:
+        0 0 30px rgba(79, 70, 229, 0.45),
+        0 0 4px rgba(148, 163, 184, 0.8);
+      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+    }
+
+    .brand-tagline {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.3rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color var(--transition-fast), border-color var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+      border-color: rgba(129, 140, 248, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(129, 140, 248, 0.6);
+      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+      cursor: pointer;
+    }
+
+    .nav-cta span:last-child {
+      font-size: 1rem;
+      transform: translateY(0.5px);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 3rem 0 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: radial-gradient(circle at top left, #111827, #020617);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3.3vw + 1rem, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.05em;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title span.accent {
+      background: linear-gradient(120deg, #4f46e5, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      padding: 0.8rem 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: none;
+      background: linear-gradient(135deg, #4f46e5, #6366f1, #8b5cf6);
+      color: #eef2ff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 18px 50px rgba(79, 70, 229, 0.6);
+      transition: transform var(--transition-med), box-shadow var(--transition-med);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 22px 60px rgba(79, 70, 229, 0.75);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 0.78rem 1.3rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at top left, #111827, #020617);
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: border-color var(--transition-fast), background var(--transition-fast),
+        transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(129, 140, 248, 0.9);
+      background: radial-gradient(circle at top, #020617, #020617);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.85);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta-item strong {
+      display: block;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+    }
+
+    /* HERO – SEARCH & TOOL PREVIEW */
+
+    .hero-panel {
+      background: radial-gradient(circle at top, #020617, #020617 52%, #000 110%);
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      box-shadow: var(--shadow-soft);
+      padding: 1.6rem 1.6rem 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(
+        circle at 10% 0%,
+        rgba(79, 70, 229, 0.16),
+        transparent 55%
+      );
+      pointer-events: none;
+    }
+
+    .hero-panel-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .search-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 1.1rem;
+    }
+
+    .search-input {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      padding: 0.72rem 2.4rem 0.72rem 0.9rem;
+      color: var(--text);
+      font-size: 0.88rem;
+      outline: none;
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.9);
+      transition: border-color var(--transition-fast),
+        box-shadow var(--transition-fast), background var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    .search-input::placeholder {
+      color: #6b7280;
+    }
+
+    .search-input:focus {
+      border-color: #818cf8;
+      box-shadow:
+        0 0 0 1px rgba(129, 140, 248, 0.6),
+        0 18px 40px rgba(15, 23, 42, 0.9);
+      transform: translateY(-0.5px);
+      background: radial-gradient(circle at top left, #020617, #020617);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: #6b7280;
+    }
+
+    .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .tool-tag {
+      font-size: 0.74rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--muted);
+      cursor: pointer;
+      background: radial-gradient(circle at top left, #020617, #020617);
+      transition: border-color var(--transition-fast), color var(--transition-fast),
+        background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .tool-tag:hover {
+      border-color: rgba(129, 140, 248, 0.9);
+      color: #e5e7eb;
+      transform: translateY(-1px);
+      background: radial-gradient(circle at top, #020617, #020617);
+    }
+
+    .tool-tag.active {
+      background: radial-gradient(circle at top left, #4f46e5, #7c3aed);
+      color: #eef2ff;
+      border-color: transparent;
+      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.45);
+    }
+
+    .tool-preview {
+      margin-top: 1.1rem;
+      padding: 1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+    }
+
+    .tool-preview-title {
+      font-size: 0.95rem;
+      margin-bottom: 0.55rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+    }
+
+    .tool-preview-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .preview-metric {
+      border-radius: 12px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 0.55rem 0.7rem;
+      font-size: 0.75rem;
+      background: radial-gradient(circle at top left, #020617, #020617);
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .preview-metric span:first-child {
+      color: var(--muted);
+    }
+
+    .preview-metric strong {
+      font-size: 0.9rem;
+    }
+
+    /* TOOL GRID */
+
+    .section {
+      padding: 1.5rem 0 3.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      font-size: 0.86rem;
+      color: var(--muted);
+      max-width: 420px;
+      line-height: 1.5;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-panel {
+        order: -1;
+        margin-bottom: 1.2rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .tool-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .tool-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.2rem;
+      }
+
+      .hero-panel {
+        border-radius: 22px;
+        padding: 1.3rem 1.2rem 1.4rem;
+      }
+    }
+
+    .tool-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      padding: 0.9rem 0.95rem;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      cursor: pointer;
+      transform-origin: center;
+      transition: transform var(--transition-med), box-shadow var(--transition-med),
+        border-color var(--transition-med), background var(--transition-med),
+        opacity var(--transition-fast);
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.95);
+      border-color: rgba(129, 140, 248, 0.9);
+      background: radial-gradient(circle at top, #020617, #020617);
+    }
+
+    .tool-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+
+    .tool-card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .tool-card-tag {
+      font-size: 0.7rem;
+      padding: 0.12rem 0.55rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(129, 140, 248, 0.85);
+      color: #c7d2fe;
+    }
+
+    .tool-card-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .tool-card-meta {
+      font-size: 0.74rem;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.1rem;
+    }
+
+    .tool-card-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    /* TOOL SECTIONS (fonctionnels) */
+
+    .tool-section {
+      border-radius: 20px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      padding: 1.2rem 1.1rem 1.4rem;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.4rem;
+    }
+
+    .tool-section h3 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .tool-section p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .tool-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      align-items: end;
+    }
+
+    @media (max-width: 600px) {
+      .tool-form {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      font-size: 0.8rem;
+    }
+
+    .field label {
+      color: var(--muted);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      color: var(--text);
+      padding: 0.45rem 0.55rem;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color var(--transition-fast),
+        box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .field input::placeholder {
+      color: #6b7280;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: #818cf8;
+      box-shadow:
+        0 0 0 1px rgba(129, 140, 248, 0.6),
+        0 14px 32px rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+    }
+
+    .btn-tool {
+      border-radius: var(--radius-sm);
+      border: none;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.84rem;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #e5e7eb;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      cursor: pointer;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), opacity var(--transition-fast);
+      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
+    }
+
+    .btn-tool:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 36px rgba(79, 70, 229, 0.7);
+    }
+
+    .tool-result {
+      margin-top: 0.7rem;
+      font-size: 0.86rem;
+    }
+
+    .tool-result strong {
+      color: #e5e7eb;
+    }
+
+    .tool-result span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    .small-note {
+      font-size: 0.72rem;
+      color: #6b7280;
+      margin-top: 0.4rem;
+    }
+
+    .range-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .range-row input[type="range"] {
+      flex: 1;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.72rem;
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color var(--transition-fast),
+        background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .chip input {
+      margin: 0;
+    }
+
+    .chip:hover {
+      border-color: #818cf8;
+      color: #e5e7eb;
+    }
+
+    .password-output {
+      margin-top: 0.65rem;
+      padding: 0.45rem 0.55rem;
+      border-radius: var(--radius-sm);
+      border: 1px dashed rgba(75, 85, 99, 0.9);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.8rem;
+      word-break: break-all;
+      background: radial-gradient(circle at top left, #020617, #020617);
+      color: #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .copy-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 0.18rem 0.55rem;
+      font-size: 0.7rem;
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color var(--transition-fast), transform var(--transition-fast),
+        background var(--transition-fast), color var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .copy-btn:hover {
+      border-color: rgba(129, 140, 248, 0.9);
+      color: #e5e7eb;
+      transform: translateY(-0.5px);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      background: radial-gradient(circle at top, #020617, #020617);
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      padding: 1rem 0 1.4rem;
+      font-size: 0.75rem;
+      color: #6b7280;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #6b7280;
+      transition: color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+      transform: translateY(-0.5px);
+    }
+
+    /* IMPORTANT : pour le filtrage, on masque complètement les cartes */
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-logo">
+            <!-- Logo Universe Tools -->
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">Tous vos outils du quotidien, au même endroit.</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#tools">Outils</a>
+          <a href="#convertisseurs">Convertisseurs</a>
+          <a href="#securite">Sécurité</a>
+          <a href="#sante">Santé</a>
+        </nav>
+        <button class="nav-cta" type="button">
+          <span>Ajouter aux favoris</span>
+          <span>★</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              <span>Outils gratuits • Aucune inscription • Pas de pubs intrusives</span>
+            </div>
+            <h1 class="hero-title">
+              Vos <span class="accent">outils du quotidien</span> réunis sur une seule page.
+            </h1>
+            <p class="hero-subtitle">
+              Convertir, calculer, générer… sans réfléchir au bon site. 
+              Ajoutez cette page à vos favoris et retrouvez vos outils en 1 clic, 
+              depuis n’importe quel appareil.
+            </p>
+            <div class="hero-actions">
+              <button class="btn-primary" type="button" onclick="scrollToTools()">
+                <span>Explorer les outils</span>
+                <span>↓</span>
+              </button>
+              <button class="btn-secondary" type="button">
+                <span>Comment ça marche ?</span>
+                <span>●</span>
+              </button>
+            </div>
+            <div class="hero-meta">
+              <div class="hero-meta-item">
+                <strong>30+ outils</strong>
+                Toujours disponibles, sans inscription.
+              </div>
+              <div class="hero-meta-item">
+                <strong>Design sobre</strong>
+                Aucun tracking agressif, pas de bruit.
+              </div>
+              <div class="hero-meta-item">
+                <strong>À vie</strong>
+                Une fois en favori, toujours sous la main.
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-panel" aria-label="Recherche d'outils">
+            <div class="hero-panel-inner">
+              <div class="search-label">Rechercher un outil</div>
+              <div class="search-wrapper">
+                <input
+                  id="toolSearch"
+                  class="search-input"
+                  type="search"
+                  placeholder="Exemples : convertisseur km, mot de passe, IMC, tirage au sort…"
+                />
+                <span class="search-icon">⌕</span>
+              </div>
+              <div class="tool-tags">
+                <button class="tool-tag active" data-filter="all" type="button">
+                  Tout
+                </button>
+                <button class="tool-tag" data-filter="convertisseur" type="button">
+                  Convertisseurs
+                </button>
+                <button class="tool-tag" data-filter="securite" type="button">
+                  Sécurité
+                </button>
+                <button class="tool-tag" data-filter="sante" type="button">
+                  Santé & forme
+                </button>
+              </div>
+
+              <div class="tool-preview">
+                <div class="tool-preview-title">
+                  <span>En un clic, les outils que vous utilisez vraiment.</span>
+                  <span class="pill">Aucun compte requis</span>
+                </div>
+                <p class="tool-preview-desc">
+                  Ajoutez Universe Tools à vos favoris. Quand un besoin se présente, vous 
+                  tapez moins et vous cliquez plus vite.
+                </p>
+                <div class="preview-grid">
+                  <div class="preview-metric">
+                    <span>Temps moyen économisé</span>
+                    <strong>≈ 10 s / action</strong>
+                    <span>par rapport à une recherche Google classique.</span>
+                  </div>
+                  <div class="preview-metric">
+                    <span>Outils déjà inclus</span>
+                    <strong>Convertisseurs • Sécurité • Santé</strong>
+                    <span>de nouveaux outils peuvent être ajoutés plus tard.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="tools" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Outils principaux</h2>
+              <p class="section-subtitle">
+                Voici quelques outils essentiels. Tu peux dupliquer le style des cartes 
+                pour en ajouter d'autres (convertisseurs, calculatrices, générateurs, etc.).
+              </p>
+            </div>
+            <div class="section-subtitle">
+              Astuce : garde cette page en favori dans ton navigateur, sur ordinateur 
+              et sur smartphone.
+            </div>
+          </div>
+
+          <div class="tool-grid" id="toolGrid">
+            <article
+              class="tool-card"
+              data-name="convertisseur km miles distance"
+              data-category="convertisseur"
+              onclick="scrollToElement('tool-distance')"
+            >
+              <div class="tool-card-header">
+                <div class="tool-card-title">Convertisseur km ↔ miles</div>
+                <div class="tool-card-tag">Convertisseur</div>
+              </div>
+              <p class="tool-card-desc">
+                Convertissez vos distances instantanément, pour les voyages, la course à pied
+                ou les fiches techniques.
+              </p>
+              <div class="tool-card-meta">
+                <span>↔ Bidirectionnel</span>
+                <span>● Sans connexion serveur</span>
+              </div>
+            </article>
+
+            <article
+              class="tool-card"
+              data-name="générateur mot de passe password sécurisé"
+              data-category="securite"
+              onclick="scrollToElement('tool-password')"
+            >
+              <div class="tool-card-header">
+                <div class="tool-card-title">Générateur de mot de passe</div>
+                <div class="tool-card-tag">Sécurité</div>
+              </div>
+              <p class="tool-card-desc">
+                Créez des mots de passe robustes en un clic, avec majuscules, chiffres 
+                et symboles, directement dans le navigateur.
+              </p>
+              <div class="tool-card-meta">
+                <span>★ Aucun envoi en ligne</span>
+                <span>Client-side uniquement</span>
+              </div>
+            </article>
+
+            <article
+              class="tool-card"
+              data-name="calculateur imc bmi indice masse corporelle"
+              data-category="sante"
+              onclick="scrollToElement('tool-imc')"
+            >
+              <div class="tool-card-header">
+                <div class="tool-card-title">Calculateur d'IMC</div>
+                <div class="tool-card-tag">Santé</div>
+              </div>
+              <p class="tool-card-desc">
+                Calculez rapidement votre Indice de Masse Corporelle (IMC) 
+                pour une idée générale de votre catégorie de poids.
+              </p>
+              <div class="tool-card-meta">
+                <span>⚠ Non médical</span>
+                <span>Pour une première indication seulement</span>
+              </div>
+            </article>
+
+            <article
+              class="tool-card"
+              data-name="chronomètre minuteur timer"
+              data-category="divers"
+            >
+              <div class="tool-card-header">
+                <div class="tool-card-title">Chronomètre & minuteur</div>
+                <div class="tool-card-tag">Divers</div>
+              </div>
+              <p class="tool-card-desc">
+                Lancez un compte à rebours ou un chrono simple pour cuisiner, travailler 
+                en pomodoro ou faire du sport.
+              </p>
+              <div class="tool-card-meta">
+                <span>Bientôt</span>
+                <span>Fonction de base à ajouter</span>
+              </div>
+            </article>
+
+            <article
+              class="tool-card"
+              data-name="tirage au sort aléatoire random"
+              data-category="divers"
+            >
+              <div class="tool-card-header">
+                <div class="tool-card-title">Tirage au sort</div>
+                <div class="tool-card-tag">Divers</div>
+              </div>
+              <p class="tool-card-desc">
+                Entrez une liste de prénoms ou d'options et tirez un gagnant au hasard 
+                de manière transparente.
+              </p>
+              <div class="tool-card-meta">
+                <span>Bientôt</span>
+                <span>Simple à coder en JS</span>
+              </div>
+            </article>
+
+            <article
+              class="tool-card"
+              data-name="convertisseur temperature celsius fahrenheit"
+              data-category="convertisseur"
+            >
+              <div class="tool-card-header">
+                <div class="tool-card-title">Convertisseur °C ↔ °F</div>
+                <div class="tool-card-tag">Convertisseur</div>
+              </div>
+              <p class="tool-card-desc">
+                Passez rapidement de Celsius à Fahrenheit pour les recettes, la météo 
+                ou les documents techniques.
+              </p>
+              <div class="tool-card-meta">
+                <span>Bientôt</span>
+                <span>Formule simple en JS</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- TOOLS IMPLEMENTÉS -->
+
+          <section id="convertisseurs">
+            <article id="tool-distance" class="tool-section">
+              <h3>Convertisseur de distance km ↔ miles</h3>
+              <p>
+                Conversion simple et immédiate. 1 km ≈ 0,621371 mile. 
+                Tous les calculs se font directement dans ton navigateur.
+              </p>
+
+              <form class="tool-form" onsubmit="event.preventDefault(); convertDistance();">
+                <div class="field">
+                  <label for="kmInput">Kilomètres (km)</label>
+                  <input
+                    id="kmInput"
+                    type="number"
+                    step="0.0001"
+                    placeholder="Par ex. 10"
+                    oninput="convertKmToMiles()"
+                  />
+                </div>
+                <div class="field">
+                  <label for="milesInput">Miles (mi)</label>
+                  <input
+                    id="milesInput"
+                    type="number"
+                    step="0.0001"
+                    placeholder="Par ex. 6.21"
+                    oninput="convertMilesToKm()"
+                  />
+                </div>
+              </form>
+              <div class="tool-result" id="distanceResult"></div>
+              <div class="small-note">
+                Note : ce convertisseur utilise la valeur standard 1 km = 0,621371 mile.
+              </div>
+            </article>
+          </section>
+
+          <section id="securite">
+            <article id="tool-password" class="tool-section">
+              <h3>Générateur de mot de passe sécurisé</h3>
+              <p>
+                Génère un mot de passe robuste côté navigateur. 
+                Rien n’est envoyé sur un serveur. Tu peux adapter la longueur et les caractères.
+              </p>
+
+              <div class="tool-form">
+                <div class="field">
+                  <label for="pwdLength">Longueur du mot de passe</label>
+                  <div class="range-row">
+                    <input
+                      id="pwdLength"
+                      type="range"
+                      min="8"
+                      max="40"
+                      value="16"
+                      oninput="updatePwdLengthLabel()"
+                    />
+                    <span id="pwdLengthLabel">16 caractères</span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>Caractères utilisés</label>
+                  <div class="chip-row">
+                    <label class="chip">
+                      <input id="optLower" type="checkbox" checked />
+                      <span>a-z</span>
+                    </label>
+                    <label class="chip">
+                      <input id="optUpper" type="checkbox" checked />
+                      <span>A-Z</span>
+                    </label>
+                    <label class="chip">
+                      <input id="optDigits" type="checkbox" checked />
+                      <span>0-9</span>
+                    </label>
+                    <label class="chip">
+                      <input id="optSymbols" type="checkbox" />
+                      <span>!@#$%…</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top:0.9rem;">
+                <button class="btn-tool" type="button" onclick="generatePassword()">
+                  Générer un mot de passe
+                </button>
+              </div>
+
+              <div class="password-output" id="passwordOutput" aria-live="polite">
+                <span id="passwordText">Clique sur “Générer” pour créer un mot de passe.</span>
+                <button class="copy-btn" type="button" onclick="copyPassword()">
+                  Copier
+                </button>
+              </div>
+              <div class="small-note">
+                Pour plus de sécurité, combine ce générateur avec un gestionnaire de mots de passe
+                (par ex. Bitwarden, KeePass, 1Password…).
+              </div>
+            </article>
+          </section>
+
+          <section id="sante">
+            <article id="tool-imc" class="tool-section">
+              <h3>Calculateur d'IMC (Indice de Masse Corporelle)</h3>
+              <p>
+                Calcule ton IMC à partir de ta taille et de ton poids. 
+                Cela donne une indication générale, mais ne remplace pas un avis médical.
+              </p>
+
+              <form class="tool-form" onsubmit="event.preventDefault(); calculateIMC();">
+                <div class="field">
+                  <label for="weightInput">Poids (kg)</label>
+                  <input
+                    id="weightInput"
+                    type="number"
+                    step="0.1"
+                    placeholder="Ex. 72"
+                  />
+                </div>
+                <div class="field">
+                  <label for="heightInput">Taille (cm)</label>
+                  <input
+                    id="heightInput"
+                    type="number"
+                    step="0.1"
+                    placeholder="Ex. 175"
+                  />
+                </div>
+              </form>
+              <div class="tool-result" id="imcResult"></div>
+              <div class="small-note">
+                Les seuils classiques (adulte) sont : &lt;18,5 (maigreur), 18,5–24,9 (corpulence normale), 
+                25–29,9 (surpoids), ≥30 (obésité). Les interprétations peuvent varier selon les sources 
+                et la situation clinique.
+              </div>
+            </article>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> Universe Tools – Page d’outils personnelle.</div>
+        <div class="footer-links">
+          <a href="#tools">Outils</a>
+          <a href="#convertisseurs">Convertisseurs</a>
+          <a href="#securite">Sécurité</a>
+          <a href="#sante">Santé</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll helper
+    function scrollToTools() {
+      const el = document.getElementById("tools");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function scrollToElement(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // Distance converter
+    const kmInput = document.getElementById("kmInput");
+    const milesInput = document.getElementById("milesInput");
+    const distanceResult = document.getElementById("distanceResult");
+
+    function convertKmToMiles() {
+      if (!kmInput || !milesInput || !distanceResult) return;
+
+      const raw = kmInput.value || "";
+      const km = parseFloat(raw.replace(",", "."));
+
+      if (isNaN(km)) {
+        milesInput.value = "";
+        distanceResult.textContent = "";
+        return;
+      }
+      const miles = km * 0.621371;
+      milesInput.value = miles.toFixed(4);
+      distanceResult.innerHTML =
+        "<strong>" +
+        km.toFixed(4) +
+        " km</strong> ≈ <strong>" +
+        miles.toFixed(4) +
+        " miles</strong>";
+    }
+
+    function convertMilesToKm() {
+      if (!kmInput || !milesInput || !distanceResult) return;
+
+      const raw = milesInput.value || "";
+      const miles = parseFloat(raw.replace(",", "."));
+
+      if (isNaN(miles)) {
+        kmInput.value = "";
+        distanceResult.textContent = "";
+        return;
+      }
+      const km = miles / 0.621371;
+      kmInput.value = km.toFixed(4);
+      distanceResult.innerHTML =
+        "<strong>" +
+        miles.toFixed(4) +
+        " miles</strong> ≈ <strong>" +
+        km.toFixed(4) +
+        " km</strong>";
+    }
+
+    function convertDistance() {
+      // placeholder (tout se fait déjà en temps réel)
+    }
+
+    // Password generator
+    const lengthInput = document.getElementById("pwdLength");
+    const lengthLabel = document.getElementById("pwdLengthLabel");
+    const optLower = document.getElementById("optLower");
+    const optUpper = document.getElementById("optUpper");
+    const optDigits = document.getElementById("optDigits");
+    const optSymbols = document.getElementById("optSymbols");
+    const passwordText = document.getElementById("passwordText");
+
+    function updatePwdLengthLabel() {
+      if (!lengthInput || !lengthLabel) return;
+      lengthLabel.textContent = lengthInput.value + " caractères";
+    }
+
+    function generatePassword() {
+      if (!lengthInput || !passwordText) return;
+
+      const length = parseInt(lengthInput.value, 10);
+      let chars = "";
+      if (optLower && optLower.checked) chars += "abcdefghijklmnopqrstuvwxyz";
+      if (optUpper && optUpper.checked) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      if (optDigits && optDigits.checked) chars += "0123456789";
+      if (optSymbols && optSymbols.checked) chars += "!@#$%^&*()-_=+[]{};:,.<>?/";
+
+      if (!chars) {
+        passwordText.textContent = "Sélectionne au moins un type de caractères.";
+        return;
+      }
+
+      let pwd = "";
+      for (let i = 0; i < length; i++) {
+        const idx = Math.floor(Math.random() * chars.length);
+        pwd += chars.charAt(idx);
+      }
+      passwordText.textContent = pwd;
+    }
+
+    function copyPassword() {
+      if (!passwordText) return;
+      const text = passwordText.textContent || "";
+      if (!text || text.startsWith("Clique sur")) return;
+
+      if (!navigator.clipboard) {
+        alert("Impossible de copier automatiquement. Copie manuelle nécessaire.");
+        return;
+      }
+
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          const btn = document.querySelector(".copy-btn");
+          if (!btn) return;
+          const original = btn.textContent;
+          btn.textContent = "Copié !";
+          setTimeout(() => {
+            btn.textContent = original;
+          }, 1200);
+        })
+        .catch(() => {
+          alert("Impossible de copier automatiquement. Copie manuelle nécessaire.");
+        });
+    }
+
+    // IMC calculator
+    const weightInput = document.getElementById("weightInput");
+    const heightInput = document.getElementById("heightInput");
+    const imcResult = document.getElementById("imcResult");
+
+    function calculateIMC() {
+      if (!weightInput || !heightInput || !imcResult) return;
+
+      const weightRaw = weightInput.value || "";
+      const heightRaw = heightInput.value || "";
+
+      const weight = parseFloat(weightRaw.replace(",", "."));
+      const heightCm = parseFloat(heightRaw.replace(",", "."));
+
+      if (isNaN(weight) || isNaN(heightCm) || heightCm <= 0) {
+        imcResult.innerHTML =
+          "<span>Veuillez entrer un poids et une taille valides.</span>";
+        return;
+      }
+
+      const heightM = heightCm / 100;
+      const imc = weight / (heightM * heightM);
+
+      let category = "";
+      if (imc < 18.5) {
+        category = "maigreur (selon les seuils généraux).";
+      } else if (imc < 25) {
+        category = "corpulence considérée comme normale.";
+      } else if (imc < 30) {
+        category = "surpoids (selon les seuils généraux).";
+      } else {
+        category = "obésité (selon les seuils généraux).";
+      }
+
+      imcResult.innerHTML =
+        "<strong>IMC ≈ " +
+        imc.toFixed(1) +
+        "</strong><span>Catégorie indicative : " +
+        category +
+        " Cette estimation ne remplace pas un avis médical.</span>";
+    }
+
+    // Search & filters
+    const searchInput = document.getElementById("toolSearch");
+    const toolCards = document.querySelectorAll(".tool-card");
+    const toolTags = document.querySelectorAll(".tool-tag");
+    let activeCategory = "all";
+
+    function filterTools() {
+      const query = searchInput
+        ? (searchInput.value || "").toLowerCase().trim()
+        : "";
+
+      toolCards.forEach((card) => {
+        const name = (card.getAttribute("data-name") || "").toLowerCase();
+        const category = card.getAttribute("data-category") || "";
+        const matchesText = name.includes(query);
+        const matchesCategory =
+          activeCategory === "all" || category === activeCategory;
+
+        if (matchesText && matchesCategory) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener("input", filterTools);
+    }
+
+    toolTags.forEach((tag) => {
+      tag.addEventListener("click", () => {
+        toolTags.forEach((t) => t.classList.remove("active"));
+        tag.classList.add("active");
+        activeCategory = tag.getAttribute("data-filter") || "all";
+        filterTools();
+      });
+    });
+
+    // Footer year
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear().toString();
+    }
+
+    // Init labels
+    updatePwdLengthLabel();
+  </script>
+</body>
+</html>
