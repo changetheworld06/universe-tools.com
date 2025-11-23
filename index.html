@@ -856,10 +856,10 @@
           <a href="#securite">Sécurité</a>
           <a href="#sante">Santé</a>
         </nav>
-        <button class="nav-cta" type="button">
-          <span>Ajouter aux favoris</span>
-          <span>★</span>
-        </button>
+        <button class="nav-cta" type="button" onclick="addToFavorites()">
+            <span>Ajouter aux favoris</span>
+            <span>★</span>
+          </button>
       </div>
     </header>
 
@@ -1037,61 +1037,61 @@
             </article>
 
             <article
-              class="tool-card"
-              data-name="chronomètre minuteur timer"
-              data-category="divers"
-            >
-              <div class="tool-card-header">
-                <div class="tool-card-title">Chronomètre & minuteur</div>
-                <div class="tool-card-tag">Divers</div>
-              </div>
-              <p class="tool-card-desc">
-                Lancez un compte à rebours ou un chrono simple pour cuisiner, travailler 
-                en pomodoro ou faire du sport.
-              </p>
-              <div class="tool-card-meta">
-                <span>Bientôt</span>
-                <span>Fonction de base à ajouter</span>
-              </div>
-            </article>
+            class="tool-card"
+            data-name="chronomètre minuteur timer compte à rebours"
+            data-category="divers"
+            onclick="scrollToElement('tool-timer')"
+          >
+            <div class="tool-card-header">
+              <div class="tool-card-title">Chronomètre & minuteur</div>
+              <div class="tool-card-tag">Divers</div>
+            </div>
+            <p class="tool-card-desc">
+              Lance un chrono simple ou un compte à rebours pour cuisiner, étudier ou faire du sport.
+            </p>
+            <div class="tool-card-meta">
+              <span>✔ Disponible</span>
+              <span>Simple et rapide</span>
+            </div>
+          </article>
 
-            <article
-              class="tool-card"
-              data-name="tirage au sort aléatoire random"
-              data-category="divers"
-            >
-              <div class="tool-card-header">
-                <div class="tool-card-title">Tirage au sort</div>
-                <div class="tool-card-tag">Divers</div>
-              </div>
-              <p class="tool-card-desc">
-                Entrez une liste de prénoms ou d'options et tirez un gagnant au hasard 
-                de manière transparente.
-              </p>
-              <div class="tool-card-meta">
-                <span>Bientôt</span>
-                <span>Simple à coder en JS</span>
-              </div>
-            </article>
+          <article
+          class="tool-card"
+          data-name="tirage au sort random aléatoire"
+          data-category="divers"
+          onclick="scrollToElement('tool-random')"
+        >
+          <div class="tool-card-header">
+            <div class="tool-card-title">Tirage au sort</div>
+            <div class="tool-card-tag">Divers</div>
+          </div>
+          <p class="tool-card-desc">
+            Entre des prénoms ou options et tire un gagnant de manière totalement aléatoire.
+          </p>
+          <div class="tool-card-meta">
+            <span>✔ Disponible</span>
+            <span>JS natif</span>
+          </div>
+        </article>
 
-            <article
-              class="tool-card"
-              data-name="convertisseur temperature celsius fahrenheit"
-              data-category="convertisseur"
-            >
-              <div class="tool-card-header">
-                <div class="tool-card-title">Convertisseur °C ↔ °F</div>
-                <div class="tool-card-tag">Convertisseur</div>
-              </div>
-              <p class="tool-card-desc">
-                Passez rapidement de Celsius à Fahrenheit pour les recettes, la météo 
-                ou les documents techniques.
-              </p>
-              <div class="tool-card-meta">
-                <span>Bientôt</span>
-                <span>Formule simple en JS</span>
-              </div>
-            </article>
+        <article
+        class="tool-card"
+        data-name="convertisseur temperature celsius fahrenheit"
+        data-category="convertisseur"
+        onclick="scrollToElement('tool-temp')"
+      >
+        <div class="tool-card-header">
+          <div class="tool-card-title">Convertisseur °C ↔ °F</div>
+          <div class="tool-card-tag">Convertisseur</div>
+        </div>
+        <p class="tool-card-desc">
+          Passe rapidement de Celsius à Fahrenheit pour les recettes, la météo ou les documents.
+        </p>
+        <div class="tool-card-meta">
+          <span>✔ Disponible</span>
+          <span>Formule simple en JS</span>
+        </div>
+      </article>
           </div>
 
           <!-- TOOLS IMPLEMENTÉS -->
@@ -1226,6 +1226,11 @@
                   />
                 </div>
               </form>
+              <div style="margin-top:0.9rem;">
+                <button class="btn-tool" type="button" onclick="calculateIMC()">
+                  Calculer mon IMC
+                </button>
+              </div>
               <div class="tool-result" id="imcResult"></div>
               <div class="small-note">
                 Les seuils classiques (adulte) sont : &lt;18,5 (maigreur), 18,5–24,9 (corpulence normale), 
@@ -1234,8 +1239,96 @@
               </div>
             </article>
           </section>
+
+          <section id="divers-timer">
+            <article id="tool-timer" class="tool-section">
+              <h3>Chronomètre & minuteur</h3>
+              <p>
+                Utilise un chronomètre simple ou un compte à rebours pour cuisiner,
+                travailler en pomodoro ou faire du sport.
+              </p>
+    
+              <div class="tool-form">
+                <div class="field">
+                  <label for="timerInput">Temps (secondes)</label>
+                  <input id="timerInput" type="number" placeholder="Ex. 60" />
+                </div>
+              </div>
+    
+              <div style="margin-top:0.9rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+                <button class="btn-tool" type="button" onclick="startTimer()">Démarrer</button>
+                <button class="btn-tool" type="button" onclick="stopTimer()">Pause</button>
+                <button class="btn-tool" type="button" onclick="resetTimer()">Réinitialiser</button>
+              </div>
+    
+              <div class="tool-result" id="timerDisplay">00:00</div>
+            </article>
+          </section>
+    
+          <section id="divers-random">
+            <article id="tool-random" class="tool-section">
+              <h3>Tirage au sort</h3>
+              <p>
+                Écris plusieurs noms séparés par des virgules et tire un gagnant au hasard.
+              </p>
+    
+              <div class="field">
+                <label for="randomInput">Liste de noms ou options</label>
+                <textarea
+                  id="randomInput"
+                  rows="3"
+                  placeholder="Ex. Julie, Marc, Pauline, Karim"
+                ></textarea>
+              </div>
+    
+              <div style="margin-top:0.9rem;">
+                <button class="btn-tool" type="button" onclick="pickRandom()">
+                  Tirer au sort
+                </button>
+              </div>
+    
+              <div class="tool-result" id="randomResult"></div>
+            </article>
+          </section>
+    
+          <section id="convert-temp">
+            <article id="tool-temp" class="tool-section">
+              <h3>Convertisseur °C ↔ °F</h3>
+              <p>
+                Conversion rapide entre degrés Celsius et Fahrenheit pour recettes,
+                météo ou fiches techniques.
+              </p>
+    
+              <form class="tool-form" onsubmit="event.preventDefault(); convertTemp();">
+                <div class="field">
+                  <label for="celsiusInput">Celsius (°C)</label>
+                  <input
+                    id="celsiusInput"
+                    type="number"
+                    step="0.1"
+                    placeholder="Ex. 20"
+                    oninput="cToF()"
+                  />
+                </div>
+                <div class="field">
+                  <label for="fahrenheitInput">Fahrenheit (°F)</label>
+                  <input
+                    id="fahrenheitInput"
+                    type="number"
+                    step="0.1"
+                    placeholder="Ex. 68"
+                    oninput="fToC()"
+                  />
+                </div>
+              </form>
+    
+              <div class="tool-result" id="tempResult"></div>
+              <div class="small-note">
+                Formules utilisées : °F = °C × 9/5 + 32 et °C = (°F − 32) × 5/9.
+              </div>
+            </article>
+          </section>
         </div>
-      </section>
     </main>
 
     <footer>
@@ -1457,6 +1550,174 @@
         filterTools();
       });
     });
+
+        // Chronomètre & minuteur
+        let timerInterval = null;
+    let timeLeft = 0;
+
+    function updateTimerDisplay() {
+      const display = document.getElementById("timerDisplay");
+      if (!display) return;
+      const minutes = Math.floor(timeLeft / 60)
+        .toString()
+        .padStart(2, "0");
+      const seconds = (timeLeft % 60).toString().padStart(2, "0");
+      display.textContent = minutes + ":" + seconds;
+    }
+
+    function startTimer() {
+      const inputEl = document.getElementById("timerInput");
+      if (!inputEl) return;
+
+      const raw = inputEl.value || "";
+      const value = parseInt(raw, 10);
+
+      if (!timerInterval) {
+        // Démarrage initial
+        if (isNaN(value) || value <= 0) return;
+        timeLeft = value;
+      }
+
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          timeLeft = 0;
+          updateTimerDisplay();
+          return;
+        }
+        timeLeft--;
+        updateTimerDisplay();
+      }, 1000);
+
+      updateTimerDisplay();
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timeLeft = 0;
+      updateTimerDisplay();
+    }
+
+    // Tirage au sort
+    function pickRandom() {
+      const input = document.getElementById("randomInput");
+      const resultEl = document.getElementById("randomResult");
+      if (!input || !resultEl) return;
+
+      const raw = input.value || "";
+      const items = raw
+        .split(",")
+        .map((x) => x.trim())
+        .filter((x) => x.length > 0);
+
+      if (items.length === 0) {
+        resultEl.textContent = "Ajoute au moins un nom séparé par des virgules.";
+        return;
+      }
+
+      const winner = items[Math.floor(Math.random() * items.length)];
+      resultEl.innerHTML = "<strong>Gagnant :</strong> " + winner;
+    }
+
+    // Convertisseur °C ↔ °F
+    function cToF() {
+      const cInput = document.getElementById("celsiusInput");
+      const fInput = document.getElementById("fahrenheitInput");
+      const resultEl = document.getElementById("tempResult");
+      if (!cInput || !fInput || !resultEl) return;
+
+      const raw = cInput.value || "";
+      const c = parseFloat(raw.replace(",", "."));
+      if (isNaN(c)) {
+        fInput.value = "";
+        resultEl.textContent = "";
+        return;
+      }
+
+      const f = c * 9 / 5 + 32;
+      fInput.value = f.toFixed(2);
+      resultEl.innerHTML =
+        "<strong>" +
+        c.toFixed(2) +
+        " °C</strong> ≈ <strong>" +
+        f.toFixed(2) +
+        " °F</strong>";
+    }
+
+    function fToC() {
+      const cInput = document.getElementById("celsiusInput");
+      const fInput = document.getElementById("fahrenheitInput");
+      const resultEl = document.getElementById("tempResult");
+      if (!cInput || !fInput || !resultEl) return;
+
+      const raw = fInput.value || "";
+      const f = parseFloat(raw.replace(",", "."));
+      if (isNaN(f)) {
+        cInput.value = "";
+        resultEl.textContent = "";
+        return;
+      }
+
+      const c = (f - 32) * 5 / 9;
+      cInput.value = c.toFixed(2);
+      resultEl.innerHTML =
+        "<strong>" +
+        f.toFixed(2) +
+        " °F</strong> ≈ <strong>" +
+        c.toFixed(2) +
+        " °C</strong>";
+    }
+
+    function convertTemp() {
+      // Utilisée si l'utilisateur valide le formulaire avec Entrée
+      const cInput = document.getElementById("celsiusInput");
+      const fInput = document.getElementById("fahrenheitInput");
+      if (!cInput || !fInput) return;
+
+      if (cInput.value) {
+        cToF();
+      } else if (fInput.value) {
+        fToC();
+      }
+    }
+
+    // Init affichage timer à 00:00 au cas où
+    updateTimerDisplay();
+
+    function addToFavorites() {
+      const url = window.location.href;
+      const title = document.title || "Universe Tools";
+
+      // Anciennes méthodes (IE / vieux Firefox)
+      if (window.external && "AddFavorite" in window.external) {
+        // Internet Explorer
+        window.external.AddFavorite(url, title);
+        return;
+      }
+      if (window.sidebar && window.sidebar.addPanel) {
+        // Ancien Firefox
+        window.sidebar.addPanel(title, url, "");
+        return;
+      }
+
+      // Navigateurs modernes : on affiche les raccourcis
+      const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+      const shortcut = isMac ? "⌘ + D" : "Ctrl + D";
+
+      alert(
+        "Pour ajouter cette page à tes favoris, utilise le raccourci clavier : " +
+        shortcut +
+        "\n\nURL : " + url
+      );
+    }
 
     // Footer year
     const yearSpan = document.getElementById("year");
