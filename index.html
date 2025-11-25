@@ -852,7 +852,6 @@
     }
   </style>
 </head>
-<body>
   <div class="page">
     <header>
       <div class="container nav">
@@ -1173,6 +1172,44 @@ onclick="scrollToElement('tool-countdown')"
   <span>Calcul local</span>
 </div>
 </article>
+
+<article
+  class="tool-card"
+  data-name="calcul pourcentage réduction augmentation"
+  data-category="convertisseur"
+  onclick="scrollToElement('tool-percentage')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Calculateur de pourcentage</div>
+    <div class="tool-card-tag">Convertisseur</div>
+  </div>
+  <p class="tool-card-desc">
+    Calcule une réduction ou une augmentation en pourcentage : promos, remises, hausses…
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Disponible</span>
+    <span>Rapide</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
+  data-name="calcul moyenne notes valeurs"
+  data-category="divers"
+  onclick="scrollToElement('tool-average')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Calculateur de moyenne</div>
+    <div class="tool-card-tag">Divers</div>
+  </div>
+  <p class="tool-card-desc">
+    Entre une liste de valeurs et obtiens la moyenne instantanément.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Disponible</span>
+    <span>JS natif</span>
+  </div>
+</article>
           </div>
 
           <!-- TOOLS IMPLEMENTÉS -->
@@ -1260,6 +1297,71 @@ onclick="scrollToElement('tool-countdown')"
                 Formules utilisées : °F = °C × 9/5 + 32 et °C = (°F − 32) × 5/9.
               </div>
             </article>
+
+            <article id="tool-percentage" class="tool-section">
+                <h3>Calculateur de pourcentage</h3>
+                <p>
+                  Calcule rapidement une réduction ou une augmentation en pourcentage
+                  (promotions, hausse de prix, remise, etc.).
+                </p>
+    
+                <form class="tool-form" onsubmit="event.preventDefault(); calculatePercentage();">
+                  <div class="field">
+                    <label for="percentBase">Montant de départ (€)</label>
+                    <input
+                      id="percentBase"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 100"
+                    />
+                  </div>
+    
+                  <div class="field">
+                    <label for="percentValue">Pourcentage (%)</label>
+                    <input
+                      id="percentValue"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 20"
+                    />
+                  </div>
+    
+                  <div class="field">
+                    <label>Type de calcul</label>
+                    <div class="chip-row">
+                      <label class="chip">
+                        <input
+                          type="radio"
+                          name="percentMode"
+                          value="reduction"
+                          checked
+                        />
+                        <span>Réduction</span>
+                      </label>
+                      <label class="chip">
+                        <input
+                          type="radio"
+                          name="percentMode"
+                          value="augmentation"
+                        />
+                        <span>Augmentation</span>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+    
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="calculatePercentage()">
+                    Calculer
+                  </button>
+                </div>
+    
+                <div class="tool-result" id="percentageResult"></div>
+                <div class="small-note">
+                  Exemple : 100 € avec 20 % de réduction → 80 €.  
+                  100 € avec 20 % d’augmentation → 120 €.
+                </div>
+              </article>
 
   <!-- Poids kg ↔ lb -->
   <article id="tool-weight" class="tool-section">
@@ -1497,535 +1599,607 @@ onclick="scrollToElement('tool-countdown')"
     </div>
   </article>
 
-    <script>
-    // Compte à rebours en jours
-    function updateCountdown() {
-      const dateInput = document.getElementById("countdownDate");
-      const resultEl = document.getElementById("countdownResult");
-      if (!dateInput || !resultEl) return;
-
-      const value = dateInput.value;
-      if (!value) {
-        resultEl.textContent = "Choisis une date pour lancer le calcul.";
-        return;
-      }
-
-      const targetDate = new Date(value + "T00:00:00");
-      if (isNaN(targetDate.getTime())) {
-        resultEl.textContent = "Date invalide.";
-        return;
-      }
-
-      const today = new Date();
-      const todayAtMidnight = new Date(
-        today.getFullYear(),
-        today.getMonth(),
-        today.getDate()
-      );
-      const diffMs = targetDate.getTime() - todayAtMidnight.getTime();
-      const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
-
-      if (diffDays > 0) {
-        resultEl.innerHTML =
-          "Il reste <strong>" +
-          diffDays +
-          " jour" +
-          (diffDays > 1 ? "s" : "") +
-          "</strong> avant cette date.";
-      } else if (diffDays === 0) {
-        resultEl.innerHTML = "<strong>C'est aujourd'hui !</strong>";
-      } else {
-        const passed = Math.abs(diffDays);
-        resultEl.innerHTML =
-          "Cette date est passée depuis <strong>" +
-          passed +
-          " jour" +
-          (passed > 1 ? "s" : "") +
-          "</strong>.";
-      }
-    }        
-
-    // Scroll helper
-    function scrollToTools() {
-      const el = document.getElementById("tools");
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
-    function scrollToElement(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
-    // Distance converter
-    const kmInput = document.getElementById("kmInput");
-    const milesInput = document.getElementById("milesInput");
-    const distanceResult = document.getElementById("distanceResult");
-
-    function convertKmToMiles() {
-      if (!kmInput || !milesInput || !distanceResult) return;
-
-      const raw = kmInput.value || "";
-      const km = parseFloat(raw.replace(",", "."));
-
-      if (isNaN(km)) {
-        milesInput.value = "";
-        distanceResult.textContent = "";
-        return;
-      }
-      const miles = km * 0.621371;
-      milesInput.value = miles.toFixed(4);
-      distanceResult.innerHTML =
-        "<strong>" +
-        km.toFixed(4) +
-        " km</strong> ≈ <strong>" +
-        miles.toFixed(4) +
-        " miles</strong>";
-    }
-
-    function convertMilesToKm() {
-      if (!kmInput || !milesInput || !distanceResult) return;
-
-      const raw = milesInput.value || "";
-      const miles = parseFloat(raw.replace(",", "."));
-
-      if (isNaN(miles)) {
-        kmInput.value = "";
-        distanceResult.textContent = "";
-        return;
-      }
-      const km = miles / 0.621371;
-      kmInput.value = km.toFixed(4);
-      distanceResult.innerHTML =
-        "<strong>" +
-        miles.toFixed(4) +
-        " miles</strong> ≈ <strong>" +
-        km.toFixed(4) +
-        " km</strong>";
-    }
-
-    function convertDistance() {
-      // placeholder (tout se fait déjà en temps réel)
-    }
-
-    // Password generator
-    const lengthInput = document.getElementById("pwdLength");
-    const lengthLabel = document.getElementById("pwdLengthLabel");
-    const optLower = document.getElementById("optLower");
-    const optUpper = document.getElementById("optUpper");
-    const optDigits = document.getElementById("optDigits");
-    const optSymbols = document.getElementById("optSymbols");
-    const passwordText = document.getElementById("passwordText");
-
-    function updatePwdLengthLabel() {
-      if (!lengthInput || !lengthLabel) return;
-      lengthLabel.textContent = lengthInput.value + " caractères";
-    }
-
-    function generatePassword() {
-      if (!lengthInput || !passwordText) return;
-
-      const length = parseInt(lengthInput.value, 10);
-      let chars = "";
-      if (optLower && optLower.checked) chars += "abcdefghijklmnopqrstuvwxyz";
-      if (optUpper && optUpper.checked) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      if (optDigits && optDigits.checked) chars += "0123456789";
-      if (optSymbols && optSymbols.checked) chars += "!@#$%^&*()-_=+[]{};:,.<>?/";
-
-      if (!chars) {
-        passwordText.textContent = "Sélectionne au moins un type de caractères.";
-        return;
-      }
-
-      let pwd = "";
-      for (let i = 0; i < length; i++) {
-        const idx = Math.floor(Math.random() * chars.length);
-        pwd += chars.charAt(idx);
-      }
-      passwordText.textContent = pwd;
-    }
-
-    function copyPassword() {
-      if (!passwordText) return;
-      const text = passwordText.textContent || "";
-      if (!text || text.startsWith("Clique sur")) return;
-
-      if (!navigator.clipboard) {
-        alert("Impossible de copier automatiquement. Copie manuelle nécessaire.");
-        return;
-      }
-
-      navigator.clipboard
-        .writeText(text)
-        .then(() => {
-          const btn = document.querySelector(".copy-btn");
-          if (!btn) return;
-          const original = btn.textContent;
-          btn.textContent = "Copié !";
-          setTimeout(() => {
-            btn.textContent = original;
-          }, 1200);
-        })
-        .catch(() => {
-          alert("Impossible de copier automatiquement. Copie manuelle nécessaire.");
-        });
-    }
-
-    // IMC calculator
-    const weightInput = document.getElementById("weightInput");
-    const heightInput = document.getElementById("heightInput");
-    const imcResult = document.getElementById("imcResult");
-
-    function calculateIMC() {
-      if (!weightInput || !heightInput || !imcResult) return;
-
-      const weightRaw = weightInput.value || "";
-      const heightRaw = heightInput.value || "";
-
-      const weight = parseFloat(weightRaw.replace(",", "."));
-      const heightCm = parseFloat(heightRaw.replace(",", "."));
-
-      if (isNaN(weight) || isNaN(heightCm) || heightCm <= 0) {
-        imcResult.innerHTML =
-          "<span>Veuillez entrer un poids et une taille valides.</span>";
-        return;
-      }
-
-      const heightM = heightCm / 100;
-      const imc = weight / (heightM * heightM);
-
-      let category = "";
-      if (imc < 18.5) {
-        category = "maigreur (selon les seuils généraux).";
-      } else if (imc < 25) {
-        category = "corpulence considérée comme normale.";
-      } else if (imc < 30) {
-        category = "surpoids (selon les seuils généraux).";
-      } else {
-        category = "obésité (selon les seuils généraux).";
-      }
-
-      imcResult.innerHTML =
-        "<strong>IMC ≈ " +
-        imc.toFixed(1) +
-        "</strong><span>Catégorie indicative : " +
-        category +
-        " Cette estimation ne remplace pas un avis médical.</span>";
-    }
-
-    // Search & filters
-    const searchInput = document.getElementById("toolSearch");
-    const toolCards = document.querySelectorAll(".tool-card");
-    const toolTags = document.querySelectorAll(".tool-tag");
-    let activeCategory = "all";
-
-    function filterTools() {
-      const query = searchInput
-        ? (searchInput.value || "").toLowerCase().trim()
-        : "";
-
-      toolCards.forEach((card) => {
-        const name = (card.getAttribute("data-name") || "").toLowerCase();
-        const category = card.getAttribute("data-category") || "";
-        const matchesText = name.includes(query);
-        const matchesCategory =
-          activeCategory === "all" || category === activeCategory;
-
-        if (matchesText && matchesCategory) {
-          card.classList.remove("hidden");
-        } else {
-          card.classList.add("hidden");
-        }
-      });
-    }
-
-    if (searchInput) {
-      searchInput.addEventListener("input", filterTools);
-    }
-
-    toolTags.forEach((tag) => {
-      tag.addEventListener("click", () => {
-        toolTags.forEach((t) => t.classList.remove("active"));
-        tag.classList.add("active");
-        activeCategory = tag.getAttribute("data-filter") || "all";
-        filterTools();
-      });
-    });
-
-        // Chronomètre & minuteur
-        let timerInterval = null;
-    let timeLeft = 0;
-
-    function updateTimerDisplay() {
-      const display = document.getElementById("timerDisplay");
-      if (!display) return;
-      const minutes = Math.floor(timeLeft / 60)
-        .toString()
-        .padStart(2, "0");
-      const seconds = (timeLeft % 60).toString().padStart(2, "0");
-      display.textContent = minutes + ":" + seconds;
-    }
-
-    function startTimer() {
-      const inputEl = document.getElementById("timerInput");
-      if (!inputEl) return;
-
-      const raw = inputEl.value || "";
-      const value = parseInt(raw, 10);
-
-      if (!timerInterval) {
-        // Démarrage initial
-        if (isNaN(value) || value <= 0) return;
-        timeLeft = value;
-      }
-
-      clearInterval(timerInterval);
-      timerInterval = setInterval(() => {
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          timerInterval = null;
-          timeLeft = 0;
-          updateTimerDisplay();
-          return;
-        }
-        timeLeft--;
-        updateTimerDisplay();
-      }, 1000);
-
-      updateTimerDisplay();
-    }
-
-    function stopTimer() {
-      clearInterval(timerInterval);
-      timerInterval = null;
-    }
-
-    function resetTimer() {
-      clearInterval(timerInterval);
-      timerInterval = null;
-      timeLeft = 0;
-      updateTimerDisplay();
-    }
-
-    // Tirage au sort
-    function pickRandom() {
-      const input = document.getElementById("randomInput");
-      const resultEl = document.getElementById("randomResult");
-      if (!input || !resultEl) return;
-
-      const raw = input.value || "";
-      const items = raw
-        .split(",")
-        .map((x) => x.trim())
-        .filter((x) => x.length > 0);
-
-      if (items.length === 0) {
-        resultEl.textContent = "Ajoute au moins un nom séparé par des virgules.";
-        return;
-      }
-
-      const winner = items[Math.floor(Math.random() * items.length)];
-      resultEl.innerHTML = "<strong>Gagnant :</strong> " + winner;
-    }
-
-    // Convertisseur de poids kg ↔ lb
-    function convertWeight() {
-      const kgInput = document.getElementById("kgInput");
-      const lbsInput = document.getElementById("lbsInput");
-      const resultEl = document.getElementById("weightResult");
-      if (!kgInput || !lbsInput || !resultEl) return;
-
-      const kgRaw = kgInput.value || "";
-      const lbsRaw = lbsInput.value || "";
-
-      // Si kg est rempli, on calcule les lb
-      if (kgRaw.trim() !== "") {
-        const kg = parseFloat(kgRaw.replace(",", "."));
-        if (isNaN(kg)) {
-          resultEl.textContent = "Valeur en kg invalide.";
-          return;
-        }
-        const lbs = kg * 2.20462;
-        lbsInput.value = lbs.toFixed(2);
-        resultEl.innerHTML =
-          "<strong>" +
-          kg.toFixed(2) +
-          " kg</strong> ≈ <strong>" +
-          lbs.toFixed(2) +
-          " lb</strong>";
-        return;
-      }
-
-      // Sinon, si lb est rempli, on calcule les kg
-      if (lbsRaw.trim() !== "") {
-        const lbs = parseFloat(lbsRaw.replace(",", "."));
-        if (isNaN(lbs)) {
-          resultEl.textContent = "Valeur en lb invalide.";
-          return;
-        }
-        const kg = lbs / 2.20462;
-        kgInput.value = kg.toFixed(2);
-        resultEl.innerHTML =
-          "<strong>" +
-          lbs.toFixed(2) +
-          " lb</strong> ≈ <strong>" +
-          kg.toFixed(2) +
-          " kg</strong>";
-        return;
-      }
-
-      resultEl.textContent = "Renseigne au moins un des deux champs.";
-    }
-
-    // Compte à rebours en jours
-    function updateCountdown() {
-      const dateInput = document.getElementById("countdownDate");
-      const resultEl = document.getElementById("countdownResult");
-      if (!dateInput || !resultEl) return;
-
-      const value = dateInput.value;
-      if (!value) {
-        resultEl.textContent = "Choisis une date pour lancer le calcul.";
-        return;
-      }
-
-      const targetDate = new Date(value + "T00:00:00");
-      if (isNaN(targetDate.getTime())) {
-        resultEl.textContent = "Date invalide.";
-        return;
-      }
-
-      const today = new Date();
-      const todayAtMidnight = new Date(
-        today.getFullYear(),
-        today.getMonth(),
-        today.getDate()
-      );
-      const diffMs = targetDate.getTime() - todayAtMidnight.getTime();
-      const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
-
-      if (diffDays > 0) {
-        resultEl.innerHTML =
-          "Il reste <strong>" +
-          diffDays +
-          " jour" +
-          (diffDays > 1 ? "s" : "") +
-          "</strong> avant cette date.";
-      } else if (diffDays === 0) {
-        resultEl.innerHTML = "<strong>C'est aujourd'hui !</strong>";
-      } else {
-        const passed = Math.abs(diffDays);
-        resultEl.innerHTML =
-          "Cette date est passée depuis <strong>" +
-          passed +
-          " jour" +
-          (passed > 1 ? "s" : "") +
-          "</strong>.";
-      }
-    }
-
-    // Convertisseur °C ↔ °F
-    function cToF() {
-      const cInput = document.getElementById("celsiusInput");
-      const fInput = document.getElementById("fahrenheitInput");
-      const resultEl = document.getElementById("tempResult");
-      if (!cInput || !fInput || !resultEl) return;
-
-      const raw = cInput.value || "";
-      const c = parseFloat(raw.replace(",", "."));
-      if (isNaN(c)) {
-        fInput.value = "";
-        resultEl.textContent = "";
-        return;
-      }
-
-      const f = c * 9 / 5 + 32;
-      fInput.value = f.toFixed(2);
-      resultEl.innerHTML =
-        "<strong>" +
-        c.toFixed(2) +
-        " °C</strong> ≈ <strong>" +
-        f.toFixed(2) +
-        " °F</strong>";
-    }
-
-    function fToC() {
-      const cInput = document.getElementById("celsiusInput");
-      const fInput = document.getElementById("fahrenheitInput");
-      const resultEl = document.getElementById("tempResult");
-      if (!cInput || !fInput || !resultEl) return;
-
-      const raw = fInput.value || "";
-      const f = parseFloat(raw.replace(",", "."));
-      if (isNaN(f)) {
-        cInput.value = "";
-        resultEl.textContent = "";
-        return;
-      }
-
-      const c = (f - 32) * 5 / 9;
-      cInput.value = c.toFixed(2);
-      resultEl.innerHTML =
-        "<strong>" +
-        f.toFixed(2) +
-        " °F</strong> ≈ <strong>" +
-        c.toFixed(2) +
-        " °C</strong>";
-    }
-
-    function convertTemp() {
-      // Utilisée si l'utilisateur valide le formulaire avec Entrée
-      const cInput = document.getElementById("celsiusInput");
-      const fInput = document.getElementById("fahrenheitInput");
-      if (!cInput || !fInput) return;
-
-      if (cInput.value) {
-        cToF();
-      } else if (fInput.value) {
-        fToC();
-      }
-    }
-
-    // Init affichage timer à 00:00 au cas où
-    updateTimerDisplay();
-
-    function addToFavorites() {
-      const url = window.location.href;
-      const title = document.title || "Universe Tools";
-
-      // Anciennes méthodes (IE / vieux Firefox)
-      if (window.external && "AddFavorite" in window.external) {
-        // Internet Explorer
-        window.external.AddFavorite(url, title);
-        return;
-      }
-      if (window.sidebar && window.sidebar.addPanel) {
-        // Ancien Firefox
-        window.sidebar.addPanel(title, url, "");
-        return;
-      }
-
-      // Navigateurs modernes : on affiche les raccourcis
-      const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-      const shortcut = isMac ? "⌘ + D" : "Ctrl + D";
-
-      alert(
-        "Pour ajouter cette page à tes favoris, utilise le raccourci clavier : " +
-        shortcut +
-        "\n\nURL : " + url
-      );
-    }
-
-    // Footer year
-    const yearSpan = document.getElementById("year");
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear().toString();
-    }
-
-    // Init labels
-    updatePwdLengthLabel();
-  </script>
-
-  <!-- 🟪 Consent Banner -->
+  <article id="tool-average" class="tool-section">
+    <h3>Calculateur de moyenne</h3>
+    <p>
+      Entrez une liste de nombres (notes, montants, temps, etc.) et
+      obtenez la moyenne en un clic.
+    </p>
+
+    <div class="field">
+      <label for="averageInput">Liste de valeurs</label>
+      <textarea
+        id="averageInput"
+        rows="3"
+        placeholder="Ex. 12, 15.5, 9, 18"
+      ></textarea>
+    </div>
+
+    <div style="margin-top:0.9rem;">
+      <button class="btn-tool" type="button" onclick="calculateAverage()">
+        Calculer la moyenne
+      </button>
+    </div>
+
+    <div class="tool-result" id="averageResult"></div>
+    <div class="small-note">
+      Tu peux séparer les valeurs par des virgules, des espaces ou des retours à la ligne.
+      Les valeurs non numériques sont ignorées.
+    </div>
+  </article>
+
+</section> <!-- /#organisation -->
+</div> <!-- /.container -->
+</section> <!-- /#tools -->
+</main>
+
+<footer>
+<div class="container footer-inner">
+<div>© <span id="year"></span> Universe Tools – Outils en ligne simples et rapides.</div>
+<div class="footer-links">
+  <a href="#tools">Outils</a>
+  <a href="#convertisseurs">Convertisseurs</a>
+  <a href="#securite">Sécurité</a>
+  <a href="#sante">Santé</a>
+  <a href="#organisation">Organisation & divers</a>
+</div>
+</div>
+</footer>
+</div> <!-- /.page -->
+
+<!-- Scripts principaux -->
+<script>
+// Calculateur de moyenne
+function calculateAverage() {
+const input = document.getElementById("averageInput");
+const resultEl = document.getElementById("averageResult");
+if (!input || !resultEl) return;
+
+const raw = input.value || "";
+if (!raw.trim()) {
+resultEl.textContent = "Ajoute au moins une valeur.";
+return;
+}
+
+const parts = raw
+.split(/[\n,; \t]+/)
+.map((x) => x.trim())
+.filter((x) => x.length > 0);
+
+const numbers = parts
+.map((x) => parseFloat(x.replace(",", ".")))
+.filter((n) => !isNaN(n));
+
+if (numbers.length === 0) {
+resultEl.textContent =
+  "Aucune valeur numérique valide trouvée. Vérifie ton format.";
+return;
+}
+
+const sum = numbers.reduce((acc, n) => acc + n, 0);
+const avg = sum / numbers.length;
+
+resultEl.innerHTML =
+"Nombre de valeurs : <strong>" + numbers.length +
+"</strong><br>Moyenne : <strong>" + avg.toFixed(2) + "</strong>";
+}
+
+// Compte à rebours en jours
+function updateCountdown() {
+const dateInput = document.getElementById("countdownDate");
+const resultEl = document.getElementById("countdownResult");
+if (!dateInput || !resultEl) return;
+
+const value = dateInput.value;
+if (!value) {
+resultEl.textContent = "Choisis une date pour lancer le calcul.";
+return;
+}
+
+const targetDate = new Date(value + "T00:00:00");
+if (isNaN(targetDate.getTime())) {
+resultEl.textContent = "Date invalide.";
+return;
+}
+
+const today = new Date();
+const todayAtMidnight = new Date(
+today.getFullYear(),
+today.getMonth(),
+today.getDate()
+);
+const diffMs = targetDate.getTime() - todayAtMidnight.getTime();
+const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+
+if (diffDays > 0) {
+resultEl.innerHTML =
+  "Il reste <strong>" +
+  diffDays +
+  " jour" +
+  (diffDays > 1 ? "s" : "") +
+  "</strong> avant cette date.";
+} else if (diffDays === 0) {
+resultEl.innerHTML = "<strong>C'est aujourd'hui !</strong>";
+} else {
+const passed = Math.abs(diffDays);
+resultEl.innerHTML =
+  "Cette date est passée depuis <strong>" +
+  passed +
+  " jour" +
+  (passed > 1 ? "s" : "") +
+  "</strong>.";
+}
+}
+
+// Scroll helper
+function scrollToTools() {
+const el = document.getElementById("tools");
+if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function scrollToElement(id) {
+const el = document.getElementById(id);
+if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// Distance converter
+const kmInput = document.getElementById("kmInput");
+const milesInput = document.getElementById("milesInput");
+const distanceResult = document.getElementById("distanceResult");
+
+function convertKmToMiles() {
+if (!kmInput || !milesInput || !distanceResult) return;
+
+const raw = kmInput.value || "";
+const km = parseFloat(raw.replace(",", "."));
+
+if (isNaN(km)) {
+milesInput.value = "";
+distanceResult.textContent = "";
+return;
+}
+const miles = km * 0.621371;
+milesInput.value = miles.toFixed(4);
+distanceResult.innerHTML =
+"<strong>" +
+km.toFixed(4) +
+" km</strong> ≈ <strong>" +
+miles.toFixed(4) +
+" miles</strong>";
+}
+
+function convertMilesToKm() {
+if (!kmInput || !milesInput || !distanceResult) return;
+
+const raw = milesInput.value || "";
+const miles = parseFloat(raw.replace(",", "."));
+
+if (isNaN(miles)) {
+kmInput.value = "";
+distanceResult.textContent = "";
+return;
+}
+const km = miles / 0.621371;
+kmInput.value = km.toFixed(4);
+distanceResult.innerHTML =
+"<strong>" +
+miles.toFixed(4) +
+" miles</strong> ≈ <strong>" +
+km.toFixed(4) +
+" km</strong>";
+}
+
+function convertDistance() {
+// placeholder
+}
+
+// Password generator
+const lengthInput = document.getElementById("pwdLength");
+const lengthLabel = document.getElementById("pwdLengthLabel");
+const optLower = document.getElementById("optLower");
+const optUpper = document.getElementById("optUpper");
+const optDigits = document.getElementById("optDigits");
+const optSymbols = document.getElementById("optSymbols");
+const passwordText = document.getElementById("passwordText");
+
+function updatePwdLengthLabel() {
+if (!lengthInput || !lengthLabel) return;
+lengthLabel.textContent = lengthInput.value + " caractères";
+}
+
+function generatePassword() {
+if (!lengthInput || !passwordText) return;
+
+const length = parseInt(lengthInput.value, 10);
+let chars = "";
+if (optLower && optLower.checked) chars += "abcdefghijklmnopqrstuvwxyz";
+if (optUpper && optUpper.checked) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+if (optDigits && optDigits.checked) chars += "0123456789";
+if (optSymbols && optSymbols.checked) chars += "!@#$%^&*()-_=+[]{};:,.<>?/";
+
+if (!chars) {
+passwordText.textContent = "Sélectionne au moins un type de caractères.";
+return;
+}
+
+let pwd = "";
+for (let i = 0; i < length; i++) {
+const idx = Math.floor(Math.random() * chars.length);
+pwd += chars.charAt(idx);
+}
+passwordText.textContent = pwd;
+}
+
+function copyPassword() {
+if (!passwordText) return;
+const text = passwordText.textContent || "";
+if (!text || text.startsWith("Clique sur")) return;
+
+if (!navigator.clipboard) {
+alert("Impossible de copier automatiquement. Copie manuelle nécessaire.");
+return;
+}
+
+navigator.clipboard
+.writeText(text)
+.then(() => {
+  const btn = document.querySelector(".copy-btn");
+  if (!btn) return;
+  const original = btn.textContent;
+  btn.textContent = "Copié !";
+  setTimeout(() => {
+    btn.textContent = original;
+  }, 1200);
+})
+.catch(() => {
+  alert("Impossible de copier automatiquement. Copie manuelle nécessaire.");
+});
+}
+
+// IMC
+const weightInput = document.getElementById("weightInput");
+const heightInput = document.getElementById("heightInput");
+const imcResult = document.getElementById("imcResult");
+
+function calculateIMC() {
+if (!weightInput || !heightInput || !imcResult) return;
+
+const weightRaw = weightInput.value || "";
+const heightRaw = heightInput.value || "";
+
+const weight = parseFloat(weightRaw.replace(",", "."));
+const heightCm = parseFloat(heightRaw.replace(",", "."));
+
+if (isNaN(weight) || isNaN(heightCm) || heightCm <= 0) {
+imcResult.innerHTML =
+  "<span>Veuillez entrer un poids et une taille valides.</span>";
+return;
+}
+
+const heightM = heightCm / 100;
+const imc = weight / (heightM * heightM);
+
+let category = "";
+if (imc < 18.5) {
+category = "maigreur (selon les seuils généraux).";
+} else if (imc < 25) {
+category = "corpulence considérée comme normale.";
+} else if (imc < 30) {
+category = "surpoids (selon les seuils généraux).";
+} else {
+category = "obésité (selon les seuils généraux).";
+}
+
+imcResult.innerHTML =
+"<strong>IMC ≈ " +
+imc.toFixed(1) +
+"</strong><span>Catégorie indicative : " +
+category +
+" Cette estimation ne remplace pas un avis médical.</span>";
+}
+
+// Recherche & filtres
+const searchInput = document.getElementById("toolSearch");
+const toolCards = document.querySelectorAll(".tool-card");
+const toolTags = document.querySelectorAll(".tool-tag");
+let activeCategory = "all";
+
+function filterTools() {
+const query = searchInput
+? (searchInput.value || "").toLowerCase().trim()
+: "";
+
+toolCards.forEach((card) => {
+const name = (card.getAttribute("data-name") || "").toLowerCase();
+const category = card.getAttribute("data-category") || "";
+const matchesText = name.includes(query);
+const matchesCategory =
+  activeCategory === "all" || category === activeCategory;
+
+if (matchesText && matchesCategory) {
+  card.classList.remove("hidden");
+} else {
+  card.classList.add("hidden");
+}
+});
+}
+
+if (searchInput) {
+searchInput.addEventListener("input", filterTools);
+}
+
+toolTags.forEach((tag) => {
+tag.addEventListener("click", () => {
+toolTags.forEach((t) => t.classList.remove("active"));
+tag.classList.add("active");
+activeCategory = tag.getAttribute("data-filter") || "all";
+filterTools();
+});
+});
+
+// Chronomètre & minuteur
+let timerInterval = null;
+let timeLeft = 0;
+
+function updateTimerDisplay() {
+const display = document.getElementById("timerDisplay");
+if (!display) return;
+const minutes = Math.floor(timeLeft / 60)
+.toString()
+.padStart(2, "0");
+const seconds = (timeLeft % 60).toString().padStart(2, "0");
+display.textContent = minutes + ":" + seconds;
+}
+
+function startTimer() {
+const inputEl = document.getElementById("timerInput");
+if (!inputEl) return;
+
+const raw = inputEl.value || "";
+const value = parseInt(raw, 10);
+
+if (!timerInterval) {
+if (isNaN(value) || value <= 0) return;
+timeLeft = value;
+}
+
+clearInterval(timerInterval);
+timerInterval = setInterval(() => {
+if (timeLeft <= 0) {
+  clearInterval(timerInterval);
+  timerInterval = null;
+  timeLeft = 0;
+  updateTimerDisplay();
+  return;
+}
+timeLeft--;
+updateTimerDisplay();
+}, 1000);
+
+updateTimerDisplay();
+}
+
+function stopTimer() {
+clearInterval(timerInterval);
+timerInterval = null;
+}
+
+function resetTimer() {
+clearInterval(timerInterval);
+timerInterval = null;
+timeLeft = 0;
+updateTimerDisplay();
+}
+
+// Tirage au sort
+function pickRandom() {
+const input = document.getElementById("randomInput");
+const resultEl = document.getElementById("randomResult");
+if (!input || !resultEl) return;
+
+const raw = input.value || "";
+const items = raw
+.split(",")
+.map((x) => x.trim())
+.filter((x) => x.length > 0);
+
+if (items.length === 0) {
+resultEl.textContent = "Ajoute au moins un nom séparé par des virgules.";
+return;
+}
+
+const winner = items[Math.floor(Math.random() * items.length)];
+resultEl.innerHTML = "<strong>Gagnant :</strong> " + winner;
+}
+
+// Convertisseur de poids kg ↔ lb
+function convertWeight() {
+const kgInput = document.getElementById("kgInput");
+const lbsInput = document.getElementById("lbsInput");
+const resultEl = document.getElementById("weightResult");
+if (!kgInput || !lbsInput || !resultEl) return;
+
+const kgRaw = kgInput.value || "";
+const lbsRaw = lbsInput.value || "";
+
+if (kgRaw.trim() !== "") {
+const kg = parseFloat(kgRaw.replace(",", "."));
+if (isNaN(kg)) {
+  resultEl.textContent = "Valeur en kg invalide.";
+  return;
+}
+const lbs = kg * 2.20462;
+lbsInput.value = lbs.toFixed(2);
+resultEl.innerHTML =
+  "<strong>" +
+  kg.toFixed(2) +
+  " kg</strong> ≈ <strong>" +
+  lbs.toFixed(2) +
+  " lb</strong>";
+return;
+}
+
+if (lbsRaw.trim() !== "") {
+const lbs = parseFloat(lbsRaw.replace(",", "."));
+if (isNaN(lbs)) {
+  resultEl.textContent = "Valeur en lb invalide.";
+  return;
+}
+const kg = lbs / 2.20462;
+kgInput.value = kg.toFixed(2);
+resultEl.innerHTML =
+  "<strong>" +
+  lbs.toFixed(2) +
+  " lb</strong> ≈ <strong>" +
+  kg.toFixed(2) +
+  " kg</strong>";
+return;
+}
+
+resultEl.textContent = "Renseigne au moins un des deux champs.";
+}
+
+// Calculateur de pourcentage
+function calculatePercentage() {
+const baseInput = document.getElementById("percentBase");
+const percentInput = document.getElementById("percentValue");
+const resultEl = document.getElementById("percentageResult");
+
+if (!baseInput || !percentInput || !resultEl) return;
+
+const baseRaw = baseInput.value || "";
+const percentRaw = percentInput.value || "";
+
+const base = parseFloat(baseRaw.replace(",", "."));
+const percent = parseFloat(percentRaw.replace(",", "."));
+
+if (isNaN(base) || isNaN(percent)) {
+resultEl.textContent = "Veuillez entrer un montant et un pourcentage valides.";
+return;
+}
+
+const modeRadio = document.querySelector("input[name='percentMode']:checked");
+const mode = modeRadio ? modeRadio.value : "reduction";
+
+let newAmount;
+let diff;
+
+if (mode === "augmentation") {
+newAmount = base * (1 + percent / 100);
+diff = newAmount - base;
+resultEl.innerHTML =
+  "Montant de départ : <strong>" + base.toFixed(2) + " €</strong><br>" +
+  "Augmentation : <strong>" + percent.toFixed(2) + " %</strong> (" +
+  diff.toFixed(2) + " €)<br>" +
+  "Nouveau montant : <strong>" + newAmount.toFixed(2) + " €</strong>";
+} else {
+newAmount = base * (1 - percent / 100);
+diff = base - newAmount;
+resultEl.innerHTML =
+  "Montant de départ : <strong>" + base.toFixed(2) + " €</strong><br>" +
+  "Réduction : <strong>" + percent.toFixed(2) + " %</strong> (" +
+  diff.toFixed(2) + " €)<br>" +
+  "Montant après réduction : <strong>" + newAmount.toFixed(2) + " €</strong>";
+}
+}
+
+// Convertisseur °C ↔ °F
+function cToF() {
+const cInput = document.getElementById("celsiusInput");
+const fInput = document.getElementById("fahrenheitInput");
+const resultEl = document.getElementById("tempResult");
+if (!cInput || !fInput || !resultEl) return;
+
+const raw = cInput.value || "";
+const c = parseFloat(raw.replace(",", "."));
+if (isNaN(c)) {
+fInput.value = "";
+resultEl.textContent = "";
+return;
+}
+
+const f = c * 9 / 5 + 32;
+fInput.value = f.toFixed(2);
+resultEl.innerHTML =
+"<strong>" +
+c.toFixed(2) +
+" °C</strong> ≈ <strong>" +
+f.toFixed(2) +
+" °F</strong>";
+}
+
+function fToC() {
+const cInput = document.getElementById("celsiusInput");
+const fInput = document.getElementById("fahrenheitInput");
+const resultEl = document.getElementById("tempResult");
+if (!cInput || !fInput || !resultEl) return;
+
+const raw = fInput.value || "";
+const f = parseFloat(raw.replace(",", "."));
+if (isNaN(f)) {
+cInput.value = "";
+resultEl.textContent = "";
+return;
+}
+
+const c = (f - 32) * 5 / 9;
+cInput.value = c.toFixed(2);
+resultEl.innerHTML =
+"<strong>" +
+f.toFixed(2) +
+" °F</strong> ≈ <strong>" +
+c.toFixed(2) +
+" °C</strong>";
+}
+
+function convertTemp() {
+const cInput = document.getElementById("celsiusInput");
+const fInput = document.getElementById("fahrenheitInput");
+if (!cInput || !fInput) return;
+
+if (cInput.value) {
+cToF();
+} else if (fInput.value) {
+fToC();
+}
+}
+
+// Ajout aux favoris
+function addToFavorites() {
+const url = window.location.href;
+const title = document.title || "Universe Tools";
+
+if (window.external && "AddFavorite" in window.external) {
+window.external.AddFavorite(url, title);
+return;
+}
+if (window.sidebar && window.sidebar.addPanel) {
+window.sidebar.addPanel(title, url, "");
+return;
+}
+
+const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+const shortcut = isMac ? "⌘ + D" : "Ctrl + D";
+
+alert(
+"Pour ajouter cette page à tes favoris, utilise le raccourci clavier : " +
+shortcut +
+"\n\nURL : " + url
+);
+}
+
+// Footer year
+const yearSpan = document.getElementById("year");
+if (yearSpan) {
+yearSpan.textContent = new Date().getFullYear().toString();
+}
+
+// Init
+updatePwdLengthLabel();
+updateTimerDisplay();
+</script>
+
+<!-- 🟪 Consent Banner -->
 <div id="cookie-banner" style="
 position: fixed;
 bottom: 0;
@@ -2040,65 +2214,62 @@ z-index: 99999;
 display: none;
 ">
 <div style="max-width: 900px; margin: auto; display: flex; flex-direction: column; gap: 10px;">
-  <span>
-    Universe Tools utilise des cookies pour afficher de la publicité personnalisée (Google AdSense).
-    Vous pouvez accepter ou refuser. Sans votre consentement, aucune pub ne sera chargée.
-  </span>
+<span>
+Universe Tools utilise des cookies pour afficher de la publicité personnalisée (Google AdSense).
+Vous pouvez accepter ou refuser. Sans votre consentement, aucune pub ne sera chargée.
+</span>
 
-  <div style="display: flex; gap: 10px;">
-    <button onclick="acceptConsent()" style="
-      flex: 1;
-      padding: 10px;
-      border: none;
-      background: #4f46e5;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    ">Accepter</button>
+<div style="display: flex; gap: 10px;">
+<button onclick="acceptConsent()" style="
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+">Accepter</button>
 
-    <button onclick="denyConsent()" style="
-      flex: 1;
-      padding: 10px;
-      border: none;
-      background: #444;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    ">Refuser</button>
-  </div>
+<button onclick="denyConsent()" style="
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #444;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+">Refuser</button>
+</div>
 </div>
 </div>
 
 <script>
-// Vérifie consentement
 const consent = localStorage.getItem("ut-consent");
 
 if (!consent) {
-  document.getElementById("cookie-banner").style.display = "block";
+document.getElementById("cookie-banner").style.display = "block";
 } else if (consent === "accepted") {
-  loadAdsense();
+loadAdsense();
 }
 
 function acceptConsent() {
-  localStorage.setItem("ut-consent", "accepted");
-  document.getElementById("cookie-banner").style.display = "none";
-  loadAdsense();
+localStorage.setItem("ut-consent", "accepted");
+document.getElementById("cookie-banner").style.display = "none";
+loadAdsense();
 }
 
 function denyConsent() {
-  localStorage.setItem("ut-consent", "denied");
-  document.getElementById("cookie-banner").style.display = "none";
+localStorage.setItem("ut-consent", "denied");
+document.getElementById("cookie-banner").style.display = "none";
 }
 
-// Charge AdSense UNIQUEMENT si accord
 function loadAdsense() {
-  const s = document.createElement("script");
-  s.async = true;
-  s.src =
-    "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2161270640127476";
-  s.crossOrigin = "anonymous";
-  document.head.appendChild(s);
+const s = document.createElement("script");
+s.async = true;
+s.src =
+"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2161270640127476";
+s.crossOrigin = "anonymous";
+document.head.appendChild(s);
 }
 </script>
-</body>
 </html>
