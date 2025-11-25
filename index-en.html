@@ -877,11 +877,12 @@
           </div>
         </div>
         <nav class="nav-links">
-          <a href="#tools">Tools</a>
-          <a href="#convertisseurs">Converters</a>
-          <a href="#securite">Security</a>
-          <a href="#sante">Health</a>
-          <a href="#organisation">Organization & misc</a>
+            <a href="#tools">Tools</a>
+            <a href="#convertisseurs">Converters</a>
+            <a href="#finance">Finance</a>
+            <a href="#securite">Security</a>
+            <a href="#sante">Health</a>
+            <a href="#organisation">Organization & misc</a>
         </nav>
 
         <div style="font-size: 0.8rem;">
@@ -965,6 +966,9 @@
                 <button class="tool-tag" data-filter="convertisseur" type="button">
                   Converters
                 </button>
+                <button class="tool-tag" data-filter="finance" type="button">
+                    Finance
+                  </button>
                 <button class="tool-tag" data-filter="securite" type="button">
                   Security
                 </button>
@@ -1020,6 +1024,147 @@
           </div>
 
           <div class="tool-grid" id="toolGrid">
+
+            <!-- Converter cm ↔ inches -->
+<article
+class="tool-card"
+data-name="converter length cm inches inch"
+data-category="convertisseur"
+onclick="scrollToElement('tool-cm-inch')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Converter cm ↔ inches</div>
+  <div class="tool-card-tag">Converter</div>
+</div>
+<p class="tool-card-desc">
+  Convert centimeters to inches and back, for DIY, screens or plans.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>1 in = 2.54 cm</span>
+</div>
+</article>
+
+<!-- Converter liters ↔ gallons -->
+<article
+class="tool-card"
+data-name="converter volume liters gallons"
+data-category="convertisseur"
+onclick="scrollToElement('tool-liters-gallons')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Converter liters ↔ gallons</div>
+  <div class="tool-card-tag">Converter</div>
+</div>
+<p class="tool-card-desc">
+  Convert liters to US gallons and back for recipes, fuel or aquariums.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>1 L ≈ 0.264172 gal (US)</span>
+</div>
+</article>
+
+<!-- Converter hours ↔ minutes -->
+<article
+class="tool-card"
+data-name="converter time hours minutes"
+data-category="convertisseur"
+onclick="scrollToElement('tool-time')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Converter hours ↔ minutes</div>
+  <div class="tool-card-tag">Converter</div>
+</div>
+<p class="tool-card-desc">
+  Convert hours to minutes or minutes to hours in a second.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>1 h = 60 min</span>
+</div>
+</article>
+
+<!-- Converter speed km/h ↔ mph -->
+<article
+class="tool-card"
+data-name="converter speed km/h mph miles per hour"
+data-category="convertisseur"
+onclick="scrollToElement('tool-speed')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Converter km/h ↔ mph</div>
+  <div class="tool-card-tag">Converter</div>
+</div>
+<p class="tool-card-desc">
+  Convert a speed between km/h and miles per hour, ideal when travelling.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>Based on 1 mile ≈ 1.609 km</span>
+</div>
+</article>
+
+<!-- VAT calculator -->
+<article
+class="tool-card"
+data-name="vat calculator tax ht ttc"
+data-category="convertisseur"
+onclick="scrollToElement('tool-vat')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">VAT calculator</div>
+  <div class="tool-card-tag">Finance</div>
+</div>
+<p class="tool-card-desc">
+  Quickly compute VAT, net (excl. tax) or gross (incl. tax) from any VAT rate.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>Net ↔ Gross</span>
+</div>
+</article>
+
+<!-- Net ↔ gross salary calculator -->
+<article
+class="tool-card"
+data-name="salary calculator net gross"
+data-category="convertisseur"
+onclick="scrollToElement('tool-salary')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Net ↔ gross salary</div>
+  <div class="tool-card-tag">Finance</div>
+</div>
+<p class="tool-card-desc">
+  Estimate net salary from gross (or the opposite) using a chosen contribution rate.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>Simple estimation</span>
+</div>
+</article>
+
+<!-- Fake data generator -->
+<article
+class="tool-card"
+data-name="fake data generator names emails"
+data-category="divers"
+onclick="scrollToElement('tool-fake')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Fake data generator</div>
+  <div class="tool-card-tag">Misc</div>
+</div>
+<p class="tool-card-desc">
+  Generate fake names and emails for tests or mockups, without using real data.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>Vanilla JS</span>
+</div>
+</article>
+
             <article
               class="tool-card"
               data-name="distance converter km miles"
@@ -1408,7 +1553,253 @@
                 Value used: 1 kg = 2.20462 lb (approx.).
               </div>
             </article>
-          </section>
+
+            <!-- Converter cm ↔ inches -->
+<article id="tool-cm-inch" class="tool-section">
+    <h3>Length converter cm ↔ inches</h3>
+    <p>
+      Convert centimeters to inches and back.  
+      1 inch = 2.54 cm.
+    </p>
+  
+    <form class="tool-form" onsubmit="event.preventDefault(); convertCmInch();">
+      <div class="field">
+        <label for="cmInput">Centimeters (cm)</label>
+        <input
+          id="cmInput"
+          type="number"
+          step="0.01"
+          placeholder="e.g. 10"
+        />
+      </div>
+      <div class="field">
+        <label for="inchInput">Inches (in)</label>
+        <input
+          id="inchInput"
+          type="number"
+          step="0.01"
+          placeholder="e.g. 3.94"
+        />
+      </div>
+    </form>
+  
+    <div style="margin-top:0.9rem;">
+      <button class="btn-tool" type="button" onclick="convertCmInch()">
+        Convert
+      </button>
+    </div>
+  
+    <div class="tool-result" id="cmInchResult"></div>
+    <div class="small-note">
+      Conversion used: 1 in = 2.54 cm (standard value).
+    </div>
+  </article>
+  
+  <!-- Converter liters ↔ gallons -->
+  <article id="tool-liters-gallons" class="tool-section">
+    <h3>Volume converter liters ↔ gallons (US)</h3>
+    <p>
+      Convert liters to US gallons and the other way around.  
+      1 L ≈ 0.264172 gallon (US).
+    </p>
+  
+    <form class="tool-form" onsubmit="event.preventDefault(); convertLitersGallons();">
+      <div class="field">
+        <label for="litersInput">Liters (L)</label>
+        <input
+          id="litersInput"
+          type="number"
+          step="0.001"
+          placeholder="e.g. 5"
+        />
+      </div>
+      <div class="field">
+        <label for="gallonsInput">Gallons (US)</label>
+        <input
+          id="gallonsInput"
+          type="number"
+          step="0.001"
+          placeholder="e.g. 1.32"
+        />
+      </div>
+    </form>
+  
+    <div style="margin-top:0.9rem;">
+      <button class="btn-tool" type="button" onclick="convertLitersGallons()">
+        Convert
+      </button>
+    </div>
+  
+    <div class="tool-result" id="litersGallonsResult"></div>
+    <div class="small-note">
+      This tool uses the US gallon: 1 L ≈ 0.264172 gal (US).
+    </div>
+  </article>
+  
+  <!-- Converter hours ↔ minutes -->
+  <article id="tool-time" class="tool-section">
+    <h3>Time converter hours ↔ minutes</h3>
+    <p>
+      Convert hours to minutes or minutes to hours.  
+      Fill one of the fields, the other will be computed.
+    </p>
+  
+    <form class="tool-form" onsubmit="event.preventDefault(); convertTimeHM();">
+      <div class="field">
+        <label for="hoursInput">Hours (h)</label>
+        <input
+          id="hoursInput"
+          type="number"
+          step="0.01"
+          placeholder="e.g. 1.5"
+        />
+      </div>
+      <div class="field">
+        <label for="minutesInput">Minutes (min)</label>
+        <input
+          id="minutesInput"
+          type="number"
+          step="1"
+          placeholder="e.g. 90"
+        />
+      </div>
+    </form>
+  
+    <div style="margin-top:0.9rem;">
+      <button class="btn-tool" type="button" onclick="convertTimeHM()">
+        Convert
+      </button>
+    </div>
+  
+    <div class="tool-result" id="timeResult"></div>
+    <div class="small-note">
+      1 hour = 60 minutes. You can use decimals (e.g. 1.5 h).
+    </div>
+  </article>
+  
+  <!-- Converter speed km/h ↔ mph -->
+  <article id="tool-speed" class="tool-section">
+    <h3>Speed converter km/h ↔ mph</h3>
+    <p>
+      Convert a speed between kilometers per hour (km/h) and miles per hour (mph).  
+      Helpful for driving abroad or reading foreign specs.
+    </p>
+  
+    <form class="tool-form" onsubmit="event.preventDefault(); convertSpeed();">
+      <div class="field">
+        <label for="kmhInput">Speed (km/h)</label>
+        <input
+          id="kmhInput"
+          type="number"
+          step="0.1"
+          placeholder="e.g. 100"
+        />
+      </div>
+      <div class="field">
+        <label for="mphInput">Speed (mph)</label>
+        <input
+          id="mphInput"
+          type="number"
+          step="0.1"
+          placeholder="e.g. 62.14"
+        />
+      </div>
+    </form>
+  
+    <div style="margin-top:0.9rem;">
+      <button class="btn-tool" type="button" onclick="convertSpeed()">
+        Convert
+      </button>
+    </div>
+  
+    <div class="tool-result" id="speedResult"></div>
+    <div class="small-note">
+      Conversion used: 1 mph ≈ 1.60934 km/h.
+    </div>
+  </article>
+  
+ <!-- 🟧 Finance -->
+<section id="finance">
+    <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Finance</h2>
+  
+    <!-- VAT calculator -->
+    <article id="tool-vat" class="tool-section">
+      <h3>VAT calculator</h3>
+      <p>
+        Compute net, VAT or gross price instantly.
+      </p>
+  
+      <form class="tool-form" onsubmit="event.preventDefault(); calculateVAT();">
+        <div class="field">
+          <label for="vatBase">Base amount</label>
+          <input id="vatBase" type="number" step="0.01" placeholder="e.g. 100" />
+        </div>
+        <div class="field">
+          <label for="vatRate">VAT rate (%)</label>
+          <input id="vatRate" type="number" step="0.01" placeholder="e.g. 20" />
+        </div>
+        <div class="field">
+          <label>Calculation type</label>
+          <div class="chip-row">
+            <label class="chip">
+              <input type="radio" name="vatMode" value="add" checked />
+              <span>Add VAT</span>
+            </label>
+            <label class="chip">
+              <input type="radio" name="vatMode" value="remove" />
+              <span>Remove VAT</span>
+            </label>
+          </div>
+        </div>
+      </form>
+  
+      <div style="margin-top:0.9rem;">
+        <button class="btn-tool" type="button" onclick="calculateVAT()">Compute</button>
+      </div>
+  
+      <div class="tool-result" id="vatResult"></div>
+    </article>
+  
+    <!-- Salary calculator -->
+    <article id="tool-salary" class="tool-section">
+      <h3>Net ↔ Gross salary calculator</h3>
+      <p>
+        Estimate net salary from gross salary (or vice versa).
+      </p>
+  
+      <form class="tool-form" onsubmit="event.preventDefault(); calculateSalary();">
+        <div class="field">
+          <label for="salaryBase">Base amount</label>
+          <input id="salaryBase" type="number" step="0.01" placeholder="e.g. 2000" />
+        </div>
+  
+        <div class="field">
+          <label for="salaryRate">Contribution rate (%)</label>
+          <input id="salaryRate" type="number" step="0.01" placeholder="e.g. 23" />
+        </div>
+  
+        <div class="field">
+          <label>Conversion</label>
+          <div class="chip-row">
+            <label class="chip">
+              <input type="radio" name="salaryMode" value="netFromBrut" checked />
+              <span>Gross → Net</span>
+            </label>
+            <label class="chip">
+              <input type="radio" name="salaryMode" value="brutFromNet" />
+              <span>Net → Gross</span>
+            </label>
+          </div>
+        </div>
+      </form>
+  
+      <div style="margin-top:0.9rem;">
+        <button class="btn-tool" type="button" onclick="calculateSalary()">Compute</button>
+      </div>
+  
+      <div class="tool-result" id="salaryResult"></div>
+    </article>
+  </section>
 
           <!-- 🟥 Security -->
           <section id="securite">
@@ -1633,6 +2024,40 @@
               </div>
             </article>
 
+            <!-- Fake data generator -->
+<article id="tool-fake" class="tool-section">
+    <h3>Fake data generator (names & emails)</h3>
+    <p>
+      Generate fake names and email addresses to fill test forms, mockups or demo
+      databases, without using any real identity.
+    </p>
+  
+    <div class="tool-form">
+      <div class="field">
+        <label for="fakeCount">Number of entries</label>
+        <input
+          id="fakeCount"
+          type="number"
+          min="1"
+          max="50"
+          step="1"
+          placeholder="e.g. 5"
+        />
+      </div>
+    </div>
+  
+    <div style="margin-top:0.9rem;">
+      <button class="btn-tool" type="button" onclick="generateFakeData()">
+        Generate fake data
+      </button>
+    </div>
+  
+    <div class="tool-result" id="fakeResult" style="white-space:pre-wrap;"></div>
+    <div class="small-note">
+      All generated names and emails are fictional and meant only for testing.
+    </div>
+  </article>
+
           </section> <!-- /#organisation -->
         </div> <!-- /.container -->
       </section> <!-- /#tools -->
@@ -1654,6 +2079,303 @@
 
   <!-- Main scripts -->
   <script>
+
+    // Converter cm ↔ inches
+function convertCmInch() {
+  const cmInput = document.getElementById("cmInput");
+  const inchInput = document.getElementById("inchInput");
+  const resultEl = document.getElementById("cmInchResult");
+  if (!cmInput || !inchInput || !resultEl) return;
+
+  const cmRaw = cmInput.value || "";
+  const inchRaw = inchInput.value || "";
+
+  const CM_PER_INCH = 2.54;
+
+  if (cmRaw.trim() !== "") {
+    const cm = parseFloat(cmRaw.replace(",", "."));
+    if (isNaN(cm)) {
+      resultEl.textContent = "Invalid value in cm.";
+      return;
+    }
+    const inches = cm / CM_PER_INCH;
+    inchInput.value = inches.toFixed(2);
+    resultEl.innerHTML =
+      "<strong>" + cm.toFixed(2) + " cm</strong> ≈ <strong>" +
+      inches.toFixed(2) + " in</strong>";
+    return;
+  }
+
+  if (inchRaw.trim() !== "") {
+    const inches = parseFloat(inchRaw.replace(",", "."));
+    if (isNaN(inches)) {
+      resultEl.textContent = "Invalid value in inches.";
+      return;
+    }
+    const cm = inches * CM_PER_INCH;
+    cmInput.value = cm.toFixed(2);
+    resultEl.innerHTML =
+      "<strong>" + inches.toFixed(2) + " in</strong> ≈ <strong>" +
+      cm.toFixed(2) + " cm</strong>";
+    return;
+  }
+
+  resultEl.textContent = "Please fill at least one of the two fields.";
+}
+
+// Converter liters ↔ gallons (US)
+function convertLitersGallons() {
+  const litersInput = document.getElementById("litersInput");
+  const gallonsInput = document.getElementById("gallonsInput");
+  const resultEl = document.getElementById("litersGallonsResult");
+  if (!litersInput || !gallonsInput || !resultEl) return;
+
+  const litersRaw = litersInput.value || "";
+  const gallonsRaw = gallonsInput.value || "";
+
+  const GAL_PER_LITER = 0.264172; // US gallon
+
+  if (litersRaw.trim() !== "") {
+    const liters = parseFloat(litersRaw.replace(",", "."));
+    if (isNaN(liters)) {
+      resultEl.textContent = "Invalid value in liters.";
+      return;
+    }
+    const gallons = liters * GAL_PER_LITER;
+    gallonsInput.value = gallons.toFixed(3);
+    resultEl.innerHTML =
+      "<strong>" + liters.toFixed(3) + " L</strong> ≈ <strong>" +
+      gallons.toFixed(3) + " gal (US)</strong>";
+    return;
+  }
+
+  if (gallonsRaw.trim() !== "") {
+    const gallons = parseFloat(gallonsRaw.replace(",", "."));
+    if (isNaN(gallons)) {
+      resultEl.textContent = "Invalid value in gallons.";
+      return;
+    }
+    const liters = gallons / GAL_PER_LITER;
+    litersInput.value = liters.toFixed(3);
+    resultEl.innerHTML =
+      "<strong>" + gallons.toFixed(3) + " gal (US)</strong> ≈ <strong>" +
+      liters.toFixed(3) + " L</strong>";
+    return;
+  }
+
+  resultEl.textContent = "Please fill at least one of the two fields.";
+}
+
+// Converter hours ↔ minutes
+function convertTimeHM() {
+  const hoursInput = document.getElementById("hoursInput");
+  const minutesInput = document.getElementById("minutesInput");
+  const resultEl = document.getElementById("timeResult");
+  if (!hoursInput || !minutesInput || !resultEl) return;
+
+  const hoursRaw = hoursInput.value || "";
+  const minutesRaw = minutesInput.value || "";
+
+  if (hoursRaw.trim() !== "") {
+    const hours = parseFloat(hoursRaw.replace(",", "."));
+    if (isNaN(hours)) {
+      resultEl.textContent = "Invalid value in hours.";
+      return;
+    }
+    const minutes = hours * 60;
+    minutesInput.value = minutes.toFixed(0);
+    resultEl.innerHTML =
+      "<strong>" + hours.toFixed(2) + " h</strong> ≈ <strong>" +
+      minutes.toFixed(0) + " min</strong>";
+    return;
+  }
+
+  if (minutesRaw.trim() !== "") {
+    const minutes = parseFloat(minutesRaw.replace(",", "."));
+    if (isNaN(minutes)) {
+      resultEl.textContent = "Invalid value in minutes.";
+      return;
+    }
+    const hours = minutes / 60;
+    hoursInput.value = hours.toFixed(2);
+    resultEl.innerHTML =
+      "<strong>" + minutes.toFixed(0) + " min</strong> ≈ <strong>" +
+      hours.toFixed(2) + " h</strong>";
+    return;
+  }
+
+  resultEl.textContent = "Please fill at least one of the two fields.";
+}
+
+// Converter speed km/h ↔ mph
+function convertSpeed() {
+  const kmhInput = document.getElementById("kmhInput");
+  const mphInput = document.getElementById("mphInput");
+  const resultEl = document.getElementById("speedResult");
+  if (!kmhInput || !mphInput || !resultEl) return;
+
+  const kmhRaw = kmhInput.value || "";
+  const mphRaw = mphInput.value || "";
+
+  const KM_PER_MILE = 1.60934;
+
+  if (kmhRaw.trim() !== "") {
+    const kmh = parseFloat(kmhRaw.replace(",", "."));
+    if (isNaN(kmh)) {
+      resultEl.textContent = "Invalid value in km/h.";
+      return;
+    }
+    const mph = kmh / KM_PER_MILE;
+    mphInput.value = mph.toFixed(2);
+    resultEl.innerHTML =
+      "<strong>" + kmh.toFixed(2) + " km/h</strong> ≈ <strong>" +
+      mph.toFixed(2) + " mph</strong>";
+    return;
+  }
+
+  if (mphRaw.trim() !== "") {
+    const mph = parseFloat(mphRaw.replace(",", "."));
+    if (isNaN(mph)) {
+      resultEl.textContent = "Invalid value in mph.";
+      return;
+    }
+    const kmh = mph * KM_PER_MILE;
+    kmhInput.value = kmh.toFixed(2);
+    resultEl.innerHTML =
+      "<strong>" + mph.toFixed(2) + " mph</strong> ≈ <strong>" +
+      kmh.toFixed(2) + " km/h</strong>";
+    return;
+  }
+
+  resultEl.textContent = "Please fill at least one of the two fields.";
+}
+
+// VAT calculator
+function calculateVAT() {
+  const baseInput = document.getElementById("vatBase");
+  const rateInput = document.getElementById("vatRate");
+  const resultEl = document.getElementById("vatResult");
+  if (!baseInput || !rateInput || !resultEl) return;
+
+  const baseRaw = baseInput.value || "";
+  const rateRaw = rateInput.value || "";
+  const base = parseFloat(baseRaw.replace(",", "."));
+  const rate = parseFloat(rateRaw.replace(",", "."));
+
+  if (isNaN(base) || isNaN(rate)) {
+    resultEl.textContent = "Please enter a valid amount and VAT rate.";
+    return;
+  }
+
+  const modeRadio = document.querySelector("input[name='vatMode']:checked");
+  const mode = modeRadio ? modeRadio.value : "add";
+
+  let ht, tva, ttc;
+
+  if (mode === "add") {
+    ht = base;
+    tva = ht * rate / 100;
+    ttc = ht + tva;
+    resultEl.innerHTML =
+      "Net (excl. VAT): <strong>" + ht.toFixed(2) + " €</strong><br>" +
+      "VAT (" + rate.toFixed(2) + " %): <strong>" + tva.toFixed(2) + " €</strong><br>" +
+      "Gross (incl. VAT): <strong>" + ttc.toFixed(2) + " €</strong>";
+  } else {
+    ttc = base;
+    ht = ttc / (1 + rate / 100);
+    tva = ttc - ht;
+    resultEl.innerHTML =
+      "Gross (incl. VAT): <strong>" + ttc.toFixed(2) + " €</strong><br>" +
+      "Net (approx., excl. VAT): <strong>" + ht.toFixed(2) + " €</strong><br>" +
+      "VAT (" + rate.toFixed(2) + " %): <strong>" + tva.toFixed(2) + " €</strong>";
+  }
+}
+
+// Net ↔ gross salary calculator
+function calculateSalary() {
+  const baseInput = document.getElementById("salaryBase");
+  const rateInput = document.getElementById("salaryRate");
+  const resultEl = document.getElementById("salaryResult");
+  if (!baseInput || !rateInput || !resultEl) return;
+
+  const baseRaw = baseInput.value || "";
+  const rateRaw = rateInput.value || "";
+  const base = parseFloat(baseRaw.replace(",", "."));
+  const rate = parseFloat(rateRaw.replace(",", "."));
+
+  if (isNaN(base) || isNaN(rate)) {
+    resultEl.textContent = "Please enter a valid amount and contribution rate.";
+    return;
+  }
+
+  const modeRadio = document.querySelector("input[name='salaryMode']:checked");
+  const mode = modeRadio ? modeRadio.value : "netFromBrut";
+
+  const chargesFactor = rate / 100;
+  let brut, net;
+
+  if (mode === "netFromBrut") {
+    brut = base;
+    net = brut * (1 - chargesFactor);
+    resultEl.innerHTML =
+      "Gross salary: <strong>" + brut.toFixed(2) + " €</strong><br>" +
+      "Contribution rate: <strong>" + rate.toFixed(2) + " %</strong><br>" +
+      "Estimated net salary: <strong>" + net.toFixed(2) + " €</strong>";
+  } else {
+    net = base;
+    if (chargesFactor >= 1) {
+      resultEl.textContent = "Contribution rate must be below 100%.";
+      return;
+    }
+    brut = net / (1 - chargesFactor);
+    resultEl.innerHTML =
+      "Net salary: <strong>" + net.toFixed(2) + " €</strong><br>" +
+      "Contribution rate: <strong>" + rate.toFixed(2) + " %</strong><br>" +
+      "Estimated gross salary: <strong>" + brut.toFixed(2) + " €</strong>";
+  }
+}
+
+// Fake data generator (names & emails)
+function generateFakeData() {
+  const countInput = document.getElementById("fakeCount");
+  const resultEl = document.getElementById("fakeResult");
+  if (!countInput || !resultEl) return;
+
+  let count = parseInt((countInput.value || "1").trim(), 10);
+  if (isNaN(count) || count <= 0) count = 1;
+  if (count > 50) count = 50;
+
+  const firstNames = [
+    "Alex", "Sam", "Charlie", "Jordan", "Taylor",
+    "Lena", "Maya", "Noah", "Eli", "Zoe",
+    "Milan", "Nora", "Leo", "Iris", "Robin"
+  ];
+  const lastNames = [
+    "Smith", "Johnson", "Brown", "Taylor", "Lee",
+    "Garcia", "Martin", "Wilson", "Clark", "Lopez",
+    "Young", "Walker", "Hall", "Allen", "Green"
+  ];
+  const domains = [
+    "example.com", "testmail.io", "fakedata.dev", "dummy.net"
+  ];
+
+  function pick(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  let lines = [];
+  for (let i = 0; i < count; i++) {
+    const first = pick(firstNames);
+    const last = pick(lastNames);
+    const domain = pick(domains);
+    const slug = (first + "." + last).toLowerCase().replace(/[^a-z]/g, "");
+    const email = slug + "@" + domain;
+    lines.push(first + " " + last + " — " + email);
+  }
+
+  resultEl.textContent = lines.join("\n");
+}
+
   // Average calculator
   function calculateAverage() {
     const input = document.getElementById("averageInput");
