@@ -1025,6 +1025,186 @@
 
           <div class="tool-grid" id="toolGrid">
 
+            <!-- Carte : Simulateur d’épargne mensuelle -->
+<article
+class="tool-card"
+data-name="simulateur épargne mensuelle intérêts composés"
+data-category="finance"
+onclick="scrollToElement('tool-savings')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Simulateur d’épargne mensuelle</div>
+  <div class="tool-card-tag">Finance</div>
+</div>
+<p class="tool-card-desc">
+  Vois combien ton épargne mensuelle peut atteindre avec un taux fixe
+  et des intérêts composés.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Intérêts composés</span>
+  <span>Mensualisé</span>
+</div>
+</article>
+
+            <!-- Carte : Calculateur de budget mensuel -->
+<article
+class="tool-card"
+data-name="budget mensuel revenus dépenses reste à vivre"
+data-category="finance"
+onclick="scrollToElement('tool-budget')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Calculateur de budget mensuel</div>
+  <div class="tool-card-tag">Finance</div>
+</div>
+<p class="tool-card-desc">
+  Saisis tes revenus et tes principales dépenses pour voir ton reste à vivre
+  et la répartition par catégorie.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Disponible</span>
+  <span>% par catégorie</span>
+</div>
+</article>
+
+            <!-- Carte : Convertisseur temps (jours) -->
+<article
+class="tool-card"
+data-name="convertisseur temps jours heures minutes secondes"
+data-category="convertisseur"
+onclick="scrollToElement('tool-time')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Convertisseur jours → heures / minutes</div>
+  <div class="tool-card-tag">Convertisseur</div>
+</div>
+<p class="tool-card-desc">
+  Convertis un nombre de jours en heures, minutes et secondes pour mieux visualiser une durée.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Calcul local</span>
+  <span>Simple et rapide</span>
+</div>
+</article>
+
+            <!-- Carte : Convertisseur de tailles de fichiers -->
+<article
+class="tool-card"
+data-name="convertisseur taille fichier bytes ko mo go to octets"
+data-category="convertisseur"
+onclick="scrollToElement('tool-bytes')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Convertisseur Ko / Mo / Go / To</div>
+  <div class="tool-card-tag">Convertisseur</div>
+</div>
+<p class="tool-card-desc">
+  Comprends facilement la taille d’un fichier en convertissant entre octets, Ko, Mo, Go et To.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Calcul local</span>
+  <span>Basé sur 1 Ko = 1024 octets</span>
+</div>
+</article>
+
+            <!-- Carte : Convertisseur de devises (taux manuel) -->
+<article
+class="tool-card"
+data-name="convertisseur devises taux manuel euro dollar monnaie"
+data-category="convertisseur"
+onclick="scrollToElement('tool-currency')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Convertisseur de devises (taux manuel)</div>
+  <div class="tool-card-tag">Convertisseur</div>
+</div>
+<p class="tool-card-desc">
+  Convertis un montant entre l’euro et une autre devise en utilisant ton propre taux (ex : 1 € = 1,08 $).
+</p>
+<div class="tool-card-meta">
+  <span>✔ Taux modifiable</span>
+  <span>Sans appel API</span>
+</div>
+</article>
+
+            <!-- Carte : Convertisseur L/min ↔ m³/h -->
+<article
+class="tool-card"
+data-name="convertisseur debit l/min m3/h eau potable pompe"
+data-category="convertisseur"
+onclick="scrollToElement('tool-flow')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Convertisseur L/min ↔ m³/h</div>
+  <div class="tool-card-tag">Convertisseur</div>
+</div>
+<p class="tool-card-desc">
+  Convertis un débit en litres par minute en m³/h (et inversement) pour les réseaux, pompes, arrosage, etc.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Calcul local</span>
+  <span>1 L/min = 0,06 m³/h</span>
+</div>
+</article>
+
+            <!-- Carte : Convertisseur m² ↔ m³ -->
+<article
+class="tool-card"
+data-name="convertisseur surface volume m2 m3 peinture beton"
+data-category="convertisseur"
+onclick="scrollToElement('tool-area-volume')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Convertisseur m² ↔ m³</div>
+  <div class="tool-card-tag">Convertisseur</div>
+</div>
+<p class="tool-card-desc">
+  Calcule un volume à partir d'une surface (m²) et d'une hauteur (m) pour la peinture, le béton, les cartons, etc.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Calcul local</span>
+  <span>m² × hauteur = m³</span>
+</div>
+</article>
+
+            <article
+  class="tool-card"
+  data-name="calcul mensualité crédit emprunt prêt"
+  data-category="finance"
+  onclick="scrollToElement('tool-loan')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Calculateur de mensualité</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Estime ta mensualité de crédit selon le montant, le taux et la durée.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Disponible</span>
+    <span>Calcul local</span>
+  </div>
+</article>
+
+            <article
+  class="tool-card"
+  data-name="calcul age âge date de naissance"
+  data-category="divers"
+  onclick="scrollToElement('tool-age')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Calculateur d'âge</div>
+    <div class="tool-card-tag">Divers</div>
+  </div>
+  <p class="tool-card-desc">
+    Indique ta date de naissance et obtiens ton âge précis en années.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Disponible</span>
+    <span>Calcul local</span>
+  </div>
+</article>
+
             <!-- Convertisseur cm ↔ pouces -->
 <article
 class="tool-card"
@@ -1369,6 +1549,282 @@ onclick="scrollToElement('tool-countdown')"
           <!-- 🟦 Convertisseurs -->
           <section id="convertisseurs">
             <h2 class="section-title" style="margin-bottom:0.6rem;">Convertisseurs</h2>
+
+            <article id="tool-savings" class="tool-section">
+                <h3>Simulateur d’épargne mensuelle</h3>
+                <p>
+                  Indique combien tu peux mettre de côté chaque mois, un taux annuel fixe
+                  et une durée en années. L’outil calcule ton capital final avec
+                  intérêts composés mensuels, ainsi que le total versé et les intérêts générés.
+                </p>
+            
+                <form class="tool-form" onsubmit="event.preventDefault(); calculateSavingsMonthly();">
+                  <div class="field">
+                    <label for="savingsMonthly">Épargne mensuelle (€)</label>
+                    <input
+                      id="savingsMonthly"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 100"
+                    />
+                  </div>
+            
+                  <div class="field">
+                    <label for="savingsRate">Taux d’intérêt annuel (%)</label>
+                    <input
+                      id="savingsRate"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 5"
+                    />
+                  </div>
+            
+                  <div class="field">
+                    <label for="savingsYears">Durée (années)</label>
+                    <input
+                      id="savingsYears"
+                      type="number"
+                      step="0.1"
+                      placeholder="Ex. 10"
+                    />
+                  </div>
+                </form>
+            
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="calculateSavingsMonthly()">
+                    Simuler mon épargne
+                  </button>
+                </div>
+            
+                <div class="tool-result" id="savingsResult"></div>
+                <div class="small-note">
+                  Calcul approximatif avec intérêts composés mensuels.  
+                  Formule utilisée : versements mensuels constants + capitalisation mensuelle
+                  du taux annuel indiqué. Ce simulateur ne remplace pas un conseil financier personnalisé.
+                </div>
+              </article>
+
+            <article id="tool-time" class="tool-section">
+                <h3>Convertisseur de temps : jours → heures / minutes / secondes</h3>
+                <p>
+                  Entre un nombre de jours pour obtenir l'équivalent en heures, minutes et secondes.
+                  Pratique pour visualiser une durée de projet, de vacances ou de délai.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertTimeFromDays();">
+                  <div class="field">
+                    <label for="daysInput">Nombre de jours</label>
+                    <input
+                      id="daysInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 1,5"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertTimeFromDays()">
+                    Convertir
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="timeResult"></div>
+                <div class="small-note">
+                  1 jour = 24 heures = 1&nbsp;440 minutes = 86&nbsp;400 secondes.
+                </div>
+              </article>
+
+            <article id="tool-bytes" class="tool-section">
+                <h3>Convertisseur Ko / Mo / Go / To</h3>
+                <p>
+                  Indique une taille et son unité de départ (octets, Ko, Mo, Go, To) pour obtenir
+                  les équivalents dans les autres unités. Idéal pour comprendre la taille réelle
+                  de tes fichiers.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertBytes();">
+                  <div class="field">
+                    <label for="bytesValueInput">Valeur</label>
+                    <input
+                      id="bytesValueInput"
+                      type="number"
+                      step="0.0001"
+                      placeholder="Ex. 1024"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="bytesUnitSelect">Unité de départ</label>
+                    <select id="bytesUnitSelect">
+                      <option value="B">Octets (B)</option>
+                      <option value="KB">Kilooctets (Ko)</option>
+                      <option value="MB">Mégaoctets (Mo)</option>
+                      <option value="GB">Gigaoctets (Go)</option>
+                      <option value="TB">Téraoctets (To)</option>
+                    </select>
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertBytes()">
+                    Convertir
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="bytesResult"></div>
+                <div class="small-note">
+                  Les conversions utilisent les puissances de 2 courantes en informatique :
+                  1 Ko = 1024 octets, 1 Mo = 1024 Ko, etc.
+                </div>
+              </article>
+
+            <article id="tool-currency" class="tool-section">
+                <h3>Convertisseur de devises (taux manuel)</h3>
+                <p>
+                  Indique un montant, choisis le sens de conversion et définis ton propre taux,
+                  par exemple : <strong>1 € = 1,08 $</strong>. Aucun appel à une API, tout est
+                  calculé en local.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertCurrency();">
+                  <div class="field">
+                    <label for="currencyAmountInput">Montant à convertir</label>
+                    <input
+                      id="currencyAmountInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 100"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="currencyRateInput">Taux (1 € = ... autre devise)</label>
+                    <input
+                      id="currencyRateInput"
+                      type="number"
+                      step="0.0001"
+                      placeholder="Ex. 1.08"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label>Direction de conversion</label>
+                    <div class="chip-row">
+                      <label class="chip">
+                        <input
+                          type="radio"
+                          name="currencyMode"
+                          value="eurToOther"
+                          checked
+                        />
+                        <span>€ → autre devise</span>
+                      </label>
+                      <label class="chip">
+                        <input
+                          type="radio"
+                          name="currencyMode"
+                          value="otherToEur"
+                        />
+                        <span>Autre devise → €</span>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertCurrency()">
+                    Convertir
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="currencyResult"></div>
+                <div class="small-note">
+                  Exemple : avec un taux de 1 € = 1,08 $, 100 € donnent 108 $.  
+                  À l’inverse, 108 $ avec ce taux correspondent à 100 €.
+                </div>
+              </article>
+
+            <article id="tool-flow" class="tool-section">
+                <h3>Convertisseur de débit L/min ↔ m³/h</h3>
+                <p>
+                  Indique un débit en litres par minute (L/min) ou en mètres cubes par heure (m³/h)
+                  pour obtenir l'autre valeur. Pratique pour les réseaux d'eau, les pompes,
+                  l'arrosage, etc.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertFlow();">
+                  <div class="field">
+                    <label for="flowLminInput">Débit (L/min)</label>
+                    <input
+                      id="flowLminInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 25"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="flowM3hInput">Débit (m³/h)</label>
+                    <input
+                      id="flowM3hInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 1.50"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertFlow()">
+                    Calculer
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="flowResult"></div>
+                <div class="small-note">
+                  Formules utilisées : m³/h = L/min × 0,06 &nbsp;•&nbsp; L/min ≈ m³/h × 16,67.
+                </div>
+              </article>
+
+            <article id="tool-area-volume" class="tool-section">
+                <h3>Convertisseur surface → volume (m² ↔ m³)</h3>
+                <p>
+                  Indique une surface en m² et une hauteur en mètres pour obtenir le volume en m³.
+                  Pratique pour estimer du béton, de la peinture ou le volume utile d'une pièce.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertAreaVolume();">
+                  <div class="field">
+                    <label for="areaSurfaceInput">Surface (m²)</label>
+                    <input
+                      id="areaSurfaceInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 25"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="areaHeightInput">Hauteur (m)</label>
+                    <input
+                      id="areaHeightInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 2.5"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertAreaVolume()">
+                    Calculer le volume
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="areaVolumeResult"></div>
+                <div class="small-note">
+                  Formule utilisée : volume (m³) = surface (m²) × hauteur (m).
+                </div>
+              </article>
 
             <article id="tool-distance" class="tool-section">
               <h3>Convertisseur de distance km ↔ miles</h3>
@@ -1718,9 +2174,105 @@ onclick="scrollToElement('tool-countdown')"
     </div>
   </article>
 
-  <!-- 🟧 Finance -->
+<!-- 🟦 Finance / Budget -->
 <section id="finance">
-    <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Finance</h2>
+    <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Finance & budget</h2>
+  
+    <article id="tool-budget" class="tool-section">
+      <h3>Calculateur de budget mensuel</h3>
+      <p>
+        Indique tes revenus mensuels et tes principales dépenses par catégorie.
+        L’outil calcule automatiquement le total des dépenses, ton reste à vivre
+        et le pourcentage que représente chaque catégorie par rapport à tes revenus.
+      </p>
+  
+      <form class="tool-form" onsubmit="event.preventDefault(); calculateBudgetMonthly();">
+        <div class="field">
+          <label for="budgetIncome">Revenus mensuels nets (€)</label>
+          <input
+            id="budgetIncome"
+            type="number"
+            step="0.01"
+            placeholder="Ex. 2200"
+          />
+        </div>
+  
+        <div class="field">
+          <label for="budgetExpenses">Dépenses par catégorie (€)</label>
+          <textarea
+            id="budgetExpenses"
+            rows="4"
+            placeholder="Ex.&#10;Loyer : 900&#10;Courses : 300&#10;Abonnements : 80&#10;Essence : 120"
+          ></textarea>
+        </div>
+      </form>
+  
+      <div style="margin-top:0.9rem;">
+        <button class="btn-tool" type="button" onclick="calculateBudgetMonthly()">
+          Calculer mon budget
+        </button>
+      </div>
+  
+      <div class="tool-result" id="budgetResult"></div>
+      <div class="small-note">
+        Tu peux écrire une dépense par ligne, avec ou sans libellé.  
+        Exemple valide : <code>Loyer : 900</code> ou simplement <code>900</code>.
+        Les pourcentages sont calculés par rapport à tes revenus mensuels indiqués.
+      </div>
+    </article>
+  </section>
+
+    <article id="tool-loan" class="tool-section">
+        <h3>Calculateur de mensualité de crédit</h3>
+        <p>
+          Indique le montant emprunté, le taux d’intérêt et la durée pour estimer
+          ta mensualité. Le calcul est fait localement dans ton navigateur.
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateLoanPayment();">
+          <div class="field">
+            <label for="loanAmount">Montant du prêt (€)</label>
+            <input
+              id="loanAmount"
+              type="number"
+              step="0.01"
+              placeholder="Ex. 10 000"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="loanRate">Taux annuel (%)</label>
+            <input
+              id="loanRate"
+              type="number"
+              step="0.01"
+              placeholder="Ex. 4.5"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="loanYears">Durée (années)</label>
+            <input
+              id="loanYears"
+              type="number"
+              step="1"
+              placeholder="Ex. 5"
+            />
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateLoanPayment()">
+            Calculer la mensualité
+          </button>
+        </div>
+      
+        <div class="tool-result" id="loanResult"></div>
+        <div class="small-note">
+          Le résultat est indicatif : il utilise la formule classique d’un crédit amortissable
+          sans assurance ni frais supplémentaires.
+        </div>
+      </article>
   
     <!-- TVA -->
     <article id="tool-vat" class="tool-section">
@@ -2058,6 +2610,36 @@ onclick="scrollToElement('tool-countdown')"
     </div>
   </article>
 
+  <article id="tool-age" class="tool-section">
+    <h3>Calculateur d'âge</h3>
+    <p>
+      Indique ta date de naissance pour obtenir ton âge en années.
+      Le calcul est effectué localement dans ton navigateur.
+    </p>
+  
+    <div class="tool-form">
+      <div class="field">
+        <label for="ageBirthdate">Date de naissance</label>
+        <input
+          id="ageBirthdate"
+          type="date"
+        />
+      </div>
+      <div class="field">
+        <label>&nbsp;</label>
+        <button class="btn-tool" type="button" onclick="calculateAge()">
+          Calculer mon âge
+        </button>
+      </div>
+    </div>
+  
+    <div class="tool-result" id="ageResult"></div>
+    <div class="small-note">
+      Le résultat est calculé à partir de la date du jour (heure locale de ton appareil)
+      et reste indicatif.
+    </div>
+  </article>
+
 </section> <!-- /#organisation -->
 </div> <!-- /.container -->
 </section> <!-- /#tools -->
@@ -2098,6 +2680,355 @@ onclick="scrollToElement('tool-countdown')"
 
 <!-- Scripts principaux -->
 <script>
+
+    // Simulateur d’épargne mensuelle
+function calculateSavingsMonthly() {
+  const monthlyInput = document.getElementById("savingsMonthly");
+  const rateInput = document.getElementById("savingsRate");
+  const yearsInput = document.getElementById("savingsYears");
+  const resultEl = document.getElementById("savingsResult");
+  if (!monthlyInput || !rateInput || !yearsInput || !resultEl) return;
+
+  const monthlyRaw = monthlyInput.value || "";
+  const rateRaw = rateInput.value || "";
+  const yearsRaw = yearsInput.value || "";
+
+  const monthly = parseFloat(monthlyRaw.replace(",", "."));
+  const rateYear = parseFloat(rateRaw.replace(",", "."));
+  const years = parseFloat(yearsRaw.replace(",", "."));
+
+  if (isNaN(monthly) || monthly <= 0) {
+    resultEl.textContent =
+      "Merci d’indiquer un montant d’épargne mensuelle valide (supérieur à 0).";
+    return;
+  }
+  if (isNaN(rateYear) || rateYear < 0) {
+    resultEl.textContent =
+      "Merci d’indiquer un taux annuel valide (0 ou plus).";
+    return;
+  }
+  if (isNaN(years) || years <= 0) {
+    resultEl.textContent =
+      "Merci d’indiquer une durée en années valide (supérieure à 0).";
+    return;
+  }
+
+  const months = Math.round(years * 12);
+  const totalPaid = monthly * months;
+
+  let finalCapital;
+  let interests;
+
+  if (rateYear === 0) {
+    // Pas d’intérêt : simple somme des versements
+    finalCapital = totalPaid;
+    interests = 0;
+  } else {
+    const monthlyRate = rateYear / 100 / 12;
+    // Formule valeur future d’une rente : P * [((1 + r)^n - 1) / r]
+    finalCapital =
+      monthly * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+    interests = finalCapital - totalPaid;
+  }
+
+  let html =
+    "Durée : <strong>" +
+    years.toFixed(1) +
+    " an" +
+    (years >= 1.5 ? "s" : "") +
+    "</strong><br>" +
+    "Épargne mensuelle : <strong>" +
+    monthly.toFixed(2) +
+    " €</strong><br>" +
+    "Taux annuel : <strong>" +
+    rateYear.toFixed(2) +
+    " %</strong><br><br>" +
+    "Montant total versé : <strong>" +
+    totalPaid.toFixed(2) +
+    " €</strong><br>" +
+    "Capital final estimé : <strong>" +
+    finalCapital.toFixed(2) +
+    " €</strong><br>" +
+    "Intérêts générés : <strong>" +
+    interests.toFixed(2) +
+    " €</strong>";
+
+  resultEl.innerHTML = html;
+}
+
+    // Calculateur de budget mensuel
+function calculateBudgetMonthly() {
+  const incomeInput = document.getElementById("budgetIncome");
+  const expensesInput = document.getElementById("budgetExpenses");
+  const resultEl = document.getElementById("budgetResult");
+  if (!incomeInput || !expensesInput || !resultEl) return;
+
+  const incomeRaw = incomeInput.value || "";
+  const income = parseFloat(incomeRaw.replace(",", "."));
+
+  if (isNaN(income) || income <= 0) {
+    resultEl.textContent =
+      "Merci d’indiquer des revenus mensuels valides (supérieurs à 0).";
+    return;
+  }
+
+  const lines = (expensesInput.value || "")
+    .split(/\n+/)
+    .map((l) => l.trim())
+    .filter((l) => l.length > 0);
+
+  if (lines.length === 0) {
+    const remaining = income;
+    resultEl.innerHTML =
+      "Revenus mensuels : <strong>" +
+      income.toFixed(2) +
+      " €</strong><br>" +
+      "Aucune dépense renseignée.<br>" +
+      "Reste à vivre : <strong>" +
+      remaining.toFixed(2) +
+      " €</strong> (100 % de tes revenus).";
+    return;
+  }
+
+  const categories = [];
+  let totalExpenses = 0;
+
+  lines.forEach((line) => {
+    let label = "Catégorie";
+    let amountPart = line;
+
+    const parts = line.split(":");
+    if (parts.length >= 2) {
+      label = parts[0].trim() || "Catégorie";
+      amountPart = parts.slice(1).join(":").trim();
+    }
+
+    const amount = parseFloat((amountPart || "").replace(",", "."));
+    if (!isNaN(amount) && amount >= 0) {
+      totalExpenses += amount;
+      categories.push({ label, amount });
+    }
+  });
+
+  if (categories.length === 0) {
+    resultEl.textContent =
+      "Aucune dépense numérique valide n’a été trouvée. Vérifie le format (ex. Loyer : 900).";
+    return;
+  }
+
+  const remaining = income - totalExpenses;
+
+  let html =
+    "Revenus mensuels : <strong>" +
+    income.toFixed(2) +
+    " €</strong><br>" +
+    "Total des dépenses : <strong>" +
+    totalExpenses.toFixed(2) +
+    " €</strong><br>" +
+    "Reste à vivre : <strong>" +
+    remaining.toFixed(2) +
+    " €</strong>";
+
+  if (remaining < 0) {
+    html +=
+      " <span style='color:#f97373;'>(budget négatif : dépenses supérieures aux revenus)</span>";
+  }
+
+  html += "<br><br><strong>Répartition par catégorie :</strong>";
+
+  html += "<ul style='margin-top:0.4rem; padding-left:1.2rem;'>";
+  categories.forEach((cat) => {
+    const pctIncome = (cat.amount / income) * 100;
+    html +=
+      "<li>" +
+      cat.label +
+      " : " +
+      cat.amount.toFixed(2) +
+      " € (" +
+      pctIncome.toFixed(1) +
+      " % des revenus)</li>";
+  });
+  html += "</ul>";
+
+  resultEl.innerHTML = html;
+}
+
+    // Convertisseur de temps : jours -> heures / minutes / secondes
+function convertTimeFromDays() {
+  const daysInput = document.getElementById("daysInput");
+  const resultEl = document.getElementById("timeResult");
+  if (!daysInput || !resultEl) return;
+
+  const raw = daysInput.value || "";
+  const days = parseFloat(raw.replace(",", "."));
+
+  if (isNaN(days)) {
+    resultEl.textContent = "Veuillez entrer un nombre de jours valide.";
+    return;
+  }
+
+  const hours = days * 24;
+  const minutes = days * 24 * 60;
+  const seconds = days * 24 * 60 * 60;
+
+  resultEl.innerHTML =
+    "≈ <strong>" + hours.toFixed(2) + " heures</strong><br>" +
+    "≈ <strong>" + minutes.toFixed(0) + " minutes</strong><br>" +
+    "≈ <strong>" + seconds.toFixed(0) + " secondes</strong>";
+}
+
+    // Convertisseur Ko / Mo / Go / To
+function convertBytes() {
+  const valueInput = document.getElementById("bytesValueInput");
+  const unitSelect = document.getElementById("bytesUnitSelect");
+  const resultEl = document.getElementById("bytesResult");
+
+  if (!valueInput || !unitSelect || !resultEl) return;
+
+  const raw = valueInput.value || "";
+  const unit = unitSelect.value;
+  const value = parseFloat(raw.replace(",", "."));
+
+  if (isNaN(value) || value < 0) {
+    resultEl.textContent = "Veuillez entrer une valeur numérique positive.";
+    return;
+  }
+
+  // Facteurs basés sur 1 Ko = 1024 octets
+  const factors = {
+    B: 1,
+    KB: 1024,
+    MB: 1024 * 1024,
+    GB: 1024 * 1024 * 1024,
+    TB: 1024 * 1024 * 1024 * 1024
+  };
+
+  const baseBytes = value * (factors[unit] || 1);
+
+  const bytes = baseBytes;
+  const kb = baseBytes / factors.KB;
+  const mb = baseBytes / factors.MB;
+  const gb = baseBytes / factors.GB;
+  const tb = baseBytes / factors.TB;
+
+  function fmt(n) {
+    if (n === 0) return "0";
+    if (n >= 1) return n.toFixed(2);
+    return n.toExponential(2);
+  }
+
+  resultEl.innerHTML =
+    "≈ <strong>" + fmt(bytes) + " octets</strong><br>" +
+    "≈ <strong>" + fmt(kb) + " Ko</strong><br>" +
+    "≈ <strong>" + fmt(mb) + " Mo</strong><br>" +
+    "≈ <strong>" + fmt(gb) + " Go</strong><br>" +
+    "≈ <strong>" + fmt(tb) + " To</strong>";
+}
+
+    // Convertisseur de devises (taux manuel)
+function convertCurrency() {
+  const amountInput = document.getElementById("currencyAmountInput");
+  const rateInput = document.getElementById("currencyRateInput");
+  const resultEl = document.getElementById("currencyResult");
+  if (!amountInput || !rateInput || !resultEl) return;
+
+  const amountRaw = amountInput.value || "";
+  const rateRaw = rateInput.value || "";
+
+  const amount = parseFloat(amountRaw.replace(",", "."));
+  const rate = parseFloat(rateRaw.replace(",", "."));
+
+  if (isNaN(amount) || isNaN(rate) || rate <= 0) {
+    resultEl.textContent =
+      "Veuillez entrer un montant et un taux valides (taux > 0).";
+    return;
+  }
+
+  const modeRadio = document.querySelector("input[name='currencyMode']:checked");
+  const mode = modeRadio ? modeRadio.value : "eurToOther";
+
+  let converted;
+  if (mode === "eurToOther") {
+    converted = amount * rate;
+    resultEl.innerHTML =
+      "Montant de départ : <strong>" + amount.toFixed(2) + " €</strong><br>" +
+      "Taux : <strong>1 € = " + rate.toFixed(4) + "</strong><br>" +
+      "Résultat : <strong>" + converted.toFixed(2) + "</strong> (devise cible)";
+  } else {
+    converted = amount / rate;
+    resultEl.innerHTML =
+      "Montant de départ : <strong>" + amount.toFixed(2) + "</strong> (devise source)<br>" +
+      "Taux : <strong>1 € = " + rate.toFixed(4) + "</strong><br>" +
+      "Résultat : <strong>" + converted.toFixed(2) + " €</strong>";
+  }
+}
+
+    // Convertisseur de débit L/min ↔ m³/h
+function convertFlow() {
+  const lminInput = document.getElementById("flowLminInput");
+  const m3hInput = document.getElementById("flowM3hInput");
+  const resultEl = document.getElementById("flowResult");
+  if (!lminInput || !m3hInput || !resultEl) return;
+
+  const lminRaw = lminInput.value || "";
+  const m3hRaw = m3hInput.value || "";
+
+  // Si L/min est rempli, on priorise cette valeur
+  if (lminRaw.trim() !== "") {
+    const lmin = parseFloat(lminRaw.replace(",", "."));
+    if (isNaN(lmin)) {
+      resultEl.textContent = "Valeur en L/min invalide.";
+      return;
+    }
+    const m3h = lmin * 0.06;
+    m3hInput.value = m3h.toFixed(3);
+    resultEl.innerHTML =
+      "<strong>" + lmin.toFixed(2) + " L/min</strong> ≈ <strong>" +
+      m3h.toFixed(3) + " m³/h</strong>";
+    return;
+  }
+
+  // Sinon, on regarde m³/h
+  if (m3hRaw.trim() !== "") {
+    const m3h = parseFloat(m3hRaw.replace(",", "."));
+    if (isNaN(m3h)) {
+      resultEl.textContent = "Valeur en m³/h invalide.";
+      return;
+    }
+    const lmin = m3h * (1000 / 60); // ≈ 16,6667
+    lminInput.value = lmin.toFixed(2);
+    resultEl.innerHTML =
+      "<strong>" + m3h.toFixed(3) + " m³/h</strong> ≈ <strong>" +
+      lmin.toFixed(2) + " L/min</strong>";
+    return;
+  }
+
+  resultEl.textContent = "Renseigne au moins un des deux champs (L/min ou m³/h).";
+}
+
+function convertAreaVolume() {
+  const areaInput = document.getElementById("areaSurfaceInput");
+  const heightInput = document.getElementById("areaHeightInput");
+  const resultEl = document.getElementById("areaVolumeResult");
+  if (!areaInput || !heightInput || !resultEl) return;
+
+  const areaRaw = areaInput.value || "";
+  const heightRaw = heightInput.value || "";
+
+  const area = parseFloat(areaRaw.replace(",", "."));
+  const height = parseFloat(heightRaw.replace(",", "."));
+
+  if (isNaN(area) || isNaN(height) || area <= 0 || height <= 0) {
+    resultEl.textContent = "Veuillez entrer une surface et une hauteur valides.";
+    return;
+  }
+
+  const volume = area * height;
+  resultEl.innerHTML =
+    "Surface : <strong>" + area.toFixed(2) + " m²</strong><br>" +
+    "Hauteur : <strong>" + height.toFixed(2) + " m</strong><br>" +
+    "Volume : <strong>" + volume.toFixed(3) + " m³</strong>";
+}
 
 // Convertisseur cm ↔ pouces
 function convertCmInch() {
@@ -2910,6 +3841,45 @@ fToC();
 }
 }
 
+// Calculateur d'âge
+function calculateAge() {
+  const input = document.getElementById("ageBirthdate");
+  const resultEl = document.getElementById("ageResult");
+  if (!input || !resultEl) return;
+
+  const value = input.value;
+  if (!value) {
+    resultEl.textContent = "Choisis d'abord une date de naissance.";
+    return;
+  }
+
+  const birthDate = new Date(value + "T00:00:00");
+  if (isNaN(birthDate.getTime())) {
+    resultEl.textContent = "Date invalide.";
+    return;
+  }
+
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+
+  const hasBirthdayPassedThisYear =
+    today.getMonth() > birthDate.getMonth() ||
+    (today.getMonth() === birthDate.getMonth() &&
+      today.getDate() >= birthDate.getDate());
+
+  if (!hasBirthdayPassedThisYear) {
+    age--;
+  }
+
+  if (age < 0) {
+    resultEl.textContent = "La date indiquée est dans le futur.";
+    return;
+  }
+
+  resultEl.innerHTML =
+    "Âge estimé : <strong>" + age + " an" + (age > 1 ? "s" : "") + "</strong>.";
+}
+
 // Ajout aux favoris
 function addToFavorites() {
 const url = window.location.href;
@@ -2938,6 +3908,60 @@ shortcut +
 const yearSpan = document.getElementById("year");
 if (yearSpan) {
 yearSpan.textContent = new Date().getFullYear().toString();
+}
+
+// Calculateur de mensualité de crédit
+function calculateLoanPayment() {
+  const amountInput = document.getElementById("loanAmount");
+  const rateInput = document.getElementById("loanRate");
+  const yearsInput = document.getElementById("loanYears");
+  const resultEl = document.getElementById("loanResult");
+
+  if (!amountInput || !rateInput || !yearsInput || !resultEl) return;
+
+  const amountRaw = amountInput.value || "";
+  const rateRaw = rateInput.value || "";
+  const yearsRaw = yearsInput.value || "";
+
+  const amount = parseFloat(amountRaw.replace(",", "."));
+  const annualRate = parseFloat(rateRaw.replace(",", "."));
+  const years = parseInt(yearsRaw, 10);
+
+  if (isNaN(amount) || amount <= 0 || isNaN(annualRate) || annualRate < 0 || isNaN(years) || years <= 0) {
+    resultEl.textContent = "Veuillez entrer un montant, un taux et une durée valides.";
+    return;
+  }
+
+  const months = years * 12;
+  const monthlyRate = annualRate / 100 / 12;
+
+  let monthlyPayment;
+  if (monthlyRate === 0) {
+    // Pas d'intérêt
+    monthlyPayment = amount / months;
+  } else {
+    // Formule d'un crédit amortissable
+    const factor = Math.pow(1 + monthlyRate, months);
+    monthlyPayment = (amount * monthlyRate * factor) / (factor - 1);
+  }
+
+  const totalPaid = monthlyPayment * months;
+  const totalInterest = totalPaid - amount;
+
+  resultEl.innerHTML =
+    "Mensualité estimée : <strong>" +
+    monthlyPayment.toFixed(2) +
+    " €</strong><br>" +
+    "Total remboursé sur " +
+    years +
+    " an" +
+    (years > 1 ? "s" : "") +
+    " : <strong>" +
+    totalPaid.toFixed(2) +
+    " €</strong><br>" +
+    "Dont intérêts : <strong>" +
+    totalInterest.toFixed(2) +
+    " €</strong>";
 }
 
 // Init
