@@ -1025,6 +1025,48 @@
 
           <div class="tool-grid" id="toolGrid">
 
+            <!-- Savings goal simulator -->
+<article
+class="tool-card"
+data-name="savings goal simulator how much to save per month"
+data-category="finance"
+onclick="scrollToElement('tool-goal')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Savings goal simulator</div>
+  <div class="tool-card-tag">Finance</div>
+</div>
+<p class="tool-card-desc">
+  Enter a savings goal and a duration, and see how much you should save
+  every month to reach it.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Goal → monthly amount</span>
+  <span>Simple and visual</span>
+</div>
+</article>
+
+<!-- Bill splitter -->
+<article
+class="tool-card"
+data-name="bill splitter expense note restaurant tip share"
+data-category="finance"
+onclick="scrollToElement('tool-bill')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Bill splitter</div>
+  <div class="tool-card-tag">Finance</div>
+</div>
+<p class="tool-card-desc">
+  Quickly split a bill or expense note between several people,
+  with an optional tip.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Price per person</span>
+  <span>Tip included</span>
+</div>
+</article>
+
             <!-- Card: Monthly savings simulator -->
 <article
 class="tool-card"
@@ -1287,42 +1329,44 @@ onclick="scrollToElement('tool-speed')"
 
 <!-- VAT calculator -->
 <article
-class="tool-card"
-data-name="vat calculator tax ht ttc"
-data-category="convertisseur"
-onclick="scrollToElement('tool-vat')"
+  class="tool-card"
+  data-name="vat tax calculator net gross"
+  data-category="finance"
+  onclick="scrollToElement('tool-vat')"
 >
-<div class="tool-card-header">
-  <div class="tool-card-title">VAT calculator</div>
-  <div class="tool-card-tag">Finance</div>
-</div>
-<p class="tool-card-desc">
-  Quickly compute VAT, net (excl. tax) or gross (incl. tax) from any VAT rate.
-</p>
-<div class="tool-card-meta">
-  <span>✔ Available</span>
-  <span>Net ↔ Gross</span>
-</div>
+  <div class="tool-card-header">
+    <div class="tool-card-title">VAT calculator</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Quickly calculate VAT, net (excluding tax) or gross (including tax),
+    for any VAT rate.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Available</span>
+    <span>Net ↔ Gross</span>
+  </div>
 </article>
 
-<!-- Net ↔ gross salary calculator -->
+<!-- Net ↔ gross salary -->
 <article
-class="tool-card"
-data-name="salary calculator net gross"
-data-category="convertisseur"
-onclick="scrollToElement('tool-salary')"
+  class="tool-card"
+  data-name="net gross salary calculator"
+  data-category="finance"
+  onclick="scrollToElement('tool-salary')"
 >
-<div class="tool-card-header">
-  <div class="tool-card-title">Net ↔ gross salary</div>
-  <div class="tool-card-tag">Finance</div>
-</div>
-<p class="tool-card-desc">
-  Estimate net salary from gross (or the opposite) using a chosen contribution rate.
-</p>
-<div class="tool-card-meta">
-  <span>✔ Available</span>
-  <span>Simple estimation</span>
-</div>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Net ↔ gross salary</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Estimate net salary from gross salary (or the opposite) using a custom
+    contribution rate.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Available</span>
+    <span>Simple estimate</span>
+  </div>
 </article>
 
 <!-- Fake data generator -->
@@ -1549,60 +1593,6 @@ onclick="scrollToElement('tool-fake')"
           <!-- 🟦 Converters -->
           <section id="convertisseurs">
             <h2 class="section-title" style="margin-bottom:0.6rem;">Converters</h2>
-
-            <article id="tool-savings" class="tool-section">
-                <h3>Monthly savings simulator</h3>
-                <p>
-                  Enter how much you can save every month, a fixed annual interest rate
-                  and a duration in years. The tool computes your final capital with
-                  monthly compound interest, along with total contributions and interests earned.
-                </p>
-            
-                <form class="tool-form" onsubmit="event.preventDefault(); calculateSavingsMonthly();">
-                  <div class="field">
-                    <label for="savingsMonthly">Monthly savings (€)</label>
-                    <input
-                      id="savingsMonthly"
-                      type="number"
-                      step="0.01"
-                      placeholder="e.g. 100"
-                    />
-                  </div>
-            
-                  <div class="field">
-                    <label for="savingsRate">Annual interest rate (%)</label>
-                    <input
-                      id="savingsRate"
-                      type="number"
-                      step="0.01"
-                      placeholder="e.g. 5"
-                    />
-                  </div>
-            
-                  <div class="field">
-                    <label for="savingsYears">Duration (years)</label>
-                    <input
-                      id="savingsYears"
-                      type="number"
-                      step="0.1"
-                      placeholder="e.g. 10"
-                    />
-                  </div>
-                </form>
-            
-                <div style="margin-top:0.9rem;">
-                  <button class="btn-tool" type="button" onclick="calculateSavingsMonthly()">
-                    Simulate my savings
-                  </button>
-                </div>
-            
-                <div class="tool-result" id="savingsResult"></div>
-                <div class="small-note">
-                  Approximate calculation using monthly compounding.  
-                  Formula: constant monthly deposits + monthly capitalization of the
-                  annual rate you entered. This is not financial advice.
-                </div>
-              </article>
 
             <article id="tool-time" class="tool-section">
                 <h3>Time converter: days → hours / minutes / seconds</h3>
@@ -2176,6 +2166,157 @@ onclick="scrollToElement('tool-fake')"
 <!-- 🟦 Finance / Budget -->
 <section id="finance">
     <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Finance & budget</h2>
+
+                <!-- Saving goal -->
+<article id="tool-saving-goal" class="tool-section">
+    <h3>Savings Goal Simulator</h3>
+    <p>
+      Enter a target amount and a number of months.
+      The calculator tells you how much to save per month.
+    </p>
+  
+    <form class="tool-form" onsubmit="event.preventDefault(); savingGoalEn();">
+      <div class="field">
+        <label for="savingTargetEn">Goal (€)</label>
+        <input id="savingTargetEn" type="number" step="0.01" placeholder="e.g. 5,000" />
+      </div>
+  
+      <div class="field">
+        <label for="savingMonthsEn">Duration (months)</label>
+        <input id="savingMonthsEn" type="number" step="1" placeholder="e.g. 12" />
+      </div>
+    </form>
+  
+    <div style="margin-top:0.9rem;">
+      <button class="btn-tool" onclick="savingGoalEn()">Calculate</button>
+    </div>
+  
+    <div class="tool-result" id="savingGoalResultEn"></div>
+  
+    <div class="small-note">
+      Example: €5,000 in 12 months → €416.67/month.
+    </div>
+  </article>
+
+
+    <article id="tool-savings" class="tool-section">
+        <h3>Monthly savings simulator</h3>
+        <p>
+          Enter how much you can save every month, a fixed annual interest rate
+          and a duration in years. The tool computes your final capital with
+          monthly compound interest, along with total contributions and interests earned.
+        </p>
+    
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateSavingsMonthly();">
+          <div class="field">
+            <label for="savingsMonthly">Monthly savings (€)</label>
+            <input
+              id="savingsMonthly"
+              type="number"
+              step="0.01"
+              placeholder="e.g. 100"
+            />
+          </div>
+    
+          <div class="field">
+            <label for="savingsRate">Annual interest rate (%)</label>
+            <input
+              id="savingsRate"
+              type="number"
+              step="0.01"
+              placeholder="e.g. 5"
+            />
+          </div>
+    
+          <div class="field">
+            <label for="savingsYears">Duration (years)</label>
+            <input
+              id="savingsYears"
+              type="number"
+              step="0.1"
+              placeholder="e.g. 10"
+            />
+          </div>
+        </form>
+    
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateSavingsMonthly()">
+            Simulate my savings
+          </button>
+        </div>
+    
+        <div class="tool-result" id="savingsResult"></div>
+        <div class="small-note">
+          Approximate calculation using monthly compounding.  
+          Formula: constant monthly deposits + monthly capitalization of the
+          annual rate you entered. This is not financial advice.
+        </div>
+      </article>
+
+    <article id="tool-goal" class="tool-section">
+        <h3>Savings goal simulator</h3>
+        <p>
+          Enter a total savings goal and a duration in months, then see
+          how much you need to save every month to reach it.
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateSavingsGoal();">
+          <div class="field">
+            <label for="goalAmount">Total goal (€)</label>
+            <input id="goalAmount" type="number" step="0.01" placeholder="e.g. 5 000" />
+          </div>
+      
+          <div class="field">
+            <label for="goalMonths">Duration (months)</label>
+            <input id="goalMonths" type="number" step="1" placeholder="e.g. 12" />
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateSavingsGoal()">
+            Calculate
+          </button>
+        </div>
+      
+        <div class="tool-result" id="goalResult"></div>
+      
+        <div class="small-note">
+          Example: for €5,000 over 12 months → €416.67 / month.
+        </div>
+      </article>
+      
+      <article id="tool-bill" class="tool-section">
+        <h3>Bill splitter</h3>
+        <p>
+          Split a bill or expense note between several people.
+          You can also add an optional tip.
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); splitBill();">
+          <div class="field">
+            <label for="billTotal">Total amount (€)</label>
+            <input id="billTotal" type="number" step="0.01" placeholder="e.g. 120" />
+          </div>
+      
+          <div class="field">
+            <label for="billPeople">Number of people</label>
+            <input id="billPeople" type="number" step="1" placeholder="e.g. 4" />
+          </div>
+      
+          <div class="field">
+            <label for="billTip">Tip (%)</label>
+            <input id="billTip" type="number" step="0.1" placeholder="e.g. 10" />
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="splitBill()">
+            Calculate
+          </button>
+        </div>
+      
+        <div class="tool-result" id="billResult"></div>
+      </article>
   
     <article id="tool-budget" class="tool-section">
       <h3>Monthly budget calculator</h3>
@@ -2677,6 +2818,74 @@ onclick="scrollToElement('tool-fake')"
 
   <!-- Main scripts -->
   <script>
+
+function calculateSavingsGoal() {
+  const amount = parseFloat(
+    (document.getElementById("goalAmount").value || "").replace(",", ".")
+  );
+  const months = parseInt(document.getElementById("goalMonths").value || "");
+
+  const resultEl = document.getElementById("goalResult");
+
+  if (!amount || !months || months <= 0) {
+    resultEl.textContent = "Please enter a valid goal and duration.";
+    return;
+  }
+
+  const perMonth = amount / months;
+
+  resultEl.innerHTML =
+    "Amount to save each month: <strong>" +
+    perMonth.toFixed(2) +
+    " €</strong>";
+}
+
+function splitBill() {
+  const total = parseFloat(
+    (document.getElementById("billTotal").value || "").replace(",", ".")
+  );
+  const people = parseInt(document.getElementById("billPeople").value || "");
+  const tip = parseFloat(
+    (document.getElementById("billTip").value || "0").replace(",", ".")
+  );
+
+  const resultEl = document.getElementById("billResult");
+
+  if (!total || !people || people <= 0) {
+    resultEl.textContent = "Please enter valid values.";
+    return;
+  }
+
+  const tipAmount = total * (tip / 100);
+  const finalTotal = total + tipAmount;
+  const perPerson = finalTotal / people;
+
+  resultEl.innerHTML =
+    "Total with tip: <strong>" +
+    finalTotal.toFixed(2) +
+    " €</strong><br>" +
+    "Amount per person: <strong>" +
+    perPerson.toFixed(2) +
+    " €</strong>";
+}
+
+function savingGoalEn() {
+  const target = parseFloat(document.getElementById("savingTargetEn").value.replace(",", "."));
+  const months = parseInt(document.getElementById("savingMonthsEn").value);
+  const resultEl = document.getElementById("savingGoalResultEn");
+
+  if (isNaN(target) || isNaN(months) || months <= 0) {
+    resultEl.textContent = "Please enter valid values.";
+    return;
+  }
+
+  const perMonth = target / months;
+
+  resultEl.innerHTML =
+    "Amount to save per month: <strong>" +
+    perMonth.toFixed(2) +
+    " €</strong>";
+}
 
     // Monthly savings simulator
 function calculateSavingsMonthly() {

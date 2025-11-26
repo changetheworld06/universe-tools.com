@@ -1025,6 +1025,47 @@
 
           <div class="tool-grid" id="toolGrid">
 
+                    <!-- Carte : Répartiteur de note de frais -->
+            <article
+  class="tool-card"
+  data-name="répartiteur note de frais addition partage restaurant"
+  data-category="finance"
+  onclick="scrollToElement('tool-bill')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Répartiteur de note de frais</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Partage facilement une addition ou une note de frais entre plusieurs personnes,
+    avec pourboire optionnel.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Prix par personne</span>
+    <span>Inclut le pourboire</span>
+  </div>
+</article>
+                    <!-- Carte : Simulateur d’objectifs d’épargne -->
+            <article
+  class="tool-card"
+  data-name="simulateur objectifs épargne combien mettre de côté par mois"
+  data-category="finance"
+  onclick="scrollToElement('tool-goal')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Simulateur d’objectifs d’épargne</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Indique un objectif à atteindre et une durée, et vois combien mettre
+    de côté chaque mois pour y arriver.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Objectif → montant mensuel</span>
+    <span>Simple et visuel</span>
+  </div>
+</article>
+
             <!-- Carte : Simulateur d’épargne mensuelle -->
 <article
 class="tool-card"
@@ -1287,42 +1328,44 @@ onclick="scrollToElement('tool-speed')"
 
 <!-- Calculateur de TVA -->
 <article
-class="tool-card"
-data-name="calculateur tva ht ttc"
-data-category="convertisseur"
-onclick="scrollToElement('tool-vat')"
+  class="tool-card"
+  data-name="calculateur tva net brut hors taxe"
+  data-category="finance"
+  onclick="scrollToElement('tool-vat')"
 >
-<div class="tool-card-header">
-  <div class="tool-card-title">Calculateur de TVA</div>
-  <div class="tool-card-tag">Finances</div>
-</div>
-<p class="tool-card-desc">
-  Calcul rapide du montant TTC ou HT à partir d’un taux de TVA au choix.
-</p>
-<div class="tool-card-meta">
-  <span>✔ Disponible</span>
-  <span>HT ↔ TTC</span>
-</div>
+  <div class="tool-card-header">
+    <div class="tool-card-title">calculateur de TVA</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Calculez rapidement la TVA, nette (hors taxe) ou brute (taxe comprise),
+    à partir de n'importe quel taux de TVA.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Disponible</span>
+    <span>Net ↔ Brut</span>
+  </div>
 </article>
 
-<!-- Calculateur salaire net ↔ brut -->
+<!-- Salaire net ↔ salaire brut -->
 <article
-class="tool-card"
-data-name="calculateur salaire net brut charges"
-data-category="convertisseur"
-onclick="scrollToElement('tool-salary')"
+  class="tool-card"
+  data-name="salaire net brut simulateur"
+  data-category="finance"
+  onclick="scrollToElement('tool-salary')"
 >
-<div class="tool-card-header">
-  <div class="tool-card-title">Salaire net ↔ brut</div>
-  <div class="tool-card-tag">Finances</div>
-</div>
-<p class="tool-card-desc">
-  Convertis un salaire brut en net (ou l’inverse) en fonction d’un taux de charges choisi.
-</p>
-<div class="tool-card-meta">
-  <span>✔ Disponible</span>
-  <span>Estimation simple</span>
-</div>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Salaire net ↔ salaire brut</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Estimer le salaire net à partir du salaire brut (ou l'inverse) en
+    utilisant un taux de cotisation choisi.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Disponible</span>
+    <span>Estimation simple</span>
+  </div>
 </article>
 
 <!-- Générateur de fausses données -->
@@ -1549,60 +1592,6 @@ onclick="scrollToElement('tool-countdown')"
           <!-- 🟦 Convertisseurs -->
           <section id="convertisseurs">
             <h2 class="section-title" style="margin-bottom:0.6rem;">Convertisseurs</h2>
-
-            <article id="tool-savings" class="tool-section">
-                <h3>Simulateur d’épargne mensuelle</h3>
-                <p>
-                  Indique combien tu peux mettre de côté chaque mois, un taux annuel fixe
-                  et une durée en années. L’outil calcule ton capital final avec
-                  intérêts composés mensuels, ainsi que le total versé et les intérêts générés.
-                </p>
-            
-                <form class="tool-form" onsubmit="event.preventDefault(); calculateSavingsMonthly();">
-                  <div class="field">
-                    <label for="savingsMonthly">Épargne mensuelle (€)</label>
-                    <input
-                      id="savingsMonthly"
-                      type="number"
-                      step="0.01"
-                      placeholder="Ex. 100"
-                    />
-                  </div>
-            
-                  <div class="field">
-                    <label for="savingsRate">Taux d’intérêt annuel (%)</label>
-                    <input
-                      id="savingsRate"
-                      type="number"
-                      step="0.01"
-                      placeholder="Ex. 5"
-                    />
-                  </div>
-            
-                  <div class="field">
-                    <label for="savingsYears">Durée (années)</label>
-                    <input
-                      id="savingsYears"
-                      type="number"
-                      step="0.1"
-                      placeholder="Ex. 10"
-                    />
-                  </div>
-                </form>
-            
-                <div style="margin-top:0.9rem;">
-                  <button class="btn-tool" type="button" onclick="calculateSavingsMonthly()">
-                    Simuler mon épargne
-                  </button>
-                </div>
-            
-                <div class="tool-result" id="savingsResult"></div>
-                <div class="small-note">
-                  Calcul approximatif avec intérêts composés mensuels.  
-                  Formule utilisée : versements mensuels constants + capitalisation mensuelle
-                  du taux annuel indiqué. Ce simulateur ne remplace pas un conseil financier personnalisé.
-                </div>
-              </article>
 
             <article id="tool-time" class="tool-section">
                 <h3>Convertisseur de temps : jours → heures / minutes / secondes</h3>
@@ -2177,6 +2166,123 @@ onclick="scrollToElement('tool-countdown')"
 <!-- 🟦 Finance / Budget -->
 <section id="finance">
     <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Finance & budget</h2>
+
+    <article id="tool-savings" class="tool-section">
+        <h3>Simulateur d’épargne mensuelle</h3>
+        <p>
+          Indique combien tu peux mettre de côté chaque mois, un taux annuel fixe
+          et une durée en années. L’outil calcule ton capital final avec
+          intérêts composés mensuels, ainsi que le total versé et les intérêts générés.
+        </p>
+    
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateSavingsMonthly();">
+          <div class="field">
+            <label for="savingsMonthly">Épargne mensuelle (€)</label>
+            <input
+              id="savingsMonthly"
+              type="number"
+              step="0.01"
+              placeholder="Ex. 100"
+            />
+          </div>
+    
+          <div class="field">
+            <label for="savingsRate">Taux d’intérêt annuel (%)</label>
+            <input
+              id="savingsRate"
+              type="number"
+              step="0.01"
+              placeholder="Ex. 5"
+            />
+          </div>
+    
+          <div class="field">
+            <label for="savingsYears">Durée (années)</label>
+            <input
+              id="savingsYears"
+              type="number"
+              step="0.1"
+              placeholder="Ex. 10"
+            />
+          </div>
+        </form>
+    
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateSavingsMonthly()">
+            Simuler mon épargne
+          </button>
+        </div>
+    
+        <div class="tool-result" id="savingsResult"></div>
+        <div class="small-note">
+          Calcul approximatif avec intérêts composés mensuels.  
+          Formule utilisée : versements mensuels constants + capitalisation mensuelle
+          du taux annuel indiqué. Ce simulateur ne remplace pas un conseil financier personnalisé.
+        </div>
+      </article>
+
+    <article id="tool-bill" class="tool-section">
+        <h3>Répartiteur de note de frais</h3>
+        <p>
+          Partage une addition ou une note entre plusieurs personnes.
+          Tu peux aussi ajouter un pourboire (optionnel).
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); splitBill();">
+          <div class="field">
+            <label for="billTotal">Montant total (€)</label>
+            <input id="billTotal" type="number" step="0.01" placeholder="Ex. 120" />
+          </div>
+      
+          <div class="field">
+            <label for="billPeople">Nombre de personnes</label>
+            <input id="billPeople" type="number" step="1" placeholder="Ex. 4" />
+          </div>
+      
+          <div class="field">
+            <label for="billTip">Pourboire (%)</label>
+            <input id="billTip" type="number" step="0.1" placeholder="Ex. 10" />
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" onclick="splitBill()">Calculer</button>
+        </div>
+      
+        <div class="tool-result" id="billResult"></div>
+      </article>
+
+    <article id="tool-goal" class="tool-section">
+        <h3>Simulateur d’objectifs d’épargne</h3>
+        <p>
+          Indique un objectif financier et une durée en mois, puis découvre
+          combien mettre de côté chaque mois pour l’atteindre.
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateSavingsGoal();">
+          <div class="field">
+            <label for="goalAmount">Objectif total (€)</label>
+            <input id="goalAmount" type="number" step="0.01" placeholder="Ex. 5 000" />
+          </div>
+      
+          <div class="field">
+            <label for="goalMonths">Durée (mois)</label>
+            <input id="goalMonths" type="number" step="1" placeholder="Ex. 12" />
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateSavingsGoal()">
+            Calculer
+          </button>
+        </div>
+      
+        <div class="tool-result" id="goalResult"></div>
+      
+        <div class="small-note">
+          Exemple : pour 5 000 € sur 12 mois → 416,67 €/mois.
+        </div>
+      </article>
   
     <article id="tool-budget" class="tool-section">
       <h3>Calculateur de budget mensuel</h3>
@@ -2680,6 +2786,46 @@ onclick="scrollToElement('tool-countdown')"
 
 <!-- Scripts principaux -->
 <script>
+
+function splitBill() {
+  const total = parseFloat((document.getElementById("billTotal").value || "").replace(",", "."));
+  const people = parseInt(document.getElementById("billPeople").value || "");
+  const tip = parseFloat((document.getElementById("billTip").value || "0").replace(",", "."));
+
+  const resultEl = document.getElementById("billResult");
+
+  if (!total || !people || people <= 0) {
+    resultEl.textContent = "Veuillez entrer des valeurs valides.";
+    return;
+  }
+
+  const tipAmount = total * (tip / 100);
+  const finalTotal = total + tipAmount;
+  const perPerson = finalTotal / people;
+
+  resultEl.innerHTML =
+    "Total avec pourboire : <strong>" + finalTotal.toFixed(2) + " €</strong><br>" +
+    "Montant par personne : <strong>" + perPerson.toFixed(2) + " €</strong>";
+}
+
+function calculateSavingsGoal() {
+  const amount = parseFloat((document.getElementById("goalAmount").value || "").replace(",", "."));
+  const months = parseInt(document.getElementById("goalMonths").value || "");
+
+  const resultEl = document.getElementById("goalResult");
+
+  if (!amount || !months || months <= 0) {
+    resultEl.textContent = "Veuillez entrer un objectif et une durée valides.";
+    return;
+  }
+
+  const perMonth = amount / months;
+
+  resultEl.innerHTML =
+    "Montant à mettre de côté chaque mois : <strong>" +
+    perMonth.toFixed(2) +
+    " €</strong>";
+}
 
     // Simulateur d’épargne mensuelle
 function calculateSavingsMonthly() {
