@@ -1029,6 +1029,152 @@
 
           <div class="tool-grid" id="toolGrid">
 
+            <!-- Fraction ↔ decimal converter -->
+<article
+class="tool-card"
+data-name="fraction decimal converter 1/2 0.5"
+data-category="convertisseur"
+onclick="scrollToElement('tool-fractions')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Fraction ↔ decimal converter</div>
+  <div class="tool-card-tag">Converter</div>
+</div>
+<p class="tool-card-desc">
+  Convert a fraction (1/3, 2/5…) to decimal and back, handy for cooking,
+  DIY or studying.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Local</span>
+  <span>Smart approximation</span>
+</div>
+</article>
+
+<!-- Meters ↔ feet -->
+<article
+class="tool-card"
+data-name="meters feet converter m ft"
+data-category="convertisseur"
+onclick="scrollToElement('tool-meters-feet')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Meters ↔ feet</div>
+  <div class="tool-card-tag">Converter</div>
+</div>
+<p class="tool-card-desc">
+  Convert lengths between meters and feet, useful for plans, real estate
+  or US specifications.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>1 m ≈ 3.28084 ft</span>
+</div>
+</article>
+
+<!-- m/s ↔ km/h -->
+<article
+class="tool-card"
+data-name="speed converter m/s km/h"
+data-category="convertisseur"
+onclick="scrollToElement('tool-speed-ms-kmh')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Speed m/s ↔ km/h</div>
+  <div class="tool-card-tag">Converter</div>
+</div>
+<p class="tool-card-desc">
+  Convert a speed between meters per second and kilometers per hour.
+  Handy for weather, running or physics.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>1 m/s = 3.6 km/h</span>
+</div>
+</article>
+
+<!-- Joules ↔ calories -->
+<article
+class="tool-card"
+data-name="energy converter joules calories kcal"
+data-category="convertisseur"
+onclick="scrollToElement('tool-energy')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Joules ↔ kilocalories</div>
+  <div class="tool-card-tag">Converter</div>
+</div>
+<p class="tool-card-desc">
+  Convert an energy value between joules and kilocalories, useful for
+  nutrition and physics.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>1 kcal = 4,184 J</span>
+</div>
+</article>
+
+<!-- Pressure bar ↔ psi -->
+<article
+class="tool-card"
+data-name="pressure converter bar psi"
+data-category="convertisseur"
+onclick="scrollToElement('tool-pressure')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Pressure bar ↔ psi</div>
+  <div class="tool-card-tag">Converter</div>
+</div>
+<p class="tool-card-desc">
+  Convert a pressure between bar and psi, ideal for tyres, mechanics
+  or hydraulics.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>1 bar ≈ 14.5038 psi</span>
+</div>
+</article>
+
+<!-- SHA-256 hash tool -->
+<article
+class="tool-card"
+data-name="sha-256 hash text fingerprint"
+data-category="securite"
+onclick="scrollToElement('tool-hash-sha256')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">SHA-256 hash</div>
+  <div class="tool-card-tag">Security</div>
+</div>
+<p class="tool-card-desc">
+  Generate a SHA-256 hash of any text directly in your browser, without
+  sending data anywhere.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Local</span>
+  <span>crypto.subtle</span>
+</div>
+</article>
+
+<!-- Date ↔ week number -->
+<article
+class="tool-card"
+data-name="date week number converter iso"
+data-category="divers"
+onclick="scrollToElement('tool-week')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Date ↔ week number</div>
+  <div class="tool-card-tag">Organization</div>
+</div>
+<p class="tool-card-desc">
+  Convert a date to an ISO week number, or get the Monday date of a given week.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Available</span>
+  <span>ISO 8601</span>
+</div>
+</article>
+
             <!-- Savings goal simulator -->
 <article
 class="tool-card"
@@ -1597,6 +1743,199 @@ onclick="scrollToElement('tool-fake')"
           <!-- 🟦 Converters -->
           <section id="convertisseurs">
             <h2 class="section-title" style="margin-bottom:0.6rem;">Converters</h2>
+
+            <article id="tool-fractions" class="tool-section">
+                <h3>Fraction ↔ decimal converter</h3>
+                <p>
+                  Enter a fraction like <code>1/3</code> or a decimal number like <code>0.75</code>,
+                  and the tool converts to the other format. Useful for cooking, DIY or math exercises.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertFractionDecimal();">
+                  <div class="field">
+                    <label for="fractionInput">Fraction (e.g. 1/3)</label>
+                    <input
+                      id="fractionInput"
+                      type="text"
+                      placeholder="e.g. 2/5"
+                      oninput="fractionToDecimal()"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="decimalInput">Decimal (e.g. 0.4)</label>
+                    <input
+                      id="decimalInput"
+                      type="text"
+                      placeholder="e.g. 0.4"
+                      oninput="decimalToFraction()"
+                    />
+                  </div>
+                </form>
+              
+                <div class="tool-result" id="fractionResult"></div>
+                <div class="small-note">
+                  Tip: you can use comma or dot for decimals. Fractions are simplified (approximation).
+                </div>
+              </article>
+              
+              <article id="tool-meters-feet" class="tool-section">
+                <h3>Meters ↔ feet converter</h3>
+                <p>
+                  Convert lengths between meters and feet. Useful for blueprints, construction
+                  or reading imperial-unit documentation.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertMetersFeet();">
+                  <div class="field">
+                    <label for="metersInput">Length in meters (m)</label>
+                    <input
+                      id="metersInput"
+                      type="number"
+                      step="0.0001"
+                      placeholder="e.g. 2.5"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="feetInput">Length in feet (ft)</label>
+                    <input
+                      id="feetInput"
+                      type="number"
+                      step="0.0001"
+                      placeholder="e.g. 8.20"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertMetersFeet()">
+                    Convert
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="metersFeetResult"></div>
+                <div class="small-note">
+                  Value used: 1 m = 3.28084 ft (approx.).
+                </div>
+              </article>
+              
+              <article id="tool-speed-ms-kmh" class="tool-section">
+                <h3>Speed converter m/s ↔ km/h</h3>
+                <p>
+                  Simple conversion between meters per second (m/s) and kilometers per hour (km/h).
+                  Handy for weather, running or physics.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertSpeedMSKMH();">
+                  <div class="field">
+                    <label for="speedMSInput">Speed (m/s)</label>
+                    <input
+                      id="speedMSInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="e.g. 5"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="speedKMHInput">Speed (km/h)</label>
+                    <input
+                      id="speedKMHInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="e.g. 18"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertSpeedMSKMH()">
+                    Convert
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="speedResult"></div>
+                <div class="small-note">
+                  Formula: 1 m/s = 3.6 km/h.
+                </div>
+              </article>
+              
+              <article id="tool-energy" class="tool-section">
+                <h3>Energy converter Joules ↔ kilocalories</h3>
+                <p>
+                  Convert an energy value between joules (J) and kilocalories (kcal).
+                  Useful for nutrition labels, sport or physics.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertEnergy();">
+                  <div class="field">
+                    <label for="energyJInput">Energy (J)</label>
+                    <input
+                      id="energyJInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="e.g. 4184"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="energyKcalInput">Energy (kcal)</label>
+                    <input
+                      id="energyKcalInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="e.g. 1"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertEnergy()">
+                    Convert
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="energyResult"></div>
+                <div class="small-note">
+                  Value used: 1 kcal = 4,184 J (“food calorie”).
+                </div>
+              </article>
+              
+              <article id="tool-pressure" class="tool-section">
+                <h3>Pressure converter bar ↔ psi</h3>
+                <p>
+                  Convert a pressure between bar and psi, for tyres, hydraulic systems or compressors.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertPressure();">
+                  <div class="field">
+                    <label for="barInput">Pressure (bar)</label>
+                    <input
+                      id="barInput"
+                      type="number"
+                      step="0.0001"
+                      placeholder="e.g. 2.5"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="psiInput">Pressure (psi)</label>
+                    <input
+                      id="psiInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="e.g. 36.26"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertPressure()">
+                    Convert
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="pressureResult"></div>
+                <div class="small-note">
+                  Value used: 1 bar ≈ 14.5038 psi.
+                </div>
+              </article>
 
             <article id="tool-time" class="tool-section">
                 <h3>Time converter: days → hours / minutes / seconds</h3>
@@ -2501,6 +2840,35 @@ onclick="scrollToElement('tool-fake')"
           <section id="securite">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Security</h2>
 
+            <article id="tool-hash-sha256" class="tool-section">
+                <h3>SHA-256 hash (text fingerprint)</h3>
+                <p>
+                  Enter any text and generate its SHA-256 fingerprint. The computation is done locally
+                  in your browser, with no data sent to any server.
+                </p>
+              
+                <div class="field">
+                  <label for="hashInput">Text to hash</label>
+                  <textarea
+                    id="hashInput"
+                    rows="3"
+                    placeholder="e.g. some sample text (don’t paste real passwords here)…"
+                  ></textarea>
+                </div>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="hashSHA256()">
+                    Compute SHA-256 hash
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="hashResult"></div>
+                <div class="small-note">
+                  Important: don’t paste here real passwords you actually use. Prefer a dedicated
+                  password manager.
+                </div>
+              </article>
+
             <article id="tool-password" class="tool-section">
               <h3>Secure password generator</h3>
               <p>
@@ -2613,6 +2981,64 @@ onclick="scrollToElement('tool-fake')"
           <!-- 🟨 Organization & misc -->
           <section id="organisation">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Organization & misc</h2>
+
+            <article id="tool-week" class="tool-section">
+                <h3>Date ↔ ISO week number</h3>
+                <p>
+                  Convert a date to its ISO week number (week 1 to 53), or find the Monday date
+                  of a given week and year.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault();">
+                  <div class="field">
+                    <label for="weekDateInput">Date</label>
+                    <input id="weekDateInput" type="date" />
+                  </div>
+                  <div class="field">
+                    <label>&nbsp;</label>
+                    <button class="btn-tool" type="button" onclick="convertDateToWeek()">
+                      Get week number
+                    </button>
+                  </div>
+                </form>
+              
+                <div class="tool-result" id="weekResult"></div>
+              
+                <hr style="margin:1.2rem 0; border:none; border-top:1px solid #1f2937;">
+              
+                <form class="tool-form" onsubmit="event.preventDefault();">
+                  <div class="field">
+                    <label for="weekYearInput">Year</label>
+                    <input
+                      id="weekYearInput"
+                      type="number"
+                      placeholder="e.g. 2025"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="weekNumberInput">ISO week number</label>
+                    <input
+                      id="weekNumberInput"
+                      type="number"
+                      min="1"
+                      max="53"
+                      placeholder="e.g. 48"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertWeekToDate()">
+                    Get Monday date
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="weekDateResult"></div>
+                <div class="small-note">
+                  Uses ISO 8601: week 1 is the week with the first Thursday of the year.
+                  Monday is considered the first day of the week.
+                </div>
+              </article>
 
             <article id="tool-timer" class="tool-section">
               <h3>Stopwatch & timer</h3>
@@ -2842,6 +3268,368 @@ onclick="scrollToElement('tool-fake')"
 
   <!-- Main scripts -->
   <script>
+
+    // Fractions ↔ decimals
+function fractionToDecimal() {
+  const fracInput = document.getElementById("fractionInput");
+  const decInput = document.getElementById("decimalInput");
+  const resultEl = document.getElementById("fractionResult");
+  if (!fracInput || !decInput || !resultEl) return;
+
+  const raw = (fracInput.value || "").trim();
+  if (!raw) {
+    decInput.value = "";
+    resultEl.textContent = "";
+    return;
+  }
+
+  const parts = raw.split("/");
+  if (parts.length !== 2) {
+    decInput.value = "";
+    resultEl.textContent = "Invalid format. Use a fraction like 2/5.";
+    return;
+  }
+
+  const num = parseFloat(parts[0].replace(",", "."));
+  const den = parseFloat(parts[1].replace(",", "."));
+
+  if (isNaN(num) || isNaN(den) || den === 0) {
+    decInput.value = "";
+    resultEl.textContent = "Invalid fraction.";
+    return;
+  }
+
+  const value = num / den;
+  decInput.value = value.toString();
+  resultEl.innerHTML =
+    "<strong>" + raw + "</strong> ≈ <strong>" + value.toFixed(6) + "</strong>";
+}
+
+function decimalToFraction() {
+  const fracInput = document.getElementById("fractionInput");
+  const decInput = document.getElementById("decimalInput");
+  const resultEl = document.getElementById("fractionResult");
+  if (!fracInput || !decInput || !resultEl) return;
+
+  const raw = (decInput.value || "").trim();
+  if (!raw) {
+    fracInput.value = "";
+    resultEl.textContent = "";
+    return;
+  }
+
+  const value = parseFloat(raw.replace(",", "."));
+  if (isNaN(value)) {
+    fracInput.value = "";
+    resultEl.textContent = "Invalid decimal number.";
+    return;
+  }
+
+  const maxDen = 1000;
+  let num = Math.round(value * maxDen);
+  let den = maxDen;
+
+  function gcd(a, b) {
+    a = Math.abs(a);
+    b = Math.abs(b);
+    while (b) {
+      const t = b;
+      b = a % b;
+      a = t;
+    }
+    return a || 1;
+  }
+
+  const g = gcd(num, den);
+  num = num / g;
+  den = den / g;
+
+  fracInput.value = num + "/" + den;
+  resultEl.innerHTML =
+    "<strong>" + value.toString() +
+    "</strong> ≈ <strong>" + num + "/" + den + "</strong>";
+}
+
+function convertFractionDecimal() {
+  // handled via oninput events
+}
+
+// Meters ↔ feet
+function convertMetersFeet() {
+  const mInput = document.getElementById("metersInput");
+  const ftInput = document.getElementById("feetInput");
+  const resultEl = document.getElementById("metersFeetResult");
+  if (!mInput || !ftInput || !resultEl) return;
+
+  const mRaw = (mInput.value || "").trim();
+  const ftRaw = (ftInput.value || "").trim();
+  const FACTOR = 3.28084;
+
+  if (mRaw) {
+    const m = parseFloat(mRaw.replace(",", "."));
+    if (isNaN(m)) {
+      resultEl.textContent = "Invalid value in meters.";
+      return;
+    }
+    const ft = m * FACTOR;
+    ftInput.value = ft.toFixed(4);
+    resultEl.innerHTML =
+      "<strong>" + m.toFixed(4) + " m</strong> ≈ <strong>" +
+      ft.toFixed(4) + " ft</strong>";
+    return;
+  }
+
+  if (ftRaw) {
+    const ft = parseFloat(ftRaw.replace(",", "."));
+    if (isNaN(ft)) {
+      resultEl.textContent = "Invalid value in feet.";
+      return;
+    }
+    const m = ft / FACTOR;
+    mInput.value = m.toFixed(4);
+    resultEl.innerHTML =
+      "<strong>" + ft.toFixed(4) + " ft</strong> ≈ <strong>" +
+      m.toFixed(4) + " m</strong>";
+    return;
+  }
+
+  resultEl.textContent = "Fill at least one of the two fields.";
+}
+
+// Speed m/s ↔ km/h
+function convertSpeedMSKMH() {
+  const msInput = document.getElementById("speedMSInput");
+  const kmhInput = document.getElementById("speedKMHInput");
+  const resultEl = document.getElementById("speedResult");
+  if (!msInput || !kmhInput || !resultEl) return;
+
+  const msRaw = (msInput.value || "").trim();
+  const kmhRaw = (kmhInput.value || "").trim();
+  const FACTOR = 3.6;
+
+  if (msRaw) {
+    const v = parseFloat(msRaw.replace(",", "."));
+    if (isNaN(v)) {
+      resultEl.textContent = "Invalid value in m/s.";
+      return;
+    }
+    const kmh = v * FACTOR;
+    kmhInput.value = kmh.toFixed(2);
+    resultEl.innerHTML =
+      "<strong>" + v.toFixed(2) + " m/s</strong> ≈ <strong>" +
+      kmh.toFixed(2) + " km/h</strong>";
+    return;
+  }
+
+  if (kmhRaw) {
+    const v = parseFloat(kmhRaw.replace(",", "."));
+    if (isNaN(v)) {
+      resultEl.textContent = "Invalid value in km/h.";
+      return;
+    }
+    const ms = v / FACTOR;
+    msInput.value = ms.toFixed(2);
+    resultEl.innerHTML =
+      "<strong>" + v.toFixed(2) + " km/h</strong> ≈ <strong>" +
+      ms.toFixed(2) + " m/s</strong>";
+    return;
+  }
+
+  resultEl.textContent = "Fill at least one of the two fields.";
+}
+
+// Energy Joules ↔ kcal
+function convertEnergy() {
+  const jInput = document.getElementById("energyJInput");
+  const kcalInput = document.getElementById("energyKcalInput");
+  const resultEl = document.getElementById("energyResult");
+  if (!jInput || !kcalInput || !resultEl) return;
+
+  const jRaw = (jInput.value || "").trim();
+  const kcalRaw = (kcalInput.value || "").trim();
+  const FACTOR = 4184;
+
+  if (jRaw) {
+    const j = parseFloat(jRaw.replace(",", "."));
+    if (isNaN(j)) {
+      resultEl.textContent = "Invalid value in joules.";
+      return;
+    }
+    const kcal = j / FACTOR;
+    kcalInput.value = kcal.toFixed(4);
+    resultEl.innerHTML =
+      "<strong>" + j.toFixed(2) + " J</strong> ≈ <strong>" +
+      kcal.toFixed(4) + " kcal</strong>";
+    return;
+  }
+
+  if (kcalRaw) {
+    const kcal = parseFloat(kcalRaw.replace(",", "."));
+    if (isNaN(kcal)) {
+      resultEl.textContent = "Invalid value in kilocalories.";
+      return;
+    }
+    const j = kcal * FACTOR;
+    jInput.value = j.toFixed(2);
+    resultEl.innerHTML =
+      "<strong>" + kcal.toFixed(4) + " kcal</strong> ≈ <strong>" +
+      j.toFixed(2) + " J</strong>";
+    return;
+  }
+
+  resultEl.textContent = "Fill at least one of the two fields.";
+}
+
+// Pressure bar ↔ psi
+function convertPressure() {
+  const barInput = document.getElementById("barInput");
+  const psiInput = document.getElementById("psiInput");
+  const resultEl = document.getElementById("pressureResult");
+  if (!barInput || !psiInput || !resultEl) return;
+
+  const barRaw = (barInput.value || "").trim();
+  const psiRaw = (psiInput.value || "").trim();
+  const FACTOR = 14.5038;
+
+  if (barRaw) {
+    const bar = parseFloat(barRaw.replace(",", "."));
+    if (isNaN(bar)) {
+      resultEl.textContent = "Invalid value in bar.";
+      return;
+    }
+    const psi = bar * FACTOR;
+    psiInput.value = psi.toFixed(2);
+    resultEl.innerHTML =
+      "<strong>" + bar.toFixed(4) + " bar</strong> ≈ <strong>" +
+      psi.toFixed(2) + " psi</strong>";
+    return;
+  }
+
+  if (psiRaw) {
+    const psi = parseFloat(psiRaw.replace(",", "."));
+    if (isNaN(psi)) {
+      resultEl.textContent = "Invalid value in psi.";
+      return;
+    }
+    const bar = psi / FACTOR;
+    barInput.value = bar.toFixed(4);
+    resultEl.innerHTML =
+      "<strong>" + psi.toFixed(2) + " psi</strong> ≈ <strong>" +
+      bar.toFixed(4) + " bar</strong>";
+    return;
+  }
+
+  resultEl.textContent = "Fill at least one of the two fields.";
+}
+
+// SHA-256 hash
+async function hashSHA256() {
+  const inputEl = document.getElementById("hashInput");
+  const resultEl = document.getElementById("hashResult");
+  if (!inputEl || !resultEl) return;
+
+  const text = inputEl.value || "";
+  if (!text.trim()) {
+    resultEl.textContent = "Enter some text to compute its hash.";
+    return;
+  }
+
+  if (!window.crypto || !window.crypto.subtle) {
+    resultEl.textContent =
+      "crypto.subtle is not available in this browser.";
+    return;
+  }
+
+  try {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+    const digest = await window.crypto.subtle.digest("SHA-256", data);
+    const hashArray = Array.from(new Uint8Array(digest));
+    const hashHex = hashArray
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+    resultEl.textContent = hashHex;
+  } catch (e) {
+    resultEl.textContent = "Error while computing hash.";
+  }
+}
+
+// ISO week helpers
+function getISOWeekInfo(date) {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  const weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+  return { year: d.getUTCFullYear(), week: weekNo };
+}
+
+function getDateOfISOWeek(week, year) {
+  const simple = new Date(Date.UTC(year, 0, 1 + (week - 1) * 7));
+  const dayOfWeek = simple.getUTCDay() || 7;
+  const isoMonday = new Date(simple);
+  isoMonday.setUTCDate(simple.getUTCDate() - dayOfWeek + 1);
+  return isoMonday;
+}
+
+// Date ↔ week number
+function convertDateToWeek() {
+  const input = document.getElementById("weekDateInput");
+  const resultEl = document.getElementById("weekResult");
+  if (!input || !resultEl) return;
+
+  const value = input.value;
+  if (!value) {
+    resultEl.textContent = "Choose a date.";
+    return;
+  }
+
+  const date = new Date(value + "T00:00:00");
+  if (isNaN(date.getTime())) {
+    resultEl.textContent = "Invalid date.";
+    return;
+  }
+
+  const info = getISOWeekInfo(date);
+  resultEl.innerHTML =
+    "ISO week: <strong>" + info.week +
+    "</strong> – ISO year: <strong>" + info.year + "</strong>";
+}
+
+function convertWeekToDate() {
+  const yearInput = document.getElementById("weekYearInput");
+  const weekInput = document.getElementById("weekNumberInput");
+  const resultEl = document.getElementById("weekDateResult");
+  if (!yearInput || !weekInput || !resultEl) return;
+
+  const year = parseInt((yearInput.value || "").trim(), 10);
+  const week = parseInt((weekInput.value || "").trim(), 10);
+
+  if (isNaN(year) || isNaN(week) || week < 1 || week > 53) {
+    resultEl.textContent = "Enter a valid year and week number.";
+    return;
+  }
+
+  const monday = getDateOfISOWeek(week, year);
+  if (isNaN(monday.getTime())) {
+    resultEl.textContent = "Invalid year / week combination.";
+    return;
+  }
+
+  const formatted = monday.toLocaleDateString("en-GB", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  resultEl.innerHTML =
+    "Monday of week " +
+    week +
+    ": <strong>" +
+    formatted +
+    "</strong>";
+}
 
 function calculateSavingsGoal() {
   const amount = parseFloat(
