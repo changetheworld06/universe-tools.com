@@ -10,6 +10,11 @@
 
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
+  <!-- Event snippet for Autre conversion page -->
+<script>
+    gtag('event', 'conversion', {'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB'});
+  </script>
+  
   <meta charset="UTF-8" />
   <title>Universe Tools – Simple & fast online tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -854,6 +859,23 @@
       display: none;
     }
   </style>
+  <!-- Event snippet for Autre conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
+    
 </head>
 <body>
   <div class="page">
