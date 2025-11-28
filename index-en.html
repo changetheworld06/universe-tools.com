@@ -1102,6 +1102,165 @@ onclick="scrollToElement('tool-suggest')"
 </div>
 </article>
 
+<article
+  class="tool-card"
+  data-name="paint calculator litres square meters how many cans"
+  data-category="organisation"
+  onclick="scrollToElement('tool-paint')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Paint calculator</div>
+    <div class="tool-card-tag">Organisation</div>
+  </div>
+  <p class="tool-card-desc">
+    Quickly estimate how many liters of paint you need based on surface and coverage.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ m² → liters</span>
+    <span>With coats</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
+  data-name="crypto gains losses percentage pnl bitcoin ethereum"
+  data-category="finance"
+  onclick="scrollToElement('tool-crypto-pnl')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Crypto gains & losses (%)</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Calculate your gain or loss in percentage and amount on a crypto position
+    from your entry price, current price and quantity.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Simple PnL</span>
+    <span>Amount + %</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
+  data-name="notary fees property purchase real estate closing costs"
+  data-category="finance"
+  onclick="scrollToElement('tool-notary-fees')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Notary / closing costs</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Estimate notary or closing costs and the total purchase cost from the
+    property price and a fee percentage.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Simple estimate</span>
+    <span>Price + fees</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
+  data-name="borrowing capacity maximum loan simple calculator income expenses"
+  data-category="finance"
+  onclick="scrollToElement('tool-borrowing-capacity')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Simple borrowing capacity</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Estimate the maximum loan amount you can afford based on your income,
+    monthly expenses and a target debt ratio.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Estimation</span>
+    <span>Debt ratio based</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
+  data-name="annual monthly hourly salary converter income"
+  data-category="finance"
+  onclick="scrollToElement('tool-salary-time')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Annual ↔ monthly ↔ hourly salary</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Convert your salary between annual, monthly and hourly based on your weekly working hours.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Estimation</span>
+    <span>Assumes 52 weeks/year</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
+  data-name="lumens to watts led light power"
+  data-category="convertisseur"
+  onclick="scrollToElement('tool-lumens-led')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Lumens ↔ Watts (LED)</div>
+    <div class="tool-card-tag">Converter</div>
+  </div>
+  <p class="tool-card-desc">
+    Estimate LED wattage from lumens, or lumens from LED wattage using an approximate efficiency.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Approximate</span>
+    <span>≈ 90 lm/W</span>
+  </div>
+</article>
+
+<!-- Travel time calculator -->
+<article
+  class="tool-card"
+  data-name="travel time calculator distance speed car route"
+  data-category="convertisseur"
+  onclick="scrollToElement('tool-travel-time')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Travel time calculator</div>
+    <div class="tool-card-tag">Converter</div>
+  </div>
+  <p class="tool-card-desc">
+    Enter a distance and an average speed to estimate travel time
+    (hours and minutes).
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Quick estimate</span>
+    <span>Distance / speed</span>
+  </div>
+</article>
+
+<!-- Decimal hours ↔ hours + minutes converter -->
+<article
+  class="tool-card"
+  data-name="decimal hours to hours minutes time tracking"
+  data-category="convertisseur"
+  onclick="scrollToElement('tool-decimal-hours')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Decimal hours ↔ hours + minutes</div>
+    <div class="tool-card-tag">Converter</div>
+  </div>
+  <p class="tool-card-desc">
+    Convert decimal hours (7.5 h) to hours + minutes (7 h 30) and the other way
+    around, in one click.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Time tracking</span>
+    <span>Easy to read</span>
+  </div>
+</article>
+
 <!-- Euro ↔ Bitcoin / Crypto converter (manual rate) -->
 <article
   class="tool-card"
@@ -1856,6 +2015,184 @@ onclick="scrollToElement('tool-fake')"
           <!-- 🟦 Converters -->
           <section id="convertisseurs">
             <h2 class="section-title" style="margin-bottom:0.6rem;">Converters</h2>
+
+            <article id="tool-lumens-led" class="tool-section">
+                <h3>Lumens ↔ Watts (LED)</h3>
+                <p>
+                  This converter gives you an approximate LED wattage from a lumen value,
+                  and the other way around.  
+                  It uses an average efficiency of <strong>≈ 90 lumens per watt</strong>,
+                  which may vary depending on the LED quality.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertLumensWatts();">
+                  <div class="field">
+                    <label for="lumensInput">Light output (lumens)</label>
+                    <input
+                      id="lumensInput"
+                      type="number"
+                      step="1"
+                      placeholder="Ex: 800 (typical LED bulb)"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="wattsInput">Power (watts, LED)</label>
+                    <input
+                      id="wattsInput"
+                      type="number"
+                      step="0.1"
+                      placeholder="Ex: 9"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertLumensWatts()">
+                    Convert
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="lumensWattsResult"></div>
+                <div class="small-note">
+                  Example: an 800 lm LED bulb is roughly 8.9 W with 90 lm/W efficiency.  
+                  Real values depend on each LED model.
+                </div>
+              </article>
+
+            <article id="tool-travel-time" class="tool-section">
+                <h3>Travel time calculator</h3>
+                <p>
+                  Estimate how long it takes to cover a given distance at a given average
+                  speed. Useful for car trips, cycling or project planning.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); calculateTravelTime();">
+                  <div class="field">
+                    <label for="travelDistance">Distance</label>
+                    <input
+                      id="travelDistance"
+                      type="number"
+                      step="0.1"
+                      placeholder="e.g. 250"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="travelDistanceUnit">Distance unit</label>
+                    <select id="travelDistanceUnit">
+                      <option value="km" selected>km</option>
+                      <option value="mi">miles</option>
+                    </select>
+                  </div>
+              
+                  <div class="field">
+                    <label for="travelSpeed">Average speed</label>
+                    <input
+                      id="travelSpeed"
+                      type="number"
+                      step="0.1"
+                      placeholder="e.g. 90"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="travelSpeedUnit">Speed unit</label>
+                    <select id="travelSpeedUnit">
+                      <option value="kmh" selected>km/h</option>
+                      <option value="mph">mph</option>
+                    </select>
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="calculateTravelTime()">
+                    Calculate travel time
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="travelTimeResult"></div>
+                <div class="small-note">
+                  This is an ideal estimate (constant speed, no stops, no traffic).  
+                  1 mile ≈ 1.609 km.
+                </div>
+              </article>
+
+            <article id="tool-decimal-hours" class="tool-section">
+                <h3>Decimal hours ↔ hours + minutes</h3>
+                <p>
+                  Convert decimal hours (e.g. 7.5 h) to hours + minutes (7 h 30), or the other
+                  way around. Useful for timesheets, payroll or project tracking.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertDecimalHours();">
+                  <div class="field">
+                    <label for="decimalHoursInput">Decimal hours</label>
+                    <input
+                      id="decimalHoursInput"
+                      type="number"
+                      step="0.01"
+                      placeholder="e.g. 7.5"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="hoursInputDec">Hours (h)</label>
+                    <input
+                      id="hoursInputDec"
+                      type="number"
+                      step="1"
+                      placeholder="e.g. 7"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="minutesInputDec">Minutes (min)</label>
+                    <input
+                      id="minutesInputDec"
+                      type="number"
+                      step="1"
+                      placeholder="e.g. 30"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label>Conversion direction</label>
+                    <div class="chip-row">
+                      <label class="chip">
+                        <input
+                          type="radio"
+                          name="decimalHoursMode"
+                          value="dec-to-hm"
+                          checked
+                        />
+                        <span>Decimal → h + min</span>
+                      </label>
+                      <label class="chip">
+                        <input
+                          type="radio"
+                          name="decimalHoursMode"
+                          value="hm-to-dec"
+                        />
+                        <span>h + min → decimal</span>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertDecimalHours()">
+                    Convert
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="decimalHoursResult"></div>
+                <div class="small-note">
+                  Examples: 7.5 h → 7 h 30 • 1.25 h → 1 h 15  
+                  7 h 30 → 7.50 h • 1 h 15 → 1.25 h.  
+                  Simple rounding to the nearest minute.
+                </div>
+              </article>
 
             <article id="tool-crypto-eur" class="tool-section">
                 <h3>Euro ↔ Bitcoin / Crypto converter (manual rate)</h3>
@@ -2755,6 +3092,248 @@ onclick="scrollToElement('tool-fake')"
 <section id="finance">
     <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Finance & budget</h2>
 
+    <article id="tool-crypto-pnl" class="tool-section">
+        <h3>Crypto gains & losses (%)</h3>
+        <p>
+          This tool helps you estimate your <strong>gain or loss</strong> on a crypto
+          position based on your <strong>buy price</strong>, the
+          <strong>current price</strong> and optionally the
+          <strong>quantity</strong> you hold.  
+          Results are indicative only and do not constitute financial advice.
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateCryptoPnLEN();">
+          <div class="field">
+            <label for="cryptoBuyEN">Buy price (per coin, in €)</label>
+            <input
+              id="cryptoBuyEN"
+              type="number"
+              step="0.00000001"
+              placeholder="E.g. 25000"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="cryptoCurrentEN">Current price (per coin, in €)</label>
+            <input
+              id="cryptoCurrentEN"
+              type="number"
+              step="0.00000001"
+              placeholder="E.g. 32000"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="cryptoQtyEN">Quantity (optional)</label>
+            <input
+              id="cryptoQtyEN"
+              type="number"
+              step="0.00000001"
+              placeholder="E.g. 0.1 or 2"
+            />
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateCryptoPnLEN()">
+            Calculate gain / loss
+          </button>
+        </div>
+      
+        <div class="tool-result" id="cryptoResultEN"></div>
+        <div class="small-note">
+          Example: if you bought 1 BTC at €25,000 and it is now worth €32,000, your
+          gain is roughly +28%.  
+          This tool does not account for fees, taxes, spreads or FX effects.
+        </div>
+      </article>
+
+    <article id="tool-notary-fees" class="tool-section">
+        <h3>Notary / property purchase costs</h3>
+        <p>
+          This tool helps you estimate <strong>notary or closing costs</strong> and the
+          <strong>total purchase cost</strong> from the property price and a fee
+          percentage.  
+          Results are provided as a rough indication only and do not replace a
+          personalized calculation from a notary, solicitor or your bank.
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateNotaryFeesEN();">
+          <div class="field">
+            <label for="notaryPriceEN">Property purchase price (€)</label>
+            <input
+              id="notaryPriceEN"
+              type="number"
+              step="0.01"
+              placeholder="Ex: 250000"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="notaryRateEN">Notary / closing fee rate (%)</label>
+            <input
+              id="notaryRateEN"
+              type="number"
+              step="0.01"
+              placeholder="Ex: 7 (resale), 3 (new build) — adjust as needed"
+            />
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateNotaryFeesEN()">
+            Calculate notary / closing costs
+          </button>
+        </div>
+      
+        <div class="tool-result" id="notaryResultEN"></div>
+        <div class="small-note">
+          Examples (for France): resale properties often have around 7–8% notary fees,
+          new builds around 2–3%.  
+          Enter the percentage you want to use for your own situation.
+        </div>
+      </article>
+
+    <article id="tool-borrowing-capacity" class="tool-section">
+        <h3>Simple borrowing capacity</h3>
+        <p>
+          This tool provides an estimate of your <strong>borrowing capacity</strong>
+          based on your monthly income, monthly expenses and a target
+          <strong>debt ratio</strong>.  
+          It is only an indication and does not replace a detailed study from your bank.
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateBorrowingCapacityEN();">
+          <div class="field">
+            <label for="borrowIncomeEN">Net monthly income (€)</label>
+            <input
+              id="borrowIncomeEN"
+              type="number"
+              step="0.01"
+              placeholder="Ex: 2 500"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="borrowChargesEN">Monthly expenses (€)</label>
+            <input
+              id="borrowChargesEN"
+              type="number"
+              step="0.01"
+              placeholder="Ex: 500 (loans, rent, etc.)"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="borrowRatioEN">Max debt ratio (%)</label>
+            <input
+              id="borrowRatioEN"
+              type="number"
+              step="0.1"
+              placeholder="Ex: 35"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="borrowRateEN">Annual interest rate (%)</label>
+            <input
+              id="borrowRateEN"
+              type="number"
+              step="0.01"
+              placeholder="Ex: 4"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="borrowYearsEN">Loan duration (years)</label>
+            <input
+              id="borrowYearsEN"
+              type="number"
+              step="1"
+              placeholder="Ex: 20"
+            />
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateBorrowingCapacityEN()">
+            Calculate my borrowing capacity
+          </button>
+        </div>
+      
+        <div class="tool-result" id="borrowResultEN"></div>
+        <div class="small-note">
+            Assumptions: fixed rate, constant monthly payments, 12 months per year.  
+            This is a <strong>rough estimate</strong> and does not include insurance,
+            fees or your bank’s detailed lending criteria.
+          </div>
+      </article>
+
+    <article id="tool-salary-time" class="tool-section">
+        <h3>Annual ↔ monthly ↔ hourly salary</h3>
+        <p>
+          This tool converts your salary between <strong>annual</strong>,
+          <strong>monthly</strong> and <strong>hourly</strong>, based on your weekly
+          working hours. It is a simple estimate assuming
+          <strong>52 weeks per year</strong>.
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); convertSalaryTimeEN();">
+          <div class="field">
+            <label for="salaryYearEN">Yearly salary (gross or net)</label>
+            <input
+              id="salaryYearEN"
+              type="number"
+              step="0.01"
+              placeholder="Ex: 40 000"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="salaryMonthEN">Monthly salary</label>
+            <input
+              id="salaryMonthEN"
+              type="number"
+              step="0.01"
+              placeholder="Ex: 3 300"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="salaryHourEN">Hourly rate</label>
+            <input
+              id="salaryHourEN"
+              type="number"
+              step="0.01"
+              placeholder="Ex: 20"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="hoursPerWeekEN">Working hours per week</label>
+            <input
+              id="hoursPerWeekEN"
+              type="number"
+              step="0.1"
+              placeholder="Ex: 40"
+            />
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="convertSalaryTimeEN()">
+            Convert
+          </button>
+        </div>
+      
+        <div class="tool-result" id="salaryTimeResultEN"></div>
+        <div class="small-note">
+          Assumptions: 12 months/year, 52 weeks/year.  
+          This is a <strong>rough estimate</strong> and does not account for holidays,
+          bonuses or specific contract rules.
+        </div>
+      </article>
+
     <article id="tool-unit-price" class="tool-section">
         <h3>Unit price calculator (price per kg / liter / item)</h3>
         <p>
@@ -3278,6 +3857,57 @@ onclick="scrollToElement('tool-fake')"
           <section id="organisation">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Organization & misc</h2>
 
+            <article id="tool-paint" class="tool-section">
+                <h3>Paint calculator (m² → liters)</h3>
+                <p>
+                  Enter the surface area and your paint's coverage (m²/L).
+                  The tool estimates the total amount of paint needed and the number of cans to buy.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); calculatePaintEN();">
+                  <div class="field">
+                    <label for="paintSurfaceEN">Surface (m²)</label>
+                    <input
+                      id="paintSurfaceEN"
+                      type="number"
+                      step="0.1"
+                      placeholder="E.g. 32"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="paintCoverageEN">Coverage (m² per liter)</label>
+                    <input
+                      id="paintCoverageEN"
+                      type="number"
+                      step="0.1"
+                      placeholder="E.g. 10"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="paintCoatsEN">Number of coats</label>
+                    <input
+                      id="paintCoatsEN"
+                      type="number"
+                      min="1"
+                      step="1"
+                      placeholder="E.g. 2"
+                    />
+                  </div>
+                </form>
+              
+                <button class="btn-tool" onclick="calculatePaintEN()">
+                  Calculate required paint
+                </button>
+              
+                <div class="tool-result" id="paintResultEN"></div>
+              
+                <div class="small-note">
+                  Example: for 32 m² with a coverage of 10 m²/L and two coats, you need about 6.4 L.
+                </div>
+              </article>
+
             <article id="tool-suggest" class="tool-section">
                 <h3>Suggest a new tool</h3>
                 <p>
@@ -3593,6 +4223,527 @@ onclick="scrollToElement('tool-fake')"
   <!-- Main scripts -->
   <script>
 
+    // Paint calculator (EN)
+function calculatePaintEN() {
+  const sInput = document.getElementById("paintSurfaceEN");
+  const cInput = document.getElementById("paintCoverageEN");
+  const coatsInput = document.getElementById("paintCoatsEN");
+  const resultEl = document.getElementById("paintResultEN");
+
+  if (!sInput || !cInput || !coatsInput || !resultEl) return;
+
+  const s = parseFloat((sInput.value || "").replace(",", "."));
+  const cov = parseFloat((cInput.value || "").replace(",", "."));
+  const coats = parseInt(coatsInput.value || "1", 10);
+
+  if (isNaN(s) || s <= 0) {
+    resultEl.textContent = "Please enter a valid surface.";
+    return;
+  }
+  if (isNaN(cov) || cov <= 0) {
+    resultEl.textContent = "Please enter a valid coverage.";
+    return;
+  }
+  if (isNaN(coats) || coats <= 0) {
+    resultEl.textContent = "Please enter a valid number of coats.";
+    return;
+  }
+
+  const liters = (s / cov) * coats;
+  const cans = Math.ceil(liters);
+
+  resultEl.innerHTML =
+    "Surface: <strong>" + s + " m²</strong><br>" +
+    "Coverage: <strong>" + cov + " m²/L</strong><br>" +
+    "Coats: <strong>" + coats + "</strong><br><br>" +
+    "Required paint: <strong>" + liters.toFixed(2) + " L</strong><br>" +
+    "Recommended cans: <strong>" + cans + "</strong>";
+}
+
+    // Crypto gains & losses (%) (EN)
+function calculateCryptoPnLEN() {
+  const buyInput = document.getElementById("cryptoBuyEN");
+  const currentInput = document.getElementById("cryptoCurrentEN");
+  const qtyInput = document.getElementById("cryptoQtyEN");
+  const resultEl = document.getElementById("cryptoResultEN");
+
+  if (!buyInput || !currentInput || !resultEl) return;
+
+  const buyRaw = buyInput.value || "";
+  const currentRaw = currentInput.value || "";
+  const qtyRaw = qtyInput ? (qtyInput.value || "") : "";
+
+  const buy = parseFloat(buyRaw.replace(",", "."));
+  const current = parseFloat(currentRaw.replace(",", "."));
+  const qty = qtyRaw.trim()
+    ? parseFloat(qtyRaw.replace(",", "."))
+    : NaN;
+
+  if (isNaN(buy) || buy <= 0) {
+    resultEl.textContent = "Please enter a valid buy price.";
+    return;
+  }
+  if (isNaN(current) || current <= 0) {
+    resultEl.textContent = "Please enter a valid current price.";
+    return;
+  }
+
+  const diffPerCoin = current - buy;
+  const percent = (diffPerCoin / buy) * 100;
+
+  let html =
+    "Buy price: <strong>" + buy.toFixed(2) + " €</strong><br>" +
+    "Current price: <strong>" + current.toFixed(2) + " €</strong><br>" +
+    "Change: <strong>" + diffPerCoin.toFixed(2) + " €</strong> per coin ";
+
+  if (percent >= 0) {
+    html += "(<strong>+" + percent.toFixed(2) + " %</strong>)<br>";
+  } else {
+    html += "(<strong>" + percent.toFixed(2) + " %</strong>)<br>";
+  }
+
+  if (!isNaN(qty) && qty > 0) {
+    const totalDiff = diffPerCoin * qty;
+    const initialTotal = buy * qty;
+    const currentTotal = current * qty;
+
+    html +=
+      "Quantity: <strong>" + qty + "</strong><br>" +
+      "Initial value: <strong>" + initialTotal.toFixed(2) + " €</strong><br>" +
+      "Current value: <strong>" + currentTotal.toFixed(2) + " €</strong><br>" +
+      "Total gain / loss: <strong>" + totalDiff.toFixed(2) + " €</strong>";
+  }
+
+  resultEl.innerHTML = html;
+}
+
+    // Notary / property purchase costs (EN)
+function calculateNotaryFeesEN() {
+  const priceInput = document.getElementById("notaryPriceEN");
+  const rateInput = document.getElementById("notaryRateEN");
+  const resultEl = document.getElementById("notaryResultEN");
+
+  if (!priceInput || !rateInput || !resultEl) return;
+
+  const priceRaw = priceInput.value || "";
+  const rateRaw = rateInput.value || "";
+
+  const price = parseFloat(priceRaw.replace(",", "."));
+  const rate = parseFloat(rateRaw.replace(",", "."));
+
+  if (isNaN(price) || price <= 0) {
+    resultEl.textContent = "Please enter a valid purchase price.";
+    return;
+  }
+  if (isNaN(rate) || rate <= 0) {
+    resultEl.textContent = "Please enter a valid notary / closing fee percentage.";
+    return;
+  }
+
+  const notaryFees = price * (rate / 100);
+  const totalCost = price + notaryFees;
+
+  resultEl.innerHTML =
+    "Purchase price: <strong>" + price.toFixed(2) + " €</strong><br>" +
+    "Estimated notary / closing costs (" + rate.toFixed(2) + " %): <strong>" +
+      notaryFees.toFixed(2) + " €</strong><br>" +
+    "Total cost (price + fees): <strong>" +
+      totalCost.toFixed(2) + " €</strong>";
+}
+
+    // Simple borrowing capacity (EN)
+function calculateBorrowingCapacityEN() {
+  const incomeInput = document.getElementById("borrowIncomeEN");
+  const chargesInput = document.getElementById("borrowChargesEN");
+  const ratioInput = document.getElementById("borrowRatioEN");
+  const rateInput = document.getElementById("borrowRateEN");
+  const yearsInput = document.getElementById("borrowYearsEN");
+  const resultEl = document.getElementById("borrowResultEN");
+
+  if (!incomeInput || !chargesInput || !ratioInput || !rateInput || !yearsInput || !resultEl) return;
+
+  const incomeRaw = incomeInput.value || "";
+  const chargesRaw = chargesInput.value || "";
+  const ratioRaw = ratioInput.value || "";
+  const rateRaw = rateInput.value || "";
+  const yearsRaw = yearsInput.value || "";
+
+  const income = parseFloat(incomeRaw.replace(",", "."));
+  const charges = parseFloat(chargesRaw.replace(",", "."));
+  let ratio = parseFloat(ratioRaw.replace(",", "."));
+  const annualRate = parseFloat(rateRaw.replace(",", "."));
+  const years = parseFloat(yearsRaw.replace(",", "."));
+
+  if (isNaN(income) || income <= 0) {
+    resultEl.textContent = "Please enter a valid monthly income.";
+    return;
+  }
+  if (isNaN(charges) || charges < 0) {
+    resultEl.textContent = "Please enter valid monthly expenses (0 if none).";
+    return;
+  }
+  if (isNaN(ratio) || ratio <= 0) {
+    // default to 35 % if left empty
+    ratio = 35;
+  }
+  if (isNaN(annualRate) || annualRate < 0) {
+    resultEl.textContent = "Please enter a valid annual interest rate (0 or more).";
+    return;
+  }
+  if (isNaN(years) || years <= 0) {
+    resultEl.textContent = "Please enter a valid loan duration in years.";
+    return;
+  }
+
+  const maxDebtMonthly = (income * ratio) / 100;
+  const capacityMonthly = maxDebtMonthly - charges;
+
+  if (capacityMonthly <= 0) {
+    resultEl.innerHTML =
+      "With these income, expenses and a debt ratio of <strong>" +
+      ratio.toFixed(1) +
+      " %</strong>, the repayment capacity is zero or negative. " +
+      "Reduce expenses or increase the debt ratio to get an estimate.";
+    return;
+  }
+
+  const months = years * 12;
+  const monthlyRate = annualRate > 0 ? (annualRate / 100) / 12 : 0;
+
+  let maxLoan;
+
+  if (monthlyRate === 0) {
+    maxLoan = capacityMonthly * months;
+  } else {
+    const factor = (1 - Math.pow(1 + monthlyRate, -months)) / monthlyRate;
+    maxLoan = capacityMonthly * factor;
+  }
+
+  resultEl.innerHTML =
+    "Estimated monthly repayment capacity: <strong>" +
+    capacityMonthly.toFixed(2) +
+    " €</strong><br>" +
+    "Estimated maximum loan amount: <strong>" +
+    maxLoan.toFixed(2) +
+    " €</strong><br>" +
+    "<span>Assumptions: annual rate " +
+    annualRate.toFixed(2) +
+    " %, duration " +
+    years.toFixed(0) +
+    " years, debt ratio " +
+    ratio.toFixed(1) +
+    " %.</span>";
+}
+
+    // Annual ↔ monthly ↔ hourly salary converter (EN)
+function convertSalaryTimeEN() {
+  const yearInput = document.getElementById("salaryYearEN");
+  const monthInput = document.getElementById("salaryMonthEN");
+  const hourInput = document.getElementById("salaryHourEN");
+  const hoursPerWeekInput = document.getElementById("hoursPerWeekEN");
+  const resultEl = document.getElementById("salaryTimeResultEN");
+
+  if (!yearInput || !monthInput || !hourInput || !hoursPerWeekInput || !resultEl) return;
+
+  const yearRaw = yearInput.value || "";
+  const monthRaw = monthInput.value || "";
+  const hourRaw = hourInput.value || "";
+  const hoursWeekRaw = hoursPerWeekInput.value || "";
+
+  const monthsPerYear = 12;
+  const weeksPerYear = 52;
+
+  const hoursPerWeek = parseFloat(hoursWeekRaw.replace(",", "."));
+  if (isNaN(hoursPerWeek) || hoursPerWeek <= 0) {
+    resultEl.textContent =
+      "Please enter a valid number of working hours per week (e.g. 40).";
+    return;
+  }
+
+  let annual, monthly, hourly;
+
+  // 1) Priority: yearly if filled
+  if (yearRaw.trim() !== "") {
+    const yearVal = parseFloat(yearRaw.replace(",", "."));
+    if (isNaN(yearVal) || yearVal <= 0) {
+      resultEl.textContent = "Invalid yearly salary.";
+      return;
+    }
+    annual = yearVal;
+    monthly = annual / monthsPerYear;
+    hourly = annual / (weeksPerYear * hoursPerWeek);
+  }
+  // 2) Otherwise monthly
+  else if (monthRaw.trim() !== "") {
+    const monthVal = parseFloat(monthRaw.replace(",", "."));
+    if (isNaN(monthVal) || monthVal <= 0) {
+      resultEl.textContent = "Invalid monthly salary.";
+      return;
+    }
+    monthly = monthVal;
+    annual = monthly * monthsPerYear;
+    hourly = annual / (weeksPerYear * hoursPerWeek);
+  }
+  // 3) Otherwise hourly
+  else if (hourRaw.trim() !== "") {
+    const hourVal = parseFloat(hourRaw.replace(",", "."));
+    if (isNaN(hourVal) || hourVal <= 0) {
+      resultEl.textContent = "Invalid hourly rate.";
+      return;
+    }
+    hourly = hourVal;
+    annual = hourly * hoursPerWeek * weeksPerYear;
+    monthly = annual / monthsPerYear;
+  } else {
+    resultEl.textContent =
+      "Fill at least one amount (yearly, monthly or hourly).";
+    return;
+  }
+
+  // Update fields
+  yearInput.value = annual.toFixed(2);
+  monthInput.value = monthly.toFixed(2);
+  hourInput.value = hourly.toFixed(2);
+
+  resultEl.innerHTML =
+    "Yearly salary: <strong>" +
+    annual.toFixed(2) +
+    " €</strong><br>" +
+    "Monthly salary: <strong>" +
+    monthly.toFixed(2) +
+    " €</strong><br>" +
+    "Hourly rate (≈): <strong>" +
+    hourly.toFixed(2) +
+    " €/h</strong><br>" +
+    "<span>Calculation based on " +
+    hoursPerWeek.toFixed(1) +
+    " h/week and " +
+    weeksPerYear +
+    " weeks/year.</span>";
+}
+
+    // Lumens ↔ Watts converter (LED) - EN
+function convertLumensWatts() {
+  const lumensInput = document.getElementById("lumensInput");
+  const wattsInput = document.getElementById("wattsInput");
+  const resultEl = document.getElementById("lumensWattsResult");
+  if (!lumensInput || !wattsInput || !resultEl) return;
+
+  const lmRaw = lumensInput.value || "";
+  const wRaw = wattsInput.value || "";
+  const efficacy = 90; // lumens per watt, average LED efficiency (approximate)
+
+  // If lumens is filled → compute watts
+  if (lmRaw.trim() !== "") {
+    const lumens = parseFloat(lmRaw.replace(",", "."));
+    if (isNaN(lumens) || lumens <= 0) {
+      resultEl.textContent = "Invalid lumens value.";
+      return;
+    }
+    const watts = lumens / efficacy;
+    wattsInput.value = watts.toFixed(2);
+    resultEl.innerHTML =
+      "<strong>" +
+      lumens.toFixed(0) +
+      " lm</strong> ≈ <strong>" +
+      watts.toFixed(2) +
+      " W (LED)</strong> with about " +
+      efficacy +
+      " lm/W efficiency.";
+    return;
+  }
+
+  // If watts is filled → compute lumens
+  if (wRaw.trim() !== "") {
+    const watts = parseFloat(wRaw.replace(",", "."));
+    if (isNaN(watts) || watts <= 0) {
+      resultEl.textContent = "Invalid watts value.";
+      return;
+    }
+    const lumens = watts * efficacy;
+    lumensInput.value = lumens.toFixed(0);
+    resultEl.innerHTML =
+      "<strong>" +
+      watts.toFixed(2) +
+      " W (LED)</strong> ≈ <strong>" +
+      lumens.toFixed(0) +
+      " lm</strong> with about " +
+      efficacy +
+      " lm/W efficiency.";
+    return;
+  }
+
+  resultEl.textContent = "Fill at least one of the fields (lumens or watts).";
+}
+
+    // Travel time calculator (distance + speed)
+function calculateTravelTime() {
+  const distanceInput = document.getElementById("travelDistance");
+  const distanceUnitSelect = document.getElementById("travelDistanceUnit");
+  const speedInput = document.getElementById("travelSpeed");
+  const speedUnitSelect = document.getElementById("travelSpeedUnit");
+  const resultEl = document.getElementById("travelTimeResult");
+
+  if (
+    !distanceInput ||
+    !distanceUnitSelect ||
+    !speedInput ||
+    !speedUnitSelect ||
+    !resultEl
+  ) {
+    return;
+  }
+
+  const distanceRaw = distanceInput.value || "";
+  const speedRaw = speedInput.value || "";
+
+  const distanceUnit = distanceUnitSelect.value; // "km" or "mi"
+  const speedUnit = speedUnitSelect.value;       // "kmh" or "mph"
+
+  const distanceVal = parseFloat(distanceRaw.replace(",", "."));
+  const speedVal = parseFloat(speedRaw.replace(",", "."));
+
+  if (isNaN(distanceVal) || distanceVal <= 0) {
+    resultEl.textContent =
+      "Please enter a valid distance (greater than 0).";
+    return;
+  }
+
+  if (isNaN(speedVal) || speedVal <= 0) {
+    resultEl.textContent =
+      "Please enter a valid speed (greater than 0).";
+    return;
+  }
+
+  // Convert to km and km/h for internal calculation
+  let distanceKm = distanceVal;
+  let speedKmh = speedVal;
+
+  if (distanceUnit === "mi") {
+    distanceKm = distanceVal * 1.60934; // miles → km
+  }
+
+  if (speedUnit === "mph") {
+    speedKmh = speedVal * 1.60934; // mph → km/h
+  }
+
+  const timeHours = distanceKm / speedKmh; // time in hours (decimal)
+
+  let totalMinutes = timeHours * 60;
+  totalMinutes = Math.round(totalMinutes);
+
+  let hours = Math.floor(totalMinutes / 60);
+  let minutes = totalMinutes % 60;
+
+  let timeLabel = "";
+  if (hours === 0) {
+    timeLabel = minutes + " min";
+  } else if (minutes === 0) {
+    timeLabel = hours + " h";
+  } else {
+    timeLabel =
+      hours + " h " + minutes.toString().padStart(2, "0") + " min";
+  }
+
+  const distanceDisplay =
+    distanceVal.toFixed(2) + " " + (distanceUnit === "km" ? "km" : "miles");
+  const speedDisplay =
+    speedVal.toFixed(2) + " " + (speedUnit === "kmh" ? "km/h" : "mph");
+
+  resultEl.innerHTML =
+    "Distance: <strong>" +
+    distanceDisplay +
+    "</strong><br>" +
+    "Average speed: <strong>" +
+    speedDisplay +
+    "</strong><br>" +
+    "Estimated time: <strong>" +
+    timeLabel +
+    "</strong>";
+}
+
+    // Decimal hours ↔ hours + minutes converter
+function convertDecimalHours() {
+  const decimalInput = document.getElementById("decimalHoursInput");
+  const hoursInput = document.getElementById("hoursInputDec");
+  const minutesInput = document.getElementById("minutesInputDec");
+  const resultEl = document.getElementById("decimalHoursResult");
+
+  if (!decimalInput || !hoursInput || !minutesInput || !resultEl) return;
+
+  const modeRadio = document.querySelector(
+    "input[name='decimalHoursMode']:checked"
+  );
+  const mode = modeRadio ? modeRadio.value : "dec-to-hm";
+
+  if (mode === "dec-to-hm") {
+    // Decimal hours → hours + minutes
+    const raw = decimalInput.value || "";
+    const dec = parseFloat(raw.replace(",", "."));
+
+    if (isNaN(dec)) {
+      resultEl.textContent =
+        "Please enter a valid decimal hours value (e.g. 7.5).";
+      return;
+    }
+
+    let totalMinutes = dec * 60;
+    totalMinutes = Math.round(totalMinutes);
+
+    let hours = Math.floor(totalMinutes / 60);
+    let minutes = totalMinutes % 60;
+
+    if (minutes === 60) {
+      hours += 1;
+      minutes = 0;
+    }
+
+    resultEl.innerHTML =
+      "Decimal hours: <strong>" +
+      dec.toFixed(2) +
+      " h</strong><br>" +
+      "Standard time: <strong>" +
+      hours +
+      " h " +
+      minutes.toString().padStart(2, "0") +
+      " min</strong>";
+  } else {
+    // Hours + minutes → decimal hours
+    const hRaw = hoursInput.value || "";
+    const mRaw = minutesInput.value || "";
+
+    const h = parseInt(hRaw, 10);
+    const m = parseInt(mRaw, 10);
+
+    if (isNaN(h) && isNaN(m)) {
+      resultEl.textContent =
+        "Please fill in at least hours or minutes.";
+      return;
+    }
+
+    const hoursSafe = isNaN(h) ? 0 : h;
+    const minutesSafe = isNaN(m) ? 0 : m;
+
+    if (minutesSafe < 0 || minutesSafe >= 60) {
+      resultEl.textContent = "Minutes must be between 0 and 59.";
+      return;
+    }
+
+    const totalMinutes = hoursSafe * 60 + minutesSafe;
+    const dec = totalMinutes / 60;
+
+    resultEl.innerHTML =
+      "Standard time: <strong>" +
+      hoursSafe +
+      " h " +
+      minutesSafe.toString().padStart(2, "0") +
+      " min</strong><br>" +
+      "Decimal hours: <strong>" +
+      dec.toFixed(2) +
+      " h</strong>";
+  }
+}
+
     // Euro ↔ Bitcoin / Crypto converter (manual rate)
 function convertCryptoEur() {
   const nameInput = document.getElementById("cryptoName");
@@ -3655,13 +4806,14 @@ function convertCryptoEur() {
   resultEl.innerHTML = resultText;
 }
 
-    // Suggest a new tool (EN)
+// Suggest a new tool (EN)
 function sendToolSuggestion() {
   const input = document.getElementById("toolSuggestionInput");
   const text = input ? (input.value || "").trim() : "";
 
-  const base = "la.fabrique.des.reves06@gmail.com";
+  const email = "la.fabrique.des.reves06@gmail.com";
   const subject = "[Universe Tools] Tool suggestion";
+
   let body = "Hi,\n\n";
   body += "I’d like to suggest the following tool(s) for Universe Tools:\n\n";
 
@@ -3671,8 +4823,10 @@ function sendToolSuggestion() {
 
   body += "-- Sent from Universe Tools";
 
+  // ✅ IMPORTANT : mailto:
   const href =
-    base +
+    "mailto:" +
+    email +
     "?subject=" +
     encodeURIComponent(subject) +
     "&body=" +
