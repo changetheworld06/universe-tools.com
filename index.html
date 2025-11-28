@@ -1093,6 +1093,87 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
   </div>
 </article>
 
+<!-- Fréquence cardiaque cible (FR) -->
+<article
+  class="tool-card"
+  data-name="fréquence cardiaque cible sport cardio zone entraînement"
+  data-category="sante"
+  onclick="scrollToElement('tool-heart-rate')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Fréquence cardiaque cible</div>
+    <div class="tool-card-tag">Santé</div>
+  </div>
+  <p class="tool-card-desc">
+    Estime ta fréquence cardiaque cible pour l’entraînement : zones modérée et intense.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Indicatif</span>
+    <span>Pas un avis médical</span>
+  </div>
+</article>
+
+<!-- Consommation électrique (FR) -->
+<article
+  class="tool-card"
+  data-name="consommation électrique watt kwh énergie coût facture électricité"
+  data-category="finance"
+  onclick="scrollToElement('tool-electricity')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Consommation électrique</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Estime le coût de fonctionnement d’un appareil en W : kWh consommés et montant en €.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ W → kWh → €</span>
+    <span>Calcul local</span>
+  </div>
+</article>
+
+<!-- Convertisseur angle (FR) -->
+<article
+  class="tool-card"
+  data-name="convertisseur angle degrés radians pourcentage pente inclinaison"
+  data-category="convertisseur"
+  onclick="scrollToElement('tool-angle')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Convertisseur d’angle</div>
+    <div class="tool-card-tag">Convertisseur</div>
+  </div>
+  <p class="tool-card-desc">
+    Convertis un angle en degrés, pourcentage de pente et radians instantanément.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ 3 unités</span>
+    <span>Local</span>
+  </div>
+</article>
+
+<!-- Calculateur de carrelage (FR) -->
+<article
+  class="tool-card"
+  data-name="calcul carrelage carreaux carrelage m2 pertes carrelage surface"
+  data-category="divers"
+  onclick="scrollToElement('tool-tiles')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Calculateur de carrelage</div>
+    <div class="tool-card-tag">Divers</div>
+  </div>
+  <p class="tool-card-desc">
+    Calcule le nombre de carreaux nécessaires à partir de la surface à couvrir,
+    de la taille des carreaux et d’un pourcentage de pertes (chutes, coupes).
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ m² + pertes</span>
+    <span>Arrondi au carreau supérieur</span>
+  </div>
+</article>
+
 <article
   class="tool-card"
   data-name="calculateur peinture litres m2 surface combien pot"
@@ -2003,6 +2084,46 @@ onclick="scrollToElement('tool-countdown')"
           <!-- 🟦 Convertisseurs -->
           <section id="convertisseurs">
             <h2 class="section-title" style="margin-bottom:0.6rem;">Convertisseurs</h2>
+
+            <article id="tool-angle" class="tool-section">
+                <h3>Convertisseur d’angle : degrés ↔ % pente ↔ radians</h3>
+                <p>
+                  Convertis instantanément un angle entre degrés, pourcentage de pente et radians.
+                  Les valeurs sont calculées directement dans ton navigateur.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertAngle();">
+                  <div class="field">
+                    <label for="angleDegrees">Degrés (°)</label>
+                    <input id="angleDegrees" type="number" step="0.01" placeholder="Ex. 30" />
+                  </div>
+              
+                  <div class="field">
+                    <label for="anglePercent">Pente (%)</label>
+                    <input id="anglePercent" type="number" step="0.01" placeholder="Ex. 57.7" />
+                  </div>
+              
+                  <div class="field">
+                    <label for="angleRadians">Radians</label>
+                    <input id="angleRadians" type="number" step="0.0001" placeholder="Ex. 0.52" />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertAngle()">
+                    Convertir
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="angleResult"></div>
+              
+                <div class="small-note">
+                  Formules utilisées : <br>
+                  • % pente = tan(°) × 100 <br>
+                  • radians = degrés × π/180 <br>
+                  • degrés = radians × 180/π
+                </div>
+              </article>
 
             <article id="tool-lumens-led" class="tool-section">
                 <h3>Convertisseur Lumens ↔ Watts (LED)</h3>
@@ -3092,6 +3213,70 @@ onclick="scrollToElement('tool-countdown')"
 <section id="finance">
     <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Finance & budget</h2>
 
+    <article id="tool-electricity" class="tool-section">
+        <h3>Consommation électrique W → kWh → €</h3>
+        <p>
+          Estime la consommation d’un appareil électrique à partir de sa puissance en watts,
+          du temps d’utilisation et du prix du kWh.
+          Le calcul est effectué localement dans ton navigateur.
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateElectricityCost();">
+          <div class="field">
+            <label for="elecPower">Puissance de l’appareil (W)</label>
+            <input
+              id="elecPower"
+              type="number"
+              step="1"
+              placeholder="Ex. 1000 (pour 1 kW)"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="elecHoursPerDay">Durée d’utilisation par jour (heures)</label>
+            <input
+              id="elecHoursPerDay"
+              type="number"
+              step="0.1"
+              placeholder="Ex. 2"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="elecDays">Nombre de jours</label>
+            <input
+              id="elecDays"
+              type="number"
+              step="1"
+              placeholder="Ex. 30"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="elecPrice">Prix du kWh (€)</label>
+            <input
+              id="elecPrice"
+              type="number"
+              step="0.001"
+              placeholder="Ex. 0,20"
+            />
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateElectricityCost()">
+            Calculer
+          </button>
+        </div>
+      
+        <div class="tool-result" id="elecResult"></div>
+      
+        <div class="small-note">
+          Exemple : un appareil de 1&nbsp;000&nbsp;W utilisé 2&nbsp;h/jour pendant 30&nbsp;jours,
+          avec un prix de 0,20&nbsp;€/kWh consomme ≈ 60&nbsp;kWh, soit ≈ 12&nbsp;€.
+        </div>
+      </article>
+
     <article id="tool-crypto-pnl" class="tool-section">
         <h3>Gains & pertes (%) en crypto</h3>
         <p>
@@ -3781,6 +3966,55 @@ onclick="scrollToElement('tool-countdown')"
           <section id="sante">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Santé</h2>
 
+            <article id="tool-heart-rate" class="tool-section">
+                <h3>Fréquence cardiaque cible (sport)</h3>
+                <p>
+                  Cet outil estime ta fréquence cardiaque cible pour l’effort à partir de ton âge,
+                  en utilisant la formule simple <strong>220 − âge</strong> pour la fréquence maximale
+                  théorique. Les résultats sont donnés à titre indicatif uniquement.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); calculateTargetHeartRate();">
+                  <div class="field">
+                    <label for="hrAge">Âge (années)</label>
+                    <input
+                      id="hrAge"
+                      type="number"
+                      step="1"
+                      min="1"
+                      max="120"
+                      placeholder="Ex. 35"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="hrIntensity">Type d’effort</label>
+                    <select id="hrIntensity">
+                      <option value="both">Afficher toutes les zones</option>
+                      <option value="moderate">Effort modéré (endurance, footing tranquille)</option>
+                      <option value="intense">Effort intense (fractionné, HIIT…)</option>
+                    </select>
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="calculateTargetHeartRate()">
+                    Calculer ma zone cible
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="hrResult"></div>
+              
+                <div class="small-note">
+                  Rappels classiques (adulte) :
+                  zone modérée ≈ 50–70&nbsp;% de la FC max,
+                  zone intense ≈ 70–85&nbsp;% de la FC max.
+                  <br>
+                  Ces valeurs sont approximatives et ne remplacent pas un avis médical
+                  ou un test d’effort encadré par un professionnel de santé.
+                </div>
+              </article>
+
             <article id="tool-imc" class="tool-section">
               <h3>Calculateur d'IMC (Indice de Masse Corporelle)</h3>
               <p>
@@ -3825,6 +4059,81 @@ onclick="scrollToElement('tool-countdown')"
           <!-- 🟨 Organisation & divers -->
           <section id="organisation">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Organisation & divers</h2>
+
+            <article id="tool-tiles" class="tool-section">
+                <h3>Calculateur de carrelage (m² + pertes)</h3>
+                <p>
+                  Estime le nombre de carreaux nécessaires pour une pièce, en tenant compte
+                  de la surface, de la taille des carreaux et d’un pourcentage de pertes
+                  (coupes, casse, réserves).
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); calculateTiles();">
+                  <div class="field">
+                    <label for="tilesRoomLength">Longueur de la pièce (m)</label>
+                    <input
+                      id="tilesRoomLength"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 5"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="tilesRoomWidth">Largeur de la pièce (m)</label>
+                    <input
+                      id="tilesRoomWidth"
+                      type="number"
+                      step="0.01"
+                      placeholder="Ex. 4"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="tilesTileLength">Longueur d’un carreau (cm)</label>
+                    <input
+                      id="tilesTileLength"
+                      type="number"
+                      step="0.1"
+                      placeholder="Ex. 60"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="tilesTileWidth">Largeur d’un carreau (cm)</label>
+                    <input
+                      id="tilesTileWidth"
+                      type="number"
+                      step="0.1"
+                      placeholder="Ex. 60"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="tilesWaste">Pertes (%)</label>
+                    <input
+                      id="tilesWaste"
+                      type="number"
+                      step="1"
+                      placeholder="Ex. 10"
+                      value="10"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="calculateTiles()">
+                    Calculer le carrelage
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="tilesResult"></div>
+                <div class="small-note">
+                  Le calcul arrondit toujours au carreau supérieur, afin de prévoir un peu de
+                  marge. Ajuste le pourcentage de pertes selon la complexité de la pose
+                  (pièce biscornue, découpes, etc.).
+                </div>
+              </article>
 
             <article id="tool-paint" class="tool-section">
                 <h3>Calculateur de peinture (m² → litres)</h3>
@@ -4194,6 +4503,219 @@ onclick="scrollToElement('tool-countdown')"
 
 <!-- Scripts principaux -->
 <script>
+
+    // Fréquence cardiaque cible (FR)
+function calculateTargetHeartRate() {
+  const ageInput = document.getElementById("hrAge");
+  const intensitySelect = document.getElementById("hrIntensity");
+  const resultEl = document.getElementById("hrResult");
+
+  if (!ageInput || !intensitySelect || !resultEl) return;
+
+  const age = parseFloat((ageInput.value || "").replace(",", "."));
+  if (isNaN(age) || age <= 0 || age > 120) {
+    resultEl.textContent =
+      "Merci d’entrer un âge valide entre 1 et 120 ans.";
+    return;
+  }
+
+  // Formule simple : FCmax ≈ 220 − âge
+  const maxHr = 220 - age;
+
+  const moderateMin = Math.round(maxHr * 0.50);
+  const moderateMax = Math.round(maxHr * 0.70);
+  const intenseMin = Math.round(maxHr * 0.70);
+  const intenseMax = Math.round(maxHr * 0.85);
+
+  const mode = intensitySelect.value || "both";
+
+  let html = "<strong>Fréquence cardiaque maximale théorique :</strong> " +
+    maxHr + " battements/minute (bpm)<br>";
+
+  if (mode === "both" || mode === "moderate") {
+    html +=
+      "<br><strong>Zone d’effort modéré (≈ 50–70 % de la FC max) :</strong><br>" +
+      moderateMin + " à " + moderateMax + " bpm";
+  }
+
+  if (mode === "both" || mode === "intense") {
+    html +=
+      "<br><br><strong>Zone d’effort intense (≈ 70–85 % de la FC max) :</strong><br>" +
+      intenseMin + " à " + intenseMax + " bpm";
+  }
+
+  html +=
+    "<br><br><span>Ces valeurs sont indicatives et peuvent varier selon la condition physique, " +
+    "les traitements, les pathologies, etc. Pour un avis personnalisé, consulte un professionnel de santé.</span>";
+
+  resultEl.innerHTML = html;
+}
+
+    // Consommation électrique W → kWh → € (FR)
+function calculateElectricityCost() {
+  const powerInput = document.getElementById("elecPower");
+  const hoursInput = document.getElementById("elecHoursPerDay");
+  const daysInput = document.getElementById("elecDays");
+  const priceInput = document.getElementById("elecPrice");
+  const resultEl = document.getElementById("elecResult");
+
+  if (!powerInput || !hoursInput || !daysInput || !priceInput || !resultEl) {
+    return;
+  }
+
+  const powerW = parseFloat((powerInput.value || "").replace(",", "."));
+  const hoursPerDay = parseFloat((hoursInput.value || "").replace(",", "."));
+  const days = parseFloat((daysInput.value || "").replace(",", "."));
+  const pricePerKwh = parseFloat((priceInput.value || "").replace(",", "."));
+
+  if (
+    isNaN(powerW) ||
+    isNaN(hoursPerDay) ||
+    isNaN(days) ||
+    isNaN(pricePerKwh) ||
+    powerW < 0 ||
+    hoursPerDay < 0 ||
+    days < 0 ||
+    pricePerKwh < 0
+  ) {
+    resultEl.textContent =
+      "Merci de renseigner des valeurs numériques positives pour tous les champs.";
+    return;
+  }
+
+  // kWh = (W × heures/jour × jours) / 1000
+  const kwh = (powerW * hoursPerDay * days) / 1000;
+  const cost = kwh * pricePerKwh;
+
+  resultEl.innerHTML =
+    "Consommation totale : <strong>" +
+    kwh.toFixed(3) +
+    " kWh</strong><br>" +
+    "Coût estimé : <strong>" +
+    cost.toFixed(2) +
+    " €</strong>";
+}
+
+    // Convertisseur angle FR
+function convertAngle() {
+  const degInput = document.getElementById("angleDegrees");
+  const pctInput = document.getElementById("anglePercent");
+  const radInput = document.getElementById("angleRadians");
+  const resultEl = document.getElementById("angleResult");
+
+  if (!degInput || !pctInput || !radInput || !resultEl) return;
+
+  let deg = parseFloat((degInput.value || "").replace(",", "."));
+  let pct = parseFloat((pctInput.value || "").replace(",", "."));
+  let rad = parseFloat((radInput.value || "").replace(",", "."));
+
+  // Dégrés → %
+  if (!isNaN(deg)) {
+    const pctFromDeg = Math.tan((deg * Math.PI) / 180) * 100;
+    const radFromDeg = (deg * Math.PI) / 180;
+
+    pctInput.value = pctFromDeg.toFixed(4);
+    radInput.value = radFromDeg.toFixed(4);
+
+    resultEl.innerHTML =
+      "Degrés : <strong>" + deg.toFixed(4) + "°</strong><br>" +
+      "Pente : <strong>" + pctFromDeg.toFixed(4) + " %</strong><br>" +
+      "Radians : <strong>" + radFromDeg.toFixed(4) + "</strong>";
+    return;
+  }
+
+  // % → degrés
+  if (!isNaN(pct)) {
+    const degFromPct = Math.atan(pct / 100) * (180 / Math.PI);
+    const radFromDeg = (degFromPct * Math.PI) / 180;
+
+    degInput.value = degFromPct.toFixed(4);
+    radInput.value = radFromDeg.toFixed(4);
+
+    resultEl.innerHTML =
+      "Pente : <strong>" + pct.toFixed(4) + " %</strong><br>" +
+      "Degrés : <strong>" + degFromPct.toFixed(4) + "°</strong><br>" +
+      "Radians : <strong>" + radFromDeg.toFixed(4) + "</strong>";
+    return;
+  }
+
+  // Radians → degrés
+  if (!isNaN(rad)) {
+    const degFromRad = rad * (180 / Math.PI);
+    const pctFromRad = Math.tan(degFromRad * (Math.PI / 180)) * 100;
+
+    degInput.value = degFromRad.toFixed(4);
+    pctInput.value = pctFromRad.toFixed(4);
+
+    resultEl.innerHTML =
+      "Radians : <strong>" + rad.toFixed(4) + "</strong><br>" +
+      "Degrés : <strong>" + degFromRad.toFixed(4) + "°</strong><br>" +
+      "Pente : <strong>" + pctFromRad.toFixed(4) + " %</strong>";
+    return;
+  }
+
+  resultEl.textContent = "Merci de saisir une valeur valide.";
+}
+
+// Calculateur de carrelage (FR)
+function calculateTiles() {
+  const lengthInput = document.getElementById("tilesRoomLength");
+  const widthInput = document.getElementById("tilesRoomWidth");
+  const tileLengthInput = document.getElementById("tilesTileLength");
+  const tileWidthInput = document.getElementById("tilesTileWidth");
+  const wasteInput = document.getElementById("tilesWaste");
+  const resultEl = document.getElementById("tilesResult");
+
+  if (!lengthInput || !widthInput || !tileLengthInput || !tileWidthInput || !wasteInput || !resultEl) {
+    return;
+  }
+
+  const lengthRaw = (lengthInput.value || "").replace(",", ".");
+  const widthRaw = (widthInput.value || "").replace(",", ".");
+  const tileLengthRaw = (tileLengthInput.value || "").replace(",", ".");
+  const tileWidthRaw = (tileWidthInput.value || "").replace(",", ".");
+  const wasteRaw = (wasteInput.value || "").replace(",", ".");
+
+  const length = parseFloat(lengthRaw);
+  const width = parseFloat(widthRaw);
+  const tileLengthCm = parseFloat(tileLengthRaw);
+  const tileWidthCm = parseFloat(tileWidthRaw);
+  const wastePercent = wasteRaw === "" ? 0 : parseFloat(wasteRaw);
+
+  if (
+    isNaN(length) || length <= 0 ||
+    isNaN(width) || width <= 0 ||
+    isNaN(tileLengthCm) || tileLengthCm <= 0 ||
+    isNaN(tileWidthCm) || tileWidthCm <= 0 ||
+    isNaN(wastePercent) || wastePercent < 0
+  ) {
+    resultEl.textContent = "Merci de renseigner des valeurs valides pour la pièce et les carreaux.";
+    return;
+  }
+
+  // Surface de la pièce
+  const roomArea = length * width; // m²
+
+  // Surface d’un carreau (converti cm → m)
+  const tileArea = (tileLengthCm / 100) * (tileWidthCm / 100); // m²
+
+  if (tileArea <= 0) {
+    resultEl.textContent = "La surface d’un carreau est invalide.";
+    return;
+  }
+
+  const rawTiles = roomArea / tileArea;
+  const tilesWithWaste = rawTiles * (1 + wastePercent / 100);
+  const tilesRounded = Math.ceil(tilesWithWaste);
+
+  const totalAreaWithWaste = tilesRounded * tileArea;
+
+  resultEl.innerHTML =
+    "Surface de la pièce : <strong>" + roomArea.toFixed(2) + " m²</strong><br>" +
+    "Nombre de carreaux (sans pertes) : <strong>" + Math.ceil(rawTiles) + "</strong><br>" +
+    "Nombre de carreaux avec " + wastePercent.toFixed(1) + " % de pertes : <strong>" + tilesRounded + "</strong><br>" +
+    "Surface totale couverte (avec marge) : <strong>" + totalAreaWithWaste.toFixed(2) + " m²</strong>";
+}
 
     // Calculateur de peinture (FR)
 function calculatePaintFR() {
