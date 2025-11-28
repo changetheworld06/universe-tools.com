@@ -1082,6 +1082,25 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
           </div>
         </article>
 
+        <article
+  class="tool-card"
+  data-name="unit price price per kilo liter item"
+  data-category="finance"
+  onclick="scrollToElement('tool-unit-price')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Unit price calculator</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Compare products by calculating the price per kg, per liter or per item.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Price per kg / L / item</span>
+    <span>Local calculation</span>
+  </div>
+</article>
+
             <!-- Fraction ↔ decimal converter -->
 <article
 class="tool-card"
@@ -2621,6 +2640,57 @@ onclick="scrollToElement('tool-fake')"
 <section id="finance">
     <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Finance & budget</h2>
 
+    <article id="tool-unit-price" class="tool-section">
+        <h3>Unit price calculator (price per kg / liter / item)</h3>
+        <p>
+          Enter the total price paid and the quantity, then choose the unit to get
+          the price per kg, per liter or per item. Useful to compare products on
+          supermarket shelves.
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateUnitPrice();">
+          <div class="field">
+            <label for="unitPriceTotal">Total amount (€)</label>
+            <input
+              id="unitPriceTotal"
+              type="number"
+              step="0.01"
+              placeholder="e.g. 5.49"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="unitPriceQuantity">Total quantity</label>
+            <input
+              id="unitPriceQuantity"
+              type="number"
+              step="0.001"
+              placeholder="e.g. 0.75"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="unitPriceUnit">Unit</label>
+            <select id="unitPriceUnit">
+              <option value="kg">kg</option>
+              <option value="L">L</option>
+              <option value="item">item</option>
+            </select>
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateUnitPrice()">
+            Calculate unit price
+          </button>
+        </div>
+      
+        <div class="tool-result" id="unitPriceResult"></div>
+        <div class="small-note">
+          Example: €5.49 for 0.75 L → about €7.32/L.
+        </div>
+      </article>
+
                 <!-- Saving goal -->
 <article id="tool-saving-goal" class="tool-section">
     <h3>Savings Goal Simulator</h3>
@@ -3379,6 +3449,38 @@ onclick="scrollToElement('tool-fake')"
 
   <!-- Main scripts -->
   <script>
+
+    // Unit price calculator (EN)
+function calculateUnitPrice() {
+  const totalInput = document.getElementById("unitPriceTotal");
+  const qtyInput = document.getElementById("unitPriceQuantity");
+  const unitSelect = document.getElementById("unitPriceUnit");
+  const resultEl = document.getElementById("unitPriceResult");
+
+  if (!totalInput || !qtyInput || !unitSelect || !resultEl) return;
+
+  const totalRaw = totalInput.value || "";
+  const qtyRaw = qtyInput.value || "";
+
+  const total = parseFloat(totalRaw.replace(",", "."));
+  const qty = parseFloat(qtyRaw.replace(",", "."));
+  const unit = unitSelect.value || "unit";
+
+  if (isNaN(total) || isNaN(qty) || qty <= 0) {
+    resultEl.textContent =
+      "Please enter a valid total amount and quantity (quantity > 0).";
+    return;
+  }
+
+  const unitPrice = total / qty;
+
+  resultEl.innerHTML =
+    "Unit price: <strong>" +
+    unitPrice.toFixed(2) +
+    " €/ " +
+    unit +
+    "</strong>";
+}
 
     // Fractions ↔ decimals
 function fractionToDecimal() {
