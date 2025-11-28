@@ -858,6 +858,13 @@
     .hidden {
       display: none;
     }
+
+    .tools-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  margin-top: 2rem;
+}
   </style>
   <!-- Event snippet for Autre conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
@@ -1049,7 +1056,28 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
             </div>
           </div>
 
-          <div class="tool-grid" id="toolGrid">
+          <section id="main-tools" class="tools-section">
+            <div class="tools-grid">
+
+          <!-- PDF ↔ JPG converter -->
+<article
+class="tool-card"
+data-name="pdf to jpg jpg to pdf image converter"
+data-category="misc"
+onclick="scrollToElement('tool-pdf-jpg')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">PDF ↔ JPG converter</div>
+  <div class="tool-card-tag">Misc</div>
+</div>
+<p class="tool-card-desc">
+  Convert a PDF page to a JPG image or turn a JPG/PNG image into a PDF file, directly in your browser.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Local</span>
+  <span>No file upload</span>
+</div>
+</article>
 
             <!-- Fraction ↔ decimal converter -->
 <article
@@ -1765,6 +1793,64 @@ onclick="scrollToElement('tool-fake')"
           <!-- 🟦 Converters -->
           <section id="convertisseurs">
             <h2 class="section-title" style="margin-bottom:0.6rem;">Converters</h2>
+
+            <article id="tool-pdf-jpg" class="tool-section">
+                <h3>PDF ↔ JPG converter</h3>
+                <p>
+                  Convert a PDF page to a JPG image or turn an image (JPG/PNG)
+                  into a PDF file. Everything runs locally in your browser, with
+                  no files sent to any server.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertPdfJpg();">
+                  <div class="field">
+                    <label for="pdfJpgMode">Conversion type</label>
+                    <select id="pdfJpgMode" onchange="updatePdfJpgAccept()">
+                      <option value="pdf-to-jpg">PDF → JPG (first page)</option>
+                      <option value="jpg-to-pdf">JPG/PNG → PDF</option>
+                    </select>
+                  </div>
+              
+                  <div class="field">
+                    <label for="pdfJpgFile">File to convert</label>
+                    <input
+                      id="pdfJpgFile"
+                      type="file"
+                      accept="application/pdf"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertPdfJpg()">
+                    Start conversion
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="pdfJpgResult" style="margin-top:0.7rem;"></div>
+              
+                <!-- Canvas for preview and PDF → JPG conversion -->
+                <canvas
+                  id="pdfJpgCanvas"
+                  style="display:none; margin-top:1rem; max-width:100%; border-radius:12px; background:#020617;"
+                ></canvas>
+              
+                <!-- Download link -->
+                <div style="margin-top:0.9rem;">
+                  <a
+                    id="pdfJpgDownloadLink"
+                    href="#"
+                    style="display:none; font-size:0.85rem; color:#a5b4fc; text-decoration:underline;"
+                  >
+                    Download converted file
+                  </a>
+                </div>
+              
+                <div class="small-note">
+                  Limitations: for now, the PDF → JPG conversion only processes the first page.
+                  The tool supports JPG and PNG images for conversion to PDF.
+                </div>
+              </article>
 
             <article id="tool-fractions" class="tool-section">
                 <h3>Fraction ↔ decimal converter</h3>
@@ -5080,6 +5166,168 @@ function calculateLoanPayment() {
     s.crossOrigin = "anonymous";
     document.head.appendChild(s);
   }
-  </script>
+</script>
+<!-- pdf.js pour PDF → JPG -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+  (function () {
+    // Avec les versions récentes, pdf.js est exposé via "pdfjs-dist/build/pdf"
+    const pdfLib = window["pdfjs-dist/build/pdf"];
+    if (!pdfLib) {
+      console.error("pdf.js n'est pas correctement chargé.");
+      return;
+    }
+
+    // On met la lib sur window pour la réutiliser plus bas
+    window.pdfjsLib = pdfLib;
+
+    // Configuration du worker
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  })();
+</script>
+
+<!-- jsPDF pour JPG → PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+// Met à jour les types de fichiers acceptés selon le mode
+function updatePdfJpgAccept() {
+  const modeSelect = document.getElementById("pdfJpgMode");
+  const fileInput = document.getElementById("pdfJpgFile");
+  if (!modeSelect || !fileInput) return;
+
+  const mode = modeSelect.value;
+  if (mode === "pdf-to-jpg") {
+    fileInput.accept = "application/pdf";
+  } else {
+    fileInput.accept = "image/jpeg,image/png";
+  }
+}
+
+// Fonction principale PDF <-> JPG
+async function convertPdfJpg() {
+  const modeSelect = document.getElementById("pdfJpgMode");
+  const fileInput = document.getElementById("pdfJpgFile");
+  const resultEl = document.getElementById("pdfJpgResult");
+  const canvas = document.getElementById("pdfJpgCanvas");
+  const link = document.getElementById("pdfJpgDownloadLink");
+
+  if (!modeSelect || !fileInput || !resultEl || !canvas || !link) return;
+
+  const mode = modeSelect.value;
+
+  if (!fileInput.files || fileInput.files.length === 0) {
+    resultEl.textContent = "Sélectionne d'abord un fichier à convertir.";
+    return;
+  }
+
+  const file = fileInput.files[0];
+
+  if (mode === "pdf-to-jpg") {
+    // PDF -> JPG
+    if (!window.pdfjsLib) {
+      resultEl.textContent = "Erreur : la librairie pdf.js n'est pas chargée.";
+      return;
+    }
+
+    resultEl.textContent = "Conversion du PDF en JPG en cours...";
+    const reader = new FileReader();
+
+    reader.onload = async function (e) {
+      try {
+        const typedarray = new Uint8Array(e.target.result);
+        const pdf = await pdfjsLib.getDocument({ data: typedarray }).promise;
+        const page = await pdf.getPage(1); // première page uniquement
+
+        const scale = 2;
+        const viewport = page.getViewport({ scale: scale });
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        await page.render({
+          canvasContext: ctx,
+          viewport: viewport
+        }).promise;
+
+        canvas.style.display = "block";
+
+        canvas.toBlob(function (blob) {
+          if (!blob) {
+            resultEl.textContent = "Impossible de générer l'image.";
+            return;
+          }
+          const url = URL.createObjectURL(blob);
+          link.href = url;
+          link.download = "page-1.jpg";
+          link.style.display = "inline-block";
+          resultEl.innerHTML =
+            "<strong>Conversion terminée.</strong> Tu peux maintenant télécharger l'image JPG.";
+        }, "image/jpeg", 0.92);
+      } catch (err) {
+        console.error(err);
+        resultEl.textContent =
+          "Erreur lors de la conversion du PDF. Vérifie que le fichier n'est pas corrompu.";
+      }
+    };
+
+    reader.readAsArrayBuffer(file);
+  } else {
+    // JPG -> PDF
+    if (!window.jspdf || !window.jspdf.jsPDF) {
+      resultEl.textContent = "Erreur : la librairie jsPDF n'est pas chargée.";
+      return;
+    }
+
+    resultEl.textContent = "Conversion de l'image en PDF en cours...";
+
+    const img = new Image();
+    img.onload = function () {
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({ unit: "pt", format: "a4", compress: true });
+
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+
+      let imgWidth = img.width;
+      let imgHeight = img.height;
+
+      const ratio = Math.min(pageWidth / imgWidth, pageHeight / imgHeight);
+      imgWidth *= ratio;
+      imgHeight *= ratio;
+
+      const x = (pageWidth - imgWidth) / 2;
+      const y = (pageHeight - imgHeight) / 2;
+
+      // On force "JPEG" pour simplifier, même si le fichier est PNG
+      pdf.addImage(img, "JPEG", x, y, imgWidth, imgHeight);
+
+      const blob = pdf.output("blob");
+      const url = URL.createObjectURL(blob);
+
+      link.href = url;
+      link.download = "image.pdf";
+      link.style.display = "inline-block";
+
+      canvas.style.display = "none";
+
+      resultEl.innerHTML =
+        "<strong>PDF généré.</strong> Tu peux maintenant le télécharger.";
+    };
+
+    img.onerror = function () {
+      resultEl.textContent =
+        "Impossible de lire l'image. Vérifie que le fichier est bien un JPG ou un PNG.";
+    };
+
+    img.src = URL.createObjectURL(file);
+  }
+}
+
+// Init quand le DOM est prêt
+document.addEventListener("DOMContentLoaded", updatePdfJpgAccept);
+</script>
 </body>
 </html>
