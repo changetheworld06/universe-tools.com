@@ -1082,6 +1082,26 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
           </div>
         </article>
 
+        <!-- Suggest a new tool -->
+<article
+class="tool-card"
+data-name="suggest tool idea feature request"
+data-category="misc"
+onclick="scrollToElement('tool-suggest')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Suggest a new tool</div>
+  <div class="tool-card-tag">Misc</div>
+</div>
+<p class="tool-card-desc">
+  Missing a tool? Send us your idea in a few seconds.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Via e-mail</span>
+  <span>No account needed</span>
+</div>
+</article>
+
         <article
   class="tool-card"
   data-name="unit price price per kilo liter item"
@@ -3163,6 +3183,34 @@ onclick="scrollToElement('tool-fake')"
           <section id="organisation">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Organization & misc</h2>
 
+            <article id="tool-suggest" class="tool-section">
+                <h3>Suggest a new tool</h3>
+                <p>
+                  Have an idea for a tool that would fit Universe Tools? Describe it in a few
+                  lines and send it to us. It helps us decide what to build next.
+                </p>
+              
+                <div class="field">
+                  <label for="toolSuggestionInput">Your tool idea</label>
+                  <textarea
+                    id="toolSuggestionInput"
+                    rows="4"
+                    placeholder="E.g. vacation budget simulator, leave days converter, etc."
+                  ></textarea>
+                </div>
+              
+                <div style="margin-top:0.9rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+                  <button class="btn-tool" type="button" onclick="sendToolSuggestion()">
+                    Send my suggestion by e-mail
+                  </button>
+                </div>
+              
+                <div class="small-note">
+                  This button opens your e-mail app with a prefilled message.
+                  No automatic data is sent.
+                </div>
+              </article>
+
             <article id="tool-week" class="tool-section">
                 <h3>Date ↔ ISO week number</h3>
                 <p>
@@ -3449,6 +3497,32 @@ onclick="scrollToElement('tool-fake')"
 
   <!-- Main scripts -->
   <script>
+
+    // Suggest a new tool (EN)
+function sendToolSuggestion() {
+  const input = document.getElementById("toolSuggestionInput");
+  const text = input ? (input.value || "").trim() : "";
+
+  const base = "mailto:contact@universe-tools.com";
+  const subject = "[Universe Tools] Tool suggestion";
+  let body = "Hi,\n\n";
+  body += "I’d like to suggest the following tool(s) for Universe Tools:\n\n";
+
+  if (text) {
+    body += text + "\n\n";
+  }
+
+  body += "-- Sent from Universe Tools";
+
+  const href =
+    base +
+    "?subject=" +
+    encodeURIComponent(subject) +
+    "&body=" +
+    encodeURIComponent(body);
+
+  window.location.href = href;
+}
 
     // Unit price calculator (EN)
 function calculateUnitPrice() {

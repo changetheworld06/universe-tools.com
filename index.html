@@ -1073,6 +1073,26 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
   </div>
 </article>
 
+<!-- Proposer un nouvel outil -->
+<article
+  class="tool-card"
+  data-name="suggestion outil proposer idée fonctionnalité"
+  data-category="divers"
+  onclick="scrollToElement('tool-suggest')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Proposer un nouvel outil</div>
+    <div class="tool-card-tag">Divers</div>
+  </div>
+  <p class="tool-card-desc">
+    Une idée d’outil qui manque ? Envoie-nous ta suggestion en un clic.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Par e-mail</span>
+    <span>Aucune inscription</span>
+  </div>
+</article>
+
 <article
   class="tool-card"
   data-name="prix au kilo litre prix unitaire"
@@ -3126,6 +3146,35 @@ onclick="scrollToElement('tool-countdown')"
           <section id="organisation">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Organisation & divers</h2>
 
+            <article id="tool-suggest" class="tool-section">
+                <h3>Proposer un nouvel outil</h3>
+                <p>
+                  Tu as une idée d’outil qui pourrait être utile sur Universe Tools ?
+                  Explique-la en quelques lignes et envoie-la nous. Cela nous aide à
+                  prioriser les prochains outils à développer.
+                </p>
+              
+                <div class="field">
+                  <label for="toolSuggestionInput">Ton idée d’outil</label>
+                  <textarea
+                    id="toolSuggestionInput"
+                    rows="4"
+                    placeholder="Ex. Convertisseur de jours de congés, simulateur de budget vacances, etc."
+                  ></textarea>
+                </div>
+              
+                <div style="margin-top:0.9rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+                  <button class="btn-tool" type="button" onclick="sendToolSuggestion()">
+                    Envoyer ma suggestion par e-mail
+                  </button>
+                </div>
+              
+                <div class="small-note">
+                  Ce bouton ouvre ton application d’e-mail avec un message pré-rempli.
+                  Aucun envoi automatique n’est effectué.
+                </div>
+              </article>
+
             <article id="tool-week" class="tool-section">
                 <h3>Convertisseur date ↔ numéro de semaine</h3>
                 <p>
@@ -3414,6 +3463,32 @@ onclick="scrollToElement('tool-countdown')"
 
 <!-- Scripts principaux -->
 <script>
+
+    // Suggestion de nouvel outil (FR)
+function sendToolSuggestion() {
+  const input = document.getElementById("toolSuggestionInput");
+  const text = input ? (input.value || "").trim() : "";
+
+  const base = "mailto:la.fabrique.des.reves06@gmail.com";
+  const subject = "[Universe Tools] Suggestion d’outil";
+  let body = "Bonjour,\n\n";
+  body += "J’aimerais suggérer le(s) outil(s) suivant(s) pour Universe Tools :\n\n";
+
+  if (text) {
+    body += text + "\n\n";
+  }
+
+  body += "— Envoyé depuis Universe Tools";
+
+  const href =
+    base +
+    "?subject=" +
+    encodeURIComponent(subject) +
+    "&body=" +
+    encodeURIComponent(body);
+
+  window.location.href = href;
+}
 
     // Calculateur de prix unitaire (FR)
 function calculateUnitPrice() {
