@@ -1102,6 +1102,27 @@ onclick="scrollToElement('tool-suggest')"
 </div>
 </article>
 
+<!-- Euro ↔ Bitcoin / Crypto converter (manual rate) -->
+<article
+  class="tool-card"
+  data-name="euro bitcoin crypto manual rate converter"
+  data-category="convertisseur"
+  onclick="scrollToElement('tool-crypto-eur')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">€ ↔ Bitcoin / Crypto converter</div>
+    <div class="tool-card-tag">Converter</div>
+  </div>
+  <p class="tool-card-desc">
+    Convert an amount in euros to Bitcoin/crypto (or the other way around)
+    using your own price per unit.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Manual rate</span>
+    <span>No API</span>
+  </div>
+</article>
+
         <article
   class="tool-card"
   data-name="unit price price per kilo liter item"
@@ -1835,6 +1856,80 @@ onclick="scrollToElement('tool-fake')"
           <!-- 🟦 Converters -->
           <section id="convertisseurs">
             <h2 class="section-title" style="margin-bottom:0.6rem;">Converters</h2>
+
+            <article id="tool-crypto-eur" class="tool-section">
+                <h3>Euro ↔ Bitcoin / Crypto converter (manual rate)</h3>
+                <p>
+                  Enter an amount in euros, the price of 1 unit of Bitcoin or any other crypto,
+                  then choose the conversion direction. No API is used, everything runs locally.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertCryptoEur();">
+                  <div class="field">
+                    <label for="cryptoName">Crypto name (optional)</label>
+                    <input
+                      id="cryptoName"
+                      type="text"
+                      placeholder="e.g. BTC, ETH, SOL…"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="cryptoPrice">Price of 1 unit (in €)</label>
+                    <input
+                      id="cryptoPrice"
+                      type="number"
+                      step="0.01"
+                      placeholder="e.g. 65000"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="cryptoAmountOrEur">Amount to convert</label>
+                    <input
+                      id="cryptoAmountOrEur"
+                      type="number"
+                      step="0.00000001"
+                      placeholder="e.g. 100 (in €) or 0.002 (in crypto)"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label>Conversion direction</label>
+                    <div class="chip-row">
+                      <label class="chip">
+                        <input
+                          type="radio"
+                          name="cryptoDirection"
+                          value="eur-to-crypto"
+                          checked
+                        />
+                        <span>€ → Crypto</span>
+                      </label>
+                      <label class="chip">
+                        <input
+                          type="radio"
+                          name="cryptoDirection"
+                          value="crypto-to-eur"
+                        />
+                        <span>Crypto → €</span>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertCryptoEur()">
+                    Convert
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="cryptoEurResult"></div>
+                <div class="small-note">
+                  Example: if 1 BTC = €65,000, then €100 ≈ 0.00154 BTC.  
+                  This is an indicative converter and does not replace an exchange platform.
+                </div>
+              </article>
 
             <article id="tool-pdf-jpg" class="tool-section">
                 <h3>PDF ↔ JPG converter</h3>
@@ -3498,12 +3593,74 @@ onclick="scrollToElement('tool-fake')"
   <!-- Main scripts -->
   <script>
 
+    // Euro ↔ Bitcoin / Crypto converter (manual rate)
+function convertCryptoEur() {
+  const nameInput = document.getElementById("cryptoName");
+  const priceInput = document.getElementById("cryptoPrice");
+  const amountInput = document.getElementById("cryptoAmountOrEur");
+  const resultEl = document.getElementById("cryptoEurResult");
+
+  if (!priceInput || !amountInput || !resultEl) return;
+
+  const cryptoNameRaw = nameInput ? (nameInput.value || "").trim() : "";
+  const cryptoName = cryptoNameRaw || "BTC";
+
+  const priceRaw = priceInput.value || "";
+  const amountRaw = amountInput.value || "";
+
+  const price = parseFloat(priceRaw.replace(",", "."));
+  const amount = parseFloat(amountRaw.replace(",", "."));
+
+  if (isNaN(price) || price <= 0 || isNaN(amount) || amount <= 0) {
+    resultEl.textContent =
+      "Please enter a valid price and amount (greater than zero).";
+    return;
+  }
+
+  const modeRadio = document.querySelector("input[name='cryptoDirection']:checked");
+  const mode = modeRadio ? modeRadio.value : "eur-to-crypto";
+
+  let resultText = "";
+
+  if (mode === "eur-to-crypto") {
+    // € -> Crypto
+    const cryptoAmount = amount / price;
+    resultText =
+      "Amount in euros: <strong>" +
+      amount.toFixed(2) +
+      " €</strong><br>" +
+      "Price of 1 " + cryptoName + ": <strong>" +
+      price.toFixed(2) +
+      " €</strong><br>" +
+      "Amount in " + cryptoName + ": <strong>" +
+      cryptoAmount.toFixed(8) +
+      " " +
+      cryptoName +
+      "</strong>";
+  } else {
+    // Crypto -> €
+    const eurAmount = amount * price;
+    resultText =
+      "Amount in " + cryptoName + ": <strong>" +
+      amount.toFixed(8) +
+      " " + cryptoName + "</strong><br>" +
+      "Price of 1 " + cryptoName + ": <strong>" +
+      price.toFixed(2) +
+      " €</strong><br>" +
+      "Amount in euros: <strong>" +
+      eurAmount.toFixed(2) +
+      " €</strong>";
+  }
+
+  resultEl.innerHTML = resultText;
+}
+
     // Suggest a new tool (EN)
 function sendToolSuggestion() {
   const input = document.getElementById("toolSuggestionInput");
   const text = input ? (input.value || "").trim() : "";
 
-  const base = "mailto:contact@universe-tools.com";
+  const base = "la.fabrique.des.reves06@gmail.com";
   const subject = "[Universe Tools] Tool suggestion";
   let body = "Hi,\n\n";
   body += "I’d like to suggest the following tool(s) for Universe Tools:\n\n";
