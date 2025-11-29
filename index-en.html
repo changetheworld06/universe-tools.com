@@ -1123,6 +1123,25 @@ onclick="scrollToElement('tool-suggest')"
 
 <article
   class="tool-card"
+  data-name="running power zones running ftp watt training zones"
+  data-category="health"
+  onclick="scrollToElement('tool-running-power')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Running Power Zones</div>
+    <div class="tool-card-tag">Health</div>
+  </div>
+  <p class="tool-card-desc">
+    Calculate your running training zones based on your FTP (critical power).
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Local</span>
+    <span>FTP-based</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
   data-name="tdee calorie needs basal metabolic rate"
   data-category="health"
   onclick="scrollToElement('tool-tdee-en')"
@@ -4345,6 +4364,37 @@ onclick="scrollToElement('tool-fake')"
           <section id="sante">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Health</h2>
 
+            <article id="tool-running-power" class="tool-section">
+                <h3>Running Power Zones</h3>
+                <p>
+                  This tool calculates your training power zones from your 
+                  <strong>running FTP (critical power)</strong>.  
+                  Based on Stryd zone model.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); calculateRunningPowerZones();">
+                  <div class="field">
+                    <label for="runFtp">FTP (watts)</label>
+                    <input id="runFtp" type="number" min="50" max="600"
+                           placeholder="e.g. 280" />
+                  </div>
+                </form>
+              
+                <div style="margin-top:1rem;">
+                  <button class="btn-tool" type="button" onclick="calculateRunningPowerZones()">
+                    Calculate my zones
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="runPowerResult"></div>
+              
+                <div class="small-note">
+                  Based on typical Stryd power zones: 
+                  Zone 1 = 65–80 %, Zone 2 = 80–90 %, Zone 3 = 90–100 %, 
+                  Zone 4 = 100–115 %, Zone 5 = 115–130 %, Zone 6 = 130–150 %.
+                </div>
+              </article>
+
             <article id="tool-tdee-en" class="tool-section">
                 <h3>TDEE Calculator (Daily calorie needs)</h3>
               
@@ -4997,6 +5047,35 @@ onclick="scrollToElement('tool-fake')"
 
   <!-- Main scripts -->
   <script>
+
+function calculateRunningPowerZones() {
+  const ftp = parseFloat(document.getElementById("runFtp").value);
+  const output = document.getElementById("runPowerResult");
+
+  if (!ftp || ftp <= 0) {
+    output.textContent = "Indique une valeur FTP valide.";
+    return;
+  }
+
+  const zones = [
+    { name: "Zone 1 — Endurance", min: 0.65, max: 0.80 },
+    { name: "Zone 2 — Tempo", min: 0.80, max: 0.90 },
+    { name: "Zone 3 — Seuil", min: 0.90, max: 1.00 },
+    { name: "Zone 4 — Course", min: 1.00, max: 1.15 },
+    { name: "Zone 5 — Anaérobie", min: 1.15, max: 1.30 },
+    { name: "Zone 6 — Sprint", min: 1.30, max: 1.50 }
+  ];
+
+  let html = "<strong>Résultat :</strong><br><br>";
+
+  zones.forEach(z => {
+    const minW = Math.round(ftp * z.min);
+    const maxW = Math.round(ftp * z.max);
+    html += `${z.name} : <strong>${minW}–${maxW} W</strong><br>`;
+  });
+
+  output.innerHTML = html;
+}
 
 // --------- Helpers communs ---------
 
