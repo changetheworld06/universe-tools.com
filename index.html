@@ -1112,6 +1112,67 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
   </div>
 </article>
 
+<article
+  class="tool-card"
+  data-name="rendement locatif investissement immobilier loyer"
+  data-category="finance"
+  onclick="scrollToElement('tool-rental-yield-fr')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Calculateur de rendement locatif</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Estime rapidement le rendement brut et net d’un investissement locatif,
+    à partir du prix d’achat, du loyer et des charges annuelles.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Brut & net</span>
+    <span>Pour investisseurs</span>
+  </div>
+</article>
+
+<!-- Convertisseur d'énergie : Joules ↔ calories ↔ kWh -->
+<article
+  class="tool-card"
+  data-name="énergie joules calories kwh kilowattheure"
+  data-category="convertisseur"
+  onclick="scrollToElement('tool-energy')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Énergie : Joules ↔ calories ↔ kWh</div>
+    <div class="tool-card-tag">Convertisseur</div>
+  </div>
+  <p class="tool-card-desc">
+    Convertis une énergie entre Joules, calories alimentaires (kcal) et kilowattheures (kWh).
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Calcul local</span>
+    <span>Aucune donnée envoyée</span>
+  </div>
+</article>
+
+<!-- Fraction ↔ Décimal ↔ Pourcentage -->
+<article
+  class="tool-card"
+  data-name="fraction décimal pourcentage 1/4 0,25 25%"
+  data-category="convertisseur"
+  onclick="scrollToElement('tool-fraction')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Fraction ↔ Décimal ↔ Pourcentage</div>
+    <div class="tool-card-tag">Convertisseur</div>
+  </div>
+  <p class="tool-card-desc">
+    Convertis une fraction (comme 1/4) en nombre décimal et en pourcentage, 
+    ou l'inverse, en un clic.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Calcul local</span>
+    <span>Aucun envoi de données</span>
+  </div>
+</article>
+
 <!-- Fréquence cardiaque cible (FR) -->
 <article
   class="tool-card"
@@ -2103,6 +2164,93 @@ onclick="scrollToElement('tool-countdown')"
           <!-- 🟦 Convertisseurs -->
           <section id="convertisseurs">
             <h2 class="section-title" style="margin-bottom:0.6rem;">Convertisseurs</h2>
+
+            <article id="tool-energie" class="tool-section">
+                <h3>Convertisseur d’énergie : Joules ↔ calories ↔ kWh</h3>
+                <p>
+                  Saisis une valeur en Joules, en calories alimentaires (<strong>kcal</strong>) ou en kilowattheures (<strong>kWh</strong>)
+                  et le convertisseur calcule automatiquement les deux autres unités.
+                  Conversion utilisée : 1 kcal ≈ 4 184 J, 1 kWh = 3 600 000 J.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertEnergyFR();">
+                  <div class="field">
+                    <label for="energyJ_fr">Énergie (Joules, J)</label>
+                    <input id="energyJ_fr" type="number" step="0.000001" placeholder="Ex. 4184" />
+                  </div>
+              
+                  <div class="field">
+                    <label for="energyKcal_fr">Énergie (calories, kcal)</label>
+                    <input id="energyKcal_fr" type="number" step="0.000001" placeholder="Ex. 1" />
+                  </div>
+              
+                  <div class="field">
+                    <label for="energyKwh_fr">Énergie (kWh)</label>
+                    <input id="energyKwh_fr" type="number" step="0.000001" placeholder="Ex. 1" />
+                  </div>
+                </form>
+              
+                <div style="margin-top: 0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertEnergyFR()">Convertir</button>
+                </div>
+              
+                <div class="tool-result" id="energyResult_fr"></div>
+              
+                <div class="small-note">
+                  Rappel : 1 kcal ≈ 4 184 J (calorie « alimentaire ») et 1 kWh = 3 600 000 J.
+                  Les valeurs sont arrondies pour simplifier la lecture.
+                </div>
+              </article>
+
+            <article id="tool-fraction" class="tool-section">
+                <h3>Convertisseur fraction ↔ décimal ↔ pourcentage</h3>
+                <p>
+                  Saisis une fraction (par ex. <strong>1/4</strong>), un décimal (par ex. <strong>0,25</strong>)
+                  ou un pourcentage (par ex. <strong>25</strong>) et le convertisseur calcule automatiquement
+                  les deux autres formes.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); convertFractionDecimalPercent();">
+                  <div class="field">
+                    <label for="fractionInput">Fraction (a/b)</label>
+                    <input
+                      id="fractionInput"
+                      type="text"
+                      placeholder="Ex. 1/4"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="decimalInput">Décimal</label>
+                    <input
+                      id="decimalInput"
+                      type="text"
+                      placeholder="Ex. 0,25"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="percentInput">Pourcentage (%)</label>
+                    <input
+                      id="percentInput"
+                      type="text"
+                      placeholder="Ex. 25"
+                    />
+                  </div>
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="convertFractionDecimalPercent()">
+                    Convertir
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="fractionResult"></div>
+                <div class="small-note">
+                  Exemple : 1/4 → 0,25 → 25 %.  
+                  Pour les décimaux, une fraction approximative est calculée (dénominateur ≤ 100).
+                </div>
+              </article>
 
             <article id="tool-angle" class="tool-section">
                 <h3>Convertisseur d’angle : degrés ↔ % pente ↔ radians</h3>
@@ -3231,6 +3379,64 @@ onclick="scrollToElement('tool-countdown')"
 <!-- 🟦 Finance / Budget -->
 <section id="finance">
     <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Finance & budget</h2>
+
+    <article id="tool-rental-yield-fr" class="tool-section">
+        <h3>Calculateur de rendement locatif</h3>
+        <p>
+          Indique le prix d’achat du bien, le loyer mensuel et les charges annuelles
+          (taxe foncière, copropriété, entretien…). L’outil calcule le
+          <strong>rendement brut</strong> et le <strong>rendement net</strong>.
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateRentalYieldFR();">
+          <div class="field">
+            <label for="ryPrice_fr">Prix d’achat du bien (€)</label>
+            <input
+              id="ryPrice_fr"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Ex. 200000"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="ryRent_fr">Loyer mensuel hors charges (€)</label>
+            <input
+              id="ryRent_fr"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Ex. 800"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="ryCharges_fr">Charges annuelles (taxes, copro, etc.) (€)</label>
+            <input
+              id="ryCharges_fr"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Ex. 2000 (optionnel)"
+            />
+          </div>
+        </form>
+      
+        <div style="margin-top: 0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateRentalYieldFR()">
+            Calculer le rendement
+          </button>
+        </div>
+      
+        <div class="tool-result" id="ryResult_fr"></div>
+      
+        <div class="small-note">
+          Formules utilisées :<br />
+          • Rendement brut = (loyer annuel / prix d’achat) × 100<br />
+          • Rendement net ≈ ((loyer annuel − charges annuelles) / prix d’achat) × 100
+        </div>
+      </article>
 
     <article id="tool-electricity" class="tool-section">
         <h3>Consommation électrique W → kWh → €</h3>
@@ -4562,6 +4768,206 @@ onclick="scrollToElement('tool-countdown')"
 
 <!-- Scripts principaux -->
 <script>
+
+    // Calculateur de rendement locatif (FR)
+function calculateRentalYieldFR() {
+  const priceInput = document.getElementById("ryPrice_fr");
+  const rentInput = document.getElementById("ryRent_fr");
+  const chargesInput = document.getElementById("ryCharges_fr");
+  const resultEl = document.getElementById("ryResult_fr");
+
+  if (!priceInput || !rentInput || !chargesInput || !resultEl) return;
+
+  const parseFR = (val) =>
+    val === null || val === undefined || String(val).trim() === ""
+      ? NaN
+      : parseFloat(String(val).replace(",", "."));
+
+  const price = parseFR(priceInput.value);
+  const rent = parseFR(rentInput.value);
+  const charges = parseFR(chargesInput.value);
+
+  if (isNaN(price) || price <= 0 || isNaN(rent) || rent <= 0) {
+    resultEl.textContent =
+      "Renseigne au minimum le prix d’achat et le loyer mensuel (valeurs positives).";
+    return;
+  }
+
+  const annualRent = rent * 12;
+  const annualCharges = isNaN(charges) || charges < 0 ? 0 : charges;
+
+  const grossYield = (annualRent / price) * 100;
+  const netYield = ((annualRent - annualCharges) / price) * 100;
+
+  const grossText = grossYield.toFixed(2).replace(".", ",") + " %";
+  const netText = netYield.toFixed(2).replace(".", ",") + " %";
+
+  resultEl.innerHTML =
+    "Loyer annuel : <strong>" +
+    annualRent.toFixed(0).replace(".", " ") +
+    " €</strong><br>" +
+    "Rendement brut : <strong>" +
+    grossText +
+    "</strong><br>" +
+    "Rendement net (après charges) : <strong>" +
+    netText +
+    "</strong>";
+}
+
+// Convertisseur d’énergie (FR) : Joules ↔ kcal ↔ kWh
+function convertEnergyFR() {
+  const jInput = document.getElementById("energyJ_fr");
+  const kcalInput = document.getElementById("energyKcal_fr");
+  const kwhInput = document.getElementById("energyKwh_fr");
+  const resultEl = document.getElementById("energyResult_fr");
+
+  if (!jInput || !kcalInput || !kwhInput || !resultEl) return;
+
+  // Petite fonction pour gérer points/virgules
+  function parseFR(value) {
+    if (!value) return NaN;
+    return parseFloat(String(value).replace(",", "."));
+  }
+
+  const jVal = parseFR(jInput.value);
+  const kcalVal = parseFR(kcalInput.value);
+  const kwhVal = parseFR(kwhInput.value);
+
+  const J_PER_KCAL = 4184;
+  const J_PER_KWH = 3600000;
+
+  let joules = NaN;
+
+  // 1) On détecte quelle case est remplie (priorité : Joules > kcal > kWh)
+  if (!isNaN(jVal) && jInput.value.trim() !== "") {
+    joules = jVal;
+  } else if (!isNaN(kcalVal) && kcalInput.value.trim() !== "") {
+    joules = kcalVal * J_PER_KCAL;
+  } else if (!isNaN(kwhVal) && kwhInput.value.trim() !== "") {
+    joules = kwhVal * J_PER_KWH;
+  } else {
+    resultEl.textContent = "Renseigne au moins un des trois champs.";
+    return;
+  }
+
+  // 2) On calcule les autres unités
+  const kcal = joules / J_PER_KCAL;
+  const kwh = joules / J_PER_KWH;
+
+  // 3) On réécrit proprement dans les inputs
+  jInput.value = joules.toFixed(2);
+  kcalInput.value = kcal.toFixed(4);
+  kwhInput.value = kwh.toFixed(6);
+
+  // 4) Petit résumé
+  resultEl.innerHTML =
+    "Énergie : <strong>" + joules.toFixed(2) + " J</strong><br>" +
+    "≈ <strong>" + kcal.toFixed(4) + " kcal</strong><br>" +
+    "≈ <strong>" + kwh.toFixed(6) + " kWh</strong>";
+}
+
+// Convertisseur fraction ↔ décimal ↔ pourcentage (FR)
+
+function gcd(a, b) {
+  a = Math.abs(a);
+  b = Math.abs(b);
+  while (b) {
+    const t = b;
+    b = a % b;
+    a = t;
+  }
+  return a || 1;
+}
+
+function convertFractionDecimalPercent() {
+  const fractionInput = document.getElementById("fractionInput");
+  const decimalInput = document.getElementById("decimalInput");
+  const percentInput = document.getElementById("percentInput");
+  const resultEl = document.getElementById("fractionResult");
+
+  if (!fractionInput || !decimalInput || !percentInput || !resultEl) return;
+
+  const fracRaw = (fractionInput.value || "").trim();
+  const decRaw = (decimalInput.value || "").trim();
+  const pctRaw = (percentInput.value || "").trim();
+
+  let fracNum = null;
+  let fracDen = null;
+  let decimal = null;
+  let percent = null;
+
+  // 1) Priorité à la fraction si remplie
+  if (fracRaw) {
+    const parts = fracRaw.split("/");
+    if (parts.length !== 2) {
+      resultEl.textContent = "Format de fraction invalide. Utilise la forme a/b (ex. 1/4).";
+      return;
+    }
+    const num = parseFloat(parts[0].replace(",", "."));
+    const den = parseFloat(parts[1].replace(",", "."));
+    if (isNaN(num) || isNaN(den) || den === 0) {
+      resultEl.textContent = "Fraction invalide. Vérifie le numérateur et le dénominateur.";
+      return;
+    }
+    decimal = num / den;
+    percent = decimal * 100;
+    // Simplification de la fraction
+    const g = gcd(num, den);
+    fracNum = num / g;
+    fracDen = den / g;
+  }
+  // 2) Sinon décimal
+  else if (decRaw) {
+    const dec = parseFloat(decRaw.replace(",", "."));
+    if (isNaN(dec)) {
+      resultEl.textContent = "Décimal invalide.";
+      return;
+    }
+    decimal = dec;
+    percent = decimal * 100;
+    // Approximation fraction avec dénominateur max 100
+    const denom = 100;
+    const num = Math.round(decimal * denom);
+    const g = gcd(num, denom);
+    fracNum = num / g;
+    fracDen = denom / g;
+  }
+  // 3) Sinon pourcentage
+  else if (pctRaw) {
+    const cleaned = pctRaw.replace("%", "").trim();
+    const pct = parseFloat(cleaned.replace(",", "."));
+    if (isNaN(pct)) {
+      resultEl.textContent = "Pourcentage invalide.";
+      return;
+    }
+    percent = pct;
+    decimal = percent / 100;
+    const denom = 100;
+    const num = Math.round(decimal * denom);
+    const g = gcd(num, denom);
+    fracNum = num / g;
+    fracDen = denom / g;
+  } else {
+    resultEl.textContent = "Remplis au moins un des trois champs.";
+    return;
+  }
+
+  // Mise à jour des champs
+  if (fracNum !== null && fracDen !== null) {
+    fractionInput.value = fracNum + "/" + fracDen;
+  }
+  if (decimal !== null) {
+    decimalInput.value = decimal.toFixed(4).replace(".", ",");
+  }
+  if (percent !== null) {
+    percentInput.value = percent.toFixed(2).replace(".", ",");
+  }
+
+  resultEl.innerHTML =
+    "Fraction : <strong>" + fracNum + "/" + fracDen + "</strong><br>" +
+    "Décimal : <strong>" + decimal.toFixed(4) + "</strong><br>" +
+    "Pourcentage : <strong>" + percent.toFixed(2) + " %</strong>";
+}
 
     // Générateur de QR Code
 let qrInstance = null;
