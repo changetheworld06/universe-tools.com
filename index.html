@@ -1093,6 +1093,25 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
   </div>
 </article>
 
+<article
+  class="tool-card"
+  data-name="générateur qr code lien url texte"
+  data-category="divers"
+  onclick="scrollToElement('tool-qrcode')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Générateur de QR Code</div>
+    <div class="tool-card-tag">Divers</div>
+  </div>
+  <p class="tool-card-desc">
+    Colle un lien ou un texte et génère un QR Code à scanner avec ton téléphone.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Local</span>
+    <span>Aucun envoi de données</span>
+  </div>
+</article>
+
 <!-- Fréquence cardiaque cible (FR) -->
 <article
   class="tool-card"
@@ -4060,6 +4079,43 @@ onclick="scrollToElement('tool-countdown')"
           <section id="organisation">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Organisation & divers</h2>
 
+            <article id="tool-qrcode" class="tool-section">
+                <h3>Générateur de QR Code</h3>
+                <p>
+                  Génére un QR Code à partir d’un lien, d’un texte ou d’une petite note.
+                  Tu peux ensuite le scanner avec ton smartphone ou l’enregistrer comme image.
+                </p>
+              
+                <div class="field">
+                  <label for="qrText">Texte ou URL</label>
+                  <textarea
+                    id="qrText"
+                    rows="3"
+                    placeholder="Ex. https://universe-tools.com ou Liste de courses : lait, œufs, pain…"
+                  ></textarea>
+                </div>
+              
+                <div style="margin-top:0.9rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+                  <button class="btn-tool" type="button" onclick="generateQrCode()">
+                    Générer le QR Code
+                  </button>
+                  <button class="btn-tool" type="button" onclick="clearQrCode()">
+                    Effacer
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="qrCodeResult">
+                  <div
+                    id="qrCodeContainer"
+                    style="margin-top:0.9rem; display:inline-block; padding:0.75rem; background:#020617; border-radius:12px; border:1px solid rgba(55,65,81,0.9);"
+                  ></div>
+                  <span class="small-note">
+                    Le QR Code est généré localement dans ton navigateur.  
+                    Sur mobile : appui long pour enregistrer l’image • Sur ordinateur : clic droit → Enregistrer l’image.
+                  </span>
+                </div>
+              </article>
+
             <article id="tool-tiles" class="tool-section">
                 <h3>Calculateur de carrelage (m² + pertes)</h3>
                 <p>
@@ -4501,8 +4557,54 @@ onclick="scrollToElement('tool-countdown')"
 </footer>
 </div> <!-- /.page -->
 
+<!-- Librairie pour générer des QR Codes -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <!-- Scripts principaux -->
 <script>
+
+    // Générateur de QR Code
+let qrInstance = null;
+
+function generateQrCode() {
+  const input = document.getElementById("qrText");
+  const container = document.getElementById("qrCodeContainer");
+  const resultEl = document.getElementById("qrCodeResult");
+
+  if (!input || !container || !resultEl) return;
+
+  const text = (input.value || "").trim();
+
+  if (!text) {
+    container.innerHTML = "<span>Ajoute d’abord un texte ou une URL.</span>";
+    return;
+  }
+
+  if (typeof QRCode === "undefined") {
+    container.innerHTML =
+      "<span>Erreur : la librairie de QR Code n’est pas chargée.</span>";
+    return;
+  }
+
+  // Réinitialise le conteneur
+  container.innerHTML = "";
+
+  qrInstance = new QRCode(container, {
+    text: text,
+    width: 180,
+    height: 180,
+    correctLevel: QRCode.CorrectLevel.M
+  });
+}
+
+function clearQrCode() {
+  const input = document.getElementById("qrText");
+  const container = document.getElementById("qrCodeContainer");
+
+  if (input) input.value = "";
+  if (container) container.innerHTML = "";
+  qrInstance = null;
+}
 
     // Fréquence cardiaque cible (FR)
 function calculateTargetHeartRate() {

@@ -1102,6 +1102,25 @@ onclick="scrollToElement('tool-suggest')"
 </div>
 </article>
 
+<article
+  class="tool-card"
+  data-name="qr code generator link url text"
+  data-category="misc"
+  onclick="scrollToElement('tool-qrcode')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">QR Code generator</div>
+    <div class="tool-card-tag">Misc</div>
+  </div>
+  <p class="tool-card-desc">
+    Paste a link or a short text and generate a QR Code you can scan with your phone.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Local</span>
+    <span>No data upload</span>
+  </div>
+</article>
+
 <!-- Target heart rate (EN) -->
 <article
   class="tool-card"
@@ -4090,6 +4109,43 @@ onclick="scrollToElement('tool-fake')"
           <section id="organisation">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Organization & misc</h2>
 
+            <article id="tool-qrcode" class="tool-section">
+                <h3>QR Code generator</h3>
+                <p>
+                  Generate a QR Code from a link, a short text or a small note.
+                  You can then scan it with your smartphone or save it as an image.
+                </p>
+              
+                <div class="field">
+                  <label for="qrText">Text or URL</label>
+                  <textarea
+                    id="qrText"
+                    rows="3"
+                    placeholder="E.g. https://universe-tools.com or Shopping list: milk, eggs, bread…"
+                  ></textarea>
+                </div>
+              
+                <div style="margin-top:0.9rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+                  <button class="btn-tool" type="button" onclick="generateQrCode()">
+                    Generate QR Code
+                  </button>
+                  <button class="btn-tool" type="button" onclick="clearQrCode()">
+                    Clear
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="qrCodeResult">
+                  <div
+                    id="qrCodeContainer"
+                    style="margin-top:0.9rem; display:inline-block; padding:0.75rem; background:#020617; border-radius:12px; border:1px solid rgba(55,65,81,0.9);"
+                  ></div>
+                  <span class="small-note">
+                    The QR Code is generated locally in your browser.  
+                    On mobile: long-press to save the image • On desktop: right-click → Save image.
+                  </span>
+                </div>
+              </article>
+
             <article id="tool-tiles" class="tool-section">
                 <h3>Tile calculator (m² + waste)</h3>
                 <p>
@@ -4527,8 +4583,53 @@ onclick="scrollToElement('tool-fake')"
     </footer>
   </div> <!-- /.page -->
 
+  <!-- Library for QR Code generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
   <!-- Main scripts -->
   <script>
+
+    // QR Code generator
+let qrInstance = null;
+
+function generateQrCode() {
+  const input = document.getElementById("qrText");
+  const container = document.getElementById("qrCodeContainer");
+  const resultEl = document.getElementById("qrCodeResult");
+
+  if (!input || !container || !resultEl) return;
+
+  const text = (input.value || "").trim();
+
+  if (!text) {
+    container.innerHTML = "<span>Please enter some text or a URL first.</span>";
+    return;
+  }
+
+  if (typeof QRCode === "undefined") {
+    container.innerHTML =
+      "<span>Error: QR Code library is not loaded.</span>";
+    return;
+  }
+
+  container.innerHTML = "";
+
+  qrInstance = new QRCode(container, {
+    text: text,
+    width: 180,
+    height: 180,
+    correctLevel: QRCode.CorrectLevel.M
+  });
+}
+
+function clearQrCode() {
+  const input = document.getElementById("qrText");
+  const container = document.getElementById("qrCodeContainer");
+
+  if (input) input.value = "";
+  if (container) container.innerHTML = "";
+  qrInstance = null;
+}
 
     // Target heart rate (EN)
 function calculateTargetHeartRate() {
