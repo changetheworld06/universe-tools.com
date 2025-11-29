@@ -1114,6 +1114,45 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 
 <article
   class="tool-card"
+  data-name="tdee besoin calorie quotidien métabolisme"
+  data-category="sante"
+  onclick="scrollToElement('tool-tdee')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Calcul TDEE (besoins caloriques)</div>
+    <div class="tool-card-tag">Santé</div>
+  </div>
+  <p class="tool-card-desc">
+    Calcule ton métabolisme de base (BMR) et tes besoins caloriques journaliers selon ton niveau d’activité.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Formule Mifflin–St Jeor</span>
+    <span>✔ Activité physique</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
+  data-name="calculateur amortissement lineaire dégressif crédit prêt"
+  data-category="finance"
+  onclick="scrollToElement('tool-amortization')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Amortissement linéaire / dégressif</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Calcule le tableau d’amortissement d’un prêt avec annuités constantes
+    (dégressif) ou remboursement linéaire du capital.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Amortissement annuel</span>
+    <span>Tableau détaillé</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
   data-name="rendement locatif investissement immobilier loyer"
   data-category="finance"
   onclick="scrollToElement('tool-rental-yield-fr')"
@@ -3380,6 +3419,76 @@ onclick="scrollToElement('tool-countdown')"
 <section id="finance">
     <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Finance & budget</h2>
 
+    <article id="tool-amortization" class="tool-section">
+        <h3>Calculateur d’amortissement linéaire / dégressif</h3>
+      
+        <p>
+          Saisis un <strong>montant de prêt</strong>, un <strong>taux d’intérêt annuel</strong> et
+          une <strong>durée</strong> en années. Cet outil génère un tableau d’amortissement annuel
+          en utilisant soit un <strong>amortissement linéaire</strong>
+          (capital remboursé constant), soit un <strong>amortissement dégressif</strong>
+          avec mensualités constantes (type prêt amortissable classique).
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateAmortizationFr();">
+          <div class="field">
+            <label for="amortAmountFr">Montant du prêt (€)</label>
+            <input
+              id="amortAmountFr"
+              type="number"
+              min="1"
+              step="1000"
+              placeholder="Ex. 200000"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="amortRateFr">Taux d’intérêt annuel (%)</label>
+            <input
+              id="amortRateFr"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Ex. 3.5"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="amortYearsFr">Durée (années)</label>
+            <input
+              id="amortYearsFr"
+              type="number"
+              min="1"
+              max="40"
+              step="1"
+              placeholder="Ex. 20"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="amortTypeFr">Type d’amortissement</label>
+            <select id="amortTypeFr">
+              <option value="linear">Linéaire (capital constant)</option>
+              <option value="declining">Dégressif (mensualités constantes)</option>
+            </select>
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateAmortizationFr()">
+            Générer le tableau
+          </button>
+        </div>
+      
+        <div class="tool-result" id="amortResultFr"></div>
+      
+        <div class="small-note">
+          Approximation simple qui ignore les assurances, frais et conditions
+          particulières des banques. Les montants sont arrondis à deux décimales.
+          Le tableau est donné à titre indicatif uniquement.
+        </div>
+      </article>
+
     <article id="tool-rental-yield-fr" class="tool-section">
         <h3>Calculateur de rendement locatif</h3>
         <p>
@@ -4191,6 +4300,86 @@ onclick="scrollToElement('tool-countdown')"
           <section id="sante">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Santé</h2>
 
+            <article id="tool-tdee" class="tool-section">
+                <h3>Calculateur TDEE (besoins caloriques journaliers)</h3>
+              
+                <p>
+                  Calcule ton métabolisme de base (BMR) avec la formule
+                  <strong>Mifflin–St Jeor</strong>, puis estime tes besoins
+                  caloriques journaliers (TDEE) selon ton niveau d’activité.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); calculateTdeeFr();">
+              
+                  <div class="field">
+                    <label for="tdeeSexFr">Sexe</label>
+                    <select id="tdeeSexFr">
+                      <option value="male">Homme</option>
+                      <option value="female">Femme</option>
+                    </select>
+                  </div>
+              
+                  <div class="field">
+                    <label for="tdeeAgeFr">Âge (années)</label>
+                    <input
+                      id="tdeeAgeFr"
+                      type="number"
+                      min="1"
+                      max="120"
+                      placeholder="Ex. 30"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="tdeeHeightFr">Taille (cm)</label>
+                    <input
+                      id="tdeeHeightFr"
+                      type="number"
+                      min="50"
+                      max="250"
+                      placeholder="Ex. 175"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="tdeeWeightFr">Poids (kg)</label>
+                    <input
+                      id="tdeeWeightFr"
+                      type="number"
+                      min="20"
+                      max="300"
+                      placeholder="Ex. 70"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="tdeeActivityFr">Niveau d’activité</label>
+                    <select id="tdeeActivityFr">
+                      <option value="1.2">Sédentaire (1.2)</option>
+                      <option value="1.375">Léger (1.375)</option>
+                      <option value="1.55">Modéré (1.55)</option>
+                      <option value="1.725">Intense (1.725)</option>
+                      <option value="1.9">Très intense (1.9)</option>
+                    </select>
+                  </div>
+              
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="calculateTdeeFr()">
+                    Calculer mes besoins
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="tdeeResultFr"></div>
+              
+                <div class="small-note">
+                  🔥 Le TDEE représente le nombre de calories que tu dépenses chaque jour en
+                  fonction de ton activité.<br>
+                  📌 Le BMR est le métabolisme de base (énergie consommée au repos).
+                </div>
+              </article>
+
             <article id="tool-heart-rate" class="tool-section">
                 <h3>Fréquence cardiaque cible (sport)</h3>
                 <p>
@@ -4768,6 +4957,173 @@ onclick="scrollToElement('tool-countdown')"
 
 <!-- Scripts principaux -->
 <script>
+
+// --------- Helpers communs ---------
+
+function formatEuroFr(value) {
+  return value.toLocaleString("fr-FR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+function formatEuroEn(value) {
+  return value.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+// Calcule un tableau annuel linéaire (capital constant)
+function buildLinearSchedule(P, r, years) {
+  const rows = [];
+  const principalYear = P / years;
+  let remaining = P;
+
+  rows.push("Année | Capital remboursé | Intérêts | Paiement total | Capital restant");
+
+  for (let year = 1; year <= years; year++) {
+    const interest = remaining * r;
+    const total = principalYear + interest;
+    remaining -= principalYear;
+    if (remaining < 0) remaining = 0;
+
+    rows.push(
+      `${year.toString().padStart(3, " ")}  | ` +
+      `${principalYear.toFixed(2).padStart(16, " ")} | ` +
+      `${interest.toFixed(2).padStart(8, " ")} | ` +
+      `${total.toFixed(2).padStart(12, " ")} | ` +
+      `${remaining.toFixed(2).padStart(15, " ")}`
+    );
+  }
+  return rows;
+}
+
+// Calcule un tableau annuel type prêt amortissable classique (mensualités constantes)
+function buildDecliningSchedule(P, r, years) {
+  const rows = [];
+  const nMonths = years * 12;
+  const monthlyRate = r / 12;
+
+  // Mensualité constante : A = P * r / (1 - (1 + r)^-n)
+  const monthlyPayment =
+    monthlyRate === 0
+      ? P / nMonths
+      : (P * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -nMonths));
+
+  rows.push("Année | Capital remboursé | Intérêts | Paiement total | Capital restant");
+
+  let remaining = P;
+
+  for (let year = 1; year <= years; year++) {
+    let yearInterest = 0;
+    let yearPrincipal = 0;
+
+    for (let m = 0; m < 12; m++) {
+      const interest = remaining * monthlyRate;
+      const principal = monthlyPayment - interest;
+      yearInterest += interest;
+      yearPrincipal += principal;
+      remaining -= principal;
+      if (remaining < 0) remaining = 0;
+    }
+
+    const total = yearInterest + yearPrincipal;
+
+    rows.push(
+      `${year.toString().padStart(3, " ")}  | ` +
+      `${yearPrincipal.toFixed(2).padStart(16, " ")} | ` +
+      `${yearInterest.toFixed(2).padStart(8, " ")} | ` +
+      `${total.toFixed(2).padStart(12, " ")} | ` +
+      `${remaining.toFixed(2).padStart(15, " ")}`
+    );
+  }
+  return rows;
+}
+
+// --------- Version FR ---------
+
+function calculateAmortizationFr() {
+  const amountEl = document.getElementById("amortAmountFr");
+  const rateEl = document.getElementById("amortRateFr");
+  const yearsEl = document.getElementById("amortYearsFr");
+  const typeEl = document.getElementById("amortTypeFr");
+  const resultEl = document.getElementById("amortResultFr");
+
+  if (!amountEl || !rateEl || !yearsEl || !typeEl || !resultEl) return;
+
+  const amount = Number(amountEl.value);
+  const ratePercent = Number(rateEl.value);
+  const years = Number(yearsEl.value);
+  const type = typeEl.value;
+
+  if (!amount || !ratePercent || !years || amount <= 0 || years <= 0 || ratePercent < 0) {
+    resultEl.textContent = "Merci de renseigner un montant, un taux et une durée valides.";
+    return;
+  }
+
+  const r = ratePercent / 100;
+  let rows;
+
+  if (type === "linear") {
+    rows = buildLinearSchedule(amount, r, years);
+  } else {
+    rows = buildDecliningSchedule(amount, r, years);
+  }
+
+  const summary =
+    `<p><strong>Résumé :</strong> montant ` +
+    `${formatEuroFr(amount)} € • taux ${ratePercent}% • durée ${years} ans.</p>`;
+
+  const pre =
+    `<pre style="margin-top:0.6rem; white-space:pre; font-family:Menlo,Consolas,monospace; font-size:0.8rem;">` +
+    rows.join("\n") +
+    "</pre>";
+
+  resultEl.innerHTML = summary + pre;
+}
+
+// --------- Version EN ---------
+
+function calculateAmortizationEn() {
+  const amountEl = document.getElementById("amortAmountEn");
+  const rateEl = document.getElementById("amortRateEn");
+  const yearsEl = document.getElementById("amortYearsEn");
+  const typeEl = document.getElementById("amortTypeEn");
+  const resultEl = document.getElementById("amortResultEn");
+
+  if (!amountEl || !rateEl || !yearsEl || !typeEl || !resultEl) return;
+
+  const amount = Number(amountEl.value);
+  const ratePercent = Number(rateEl.value);
+  const years = Number(yearsEl.value);
+  const type = typeEl.value;
+
+  if (!amount || !ratePercent || !years || amount <= 0 || years <= 0 || ratePercent < 0) {
+    resultEl.textContent = "Please enter a valid amount, rate and duration.";
+    return;
+  }
+
+  const r = ratePercent / 100;
+  let rows;
+
+  if (type === "linear") {
+    rows = buildLinearSchedule(amount, r, years);
+  } else {
+    rows = buildDecliningSchedule(amount, r, years);
+  }
+
+  const summary =
+    `<p><strong>Summary:</strong> amount ` +
+    `${formatEuroEn(amount)} € • rate ${ratePercent}% • duration ${years} years.</p>`;
+
+  const pre =
+    `<pre style="margin-top:0.6rem; white-space:pre; font-family:Menlo,Consolas,monospace; font-size:0.8rem;">` +
+    rows.join("\n") +
+    "</pre>";
+
+  resultEl.innerHTML = summary + pre;
+}
 
     // Calculateur de rendement locatif (FR)
 function calculateRentalYieldFR() {

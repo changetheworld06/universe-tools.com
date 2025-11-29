@@ -1123,6 +1123,45 @@ onclick="scrollToElement('tool-suggest')"
 
 <article
   class="tool-card"
+  data-name="tdee calorie needs basal metabolic rate"
+  data-category="health"
+  onclick="scrollToElement('tool-tdee-en')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">TDEE – Daily calorie needs</div>
+    <div class="tool-card-tag">Health</div>
+  </div>
+  <p class="tool-card-desc">
+    Calculates your basal metabolic rate (BMR) and total daily energy expenditure (TDEE).
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Mifflin–St Jeor</span>
+    <span>✔ Activity multipliers</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
+  data-name="loan amortization schedule linear declining"
+  data-category="finance"
+  onclick="scrollToElement('tool-amortization-en')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Linear / declining amortization</div>
+    <div class="tool-card-tag">Finance</div>
+  </div>
+  <p class="tool-card-desc">
+    Build a loan amortization schedule with either constant principal
+    (linear) or constant payments (declining balance).
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Yearly schedule</span>
+    <span>Detailed breakdown</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
   data-name="rental yield calculator real estate investment"
   data-category="finance"
   onclick="scrollToElement('tool-rental-yield-en')"
@@ -3396,6 +3435,75 @@ onclick="scrollToElement('tool-fake')"
 <section id="finance">
     <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Finance & budget</h2>
 
+    <article id="tool-amortization-en" class="tool-section">
+        <h3>Linear / declining amortization calculator</h3>
+      
+        <p>
+          Enter the <strong>loan amount</strong>, <strong>annual interest rate</strong> and
+          <strong>duration</strong> in years. This tool generates a yearly amortization table
+          using either <strong>linear amortization</strong> (constant principal)
+          or a <strong>declining balance</strong> with constant payments
+          (standard amortizing loan).
+        </p>
+      
+        <form class="tool-form" onsubmit="event.preventDefault(); calculateAmortizationEn();">
+          <div class="field">
+            <label for="amortAmountEn">Loan amount (€)</label>
+            <input
+              id="amortAmountEn"
+              type="number"
+              min="1"
+              step="1000"
+              placeholder="e.g. 200000"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="amortRateEn">Annual interest rate (%)</label>
+            <input
+              id="amortRateEn"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="e.g. 3.5"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="amortYearsEn">Duration (years)</label>
+            <input
+              id="amortYearsEn"
+              type="number"
+              min="1"
+              max="40"
+              step="1"
+              placeholder="e.g. 20"
+            />
+          </div>
+      
+          <div class="field">
+            <label for="amortTypeEn">Amortization type</label>
+            <select id="amortTypeEn">
+              <option value="linear">Linear (constant principal)</option>
+              <option value="declining">Declining (constant payment)</option>
+            </select>
+          </div>
+        </form>
+      
+        <div style="margin-top:0.9rem;">
+          <button class="btn-tool" type="button" onclick="calculateAmortizationEn()">
+            Generate schedule
+          </button>
+        </div>
+      
+        <div class="tool-result" id="amortResultEn"></div>
+      
+        <div class="small-note">
+          Simple approximation that ignores insurance, fees and special bank
+          conditions. Amounts are rounded to two decimals. This is not financial advice.
+        </div>
+      </article>
+
     <article id="tool-rental-yield-en" class="tool-section">
         <h3>Rental yield calculator</h3>
         <p>
@@ -4237,6 +4345,85 @@ onclick="scrollToElement('tool-fake')"
           <section id="sante">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Health</h2>
 
+            <article id="tool-tdee-en" class="tool-section">
+                <h3>TDEE Calculator (Daily calorie needs)</h3>
+              
+                <p>
+                  Calculates your basal metabolic rate (BMR) using the
+                  <strong>Mifflin–St Jeor</strong> formula and your total daily calorie
+                  needs (TDEE) based on your activity level.
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); calculateTdeeEn();">
+              
+                  <div class="field">
+                    <label for="tdeeSexEn">Sex</label>
+                    <select id="tdeeSexEn">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+              
+                  <div class="field">
+                    <label for="tdeeAgeEn">Age (years)</label>
+                    <input
+                      id="tdeeAgeEn"
+                      type="number"
+                      min="1"
+                      max="120"
+                      placeholder="e.g. 30"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="tdeeHeightEn">Height (cm)</label>
+                    <input
+                      id="tdeeHeightEn"
+                      type="number"
+                      min="50"
+                      max="250"
+                      placeholder="e.g. 175"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="tdeeWeightEn">Weight (kg)</label>
+                    <input
+                      id="tdeeWeightEn"
+                      type="number"
+                      min="20"
+                      max="300"
+                      placeholder="e.g. 70"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="tdeeActivityEn">Activity level</label>
+                    <select id="tdeeActivityEn">
+                      <option value="1.2">Sedentary (1.2)</option>
+                      <option value="1.375">Light (1.375)</option>
+                      <option value="1.55">Moderate (1.55)</option>
+                      <option value="1.725">Intense (1.725)</option>
+                      <option value="1.9">Very intense (1.9)</option>
+                    </select>
+                  </div>
+              
+                </form>
+              
+                <div style="margin-top:0.9rem;">
+                  <button class="btn-tool" type="button" onclick="calculateTdeeEn()">
+                    Calculate my needs
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="tdeeResultEn"></div>
+              
+                <div class="small-note">
+                  🔥 TDEE = total calories you burn daily.<br>
+                  📌 BMR = basal metabolism (energy your body uses at rest).
+                </div>
+              </article>
+
             <article id="tool-heart-rate" class="tool-section">
                 <h3>Target heart rate (training)</h3>
                 <p>
@@ -4810,6 +4997,173 @@ onclick="scrollToElement('tool-fake')"
 
   <!-- Main scripts -->
   <script>
+
+// --------- Helpers communs ---------
+
+function formatEuroFr(value) {
+  return value.toLocaleString("fr-FR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+function formatEuroEn(value) {
+  return value.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+// Calcule un tableau annuel linéaire (capital constant)
+function buildLinearSchedule(P, r, years) {
+  const rows = [];
+  const principalYear = P / years;
+  let remaining = P;
+
+  rows.push("Année | Capital remboursé | Intérêts | Paiement total | Capital restant");
+
+  for (let year = 1; year <= years; year++) {
+    const interest = remaining * r;
+    const total = principalYear + interest;
+    remaining -= principalYear;
+    if (remaining < 0) remaining = 0;
+
+    rows.push(
+      `${year.toString().padStart(3, " ")}  | ` +
+      `${principalYear.toFixed(2).padStart(16, " ")} | ` +
+      `${interest.toFixed(2).padStart(8, " ")} | ` +
+      `${total.toFixed(2).padStart(12, " ")} | ` +
+      `${remaining.toFixed(2).padStart(15, " ")}`
+    );
+  }
+  return rows;
+}
+
+// Calcule un tableau annuel type prêt amortissable classique (mensualités constantes)
+function buildDecliningSchedule(P, r, years) {
+  const rows = [];
+  const nMonths = years * 12;
+  const monthlyRate = r / 12;
+
+  // Mensualité constante : A = P * r / (1 - (1 + r)^-n)
+  const monthlyPayment =
+    monthlyRate === 0
+      ? P / nMonths
+      : (P * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -nMonths));
+
+  rows.push("Année | Capital remboursé | Intérêts | Paiement total | Capital restant");
+
+  let remaining = P;
+
+  for (let year = 1; year <= years; year++) {
+    let yearInterest = 0;
+    let yearPrincipal = 0;
+
+    for (let m = 0; m < 12; m++) {
+      const interest = remaining * monthlyRate;
+      const principal = monthlyPayment - interest;
+      yearInterest += interest;
+      yearPrincipal += principal;
+      remaining -= principal;
+      if (remaining < 0) remaining = 0;
+    }
+
+    const total = yearInterest + yearPrincipal;
+
+    rows.push(
+      `${year.toString().padStart(3, " ")}  | ` +
+      `${yearPrincipal.toFixed(2).padStart(16, " ")} | ` +
+      `${yearInterest.toFixed(2).padStart(8, " ")} | ` +
+      `${total.toFixed(2).padStart(12, " ")} | ` +
+      `${remaining.toFixed(2).padStart(15, " ")}`
+    );
+  }
+  return rows;
+}
+
+// --------- Version FR ---------
+
+function calculateAmortizationFr() {
+  const amountEl = document.getElementById("amortAmountFr");
+  const rateEl = document.getElementById("amortRateFr");
+  const yearsEl = document.getElementById("amortYearsFr");
+  const typeEl = document.getElementById("amortTypeFr");
+  const resultEl = document.getElementById("amortResultFr");
+
+  if (!amountEl || !rateEl || !yearsEl || !typeEl || !resultEl) return;
+
+  const amount = Number(amountEl.value);
+  const ratePercent = Number(rateEl.value);
+  const years = Number(yearsEl.value);
+  const type = typeEl.value;
+
+  if (!amount || !ratePercent || !years || amount <= 0 || years <= 0 || ratePercent < 0) {
+    resultEl.textContent = "Merci de renseigner un montant, un taux et une durée valides.";
+    return;
+  }
+
+  const r = ratePercent / 100;
+  let rows;
+
+  if (type === "linear") {
+    rows = buildLinearSchedule(amount, r, years);
+  } else {
+    rows = buildDecliningSchedule(amount, r, years);
+  }
+
+  const summary =
+    `<p><strong>Résumé :</strong> montant ` +
+    `${formatEuroFr(amount)} € • taux ${ratePercent}% • durée ${years} ans.</p>`;
+
+  const pre =
+    `<pre style="margin-top:0.6rem; white-space:pre; font-family:Menlo,Consolas,monospace; font-size:0.8rem;">` +
+    rows.join("\n") +
+    "</pre>";
+
+  resultEl.innerHTML = summary + pre;
+}
+
+// --------- Version EN ---------
+
+function calculateAmortizationEn() {
+  const amountEl = document.getElementById("amortAmountEn");
+  const rateEl = document.getElementById("amortRateEn");
+  const yearsEl = document.getElementById("amortYearsEn");
+  const typeEl = document.getElementById("amortTypeEn");
+  const resultEl = document.getElementById("amortResultEn");
+
+  if (!amountEl || !rateEl || !yearsEl || !typeEl || !resultEl) return;
+
+  const amount = Number(amountEl.value);
+  const ratePercent = Number(rateEl.value);
+  const years = Number(yearsEl.value);
+  const type = typeEl.value;
+
+  if (!amount || !ratePercent || !years || amount <= 0 || years <= 0 || ratePercent < 0) {
+    resultEl.textContent = "Please enter a valid amount, rate and duration.";
+    return;
+  }
+
+  const r = ratePercent / 100;
+  let rows;
+
+  if (type === "linear") {
+    rows = buildLinearSchedule(amount, r, years);
+  } else {
+    rows = buildDecliningSchedule(amount, r, years);
+  }
+
+  const summary =
+    `<p><strong>Summary:</strong> amount ` +
+    `${formatEuroEn(amount)} € • rate ${ratePercent}% • duration ${years} years.</p>`;
+
+  const pre =
+    `<pre style="margin-top:0.6rem; white-space:pre; font-family:Menlo,Consolas,monospace; font-size:0.8rem;">` +
+    rows.join("\n") +
+    "</pre>";
+
+  resultEl.innerHTML = summary + pre;
+}
 
     // Rental yield calculator (EN)
 function calculateRentalYieldEN() {
