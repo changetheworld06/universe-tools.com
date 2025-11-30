@@ -1123,6 +1123,25 @@ onclick="scrollToElement('tool-suggest')"
 
 <article
   class="tool-card"
+  data-name="concrete calculator volume bags cement slab m3"
+  data-category="converter"
+  onclick="scrollToElement('tool-concrete')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Concrete calculator (volume + bags)</div>
+    <div class="tool-card-tag">Converter</div>
+  </div>
+  <p class="tool-card-desc">
+    Estimate concrete volume in m³ and the number of cement bags needed for a slab.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Volume + bags</span>
+    <span>Standard mix</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
   data-name="running power zones running ftp watt training zones"
   data-category="health"
   onclick="scrollToElement('tool-running-power')"
@@ -1323,16 +1342,16 @@ onclick="scrollToElement('tool-suggest')"
 
 <article
   class="tool-card"
-  data-name="paint calculator litres square meters how many cans"
-  data-category="organisation"
+  data-name="paint calculator litres surface area m2 coverage"
+  data-category="divers"
   onclick="scrollToElement('tool-paint')"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Paint calculator</div>
-    <div class="tool-card-tag">Organisation</div>
+    <div class="tool-card-tag">Misc</div>
   </div>
   <p class="tool-card-desc">
-    Quickly estimate how many liters of paint you need based on surface and coverage.
+    Estimate how many liters of paint you need based on surface area, coverage, and number of coats.
   </p>
   <div class="tool-card-meta">
     <span>✔ m² → liters</span>
@@ -2234,6 +2253,74 @@ onclick="scrollToElement('tool-fake')"
           <!-- 🟦 Converters -->
           <section id="convertisseurs">
             <h2 class="section-title" style="margin-bottom:0.6rem;">Converters</h2>
+
+            <article id="tool-concrete" class="tool-section">
+                <h3>Concrete calculator (volume + cement bags)</h3>
+                <p>
+                  This tool helps you estimate the <strong>concrete volume in m³</strong> for a rectangular slab,
+                  and the <strong>number of cement bags</strong> required using a standard mix
+                  (around 350&nbsp;kg of cement per m³ of concrete).
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); calculateConcreteBags();">
+                  <div class="field">
+                    <label for="concreteLength">Length (m)</label>
+                    <input
+                      id="concreteLength"
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      placeholder="e.g. 5"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="concreteWidth">Width (m)</label>
+                    <input
+                      id="concreteWidth"
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      placeholder="e.g. 4"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="concreteThickness">Thickness (cm)</label>
+                    <input
+                      id="concreteThickness"
+                      type="number"
+                      step="0.5"
+                      min="1"
+                      placeholder="e.g. 12"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="concreteBagSize">Cement bag weight (kg)</label>
+                    <select id="concreteBagSize">
+                      <option value="25">25 kg</option>
+                      <option value="30">30 kg</option>
+                      <option value="35" selected>35 kg (common)</option>
+                      <option value="40">40 kg</option>
+                    </select>
+                  </div>
+                </form>
+              
+                <div style="margin-top:1rem;">
+                  <button class="btn-tool" type="button" onclick="calculateConcreteBags()">
+                    Calculate volume and bags
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="concreteResult"></div>
+              
+                <div class="small-note">
+                  Approximation using a typical mix of <strong>≈ 350&nbsp;kg cement per m³</strong> of concrete.
+                  This does not account for project specific conditions (reinforcement, additives,
+                  losses, weather, etc.). For big projects, always confirm with a professional.
+                </div>
+              </article>
 
             <article id="tool-energy" class="tool-section">
                 <h3>Energy converter: Joules ↔ calories ↔ kWh</h3>
@@ -5047,6 +5134,51 @@ onclick="scrollToElement('tool-fake')"
 
   <!-- Main scripts -->
   <script>
+
+function calculateConcreteBags() {
+  const length = parseFloat(document.getElementById("concreteLength")?.value);
+  const width = parseFloat(document.getElementById("concreteWidth")?.value);
+  const thicknessCm = parseFloat(document.getElementById("concreteThickness")?.value);
+  const bagSize = parseFloat(document.getElementById("concreteBagSize")?.value);
+  const resultEl = document.getElementById("concreteResult");
+
+  if (!resultEl) return;
+
+  if (!length || !width || !thicknessCm || !bagSize || length <= 0 || width <= 0 || thicknessCm <= 0 || bagSize <= 0) {
+    resultEl.textContent =
+      document.documentElement.lang === "fr"
+        ? "Renseigne des valeurs valides pour la longueur, la largeur, l’épaisseur et le poids des sacs."
+        : "Please enter valid values for length, width, thickness and bag weight.";
+    return;
+  }
+
+  // Épaisseur en mètres
+  const thicknessM = thicknessCm / 100;
+
+  // Volume en m³
+  const volume = length * width * thicknessM;
+
+  // Dosage standard ~350 kg de ciment / m³
+  const cementKg = volume * 350;
+
+  const bags = Math.ceil(cementKg / bagSize);
+
+  const isFr = document.documentElement.lang === "fr";
+
+  let html = "";
+
+  if (isFr) {
+    html += `<strong>Volume de béton estimé :</strong> ${volume.toFixed(2)} m³<br>`;
+    html += `Quantité de ciment ≈ ${cementKg.toFixed(0)} kg<br>`;
+    html += `Nombre de sacs de ${bagSize} kg ≈ <strong>${bags}</strong> sac(s).`;
+  } else {
+    html += `<strong>Estimated concrete volume:</strong> ${volume.toFixed(2)} m³<br>`;
+    html += `Cement required ≈ ${cementKg.toFixed(0)} kg<br>`;
+    html += `Number of ${bagSize} kg bags ≈ <strong>${bags}</strong> bag(s).`;
+  }
+
+  resultEl.innerHTML = html;
+}
 
 function calculateRunningPowerZones() {
   const ftp = parseFloat(document.getElementById("runFtp").value);

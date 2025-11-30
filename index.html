@@ -1114,6 +1114,25 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 
 <article
   class="tool-card"
+  data-name="beton dalle volume sacs ciment m3 calcul"
+  data-category="convertisseur"
+  onclick="scrollToElement('tool-concrete')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Calcul de béton (volume + sacs)</div>
+    <div class="tool-card-tag">Convertisseur</div>
+  </div>
+  <p class="tool-card-desc">
+    Estime le volume de béton en m³ et le nombre de sacs de ciment nécessaires pour ta dalle.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ Volume + sacs</span>
+    <span>Dosage standard</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
   data-name="puissance course running power zones watts ftp course pied"
   data-category="sante"
   onclick="scrollToElement('tool-running-power')"
@@ -1314,8 +1333,8 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 
 <article
   class="tool-card"
-  data-name="calculateur peinture litres m2 surface combien pot"
-  data-category="organisation"
+  data-name="calculateur de peinture litres surface m2 couches"
+  data-category="divers"
   onclick="scrollToElement('tool-paint')"
 >
   <div class="tool-card-header">
@@ -1323,7 +1342,8 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
     <div class="tool-card-tag">Organisation</div>
   </div>
   <p class="tool-card-desc">
-    Calcule rapidement la quantité de peinture nécessaire en litres selon la surface et le rendement du pot.
+    Calcule rapidement la quantité de peinture nécessaire en litres
+    selon la surface et le rendement du pot.
   </p>
   <div class="tool-card-meta">
     <span>✔ m² → litres</span>
@@ -2222,6 +2242,75 @@ onclick="scrollToElement('tool-countdown')"
           <!-- 🟦 Convertisseurs -->
           <section id="convertisseurs">
             <h2 class="section-title" style="margin-bottom:0.6rem;">Convertisseurs</h2>
+
+            <article id="tool-concrete" class="tool-section">
+                <h3>Calcul de béton (volume + sacs de ciment)</h3>
+                <p>
+                  Cet outil t’aide à estimer le <strong>volume de béton en m³</strong> pour une dalle
+                  rectangulaire, ainsi que le <strong>nombre de sacs de ciment</strong> nécessaires
+                  avec un dosage standard (environ 350&nbsp;kg de ciment par m³ de béton).
+                </p>
+              
+                <form class="tool-form" onsubmit="event.preventDefault(); calculateConcreteBags();">
+                  <div class="field">
+                    <label for="concreteLength">Longueur (m)</label>
+                    <input
+                      id="concreteLength"
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      placeholder="Ex. 5"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="concreteWidth">Largeur (m)</label>
+                    <input
+                      id="concreteWidth"
+                      type="number"
+                      step="0.01"
+                      min="0"
+                      placeholder="Ex. 4"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="concreteThickness">Épaisseur (cm)</label>
+                    <input
+                      id="concreteThickness"
+                      type="number"
+                      step="0.5"
+                      min="1"
+                      placeholder="Ex. 12"
+                    />
+                  </div>
+              
+                  <div class="field">
+                    <label for="concreteBagSize">Poids d’un sac de ciment (kg)</label>
+                    <select id="concreteBagSize">
+                      <option value="25">25 kg</option>
+                      <option value="30">30 kg</option>
+                      <option value="35" selected>35 kg (classique)</option>
+                      <option value="40">40 kg</option>
+                    </select>
+                  </div>
+                </form>
+              
+                <div style="margin-top:1rem;">
+                  <button class="btn-tool" type="button" onclick="calculateConcreteBags()">
+                    Calculer le volume et les sacs
+                  </button>
+                </div>
+              
+                <div class="tool-result" id="concreteResult"></div>
+              
+                <div class="small-note">
+                  Approximation : dosage standard d’environ <strong>350&nbsp;kg de ciment par m³</strong> 
+                  de béton. Le calcul ne prend pas en compte les particularités de ton chantier
+                  (ferraillage, adjuvants, pertes, conditions météo, etc.).  
+                  Pour un projet important, demande toujours un avis professionnel.
+                </div>
+              </article>
 
             <article id="tool-energie" class="tool-section">
                 <h3>Convertisseur d’énergie : Joules ↔ calories ↔ kWh</h3>
@@ -5006,6 +5095,51 @@ onclick="scrollToElement('tool-countdown')"
 
 <!-- Scripts principaux -->
 <script>
+
+function calculateConcreteBags() {
+  const length = parseFloat(document.getElementById("concreteLength")?.value);
+  const width = parseFloat(document.getElementById("concreteWidth")?.value);
+  const thicknessCm = parseFloat(document.getElementById("concreteThickness")?.value);
+  const bagSize = parseFloat(document.getElementById("concreteBagSize")?.value);
+  const resultEl = document.getElementById("concreteResult");
+
+  if (!resultEl) return;
+
+  if (!length || !width || !thicknessCm || !bagSize || length <= 0 || width <= 0 || thicknessCm <= 0 || bagSize <= 0) {
+    resultEl.textContent =
+      document.documentElement.lang === "fr"
+        ? "Renseigne des valeurs valides pour la longueur, la largeur, l’épaisseur et le poids des sacs."
+        : "Please enter valid values for length, width, thickness and bag weight.";
+    return;
+  }
+
+  // Épaisseur en mètres
+  const thicknessM = thicknessCm / 100;
+
+  // Volume en m³
+  const volume = length * width * thicknessM;
+
+  // Dosage standard ~350 kg de ciment / m³
+  const cementKg = volume * 350;
+
+  const bags = Math.ceil(cementKg / bagSize);
+
+  const isFr = document.documentElement.lang === "fr";
+
+  let html = "";
+
+  if (isFr) {
+    html += `<strong>Volume de béton estimé :</strong> ${volume.toFixed(2)} m³<br>`;
+    html += `Quantité de ciment ≈ ${cementKg.toFixed(0)} kg<br>`;
+    html += `Nombre de sacs de ${bagSize} kg ≈ <strong>${bags}</strong> sac(s).`;
+  } else {
+    html += `<strong>Estimated concrete volume:</strong> ${volume.toFixed(2)} m³<br>`;
+    html += `Cement required ≈ ${cementKg.toFixed(0)} kg<br>`;
+    html += `Number of ${bagSize} kg bags ≈ <strong>${bags}</strong> bag(s).`;
+  }
+
+  resultEl.innerHTML = html;
+}
 
 function calculateRunningPowerZones() {
   const ftp = parseFloat(document.getElementById("runFtp").value);
