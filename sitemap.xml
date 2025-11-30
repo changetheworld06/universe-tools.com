@@ -1,50 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage root -->
   <url>
     <loc>https://universe-tools.com/</loc>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
 
+  <!-- Version française -->
   <url>
-    <loc>https://universe-tools.com/#convertisseurs</loc>
-    <priority>0.8</priority>
+    <loc>https://universe-tools.com/index.html</loc>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
   </url>
 
+  <!-- Version anglaise -->
   <url>
-    <loc>https://universe-tools.com/#securite</loc>
-    <priority>0.8</priority>
+    <loc>https://universe-tools.com/index-en.html</loc>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
   </url>
 
-  <url>
-    <loc>https://universe-tools.com/#sante</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://universe-tools.com/#organisation</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- FR pages -->
+  <!-- FR pages légales -->
   <url>
     <loc>https://universe-tools.com/legal.html</loc>
     <priority>0.4</priority>
+    <changefreq>monthly</changefreq>
   </url>
+
   <url>
     <loc>https://universe-tools.com/privacy.html</loc>
     <priority>0.4</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
-  <!-- EN pages -->
+  <!-- EN pages légales -->
   <url>
     <loc>https://universe-tools.com/legal-en.html</loc>
     <priority>0.4</priority>
+    <changefreq>monthly</changefreq>
   </url>
+
   <url>
     <loc>https://universe-tools.com/privacy-en.html</loc>
     <priority>0.4</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
 </urlset>
