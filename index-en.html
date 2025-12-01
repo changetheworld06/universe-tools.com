@@ -29,6 +29,9 @@
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/index-en.html" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/legal.html" />
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/legal-en.html" />
+  <link rel="alternate" href="https://universe-tools.com/index.html" hreflang="fr" />
+  <link rel="alternate" href="https://universe-tools.com/index-en.html" hreflang="en" />
+  <link rel="alternate" href="https://universe-tools.com/index.html" hreflang="x-default" />
   <meta name="theme-color" content="#4f46e5">
   <meta name="google-adsense-account" content="ca-pub-2161270640127476">
   <!-- Google tag (gtag.js) -->
@@ -966,7 +969,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
             </div>
             <div class="hero-meta">
               <div class="hero-meta-item">
-                <strong>30+ tools</strong>
+                <strong>60+ tools</strong>
                 Always available, no sign up.
               </div>
               <div class="hero-meta-item">
@@ -1059,6 +1062,26 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
           <section id="main-tools" class="tools-section">
             <div class="tools-grid">
 
+        <!-- Suggest a new tool -->
+<article
+class="tool-card"
+data-name="suggest tool idea feature request"
+data-category="divers"
+onclick="scrollToElement('tool-suggest')"
+>
+<div class="tool-card-header">
+  <div class="tool-card-title">Suggest a new tool</div>
+  <div class="tool-card-tag">Misc</div>
+</div>
+<p class="tool-card-desc">
+  Missing a tool? Send us your idea in a few seconds.
+</p>
+<div class="tool-card-meta">
+  <span>✔ Via e-mail</span>
+  <span>No account needed</span>
+</div>
+</article>
+
           <!-- PDF ↔ JPG converter -->
           <article
           class="tool-card"
@@ -1082,30 +1105,10 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
           </div>
         </article>
 
-        <!-- Suggest a new tool -->
-<article
-class="tool-card"
-data-name="suggest tool idea feature request"
-data-category="misc"
-onclick="scrollToElement('tool-suggest')"
->
-<div class="tool-card-header">
-  <div class="tool-card-title">Suggest a new tool</div>
-  <div class="tool-card-tag">Misc</div>
-</div>
-<p class="tool-card-desc">
-  Missing a tool? Send us your idea in a few seconds.
-</p>
-<div class="tool-card-meta">
-  <span>✔ Via e-mail</span>
-  <span>No account needed</span>
-</div>
-</article>
-
 <article
   class="tool-card"
   data-name="qr code generator link url text"
-  data-category="misc"
+  data-category="divers"
   onclick="scrollToElement('tool-qrcode')"
 >
   <div class="tool-card-header">
@@ -1118,6 +1121,45 @@ onclick="scrollToElement('tool-suggest')"
   <div class="tool-card-meta">
     <span>✔ Local</span>
     <span>No data upload</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
+  data-name="barcode generator ean13 ean8 barcode"
+  data-category="divers"
+  onclick="scrollToElement('tool-barcode')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Barcode generator</div>
+    <div class="tool-card-tag">Organization</div>
+  </div>
+  <p class="tool-card-desc">
+    Generate an EAN-13 or EAN-8 barcode from a numeric code, directly in your browser.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ EAN-13 / EAN-8</span>
+    <span>Local canvas</span>
+  </div>
+</article>
+
+<article
+  class="tool-card"
+  data-name="insulation calculator R U thickness thermal conductivity"
+  data-category="divers"
+  onclick="scrollToElement('tool-insulation')"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Insulation calculator (R, U → thickness)</div>
+    <div class="tool-card-tag">Organization</div>
+  </div>
+  <p class="tool-card-desc">
+    Compute the required insulation thickness from thermal resistance (R),
+    U-value, or thermal conductivity λ.
+  </p>
+  <div class="tool-card-meta">
+    <span>✔ R ↔ U ↔ thickness</span>
+    <span>Building</span>
   </div>
 </article>
 
@@ -1143,7 +1185,7 @@ onclick="scrollToElement('tool-suggest')"
 <article
   class="tool-card"
   data-name="running power zones running ftp watt training zones"
-  data-category="health"
+  data-category="sante"
   onclick="scrollToElement('tool-running-power')"
 >
   <div class="tool-card-header">
@@ -1162,7 +1204,7 @@ onclick="scrollToElement('tool-suggest')"
 <article
   class="tool-card"
   data-name="tdee calorie needs basal metabolic rate"
-  data-category="health"
+  data-category="sante"
   onclick="scrollToElement('tool-tdee-en')"
 >
   <div class="tool-card-header">
@@ -1263,12 +1305,12 @@ onclick="scrollToElement('tool-suggest')"
 <article
   class="tool-card"
   data-name="target heart rate cardio training zone sport"
-  data-category="health"
+  data-category="sante"
   onclick="scrollToElement('tool-heart-rate')"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Target heart rate</div>
-    <div class="tool-card-tag">Health</div>
+    <div class="tool-card-tag">sante</div>
   </div>
   <p class="tool-card-desc">
     Estimate your target heart rate for training: moderate and intense zones.
@@ -1323,7 +1365,7 @@ onclick="scrollToElement('tool-suggest')"
 <article
   class="tool-card"
   data-name="tile calculator tiles tiling floor area waste percent"
-  data-category="misc"
+  data-category="divers"
   onclick="scrollToElement('tool-tiles')"
 >
   <div class="tool-card-header">
@@ -4655,6 +4697,105 @@ onclick="scrollToElement('tool-fake')"
           <section id="organisation">
             <h2 class="section-title" style="margin:1.6rem 0 0.6rem;">Organization & misc</h2>
 
+            <article id="tool-barcode" class="tool-section">
+              <h3>Barcode generator (EAN-13 / EAN-8)</h3>
+              <p>
+                This tool lets you generate a <strong>EAN-13</strong> or <strong>EAN-8</strong> barcode
+                from a simple numeric code. The drawing is done locally in your browser using a canvas.
+              </p>
+            
+              <form class="tool-form" onsubmit="event.preventDefault(); generateBarcode();">
+                <div class="field">
+                  <label for="barcodeType">Barcode type</label>
+                  <select id="barcodeType">
+                    <option value="ean13">EAN-13</option>
+                    <option value="ean8">EAN-8</option>
+                  </select>
+                </div>
+            
+                <div class="field">
+                  <label for="barcodeInput">Code (no spaces)</label>
+                  <input
+                    id="barcodeInput"
+                    type="text"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    placeholder="E.g. 590123412345 (EAN-13) or 5512345 (EAN-8)"
+                  />
+                  <p class="small-note">
+                    You can enter <strong>12 digits</strong> (EAN-13) or <strong>7 digits</strong> (EAN-8):
+                    the checksum will be computed automatically.  
+                    If you enter <strong>13</strong> or <strong>8</strong> digits, the checksum will be validated.
+                  </p>
+                </div>
+              </form>
+            
+              <div style="margin-top: 0.9rem;">
+                <button class="btn-tool" type="button" onclick="generateBarcode()">
+                  Generate barcode
+                </button>
+              </div>
+            
+              <div class="tool-result" id="barcodeResult"></div>
+            
+              <div style="margin-top:1rem; background:#0b1020; padding:1rem; border-radius:12px;">
+                <canvas
+                  id="barcodeCanvas"
+                  width="360"
+                  height="140"
+                  style="background:#fff; display:block; margin:0 auto; border-radius:8px;"
+                ></canvas>
+              </div>
+            
+              <div class="small-note">
+                The algorithm follows standard EAN-13 / EAN-8 rules (parities, checksum, guards).
+                This generator is for demonstration purposes and not a replacement for certified
+                industrial barcode generation.
+              </div>
+            </article>
+
+            <article id="tool-insulation" class="tool-section">
+              <h3>Insulation calculator (R, U → thickness)</h3>
+              <p>
+                This tool lets you compute the insulation thickness based on:
+              </p>
+              <ul>
+                <li>thermal resistance <strong>R</strong></li>
+                <li>U-value <strong>U</strong></li>
+                <li>thermal conductivity <strong>λ</strong></li>
+              </ul>
+            
+              <form class="tool-form" onsubmit="event.preventDefault(); calculateInsulation();">
+                <div class="field">
+                  <label for="insulLambda">Material conductivity λ (W/m·K)</label>
+                  <input id="insulLambda" type="number" step="0.001" placeholder="Ex. 0.038" />
+                </div>
+            
+                <div class="field">
+                  <label for="insulR">Thermal resistance R (m²·K/W)</label>
+                  <input id="insulR" type="number" step="0.01" placeholder="Ex. 5" />
+                </div>
+            
+                <div class="field">
+                  <label for="insulU">U-value (W/m²·K)</label>
+                  <input id="insulU" type="number" step="0.01" placeholder="Ex. 0.20" />
+                </div>
+              </form>
+            
+              <div style="margin-top: 1rem;">
+                <button class="btn-tool" type="button" onclick="calculateInsulation()">
+                  Calculate thickness
+                </button>
+              </div>
+            
+              <div class="tool-result" id="insulResult"></div>
+            
+              <div class="small-note">
+                Reminder: R = thickness / λ • U = 1 / R.<br>
+                Values are indicative and do not replace an official thermal study.
+              </div>
+            </article>
+
             <article id="tool-qrcode" class="tool-section">
                 <h3>QR Code generator</h3>
                 <p>
@@ -5134,6 +5275,296 @@ onclick="scrollToElement('tool-fake')"
 
   <!-- Main scripts -->
   <script>
+
+    // --- EAN checksum helpers ---
+
+function ean13Checksum(d12) {
+  // d12 = string de 12 chiffres
+  let sum = 0;
+  for (let i = 0; i < 12; i++) {
+    const n = parseInt(d12[i], 10);
+    // positions impaires (index 0,2,4...) = poids 1
+    // positions paires (index 1,3,5...) = poids 3
+    sum += (i % 2 === 0) ? n : n * 3;
+  }
+  const mod = sum % 10;
+  return (10 - mod) % 10;
+}
+
+function ean8Checksum(d7) {
+  // d7 = string de 7 chiffres
+  let sum = 0;
+  for (let i = 0; i < 7; i++) {
+    const n = parseInt(d7[i], 10);
+    // positions impaires (index 0,2,4,6) = poids 3
+    // positions paires (index 1,3,5) = poids 1
+    sum += (i % 2 === 0) ? n * 3 : n;
+  }
+  const mod = sum % 10;
+  return (10 - mod) % 10;
+}
+
+// --- EAN encoding tables ---
+
+const EAN_L = {
+  "0": "0001101",
+  "1": "0011001",
+  "2": "0010011",
+  "3": "0111101",
+  "4": "0100011",
+  "5": "0110001",
+  "6": "0101111",
+  "7": "0111011",
+  "8": "0110111",
+  "9": "0001011"
+};
+
+const EAN_G = {
+  "0": "0100111",
+  "1": "0110011",
+  "2": "0011011",
+  "3": "0100001",
+  "4": "0011101",
+  "5": "0111001",
+  "6": "0000101",
+  "7": "0010001",
+  "8": "0001001",
+  "9": "0010111"
+};
+
+const EAN_R = {
+  "0": "1110010",
+  "1": "1100110",
+  "2": "1101100",
+  "3": "1000010",
+  "4": "1011100",
+  "5": "1001110",
+  "6": "1010000",
+  "7": "1000100",
+  "8": "1001000",
+  "9": "1110100"
+};
+
+// Parités pour EAN-13 selon le premier chiffre
+// A = L (left), B = G
+const EAN13_PARITY = {
+  "0": "LLLLLL",
+  "1": "LLGLGG",
+  "2": "LLGGLG",
+  "3": "LLGGGL",
+  "4": "LGLLGG",
+  "5": "LGGLLG",
+  "6": "LGGGLL",
+  "7": "LGLGLG",
+  "8": "LGLGGL",
+  "9": "LGGLGL"
+};
+
+function encodeEAN13(digits13) {
+  const first = digits13[0];
+  const left = digits13.slice(1, 7); // 6 chiffres gauche
+  const right = digits13.slice(7);   // 6 chiffres droite
+
+  const parity = EAN13_PARITY[first] || "LLLLLL";
+
+  let pattern = "101"; // garde début
+
+  // 6 chiffres à gauche
+  for (let i = 0; i < 6; i++) {
+    const d = left[i];
+    const p = parity[i];
+    if (p === "L") {
+      pattern += EAN_L[d];
+    } else {
+      pattern += EAN_G[d];
+    }
+  }
+
+  pattern += "01010"; // garde centre
+
+  // 6 chiffres à droite (toujours R)
+  for (let i = 0; i < 6; i++) {
+    const d = right[i];
+    pattern += EAN_R[d];
+  }
+
+  pattern += "101"; // garde fin
+  return pattern;
+}
+
+function encodeEAN8(digits8) {
+  const left = digits8.slice(0, 4);
+  const right = digits8.slice(4);
+
+  let pattern = "101"; // début
+
+  // 4 chiffres gauche en L
+  for (let i = 0; i < 4; i++) {
+    const d = left[i];
+    pattern += EAN_L[d];
+  }
+
+  pattern += "01010"; // centre
+
+  // 4 chiffres droite en R
+  for (let i = 0; i < 4; i++) {
+    const d = right[i];
+    pattern += EAN_R[d];
+  }
+
+  pattern += "101"; // fin
+  return pattern;
+}
+
+// --- Draw on canvas ---
+
+function drawBarcodeOnCanvas(pattern, digits) {
+  const canvas = document.getElementById("barcodeCanvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const width = canvas.width;
+  const height = canvas.height;
+
+  // Clear & white background
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, width, height);
+
+  const barWidth = Math.floor(width / pattern.length);
+  const marginLeft = Math.floor((width - barWidth * pattern.length) / 2);
+  const barHeight = height - 30;
+
+  ctx.fillStyle = "#000000";
+
+  for (let i = 0; i < pattern.length; i++) {
+    if (pattern[i] === "1") {
+      const x = marginLeft + i * barWidth;
+      ctx.fillRect(x, 10, barWidth, barHeight);
+    }
+  }
+
+  // Digits text under the code
+  ctx.font = "14px system-ui, -apple-system, BlinkMacSystemFont, sans-serif";
+  ctx.fillStyle = "#000000";
+  ctx.textAlign = "center";
+  ctx.fillText(digits, width / 2, height - 5);
+}
+
+// --- Main tool function ---
+
+function generateBarcode() {
+  const typeEl = document.getElementById("barcodeType");
+  const inputEl = document.getElementById("barcodeInput");
+  const resultEl = document.getElementById("barcodeResult");
+  if (!typeEl || !inputEl || !resultEl) return;
+
+  const type = typeEl.value; // "ean13" ou "ean8"
+  let raw = (inputEl.value || "").replace(/\s+/g, "");
+
+  // Détection langue approximative pour les messages
+  const isFrench = document.documentElement.lang === "fr";
+
+  if (!/^[0-9]+$/.test(raw)) {
+    resultEl.textContent = isFrench
+      ? "Veuillez saisir uniquement des chiffres (sans espaces)."
+      : "Please enter digits only (no spaces).";
+    return;
+  }
+
+  if (type === "ean13") {
+    if (raw.length === 12) {
+      const c = ean13Checksum(raw);
+      raw += String(c);
+    } else if (raw.length === 13) {
+      const body = raw.slice(0, 12);
+      const expected = ean13Checksum(body);
+      const given = parseInt(raw[12], 10);
+      if (expected !== given) {
+        resultEl.textContent = isFrench
+          ? `Clé de contrôle invalide. Attendu : ${expected}, trouvé : ${given}.`
+          : `Invalid checksum. Expected: ${expected}, got: ${given}.`;
+        return;
+      }
+    } else {
+      resultEl.textContent = isFrench
+        ? "EAN-13 doit contenir 12 ou 13 chiffres."
+        : "EAN-13 must contain 12 or 13 digits.";
+      return;
+    }
+
+    const pattern = encodeEAN13(raw);
+    drawBarcodeOnCanvas(pattern, raw);
+    resultEl.innerHTML = isFrench
+      ? `Code EAN-13 généré : <strong>${raw}</strong>`
+      : `EAN-13 code generated: <strong>${raw}</strong>`;
+
+  } else if (type === "ean8") {
+    if (raw.length === 7) {
+      const c = ean8Checksum(raw);
+      raw += String(c);
+    } else if (raw.length === 8) {
+      const body = raw.slice(0, 7);
+      const expected = ean8Checksum(body);
+      const given = parseInt(raw[7], 10);
+      if (expected !== given) {
+        resultEl.textContent = isFrench
+          ? `Clé de contrôle invalide. Attendu : ${expected}, trouvé : ${given}.`
+          : `Invalid checksum. Expected: ${expected}, got: ${given}.`;
+        return;
+      }
+    } else {
+      resultEl.textContent = isFrench
+        ? "EAN-8 doit contenir 7 ou 8 chiffres."
+        : "EAN-8 must contain 7 or 8 digits.";
+      return;
+    }
+
+    const pattern = encodeEAN8(raw);
+    drawBarcodeOnCanvas(pattern, raw);
+    resultEl.innerHTML = isFrench
+      ? `Code EAN-8 généré : <strong>${raw}</strong>`
+      : `EAN-8 code generated: <strong>${raw}</strong>`;
+  }
+}
+
+function calculateInsulation() {
+  const lambda = parseFloat(document.getElementById("insulLambda")?.value || "");
+  let R = parseFloat(document.getElementById("insulR")?.value || "");
+  let U = parseFloat(document.getElementById("insulU")?.value || "");
+  const resultEl = document.getElementById("insulResult");
+
+  if (!resultEl) return;
+
+  if (isNaN(lambda) || lambda <= 0) {
+    resultEl.textContent = "Veuillez entrer une conductivité λ valide.";
+    return;
+  }
+
+  // Si R est fourni → calculer épaisseur & U
+  if (!isNaN(R) && R > 0) {
+    const thickness = R * lambda; // en mètres
+    const uCalc = 1 / R;
+    resultEl.innerHTML =
+      `Épaisseur nécessaire : <strong>${(thickness * 1000).toFixed(1)} mm</strong><br>` +
+      `Coefficient U estimé : <strong>${uCalc.toFixed(3)}</strong>`;
+    return;
+  }
+
+  // Si U est fourni → calculer R & épaisseur
+  if (!isNaN(U) && U > 0) {
+    R = 1 / U;
+    const thickness = R * lambda;
+    resultEl.innerHTML =
+      `Résistance thermique R : <strong>${R.toFixed(2)}</strong><br>` +
+      `Épaisseur nécessaire : <strong>${(thickness * 1000).toFixed(1)} mm</strong>`;
+    return;
+  }
+
+  resultEl.textContent =
+    "Entrez au moins une valeur : R ou U (et λ doit toujours être renseigné).";
+}
 
 function calculateConcreteBags() {
   const length = parseFloat(document.getElementById("concreteLength")?.value);
