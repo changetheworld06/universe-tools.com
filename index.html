@@ -933,9 +933,21 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
       return false;
     }
     </script>
-    
-</head>
-<body>
+
+      <!-- Structured Data : WebApplication -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Universe Tools",
+      "url": "https://universe-tools.com/",
+      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
+    </script>
+  </head>
+  <body>
   <div class="page">
     <header>
       <div class="container nav">
