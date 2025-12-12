@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Google tag (gtag.js) - GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Universe Tools",
+      "url": "https://universe-tools.com"
+    }
+  </script>
+  
+  <meta charset="UTF-8" />
+  <title>Lumens ↔ Watts (LED) – Universe Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Convert lumens to watts for LED lighting, or watts to lumens, using an average LED efficiency of about 90 lm/W. Simple and local calculator.">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/lumens-led.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- Google Ads (conversion) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-325165312');
+  </script>
+
+  <!-- Styles : même base que les autres outils -->
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.12);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #ef4444;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease-out;
+      --max-width: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.92),
+        rgba(15, 23, 42, 0.75),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .brand { display: flex; align-items: center; gap: 0.65rem; }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(79,70,229,.45), 0 0 4px rgba(148,163,184,.8);
+      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
+    }
+
+    .brand-name { font-weight: 700; font-size: .95rem; }
+    .brand-tagline { font-size: .72rem; color: var(--muted); }
+
+    .nav-links { display: flex; gap: 1.3rem; font-size: .9rem; }
+
+    .nav-links a { color: var(--muted); }
+
+    .nav-cta {
+      padding: .45rem .9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(129,140,248,.6);
+      background: radial-gradient(circle at top left,#4f46e5,#0f172a);
+      font-size: .8rem;
+      font-weight: 600;
+      display: flex;
+      gap: .3rem;
+      cursor: pointer;
+    }
+
+    .section { padding: 1.5rem 0 3.5rem; }
+
+    .section-title { font-size: 1.5rem; }
+    .section-subtitle { font-size: .9rem; color: var(--muted); max-width: 520px; }
+
+    .tool-section {
+      margin-top: 1.4rem;
+      border-radius: 20px;
+      border: 1px solid rgba(55,65,81,.9);
+      background: radial-gradient(circle at top left,#020617,#020617);
+      padding: 1.2rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .tool-form {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: .8rem;
+      margin-top: .8rem;
+    }
+
+    @media (max-width: 800px) {
+      .tool-form { grid-template-columns: 1fr; }
+    }
+
+    .field { display: flex; flex-direction: column; font-size: .8rem; }
+    .field label { color: var(--muted); }
+
+    .field input {
+      margin-top: .25rem;
+      padding: .45rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(75,85,99,.9);
+      background: #020617;
+      color: var(--text);
+    }
+
+    .btn-tool {
+      margin-top: auto;
+      padding: .55rem;
+      border: none;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg,#4f46e5,#6366f1);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .tool-result { margin-top: .8rem; font-size: .9rem; }
+    .tool-result span { display: block; color: var(--muted); margin-top: .25rem; }
+
+    .small-note { font-size: .72rem; color: #6b7280; margin-top: .5rem; }
+
+    footer {
+      border-top: 1px solid rgba(30,64,175,.6);
+      background: radial-gradient(circle at top,#020617,#020617);
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      padding: 1rem;
+      font-size: .75rem;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+
+  <!-- Event snippet conversion -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+  <!-- Structured Data : WebApplication -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Lumens to Watts LED Converter",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
+  </script>
+</head>
+
+<body>
+<div class="page">
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <div class="brand-logo"></div>
+      <div>
+        <div class="brand-name">Universe Tools</div>
+        <div class="brand-tagline">60+ free online tools</div>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="/#tools">All tools</a>
+      <a href="/legal.html">Legal</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/fr/">FR</a>
+      <button class="nav-cta" onclick="window.location.href='/'">Try another tool →</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+    <section class="section">
+    <div class="container">
+    
+    <div class="section-header">
+      <h1 class="section-title">Net ↔ gross salary calculator</h1>
+      <p class="section-subtitle">
+        Convert gross to net (or net to gross) using your own contribution rate.
+        Local calculation only — results are estimates.
+      </p>
+    </div>
+    
+    <article class="tool-section">
+      <form class="tool-form" onsubmit="event.preventDefault(); calculateSalary();">
+    
+        <div class="field">
+          <label>Gross salary (€)</label>
+          <input id="grossSalary" type="number" step="0.01" placeholder="Ex: 2500">
+        </div>
+    
+        <div class="field">
+          <label>Contribution rate (%)</label>
+          <input id="salaryRate" type="number" step="0.1" placeholder="Ex: 23">
+        </div>
+    
+        <div class="field">
+          <label>Net salary (€)</label>
+          <input id="netSalary" type="number" step="0.01" placeholder="Ex: 1925">
+        </div>
+    
+        <div class="field">
+          <button class="btn-tool" type="button" onclick="calculateSalary()">
+            Calculate
+          </button>
+        </div>
+    
+      </form>
+    
+      <div id="salaryResult" class="tool-result"></div>
+    
+      <div class="small-note">
+        Net = Gross × (1 − rate). Gross = Net ÷ (1 − rate). This is an estimate only.
+      </div>
+    </article>
+    
+    </div>
+    </section>
+    </main>
+    
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <span>Local calculation only</span>
+      </div>
+    </footer>
+    
+    </div>
+    
+    <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    
+    function parseNum(v){
+      return parseFloat(String(v || "").replace(",", "."));
+    }
+    
+    function calculateSalary(){
+      const grossInput = document.getElementById("grossSalary");
+      const netInput = document.getElementById("netSalary");
+      const rateInput = document.getElementById("salaryRate");
+      const res = document.getElementById("salaryResult");
+    
+      const gross = parseNum(grossInput.value);
+      const net = parseNum(netInput.value);
+      const ratePct = parseNum(rateInput.value);
+    
+      if (!ratePct || ratePct <= 0 || ratePct >= 100) {
+        res.innerHTML = "<span>Please enter a valid rate (between 0 and 100).</span>";
+        return;
+      }
+    
+      const r = ratePct / 100;
+      const factor = 1 - r;
+    
+      if (!isNaN(gross)) {
+        const netVal = gross * factor;
+        netInput.value = netVal.toFixed(2);
+        res.innerHTML = `
+          <strong>Gross: ${gross.toFixed(2)} €</strong>
+          <span>Rate: ${ratePct.toFixed(1)}%</span>
+          <span>Net: ${netVal.toFixed(2)} €</span>
+        `;
+        return;
+      }
+    
+      if (!isNaN(net)) {
+        const grossVal = net / factor;
+        grossInput.value = grossVal.toFixed(2);
+        res.innerHTML = `
+          <strong>Net: ${net.toFixed(2)} €</strong>
+          <span>Rate: ${ratePct.toFixed(1)}%</span>
+          <span>Gross: ${grossVal.toFixed(2)} €</span>
+        `;
+        return;
+      }
+    
+      res.innerHTML = "<span>Please enter a gross or net salary.</span>";
+    }
+    </script>
+    
+    </body>
+    </html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
+  </script>
+
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <meta charset="UTF-8" />
+  <title>Energy converter: Joules ↔ kcal ↔ kWh | Universe Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Convert energy between Joules, food calories (kcal) and kilowatt-hours (kWh). All calculations are done locally in your browser.">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/energy.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/energy.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/energy.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/energy.html" />
+
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- Google Ads (conversion) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-325165312');
+  </script>
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+  <!-- STYLES globaux + mise en forme outil -->
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.12);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #ef4444;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease-out;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.92),
+        rgba(15, 23, 42, 0.75),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow:
+        0 0 30px rgba(79, 70, 229, 0.45),
+        0 0 4px rgba(148, 163, 184, 0.8);
+      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+    }
+
+    .brand-tagline {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.3rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color var(--transition-fast), border-color var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+      border-color: rgba(129, 140, 248, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(129, 140, 248, 0.6);
+      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+      cursor: pointer;
+    }
+
+    .nav-cta span:last-child {
+      font-size: 1rem;
+      transform: translateY(0.5px);
+    }
+
+    /* SECTION / TOOL STYLES */
+
+    .section {
+      padding: 1.5rem 0 3.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.5;
+    }
+
+    .tool-section {
+      border-radius: 20px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      padding: 1.2rem 1.1rem 1.4rem;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.4rem;
+    }
+
+    .tool-section p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .tool-form {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      align-items: end;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .tool-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 650px) {
+      .tool-form {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.8rem;
+    }
+
+    .field label {
+      color: var(--muted);
+    }
+
+    .field small {
+      color: #6b7280;
+      font-size: 0.72rem;
+    }
+
+    .field input {
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      color: var(--text);
+      padding: 0.45rem 0.55rem;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color var(--transition-fast),
+        box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .field input::placeholder {
+      color: #6b7280;
+    }
+
+    .field input:focus {
+      border-color: #818cf8;
+      box-shadow:
+        0 0 0 1px rgba(129, 140, 248, 0.6),
+        0 14px 32px rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+    }
+
+    .btn-tool {
+      border-radius: var(--radius-sm);
+      border: none;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.84rem;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #e5e7eb;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), opacity var(--transition-fast);
+      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
+    }
+
+    .btn-tool:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 36px rgba(79, 70, 229, 0.7);
+    }
+
+    .tool-result {
+      margin-top: 0.7rem;
+      font-size: 0.86rem;
+    }
+
+    .tool-result strong {
+      color: #e5e7eb;
+    }
+
+    .tool-result span {
+      color: var(--muted);
+      font-size: 0.8rem;
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    .small-note {
+      font-size: 0.72rem;
+      color: #6b7280;
+      margin-top: 0.4rem;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      background: radial-gradient(circle at top, #020617, #020617);
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      padding: 1rem 0 1.4rem;
+      font-size: 0.75rem;
+      color: #6b7280;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #6b7280;
+      transition: color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+      transform: translateY(-0.5px);
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+
+  <!-- Structured Data : WebApplication (tool) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Universe Tools – Energy converter",
+      "url": "https://universe-tools.com/tools/energy.html",
+      "description": "Convert energy between Joules, calories (kcal) and kilowatt-hours (kWh).",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
+  </script>
+</head>
+
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-logo">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">Outils de l'univers</div>
+            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="/#tools">Tous les outils</a>
+          <a href="/legal.html">Mentions légales</a>
+          <a href="/privacy.html">Confidentialité</a>
+          <a href="/fr/">FR</a>
+        </nav>
+
+        <button class="nav-cta" onclick="window.location.href='/'">
+          <span>Essayez un autre outil</span>
+          <span>→</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+        <section class="section">
+        <div class="container">
+        
+        <div class="section-header">
+          <h1 class="section-title">File size converter</h1>
+          <p class="section-subtitle">
+            Convert file sizes between bytes, KB, MB, GB and TB using the binary standard (1024).
+          </p>
+        </div>
+        
+        <article class="tool-section">
+          <form class="tool-form" onsubmit="event.preventDefault(); convertSize();">
+        
+            <div class="field">
+              <label>Value</label>
+              <input id="sizeValue" type="number" step="0.0001" min="0" placeholder="Ex: 1.5">
+            </div>
+        
+            <div class="field">
+              <label>Unit</label>
+              <select id="sizeUnit">
+                <option value="B">Bytes (B)</option>
+                <option value="KB">Kilobytes (KB)</option>
+                <option value="MB">Megabytes (MB)</option>
+                <option value="GB">Gigabytes (GB)</option>
+                <option value="TB">Terabytes (TB)</option>
+              </select>
+            </div>
+        
+            <div class="field">
+              <button class="btn-tool" type="button" onclick="convertSize()">
+                Convert
+              </button>
+            </div>
+        
+          </form>
+        
+          <div id="sizeResult" class="tool-result"></div>
+        
+          <div class="small-note">
+            Binary units used: 1 KB = 1024 B, 1 MB = 1024 KB, etc.
+          </div>
+        </article>
+        
+        </div>
+        </section>
+        </main>
+        
+        <footer>
+          <div class="container footer-inner">
+            <span>© <span id="year"></span> Universe Tools</span>
+            <span>Local calculation – no data sent</span>
+          </div>
+        </footer>
+        
+        </div>
+        
+        <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+        
+        function parseNum(v){
+          return parseFloat(String(v || "").replace(",", "."));
+        }
+        
+        function convertSize(){
+          const value = parseNum(document.getElementById("sizeValue").value);
+          const unit = document.getElementById("sizeUnit").value;
+          const res = document.getElementById("sizeResult");
+        
+          if(value === null || Number.isNaN(value) || value < 0){
+            res.innerHTML = "<span>Please enter a valid value.</span>";
+            return;
+          }
+        
+          const units = ["B", "KB", "MB", "GB", "TB"];
+          const index = units.indexOf(unit);
+        
+          let bytes = value * Math.pow(1024, index);
+        
+          let html = `<strong>${value} ${unit}</strong>`;
+          units.forEach((u, i) => {
+            const v = bytes / Math.pow(1024, i);
+            html += `<span>= ${v.toFixed(4)} ${u}</span>`;
+          });
+        
+          res.innerHTML = html;
+        }
+        </script>
+        
+        </body>
+        </html>
