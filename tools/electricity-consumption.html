@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <!-- Google tag (gtag.js) - GA4 -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -11,20 +11,22 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
+  <!-- SEO JSON-LD WebSite -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
-    }
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
   </script>
-  
-  <meta charset="UTF-8" />
-  <title>QR Code generator – Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Generate a QR Code from any URL or short text, directly in your browser. No data upload, fully local.">
 
+  <meta charset="UTF-8" />
+  <title>Electricity consumption (W → kWh → €) | Universe Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Estimate device electricity consumption from watts: kWh used and total cost in €. Local calculation, no data sent.">
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -32,10 +34,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/qr-code.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <link rel="canonical" href="https://universe-tools.com/tools/electricity-consumption.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/electricity-consumption.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/electricity-consumption.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/electricity-consumption.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -47,8 +49,18 @@
     gtag('js', new Date());
     gtag('config', 'AW-325165312');
   </script>
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
 
-  <!-- Styles : même CSS que la home/tool PDF -->
+  <!-- STYLE (identique aux autres pages outils) -->
   <style>
     :root {
       --bg: #050816;
@@ -69,11 +81,7 @@
       --max-width: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
@@ -83,10 +91,7 @@
       min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .page {
       min-height: 100vh;
@@ -142,22 +147,9 @@
       background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
+    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
+    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
+    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
 
     .nav-links {
       display: flex;
@@ -189,7 +181,7 @@
       font-weight: 600;
       letter-spacing: 0.03em;
       text-transform: uppercase;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.3rem;
       box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
@@ -201,9 +193,7 @@
       transform: translateY(0.5px);
     }
 
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
+    .section { padding: 1.5rem 0 3.5rem; }
 
     .section-header {
       display: flex;
@@ -213,15 +203,12 @@
       margin-bottom: 1.5rem;
     }
 
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
+    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
 
     .section-subtitle {
       font-size: 0.9rem;
       color: var(--muted);
-      max-width: 480px;
+      max-width: 520px;
       line-height: 1.5;
     }
 
@@ -242,32 +229,20 @@
 
     .tool-form {
       display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.8rem;
       align-items: end;
       margin-bottom: 1rem;
     }
 
-    @media (max-width: 600px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
+    @media (max-width: 900px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      font-size: 0.8rem;
-    }
+    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
+    .field label { color: var(--muted); }
+    .field small { color: #6b7280; font-size: 0.72rem; }
 
-    .field label {
-      color: var(--muted);
-    }
-
-    .field input,
-    .field textarea,
-    .field select {
+    .field input, .field select {
       border-radius: var(--radius-sm);
       border: 1px solid rgba(75, 85, 99, 0.9);
       background: radial-gradient(circle at top left, #020617, #020617);
@@ -292,36 +267,11 @@
       box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
     }
 
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
+    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
+    .tool-result strong { color: #e5e7eb; }
+    .tool-result span { color: var(--muted); font-size: 0.8rem; display: block; margin-top: 0.25rem; }
 
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-    }
-
-    .qrcode-wrapper {
-      margin-top: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .qrcode-box {
-      padding: 0.75rem;
-      border-radius: 16px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      min-height: 160px;
-      min-width: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
 
     footer {
       border-top: 1px solid rgba(30, 64, 175, 0.6);
@@ -340,42 +290,20 @@
       align-items: center;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-    }
+    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .footer-links a { color: #6b7280; }
+    .footer-links a:hover { color: #e5e7eb; }
   </style>
-
-  <!-- Event snippet conversion (inchangé) -->
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-          'event_callback': callback
-      });
-      return false;
-    }
-  </script>
 
   <!-- Structured Data : WebApplication -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
+      "name": "Universe Tools – Electricity consumption calculator",
+      "url": "https://universe-tools.com/tools/electricity-consumption.html",
+      "description": "Estimate electricity consumption from watts to kWh and total cost in €.",
+      "applicationCategory": "FinanceApplication",
       "operatingSystem": "All"
     }
   </script>
@@ -400,21 +328,21 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-name">Outils de l'univers</div>
+            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">All tools</a>
-          <a href="/legal.html">Legal</a>
-          <a href="/privacy.html">Privacy</a>
+          <a href="/#tools">Tous les outils</a>
+          <a href="/legal.html">Mentions légales</a>
+          <a href="/privacy.html">Confidentialité</a>
           <a href="/fr/">FR</a>
-          <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Try another tool</span>
-            <span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" onclick="window.location.href='/'">
+          <span>Essayez un autre outil</span><span>→</span>
+        </button>
       </div>
     </header>
 
@@ -422,58 +350,54 @@
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <h1 class="section-title">QR Code generator</h1>
+            <h1 class="section-title">Electricity consumption</h1>
             <p class="section-subtitle">
-              Paste a link or a short text, and generate a QR Code you can scan with your phone.
-              Everything runs locally in your browser.
+              Estimate energy used (kWh) and total running cost (€) from a device power in watts.
+              All calculations run locally in your browser.
             </p>
           </div>
 
-          <article id="tool-qrcode" class="tool-section">
+          <article id="tool-electricity" class="tool-section">
             <p>
-              Enter any URL (https://...) or a short piece of text. The QR code is generated
-              directly in your browser and never sent to a server.
+              Enter device power and usage time. The calculator outputs:
+              <ul>
+                <li>Energy used in kWh</li>
+                <li>Total cost in €</li>
+                <li>Daily / monthly / yearly estimates</li>
+              </ul>
             </p>
 
-            <form class="tool-form" onsubmit="event.preventDefault(); generateQrCode();">
+            <form class="tool-form" onsubmit="event.preventDefault(); calculateElectricity();">
               <div class="field">
-                <label for="qrText">Text or URL</label>
-                <textarea id="qrText" rows="3" placeholder="https://universe-tools.com/"></textarea>
+                <label for="powerW">Power (W)</label>
+                <input id="powerW" type="number" min="0" step="0.1" placeholder="Ex: 1200" />
+                <small>Device consumption in watts.</small>
               </div>
 
               <div class="field">
-                <label for="qrSize">Size (pixels)</label>
-                <select id="qrSize">
-                  <option value="160">160 × 160</option>
-                  <option value="200">200 × 200</option>
-                  <option value="256" selected>256 × 256</option>
-                  <option value="320">320 × 320</option>
-                </select>
+                <label for="hoursPerDay">Usage (hours/day)</label>
+                <input id="hoursPerDay" type="number" min="0" step="0.1" placeholder="Ex: 2" />
+                <small>Average daily usage time.</small>
+              </div>
+
+              <div class="field">
+                <label for="priceKwh">Electricity price (€/kWh)</label>
+                <input id="priceKwh" type="number" min="0" step="0.001" placeholder="Ex: 0.25" />
+                <small>Your tariff price per kWh.</small>
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="calculateElectricity()">
+                  Calculate
+                </button>
               </div>
             </form>
 
-            <div>
-              <button class="btn-tool" type="button" onclick="generateQrCode()">
-                Generate QR Code
-              </button>
-            </div>
-
-            <div class="qrcode-wrapper">
-              <div id="qrContainer" class="qrcode-box">
-                <span class="small-note">Your QR code will appear here.</span>
-              </div>
-              <a
-                id="qrDownload"
-                href="#"
-                style="display:none; font-size:0.85rem; color:#a5b4fc; text-decoration:underline;"
-              >
-                Download QR Code (PNG)
-              </a>
-            </div>
+            <div id="electricityResult" class="tool-result"></div>
 
             <div class="small-note">
-              Tip: test your QR code by scanning it with your phone's camera before using it
-              in print or sharing it widely.
+              Formula: kWh = (W / 1000) × hours.  
+              Monthly = daily × 30, yearly = daily × 365 (approx).
             </div>
           </article>
         </div>
@@ -482,69 +406,50 @@
 
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <span>© <span id="year"></span> Universe Tools. Tous droits réservés.</span>
         <div class="footer-links">
-          <a href="/privacy.html">Privacy</a>
-          <a href="/legal.html">Legal</a>
-          <a href="/#tools">All tools</a>
+          <a href="/privacy.html">Confidentialité</a>
+          <a href="/legal.html">Mentions légales</a>
+          <a href="/#tools">Tous les outils</a>
         </div>
       </div>
     </footer>
   </div>
 
-  <!-- Lib QRCode -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    let qrInstance = null;
+    function parseNum(v) {
+      if (v === null || v === undefined || v === "") return NaN;
+      return parseFloat(String(v).replace(",", "."));
+    }
 
-    function generateQrCode() {
-      const textEl = document.getElementById("qrText");
-      const sizeEl = document.getElementById("qrSize");
-      const container = document.getElementById("qrContainer");
-      const downloadLink = document.getElementById("qrDownload");
+    function calculateElectricity() {
+      const powerW = parseNum(document.getElementById("powerW").value);
+      const hoursPerDay = parseNum(document.getElementById("hoursPerDay").value);
+      const priceKwh = parseNum(document.getElementById("priceKwh").value);
+      const out = document.getElementById("electricityResult");
 
-      const value = (textEl.value || "").trim();
-      const size = parseInt(sizeEl.value || "256", 10);
-
-      if (!value) {
-        container.innerHTML = "<span class='small-note'>Please enter a URL or some text.</span>";
-        downloadLink.style.display = "none";
+      if (!isFinite(powerW) || !isFinite(hoursPerDay) || !isFinite(priceKwh) || powerW < 0 || hoursPerDay < 0 || priceKwh < 0) {
+        out.innerHTML = "<span>Please enter valid values for power, usage and price.</span>";
         return;
       }
 
-      // Reset container
-      container.innerHTML = "";
+      const dailyKwh = (powerW / 1000) * hoursPerDay;
+      const dailyCost = dailyKwh * priceKwh;
 
-      // (re)create QRCode instance
-      qrInstance = new QRCode(container, {
-        text: value,
-        width: size,
-        height: size,
-        correctLevel: QRCode.CorrectLevel.M
-      });
+      const monthlyKwh = dailyKwh * 30;
+      const monthlyCost = dailyCost * 30;
 
-      // Delay a bit to let the canvas/img render
-      setTimeout(() => {
-        const img = container.querySelector("img") || container.querySelector("canvas");
-        if (!img) {
-          downloadLink.style.display = "none";
-          return;
-        }
+      const yearlyKwh = dailyKwh * 365;
+      const yearlyCost = dailyCost * 365;
 
-        let dataUrl;
-        if (img.tagName.toLowerCase() === "img") {
-          dataUrl = img.src;
-        } else {
-          dataUrl = img.toDataURL("image/png");
-        }
-
-        downloadLink.href = dataUrl;
-        downloadLink.download = "qrcode.png";
-        downloadLink.style.display = "inline-block";
-      }, 200);
+      out.innerHTML = `
+        <strong>Results:</strong>
+        <span>Daily: ${dailyKwh.toFixed(3)} kWh — €${dailyCost.toFixed(2)}</span>
+        <span>Monthly (×30): ${monthlyKwh.toFixed(1)} kWh — €${monthlyCost.toFixed(2)}</span>
+        <span>Yearly (×365): ${yearlyKwh.toFixed(1)} kWh — €${yearlyCost.toFixed(2)}</span>
+      `;
     }
   </script>
 </body>

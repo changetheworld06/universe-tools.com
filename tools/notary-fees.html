@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 
   <!-- Google tag (gtag.js) - GA4 -->
@@ -21,9 +21,9 @@
   </script>
   
   <meta charset="UTF-8" />
-  <title>Convertisseur PDF ↔ JPG – Universe Tools</title>
+  <title>Concrete calculator (volume + bags) – Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convertissez une page PDF en image JPG ou une image JPG/PNG en fichier PDF, directement dans votre navigateur, sans envoi de fichier.">
+  <meta name="description" content="Estimate concrete volume in m³ and the number of cement bags required for a slab, using a standard cement dosage (kg/m³). All in your browser.">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,8 +31,8 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang (tu adapteras si besoin) -->
-  <link rel="canonical" href="https://universe-tools.com/tools/pdf-jpg.html" />
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/concrete.html" />
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
@@ -48,9 +48,8 @@
     gtag('config', 'AW-325165312');
   </script>
 
-  <!-- TON GROS CSS INLINE (copié de la home) -->
+  <!-- Styles : même base que les autres outils -->
   <style>
-    /* 👇 tout le CSS que tu as collé dans ton message, inchangé */
     :root {
       --bg: #050816;
       --bg-soft: #0b1020;
@@ -222,7 +221,7 @@
     .section-subtitle {
       font-size: 0.9rem;
       color: var(--muted);
-      max-width: 480px;
+      max-width: 520px;
       line-height: 1.5;
     }
 
@@ -243,12 +242,19 @@
 
     .tool-form {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.8rem;
       align-items: end;
+      margin-bottom: 1rem;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 900px) {
+      .tool-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 650px) {
       .tool-form {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -257,7 +263,7 @@
     .field {
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
+      gap: 0.25rem;
       font-size: 0.8rem;
     }
 
@@ -265,8 +271,12 @@
       color: var(--muted);
     }
 
-    .field input,
-    .field select {
+    .field small {
+      color: #6b7280;
+      font-size: 0.72rem;
+    }
+
+    .field input {
       border-radius: var(--radius-sm);
       border: 1px solid rgba(75, 85, 99, 0.9);
       background: radial-gradient(circle at top left, #020617, #020617);
@@ -274,6 +284,10 @@
       padding: 0.45rem 0.55rem;
       font-size: 0.85rem;
       outline: none;
+    }
+
+    .field input::placeholder {
+      color: #6b7280;
     }
 
     .btn-tool {
@@ -294,6 +308,17 @@
     .tool-result {
       margin-top: 0.7rem;
       font-size: 0.86rem;
+    }
+
+    .tool-result strong {
+      color: #e5e7eb;
+    }
+
+    .tool-result span {
+      color: var(--muted);
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 0.8rem;
     }
 
     .small-note {
@@ -330,7 +355,7 @@
     }
   </style>
 
-  <!-- Event snippet pour conversion (inchangé) -->
+  <!-- Event snippet conversion -->
   <script>
     function gtag_report_conversion(url) {
       var callback = function () {
@@ -366,7 +391,6 @@
       <div class="container nav">
         <div class="brand">
           <div class="brand-logo">
-            <!-- même logo que sur la home -->
             <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
@@ -381,252 +405,94 @@
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
           <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Essayez un autre outil</span>
+            <span>Try another tool</span>
             <span>→</span>
           </button>
         </nav>
       </div>
     </header>
 
-    <main>
-      <section class="section">
-        <div class="container">
-          <div class="section-header">
-            <h1 class="section-title">Convertisseur PDF ↔ JPG</h1>
-            <p class="section-subtitle">
-              Convertissez une page PDF en image JPG, ou une image JPG/PNG en fichier PDF.
-              Tout se déroule directement dans votre navigateur, sans téléchargement vers un serveur.
-            </p>
-          </div>
+<main>
+<section class="section">
+<div class="container">
 
-          <article id="tool-pdf-jpg" class="tool-section">
-            <p>
-              Sélectionnez d’abord le type de conversion, puis choisissez votre fichier.
-            </p>
+<h1 class="section-title">Notary / closing costs</h1>
+<p class="section-subtitle">
+Estimate notary or closing costs and total property purchase cost from price and fee percentage.
+</p>
 
-            <form class="tool-form" onsubmit="event.preventDefault(); convertPdfJpg();">
-              <div class="field">
-                <label for="pdfJpgMode">Type de conversion</label>
-                <select id="pdfJpgMode" onchange="updatePdfJpgAccept()">
-                  <option value="pdf-to-jpg">PDF → JPG (première page)</option>
-                  <option value="jpg-to-pdf">JPG/PNG → PDF</option>
-                </select>
-              </div>
+<article class="tool-section" id="tool-notary-fees">
 
-              <div class="field">
-                <label for="pdfJpgFile">Fichier à convertir</label>
-                <input
-                  id="pdfJpgFile"
-                  type="file"
-                  accept="application/pdf"
-                />
-              </div>
-            </form>
+<form class="tool-form" onsubmit="event.preventDefault(); calcNotary();">
 
-            <div style="margin-top:0.9rem;">
-              <button class="btn-tool" type="button" onclick="convertPdfJpg()">
-                Démarrer la conversion
-              </button>
-            </div>
-
-            <div class="tool-result" id="pdfJpgResult"></div>
-
-            <canvas
-              id="pdfJpgCanvas"
-              style="display:none; margin-top:1rem; max-width:100%; border-radius:12px; background:#020617;"
-            ></canvas>
-
-            <div style="margin-top:0.9rem;">
-              <a
-                id="pdfJpgDownloadLink"
-                href="#"
-                style="display:none; font-size:0.85rem; color:#a5b4fc; text-decoration:underline;"
-              >
-                Télécharger le fichier converti
-              </a>
-            </div>
-
-            <div class="small-note">
-              Limitations : pour l’instant, la conversion PDF → JPG ne traite que la première page.
-              L’outil prend en charge les images JPG et PNG pour la conversion en PDF.
-            </div>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. Tous droits réservés.</span>
-        <div class="footer-links">
-          <a href="/privacy.html">Confidentialité</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/#tools">Tous les outils</a>
-        </div>
-      </div>
-    </footer>
+  <div class="field">
+    <label for="price">Property price</label>
+    <input id="price" type="number" step="0.01" placeholder="Ex: 250000">
   </div>
 
-  <!-- pdf.js pour PDF → JPG -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script>
-    (function () {
-      const pdfLib = window["pdfjs-dist/build/pdf"];
-      if (!pdfLib) {
-        console.error("pdf.js n'est pas correctement chargé.");
-        return;
-      }
-      window.pdfjsLib = pdfLib;
-      pdfjsLib.GlobalWorkerOptions.workerSrc =
-        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
-    })();
-  </script>
+  <div class="field">
+    <label for="rate">Fees (%)</label>
+    <input id="rate" type="number" step="0.1" placeholder="Ex: 8">
+  </div>
 
-  <!-- jsPDF pour JPG → PDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <div class="field">
+    <label>&nbsp;</label>
+    <button class="btn-tool" type="button" onclick="calcNotary()">Calculate</button>
+  </div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+</form>
 
-    function updatePdfJpgAccept() {
-      const modeSelect = document.getElementById("pdfJpgMode");
-      const fileInput = document.getElementById("pdfJpgFile");
-      if (!modeSelect || !fileInput) return;
+<div id="result" class="tool-result"></div>
 
-      const mode = modeSelect.value;
-      if (mode === "pdf-to-jpg") {
-        fileInput.accept = "application/pdf";
-      } else {
-        fileInput.accept = "image/jpeg,image/png";
-      }
-    }
+</article>
+</div>
+</section>
+</main>
 
-    async function convertPdfJpg() {
-      const modeSelect = document.getElementById("pdfJpgMode");
-      const fileInput = document.getElementById("pdfJpgFile");
-      const resultEl = document.getElementById("pdfJpgResult");
-      const canvas = document.getElementById("pdfJpgCanvas");
-      const link = document.getElementById("pdfJpgDownloadLink");
+<footer>
+© <span id="year"></span> Universe Tools
+</footer>
 
-      if (!modeSelect || !fileInput || !resultEl || !canvas || !link) return;
+</div>
 
-      const mode = modeSelect.value;
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
 
-      if (!fileInput.files || fileInput.files.length === 0) {
-        resultEl.textContent = "Sélectionne d'abord un fichier à convertir.";
-        return;
-      }
+function parseNum(v){
+  const n=parseFloat(String(v||"").replace(",","."));
+  return Number.isFinite(n)?n:null;
+}
 
-      const file = fileInput.files[0];
+function calcNotary(){
+  const price=parseNum(document.getElementById("price").value);
+  const rate=parseNum(document.getElementById("rate").value);
+  const el=document.getElementById("result");
 
-      if (mode === "pdf-to-jpg") {
-        if (!window.pdfjsLib) {
-          resultEl.textContent = "Erreur : la librairie pdf.js n'est pas chargée.";
-          return;
-        }
+  if(price===null||rate===null||price<=0||rate<0){
+    el.innerHTML="<span>Please enter a valid price and fee percentage.</span>";
+    return;
+  }
 
-        resultEl.textContent = "Conversion du PDF en JPG en cours...";
-        const reader = new FileReader();
+  const fees=price*rate/100;
+  const total=price+fees;
 
-        reader.onload = async function (e) {
-          try {
-            const typedarray = new Uint8Array(e.target.result);
-            const pdf = await pdfjsLib.getDocument({ data: typedarray }).promise;
-            const page = await pdf.getPage(1);
+  el.innerHTML=`
+    <strong>Notary / closing costs: ${fees.toFixed(2)}</strong>
+    <span>Property price: ${price.toFixed(2)}</span>
+    <span>Total purchase cost: ${total.toFixed(2)}</span>
+  `;
+}
+</script>
 
-            const scale = 2;
-            const viewport = page.getViewport({ scale: scale });
-            const ctx = canvas.getContext("2d");
-
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-
-            await page.render({
-              canvasContext: ctx,
-              viewport: viewport
-            }).promise;
-
-            canvas.style.display = "block";
-
-            canvas.toBlob(function (blob) {
-              if (!blob) {
-                resultEl.textContent = "Impossible de générer l'image.";
-                return;
-              }
-              const url = URL.createObjectURL(blob);
-              link.href = url;
-              link.download = "page-1.jpg";
-              link.style.display = "inline-block";
-              resultEl.innerHTML =
-                "<strong>Conversion terminée.</strong> Tu peux maintenant télécharger l'image JPG.";
-            }, "image/jpeg", 0.92);
-          } catch (err) {
-            console.error(err);
-            resultEl.textContent =
-              "Erreur lors de la conversion du PDF. Vérifie que le fichier n'est pas corrompu.";
-          }
-        };
-
-        reader.readAsArrayBuffer(file);
-      } else {
-        if (!window.jspdf || !window.jspdf.jsPDF) {
-          resultEl.textContent = "Erreur : la librairie jsPDF n'est pas chargée.";
-          return;
-        }
-
-        resultEl.textContent = "Conversion de l'image en PDF en cours...";
-
-        const img = new Image();
-        img.onload = function () {
-          const { jsPDF } = window.jspdf;
-          const pdf = new jsPDF({ unit: "pt", format: "a4", compress: true });
-
-          const pageWidth = pdf.internal.pageSize.getWidth();
-          const pageHeight = pdf.internal.pageSize.getHeight();
-
-          let imgWidth = img.width;
-          let imgHeight = img.height;
-
-          const ratio = Math.min(pageWidth / imgWidth, pageHeight / imgHeight);
-          imgWidth *= ratio;
-          imgHeight *= ratio;
-
-          const x = (pageWidth - imgWidth) / 2;
-          const y = (pageHeight - imgHeight) / 2;
-
-          pdf.addImage(img, "JPEG", x, y, imgWidth, imgHeight);
-
-          const blob = pdf.output("blob");
-          const url = URL.createObjectURL(blob);
-
-          link.href = url;
-          link.download = "image.pdf";
-          link.style.display = "inline-block";
-
-          canvas.style.display = "none";
-
-          resultEl.innerHTML =
-            "<strong>PDF généré.</strong> Tu peux maintenant le télécharger.";
-        };
-
-        img.onerror = function () {
-          resultEl.textContent =
-            "Impossible de lire l'image. Vérifie que le fichier est bien un JPG ou un PNG.";
-        };
-
-        img.src = URL.createObjectURL(file);
-      }
-    }
-  </script>
 </body>
 </html>

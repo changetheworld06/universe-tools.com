@@ -11,7 +11,7 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <!-- SEO JSON-LD WebSite -->
+  <!-- SEO JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -22,9 +22,9 @@
   </script>
 
   <meta charset="UTF-8" />
-  <title>Rental yield calculator | Universe Tools</title>
+  <title>Angle converter (degrees ↔ radians ↔ slope %) | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Quickly estimate the gross and net rental yield of a property from purchase price, monthly rent and yearly expenses.">
+  <meta name="description" content="Convert an angle between degrees, radians and slope percentage instantly. Local calculation, no data sent.">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,10 +34,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/rental-yield.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/rental-yield.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/rental-yield.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/rental-yield.html" />
+  <link rel="canonical" href="https://universe-tools.com/tools/angle-converter.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/angle-converter.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/angle-converter.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/angle-converter.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -60,7 +60,7 @@
     }
   </script>
 
-  <!-- STYLES globaux + mise en forme outil -->
+  <!-- STYLES : même base que les autres pages outils -->
   <style>
     :root {
       --bg: #050816;
@@ -81,30 +81,18 @@
       --max-width: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
       color: var(--text);
       min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
 
     .container {
       width: 100%;
@@ -113,7 +101,6 @@
       padding: 0 1.5rem;
     }
 
-    /* HEADER */
     header {
       position: sticky;
       top: 0;
@@ -135,11 +122,7 @@
       padding: 1rem 0;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
+    .brand { display: flex; align-items: center; gap: 0.65rem; }
 
     .brand-logo {
       width: 34px;
@@ -155,22 +138,9 @@
       background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
+    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
+    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
+    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
 
     .nav-links {
       display: flex;
@@ -183,8 +153,7 @@
       color: var(--muted);
       padding: 0.25rem 0;
       border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
+      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
     }
 
     .nav-links a:hover {
@@ -209,16 +178,9 @@
       cursor: pointer;
     }
 
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
+    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
 
-    /* SECTION / TOOL STYLES */
-
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
+    .section { padding: 1.5rem 0 3.5rem; }
 
     .section-header {
       display: flex;
@@ -228,10 +190,7 @@
       margin-bottom: 1.5rem;
     }
 
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
+    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
 
     .section-subtitle {
       font-size: 0.9rem;
@@ -257,41 +216,20 @@
 
     .tool-form {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 0.8rem;
       align-items: end;
       margin-bottom: 1rem;
     }
 
-    @media (max-width: 900px) {
-      .tool-form {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
+    @media (max-width: 1000px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
 
-    @media (max-width: 650px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
+    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
+    .field label { color: var(--muted); }
+    .field small { color: #6b7280; font-size: 0.72rem; }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field small {
-      color: #6b7280;
-      font-size: 0.72rem;
-    }
-
-    .field input {
+    .field input, .field select {
       border-radius: var(--radius-sm);
       border: 1px solid rgba(75, 85, 99, 0.9);
       background: radial-gradient(circle at top left, #020617, #020617);
@@ -299,20 +237,6 @@
       padding: 0.45rem 0.55rem;
       font-size: 0.85rem;
       outline: none;
-      transition: border-color var(--transition-fast),
-        box-shadow var(--transition-fast), background var(--transition-fast);
-    }
-
-    .field input::placeholder {
-      color: #6b7280;
-    }
-
-    .field input:focus {
-      border-color: #818cf8;
-      box-shadow:
-        0 0 0 1px rgba(129, 140, 248, 0.6),
-        0 14px 32px rgba(15, 23, 42, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
     }
 
     .btn-tool {
@@ -327,53 +251,14 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform var(--transition-fast),
-        box-shadow var(--transition-fast), opacity var(--transition-fast);
       box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
     }
 
-    .btn-tool:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 36px rgba(79, 70, 229, 0.7);
-    }
+    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
+    .tool-result strong { color: #e5e7eb; }
+    .tool-result span { color: var(--muted); font-size: 0.8rem; display: block; margin-top: 0.25rem; }
 
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
-
-    .tool-result strong {
-      color: #e5e7eb;
-    }
-
-    .tool-result span {
-      color: var(--muted);
-      font-size: 0.8rem;
-      display: block;
-      margin-top: 0.25rem;
-    }
-
-    .yield-highlight {
-      margin-top: 0.5rem;
-      padding: 0.55rem 0.7rem;
-      border-radius: var(--radius-sm);
-      border: 1px dashed rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      font-size: 0.84rem;
-    }
-
-    .yield-highlight strong {
-      display: inline-block;
-      margin-right: 0.35rem;
-    }
-
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-    }
-
-    /* FOOTER */
+    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
 
     footer {
       border-top: 1px solid rgba(30, 64, 175, 0.6);
@@ -392,25 +277,10 @@
       align-items: center;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
+    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .footer-links a { color: #6b7280; }
+    .footer-links a:hover { color: #e5e7eb; }
 
-    .footer-links a {
-      color: #6b7280;
-      transition: color var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .footer-links a:hover {
-      color: #e5e7eb;
-      transform: translateY(-0.5px);
-    }
-
-    .hidden {
-      display: none;
-    }
   </style>
 
   <!-- Structured Data : WebApplication -->
@@ -418,9 +288,9 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Universe Tools – Rental yield calculator",
-      "url": "https://universe-tools.com/tools/rental-yield.html",
-      "description": "Calculate gross and net rental yield for a property investment.",
+      "name": "Angle converter",
+      "url": "https://universe-tools.com/tools/angle-converter.html",
+      "description": "Convert an angle between degrees, radians and slope percentage.",
       "applicationCategory": "Utility",
       "operatingSystem": "All"
     }
@@ -471,56 +341,49 @@
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <h1 class="section-title">Rental yield calculator</h1>
+            <h1 class="section-title">Angle converter</h1>
             <p class="section-subtitle">
-              Quickly estimate the gross and net rental yield of a property investment
-              from purchase price, monthly rent and yearly expenses.
+              Convert between degrees, radians and slope percentage (grade) instantly.
+              Everything runs locally in your browser.
             </p>
           </div>
 
-          <article id="tool-rental-yield" class="tool-section">
+          <article id="tool-angle" class="tool-section">
             <p>
-              Enter the purchase price (including notary / closing costs if you want),
-              the monthly rent, and your yearly expenses (tax, insurance, charges, etc.).
-              The tool will compute:
-              <ul>
-                <li>Annual rent</li>
-                <li>Gross rental yield</li>
-                <li>Net rental yield after expenses</li>
-              </ul>
+              Enter a value in any field (degrees, radians or slope %). The two other units update automatically.
             </p>
 
-            <form class="tool-form" onsubmit="event.preventDefault(); calculateRentalYield();">
+            <form class="tool-form" onsubmit="event.preventDefault();">
               <div class="field">
-                <label for="purchasePrice">Purchase price</label>
-                <input id="purchasePrice" type="number" step="0.01" min="0" placeholder="Ex: 200000" />
-                <small>Include notary / closing costs if you prefer.</small>
+                <label for="angleDeg">Degrees (°)</label>
+                <input id="angleDeg" type="number" step="0.000001" placeholder="Ex: 45" />
+                <small>Angle in degrees.</small>
               </div>
 
               <div class="field">
-                <label for="monthlyRent">Monthly rent</label>
-                <input id="monthlyRent" type="number" step="0.01" min="0" placeholder="Ex: 900" />
-                <small>Expected rent received each month.</small>
+                <label for="angleRad">Radians (rad)</label>
+                <input id="angleRad" type="number" step="0.000001" placeholder="Ex: 0.785398" />
+                <small>Angle in radians.</small>
               </div>
 
               <div class="field">
-                <label for="yearlyExpenses">Yearly expenses</label>
-                <input id="yearlyExpenses" type="number" step="0.01" min="0" placeholder="Ex: 2500" />
-                <small>Tax, insurance, HOA, maintenance, etc.</small>
+                <label for="angleSlope">Slope (%)</label>
+                <input id="angleSlope" type="number" step="0.000001" placeholder="Ex: 100" />
+                <small>Grade = tan(angle) × 100.</small>
               </div>
 
               <div class="field">
-                <button class="btn-tool" type="button" onclick="calculateRentalYield()">
-                  Calculate rental yield
+                <button class="btn-tool" type="button" onclick="clearAngleFields()">
+                  Clear
                 </button>
               </div>
             </form>
 
-            <div id="yieldResult" class="tool-result"></div>
+            <div id="angleResult" class="tool-result"></div>
 
             <div class="small-note">
-              This is a simplified calculation for estimation purposes only.
-              Always check exact tax and legal details with a professional.
+              Conversions: rad = deg × π/180 ; deg = rad × 180/π ; slope% = tan(rad) × 100.
+              Note: slope becomes very large near 90°.
             </div>
           </article>
         </div>
@@ -545,34 +408,82 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     function parseNum(v) {
-      return parseFloat(String(v || "").replace(",", "."));
+      const n = parseFloat(String(v || "").replace(",", "."));
+      return Number.isFinite(n) ? n : null;
     }
 
-    function calculateRentalYield() {
-      const price = parseNum(document.getElementById("purchasePrice").value);
-      const monthly = parseNum(document.getElementById("monthlyRent").value);
-      const yearlyExp = parseNum(document.getElementById("yearlyExpenses").value);
-      const resultEl = document.getElementById("yieldResult");
+    const degEl = document.getElementById("angleDeg");
+    const radEl = document.getElementById("angleRad");
+    const slopeEl = document.getElementById("angleSlope");
+    const resEl = document.getElementById("angleResult");
 
-      if (!price || price <= 0 || !monthly || monthly < 0 || yearlyExp < 0) {
-        resultEl.innerHTML = "<span>Please enter a valid price, monthly rent and expenses.</span>";
-        return;
-      }
+    let isUpdating = false;
 
-      const annualRent = monthly * 12;
-      const grossYield = (annualRent / price) * 100;
-      const netRent = annualRent - (yearlyExp || 0);
-      const netYield = (netRent / price) * 100;
-
-      resultEl.innerHTML = `
-        <strong>Annual rent: ${annualRent.toFixed(2)}</strong>
-        <span>Gross yield: ${grossYield.toFixed(2)} %</span>
-        <span>Net yield (after expenses): ${netYield.toFixed(2)} %</span>
-        <div class="yield-highlight">
-          <strong>Summary:</strong>
-          Gross ${grossYield.toFixed(2)}% – Net ${netYield.toFixed(2)}%
-        </div>
+    function setResult(deg, rad, slope) {
+      resEl.innerHTML = `
+        <strong>Converted:</strong>
+        <span>${deg.toFixed(6)} °</span>
+        <span>${rad.toFixed(6)} rad</span>
+        <span>${slope.toFixed(6)} %</span>
       `;
+    }
+
+    function fromDegrees(deg) {
+      const rad = deg * Math.PI / 180;
+      const slope = Math.tan(rad) * 100;
+      return { deg, rad, slope };
+    }
+
+    function fromRadians(rad) {
+      const deg = rad * 180 / Math.PI;
+      const slope = Math.tan(rad) * 100;
+      return { deg, rad, slope };
+    }
+
+    function fromSlope(slope) {
+      // slope% = tan(rad)*100 => rad = arctan(slope/100)
+      const rad = Math.atan(slope / 100);
+      const deg = rad * 180 / Math.PI;
+      return { deg, rad, slope };
+    }
+
+    function updateFields(values) {
+      isUpdating = true;
+      degEl.value = values.deg;
+      radEl.value = values.rad;
+      slopeEl.value = values.slope;
+      isUpdating = false;
+      setResult(values.deg, values.rad, values.slope);
+    }
+
+    degEl.addEventListener("input", () => {
+      if (isUpdating) return;
+      const deg = parseNum(degEl.value);
+      if (deg === null) { resEl.innerHTML = ""; return; }
+      updateFields(fromDegrees(deg));
+    });
+
+    radEl.addEventListener("input", () => {
+      if (isUpdating) return;
+      const rad = parseNum(radEl.value);
+      if (rad === null) { resEl.innerHTML = ""; return; }
+      updateFields(fromRadians(rad));
+    });
+
+    slopeEl.addEventListener("input", () => {
+      if (isUpdating) return;
+      const slope = parseNum(slopeEl.value);
+      if (slope === null) { resEl.innerHTML = ""; return; }
+      updateFields(fromSlope(slope));
+    });
+
+    function clearAngleFields() {
+      isUpdating = true;
+      degEl.value = "";
+      radEl.value = "";
+      slopeEl.value = "";
+      resEl.innerHTML = "";
+      isUpdating = false;
     }
   </script>
 </body>

@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
-  <script src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
-  
-  <script async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
-  <script>
       window.ezstandalone = window.ezstandalone || {};
       ezstandalone.cmd = ezstandalone.cmd || [];
   </script>
@@ -1335,7 +1330,7 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="fraction decimal percentage 1/4 0.25 25%"
   data-category="convertisseur"
-  onclick="scrollToElement('tool-fraction')"
+  onclick="window.location.href='tools/fraction.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Fraction ↔ Decimal ↔ Percentage</div>
@@ -1356,11 +1351,11 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="target heart rate cardio training zone sport"
   data-category="sante"
-  onclick="scrollToElement('tool-heart-rate')"
+  onclick="window.location.href='tools/target-heart-rate.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Target heart rate</div>
-    <div class="tool-card-tag">sante</div>
+    <div class="tool-card-tag">Health</div>
   </div>
   <p class="tool-card-desc">
     Estimate your target heart rate for training: moderate and intense zones.
@@ -1376,7 +1371,7 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="electricity consumption power watt kwh cost energy bill"
   data-category="finance"
-  onclick="scrollToElement('tool-electricity')"
+  onclick="window.location.href='tools/electricity-consumption.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Electricity consumption</div>
@@ -1396,7 +1391,7 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="angle converter degrees radians slope percent incline"
   data-category="convertisseur"
-  onclick="scrollToElement('tool-angle')"
+  onclick="window.location.href='tools/angle-converter.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Angle converter</div>
@@ -1416,7 +1411,7 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="tile calculator tiles tiling floor area waste percent"
   data-category="divers"
-  onclick="scrollToElement('tool-tiles')"
+  onclick="window.location.href='tools/tile-calculator.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Tile calculator (m² + waste)</div>
@@ -1436,7 +1431,7 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="paint calculator litres surface area m2 coverage"
   data-category="divers"
-  onclick="scrollToElement('tool-paint')"
+  onclick="window.location.href='tools/paint-calculator.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Paint calculator</div>
@@ -1455,7 +1450,7 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="crypto gains losses percentage pnl bitcoin ethereum"
   data-category="finance"
-  onclick="scrollToElement('tool-crypto-pnl')"
+  onclick="window.location.href='tools/crypto-pnl.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Crypto gains & losses (%)</div>
@@ -1475,7 +1470,7 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="notary fees property purchase real estate closing costs"
   data-category="finance"
-  onclick="scrollToElement('tool-notary-fees')"
+  onclick="window.location.href='tools/notary-fees.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Notary / closing costs</div>
@@ -1495,7 +1490,7 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="borrowing capacity maximum loan simple calculator income expenses"
   data-category="finance"
-  onclick="scrollToElement('tool-borrowing-capacity')"
+  onclick="window.location.href='tools/borrowing-capacity.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Simple borrowing capacity</div>
@@ -1515,7 +1510,7 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="annual monthly hourly salary converter income"
   data-category="finance"
-  onclick="scrollToElement('tool-salary-time')"
+  onclick="window.location.href='tools/salary-time.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Annual ↔ monthly ↔ hourly salary</div>
@@ -1534,15 +1529,17 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="lumens to watts led light power"
   data-category="convertisseur"
-  onclick="scrollToElement('tool-lumens-led')"
+  onclick="window.location.href='/tools/lumens-led.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Lumens ↔ Watts (LED)</div>
     <div class="tool-card-tag">Converter</div>
   </div>
+
   <p class="tool-card-desc">
     Estimate LED wattage from lumens, or lumens from LED wattage using an approximate efficiency.
   </p>
+
   <div class="tool-card-meta">
     <span>✔ Approximate</span>
     <span>≈ 90 lm/W</span>
@@ -1554,16 +1551,18 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="travel time calculator distance speed car route"
   data-category="convertisseur"
-  onclick="scrollToElement('tool-travel-time')"
+  onclick="window.location.href='/tools/travel-time.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Travel time calculator</div>
     <div class="tool-card-tag">Converter</div>
   </div>
+
   <p class="tool-card-desc">
     Enter a distance and an average speed to estimate travel time
     (hours and minutes).
   </p>
+
   <div class="tool-card-meta">
     <span>✔ Quick estimate</span>
     <span>Distance / speed</span>
@@ -1575,16 +1574,18 @@ onclick="scrollToElement('tool-suggest')"
   class="tool-card"
   data-name="decimal hours to hours minutes time tracking"
   data-category="convertisseur"
-  onclick="scrollToElement('tool-decimal-hours')"
+  onclick="window.location.href='/tools/decimal-hours.html'"
 >
   <div class="tool-card-header">
     <div class="tool-card-title">Decimal hours ↔ hours + minutes</div>
     <div class="tool-card-tag">Converter</div>
   </div>
+
   <p class="tool-card-desc">
     Convert decimal hours (7.5 h) to hours + minutes (7 h 30) and the other way
     around, in one click.
   </p>
+
   <div class="tool-card-meta">
     <span>✔ Time tracking</span>
     <span>Easy to read</span>
