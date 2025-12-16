@@ -13,19 +13,22 @@
 
   <!-- SEO JSON-LD -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Universe Tools",
-    "url": "https://universe-tools.com"
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Decimal hours ↔ hours and minutes converter",
+      "url": "https://universe-tools.com/tools/decimal-hours.html",
+      "description": "Convert decimal hours to hours and minutes, or hours and minutes back to decimal time. Runs locally in your browser.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
   </script>
 
   <meta charset="UTF-8" />
-  <title>Crypto gains & losses (PnL %) | Universe Tools</title>
+  <title>Decimal hours ↔ hours and minutes converter | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Calculate crypto profit/loss in amount and percentage from entry price, current price and quantity.">
-
+  <meta name="description" content="Convert decimal hours (e.g. 7.5) into hours and minutes (7 h 30), or convert hours and minutes back to decimal time. Runs locally in your browser.">
+  <meta name="robots" content="index,follow">
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -34,10 +37,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/crypto-pnl.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/crypto-pnl.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/crypto-pnl.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/crypto-pnl.html" />
+  <link rel="canonical" href="https://universe-tools.com/tools/decimal-hours.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/decimal-hours.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/decimal-hours.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/decimal-hours.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -292,20 +295,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
         <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
+            <span>Try another tool</span>
           <span>→</span>
         </button>
       </div>
@@ -357,6 +360,18 @@
 
           <div id="decimalResult" class="tool-result"></div>
 
+          <section class="tool-section" aria-label="SEO content">
+            <h2 style="font-size:1.05rem; margin-bottom:0.6rem;">Convert decimal time to hours and minutes</h2>
+            <p>
+              Decimal hours are commonly used in payroll, invoicing and time tracking.
+              For example, <strong>7.50 hours</strong> equals <strong>7 h 30 min</strong>.
+            </p>
+            <p>
+              This converter works both ways: decimal → hours/minutes and hours/minutes → decimal.
+              Everything runs locally in your browser.
+            </p>
+          </section>
+
           <div class="small-note">
             Conversions are exact (1 hour = 60 minutes).
           </div>
@@ -386,12 +401,18 @@
 
     // Decimal → h:m
     if (dec !== null && dec >= 0) {
-      const hours = Math.floor(dec);
-      const minutes = Math.round((dec - hours) * 60);
-      res.innerHTML = `
-        <strong>${dec.toFixed(2)} hours</strong>
-        <span>= ${hours} h ${minutes} min</span>
-      `;
+        let hours = Math.floor(dec);
+let minutes = Math.round((dec - hours) * 60);
+
+if (minutes === 60) {
+  hours += 1;
+  minutes = 0;
+}
+
+res.innerHTML = `
+  <strong>${dec.toFixed(2)} hours</strong>
+  <span>= ${hours} h ${minutes} min</span>
+`;
       return;
     }
 

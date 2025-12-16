@@ -13,18 +13,22 @@
 
   <!-- SEO JSON-LD -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Universe Tools",
-    "url": "https://universe-tools.com"
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Days to hours/minutes/seconds converter",
+      "url": "https://universe-tools.com/tools/days-to-hours.html",
+      "description": "Convert days into hours, minutes and seconds instantly. Supports decimals. Runs locally in your browser.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
   </script>
 
   <meta charset="UTF-8" />
-  <title>Crypto gains & losses (PnL %) | Universe Tools</title>
+  <title>Days to hours / minutes / seconds converter | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Calculate crypto profit/loss in amount and percentage from entry price, current price and quantity.">
+  <meta name="description" content="Convert days into hours, minutes and seconds instantly. Supports decimals (e.g. 0.5 day). Runs locally in your browser.">
+  <meta name="robots" content="index,follow">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,10 +38,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/crypto-pnl.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/crypto-pnl.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/crypto-pnl.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/crypto-pnl.html" />
+<link rel="canonical" href="https://universe-tools.com/tools/days-to-hours.html" />
+<link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/days-to-hours.html" />
+<link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/days-to-hours.html" />
+<link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/days-to-hours.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -292,20 +296,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
         <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
+            <span>Try another tool</span>
           <span>→</span>
         </button>
       </div>
@@ -325,8 +329,7 @@
         <article class="tool-section">
           <form class="tool-form" onsubmit="event.preventDefault(); convertDays();">
             <div class="field">
-              <label>Days</label>
-              <input id="daysInput" type="number" step="0.01" min="0" placeholder="Ex: 2.5">
+                <label for="daysInput">Days</label>              <input id="daysInput" type="number" step="0.01" min="0" placeholder="Ex: 2.5">
               <small>You can use decimals (e.g. 0.5 day).</small>
             </div>
         
@@ -336,6 +339,18 @@
           </form>
         
           <div id="daysResult" class="tool-result"></div>
+
+          <section class="tool-section" aria-label="SEO content">
+            <h2 style="font-size:1.05rem; margin-bottom:0.6rem;">Convert days to hours, minutes and seconds</h2>
+            <p>
+              Use this calculator to convert any number of days into hours, minutes and seconds.
+              Decimals are supported (for example, <strong>0.5 day</strong> equals <strong>12 hours</strong>).
+            </p>
+            <p>
+              The conversion is based on the standard definition: <strong>1 day = 24 hours = 1,440 minutes = 86,400 seconds</strong>.
+              The calculation runs locally in your browser.
+            </p>
+          </section>
         
           <div class="small-note">
             1 day = 24 hours = 1,440 minutes = 86,400 seconds.

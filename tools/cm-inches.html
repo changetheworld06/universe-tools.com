@@ -13,19 +13,20 @@
 
   <!-- SEO JSON-LD -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Universe Tools",
-    "url": "https://universe-tools.com"
-  }
-  </script>
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Centimeters ↔ inches converter",
+      "url": "https://universe-tools.com/tools/cm-to-inches.html",
+      "description": "Convert centimeters to inches and inches to centimeters instantly.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
+    </script>
 
   <meta charset="UTF-8" />
-  <title>Borrowing capacity calculator | Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Estimate your borrowing capacity: maximum affordable monthly payment and estimated loan amount based on income, expenses, debt ratio, interest rate and duration.">
-
+  <title>Centimeters to inches converter (cm ↔ in) | Universe Tools</title>  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Convert centimeters to inches and inches to centimeters instantly. Local calculation in your browser, no data sent.">
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -34,10 +35,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/borrowing-capacity.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/borrowing-capacity.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/borrowing-capacity.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/borrowing-capacity.html" />
+  <link rel="canonical" href="https://universe-tools.com/tools/cm-to-inches.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/cm-to-inches.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/cm-to-inches.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/cm-to-inches.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -343,11 +344,38 @@
               <button class="btn-tool" type="button" onclick="convertCmInch()">
                 Convert
               </button>
+              <button class="btn-tool" type="button" onclick="clearCmInch()">Clear</button>
             </div>
         
           </form>
         
           <div id="cmInchResult" class="tool-result"></div>
+
+          <section class="tool-section">
+            <h2 style="font-size:1.1rem; margin-bottom:0.6rem;">
+              About the centimeters to inches converter
+            </h2>
+          
+            <p>
+              This centimeters to inches converter allows you to quickly convert any length
+              between the metric system (centimeters) and the imperial system (inches).
+              It is commonly used for measurements related to everyday objects, screens,
+              furniture dimensions, construction, sewing, or international product specifications.
+            </p>
+          
+            <p>
+              The conversion is based on the official and exact definition:
+              <strong>1 inch equals exactly 2.54 centimeters</strong>.
+              All calculations are performed locally in your browser using JavaScript,
+              without any data being sent to a server.
+            </p>
+          
+            <p>
+              This tool can be useful for students, professionals, online shoppers,
+              engineers, designers, or anyone who needs fast and reliable unit conversions
+              between centimeters and inches without installing software or using a calculator.
+            </p>
+          </section>
         
           <div class="small-note">
             Reference: 1 inch = 2.54 centimeters.
@@ -373,6 +401,12 @@
         function parseNum(v){
           return parseFloat(String(v || "").replace(",", "."));
         }
+
+        function clearCmInch(){
+  document.getElementById("cmValue").value = "";
+  document.getElementById("inchValue").value = "";
+  document.getElementById("cmInchResult").innerHTML = "";
+}
         
         function convertCmInch(){
           const cmInput = document.getElementById("cmValue");

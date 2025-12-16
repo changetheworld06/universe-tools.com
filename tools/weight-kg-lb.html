@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Analytics -->
+  <title>kg ↔ lb Converter | Universe Tools</title>
+  <meta name="description" content="Convert weights between kilograms (kg) and pounds (lb) instantly. Accurate conversion, local-only in your browser." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'G-15ST5Y0Z1C'); // GA4
+    gtag('config', 'AW-325165312'); // Google Ads
   </script>
 
-  <!-- SEO JSON-LD -->
+  <!-- Event snippet conversion (optional) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
+    }
+  </script>
+
+  <!-- SEO JSON-LD WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -21,10 +43,20 @@
   }
   </script>
 
-  <meta charset="UTF-8" />
-  <title>Tile calculator (m² + waste) | Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Estimate how many tiles you need based on room size, tile size and a waste percentage for cuts and breakage. Rounded up to the next tile.">
+  <!-- Structured Data : WebApplication (page-specific) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "kg ↔ lb Converter",
+    "url": "https://universe-tools.com/tools/weight-kg-lb.html",
+    "description": "Convert weights between kilograms (kg) and pounds (lb) instantly. Local-only calculation in your browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -33,34 +65,25 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/tile-calculator.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/tile-calculator.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/tile-calculator.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/tile-calculator.html" />
+  <!-- Canonical + hreflang (page-specific) -->
+  <link rel="canonical" href="https://universe-tools.com/tools/weight-kg-lb.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/weight-kg-lb.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/weight-kg-lb.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/weight-kg-lb.html" />
 
-  <meta name="theme-color" content="#4f46e5">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Universe Tools" />
+  <meta property="og:title" content="kg ↔ lb Converter" />
+  <meta property="og:description" content="Convert kilograms to pounds and pounds to kilograms instantly. Local-only." />
+  <meta property="og:url" content="https://universe-tools.com/tools/weight-kg-lb.html" />
 
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () { if (url) window.location = url; };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-        'event_callback': callback
-      });
-      return false;
-    }
-  </script>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="kg ↔ lb Converter | Universe Tools" />
+  <meta name="twitter:description" content="Convert kg ↔ lb instantly. Local-only in your browser." />
 
-  <!-- STYLES : même base que les autres pages outils -->
+  <!-- STYLES : same base as your other tools -->
   <style>
     :root {
       --bg: #050816;
@@ -82,36 +105,21 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
       color: var(--text);
       min-height: 100vh;
     }
-
     a { color: inherit; text-decoration: none; }
 
     .page { min-height: 100vh; display: flex; flex-direction: column; }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
+      position: sticky; top: 0; z-index: 20;
       backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
       border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
 
@@ -130,7 +138,11 @@
     .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
     .brand-tagline { font-size: 0.72rem; color: var(--muted); }
 
-    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; }
+    .nav-links {
+      display: flex; align-items: center; gap: 1.3rem;
+      font-size: 0.9rem; flex-wrap: wrap; justify-content: flex-end;
+    }
+
     .nav-links a {
       color: var(--muted);
       padding: 0.25rem 0;
@@ -167,13 +179,7 @@
     }
 
     .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.5;
-    }
+    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
 
     .tool-section {
       border-radius: 20px;
@@ -184,11 +190,7 @@
       margin-bottom: 1.4rem;
     }
 
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
+    .tool-section p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem; }
 
     .tool-form {
       display: grid;
@@ -199,13 +201,13 @@
     }
 
     @media (max-width: 1000px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
+    @media (max-width: 650px)  { .tool-form { grid-template-columns: minmax(0, 1fr); } }
 
     .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
     .field label { color: var(--muted); }
     .field small { color: #6b7280; font-size: 0.72rem; }
 
-    .field input, .field select {
+    .field input {
       border-radius: var(--radius-sm);
       border: 1px solid rgba(75, 85, 99, 0.9);
       background: radial-gradient(circle at top left, #020617, #020617);
@@ -228,11 +230,9 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
+      user-select: none;
+      white-space: nowrap;
     }
-
-    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
-    .tool-result strong { color: #e5e7eb; }
-    .tool-result span { color: var(--muted); font-size: 0.8rem; display: block; margin-top: 0.25rem; }
 
     .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
 
@@ -257,29 +257,15 @@
     .footer-links a { color: #6b7280; }
     .footer-links a:hover { color: #e5e7eb; }
   </style>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Tile calculator",
-      "url": "https://universe-tools.com/tools/tile-calculator.html",
-      "description": "Estimate how many tiles you need based on room size, tile size and a waste percentage.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
   <div class="page">
-    <!-- HEADER -->
     <header>
       <div class="container nav">
         <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -292,120 +278,123 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
-        <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
+          </button>
         </nav>
-
-        <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
-          <span>→</span>
-        </button>
       </div>
     </header>
 
     <main>
-        <section class="section">
-          <div class="container">
-      
-            <div class="section-header">
-              <h1 class="section-title">kg ↔ lb converter</h1>
-              <p class="section-subtitle">
-                Convert weights between kilograms and pounds instantly.
-                Everything runs locally in your browser.
-              </p>
-            </div>
-      
-            <article class="tool-section">
-              <p>
-                Enter a weight in kilograms or pounds.
-                The conversion updates automatically.
-              </p>
-      
-              <form class="tool-form" onsubmit="event.preventDefault();">
-                <div class="field">
-                  <label for="kg">Kilograms (kg)</label>
-                  <input
-                    id="kg"
-                    type="number"
-                    step="0.01"
-                    placeholder="Ex: 70"
-                    oninput="fromKg()"
-                  >
-                </div>
-      
-                <div class="field">
-                  <label for="lb">Pounds (lb)</label>
-                  <input
-                    id="lb"
-                    type="number"
-                    step="0.01"
-                    placeholder="Ex: 154.3"
-                    oninput="fromLb()"
-                  >
-                </div>
-      
-                <div class="field">
-                  <button class="btn-tool" type="button" onclick="resetWeight()">
-                    Reset
-                  </button>
-                </div>
-              </form>
-      
-              <div class="small-note">
-                Formula used: 1 kg = 2.20462 lb
-              </div>
-            </article>
-      
+      <section class="section">
+        <div class="container">
+
+          <div class="section-header">
+            <h1 class="section-title">kg ↔ lb converter</h1>
+            <p class="section-subtitle">
+              Convert weights between kilograms and pounds instantly. Everything runs locally in your browser.
+            </p>
           </div>
-        </section>
-      </main>
-      
-      <footer>
-        <div class="container footer-inner">
-          <span>© <span id="year"></span> Universe Tools</span>
-          <span>Local calculation</span>
+
+          <article class="tool-section" id="tool-kg-lb">
+            <p>Enter a value in kilograms or pounds. The other field updates automatically.</p>
+
+            <form class="tool-form" onsubmit="event.preventDefault();">
+              <div class="field">
+                <label for="kg">Kilograms (kg)</label>
+                <input id="kg" type="number" step="0.01" placeholder="Ex: 70" inputmode="decimal" oninput="fromKg()" />
+                <small>1 kg = 2.20462 lb</small>
+              </div>
+
+              <div class="field">
+                <label for="lb">Pounds (lb)</label>
+                <input id="lb" type="number" step="0.01" placeholder="Ex: 154.32" inputmode="decimal" oninput="fromLb()" />
+                <small>1 lb = 0.453592 kg</small>
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="resetWeight()">Reset</button>
+              </div>
+            </form>
+
+            <div class="small-note">
+              Formula used: lb = kg × 2.20462, kg = lb ÷ 2.20462.
+            </div>
+          </article>
+
+          <!-- Small SEO text -->
+          <section class="tool-section" aria-label="About kilograms and pounds">
+            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">Kilograms and pounds conversion</h2>
+            <p style="color:var(--muted);line-height:1.65;">
+              Kilograms (kg) are used in most countries, while pounds (lb) are commonly used in the United States.
+              This converter helps you switch between both units quickly for fitness, shipping, cooking, and daily use.
+            </p>
+          </section>
+
         </div>
-      </footer>
-      
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
       </div>
-      
-      <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-      
-        function fromKg() {
-          const kg = parseFloat(document.getElementById("kg").value);
-          const lbInput = document.getElementById("lb");
-      
-          if (isNaN(kg)) {
-            lbInput.value = "";
-            return;
-          }
-      
-          lbInput.value = (kg * 2.20462).toFixed(2);
-        }
-      
-        function fromLb() {
-          const lb = parseFloat(document.getElementById("lb").value);
-          const kgInput = document.getElementById("kg");
-      
-          if (isNaN(lb)) {
-            kgInput.value = "";
-            return;
-          }
-      
-          kgInput.value = (lb / 2.20462).toFixed(2);
-        }
-      
-        function resetWeight() {
-          document.getElementById("kg").value = "";
-          document.getElementById("lb").value = "";
-        }
-      </script>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Prevent infinite loops when both inputs trigger each other
+    let isUpdating = false;
+    const KG_TO_LB = 2.20462;
+
+    function toNum(v){
+      const n = parseFloat(String(v || "").replace(",", "."));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function fromKg() {
+      if (isUpdating) return;
+      const kgVal = toNum(document.getElementById("kg").value);
+      const lbInput = document.getElementById("lb");
+
+      isUpdating = true;
+      if (kgVal === null) lbInput.value = "";
+      else lbInput.value = (kgVal * KG_TO_LB).toFixed(2);
+      isUpdating = false;
+    }
+
+    function fromLb() {
+      if (isUpdating) return;
+      const lbVal = toNum(document.getElementById("lb").value);
+      const kgInput = document.getElementById("kg");
+
+      isUpdating = true;
+      if (lbVal === null) kgInput.value = "";
+      else kgInput.value = (lbVal / KG_TO_LB).toFixed(2);
+      isUpdating = false;
+    }
+
+    function resetWeight() {
+      document.getElementById("kg").value = "";
+      document.getElementById("lb").value = "";
+    }
+  </script>
+</body>
+</html>

@@ -11,14 +11,17 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
-    }
-  </script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Universe Tools – Insulation calculator (R, U → thickness)",
+    "url": "https://universe-tools.com/tools/insulation.html",
+    "description": "Compute insulation thickness from R-value, U-value and thermal conductivity λ.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All"
+  }
+</script>
   
   <meta charset="UTF-8" />
   <title>Insulation calculator (R, U → thickness) – Universe Tools</title>
@@ -33,9 +36,9 @@
 
   <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://universe-tools.com/tools/insulation.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/insulation.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/insulation.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/insulation.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -490,6 +493,54 @@
             </div>
 
             <div id="insulationResult" class="tool-result"></div>
+
+            <section class="tool-section" aria-label="About insulation, R-value, U-value and thickness">
+              <h2>Insulation thickness calculator from R-value, U-value and λ</h2>
+            
+              <p>
+                This <strong>insulation calculator</strong> estimates the required <strong>insulation thickness</strong>
+                from either a target <strong>R-value (thermal resistance)</strong> or a target <strong>U-value (thermal transmittance)</strong>,
+                using the material’s <strong>thermal conductivity λ (lambda)</strong>.
+                It is a practical helper for quick building-physics checks when comparing insulation materials
+                (mineral wool, EPS, PIR, wood fiber, etc.). All calculations are performed
+                <strong>locally in your browser</strong>.
+              </p>
+            
+              <h3>What do R, U and λ mean?</h3>
+              <p>
+                <strong>λ (W/m·K)</strong> describes how easily heat flows through a material: lower λ generally means better insulation.
+                <strong>R (m²·K/W)</strong> is the thermal resistance of a layer: higher R generally means better insulation.
+                <strong>U (W/m²·K)</strong> is the heat transfer coefficient: lower U generally means better insulation performance.
+              </p>
+            
+              <h3>Formulas used in this tool (simplified)</h3>
+              <p>
+                For a single homogeneous insulation layer, the thickness <strong>e</strong> is computed with:
+                <strong>R = e / λ</strong>, so <strong>e = R × λ</strong>.
+                If you start from <strong>U</strong>, the tool converts it using the simplified relation
+                <strong>U ≈ 1 / R</strong> (single layer only).
+              </p>
+            
+              <h3>Example calculation</h3>
+              <p>
+                Example: if you target <strong>R = 4.0 m²·K/W</strong> and your insulation has
+                <strong>λ = 0.035 W/m·K</strong>, then the estimated thickness is:
+                <strong>e = 4.0 × 0.035 = 0.14 m</strong>, i.e. about <strong>14 cm</strong>.
+              </p>
+            
+              <h3>Important limitations</h3>
+              <p>
+                This calculator provides an <strong>indicative</strong> thickness for the insulation layer only.
+                It does not include additional layers and effects such as interior/exterior air films,
+                thermal bridges, masonry layers, fasteners, or moisture conditions.
+                For compliance checks, always refer to professional design methods and local regulations.
+              </p>
+            
+              <p class="small-note">
+                Tip: choose whether you know <strong>R</strong> or <strong>U</strong>, enter λ, then enter only the known value.
+                The tool will compute thickness and show the equivalent U-value for that single insulation layer.
+              </p>
+            </section>
 
             <div class="small-note">
               Reminder of basic relations (simplified): R = e / λ and U ≈ 1 / R.

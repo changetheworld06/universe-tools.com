@@ -11,20 +11,22 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+      "@type": "WebApplication",
+      "name": "Euro to Bitcoin / crypto converter (manual rate)",
+      "url": "https://universe-tools.com/tools/crypto-eur.html",
+      "description": "Convert euros to Bitcoin or any cryptocurrency using a manual price per coin. Local calculation in your browser, no API calls.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
     }
   </script>
   
   <meta charset="UTF-8" />
-  <title>Concrete calculator (volume + bags) – Universe Tools</title>
+  <title>Euro to Bitcoin / crypto converter (manual rate) – Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Estimate concrete volume in m³ and the number of cement bags required for a slab, using a standard cement dosage (kg/m³). All in your browser.">
-
+  <meta name="description" content="Convert euros to Bitcoin or any crypto using a manual price per coin. No API, no tracking, local calculation in your browser.">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -32,10 +34,11 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/concrete.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+<!-- Canonical + hreflang -->
+<link rel="canonical" href="https://universe-tools.com/tools/crypto-eur.html" />
+<link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/crypto-eur.html" />
+<link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/crypto-eur.html" />
+<link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/crypto-eur.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -452,6 +455,25 @@
           </form>
         
           <div id="cryptoResult" class="tool-result"></div>
+
+          <section class="tool-section" aria-label="SEO content">
+            <h2 style="font-size:1.05rem; margin-bottom:0.6rem;">Euro to crypto conversion (manual price)</h2>
+          
+            <p>
+              This free euro to Bitcoin / crypto converter helps you estimate how many crypto units you could get
+              for a given amount in euros, using a manual “price per coin” that you enter.
+            </p>
+          
+            <p>
+              The calculation is straightforward: <strong>crypto units = euros ÷ price per coin</strong>.
+              This tool does not fetch live market data and does not include exchange fees or spreads.
+            </p>
+          
+            <p>
+              Because everything runs locally in your browser (no API calls), the converter is fast, lightweight,
+              and works even with limited connectivity. For exact trade values, confirm the final quote on your exchange.
+            </p>
+          </section>
         
           <div class="small-note">
             Example: 1 BTC = 40,000 €. Results are indicative only.
@@ -481,10 +503,10 @@
           const rate = parseNum(document.getElementById("cryptoRate").value);
           const res = document.getElementById("cryptoResult");
         
-          if(!eur || !rate || rate<=0){
-            res.innerHTML = "<span>Please enter valid values.</span>";
-            return;
-          }
+          if (!Number.isFinite(eur) || eur <= 0 || !Number.isFinite(rate) || rate <= 0) {
+  res.innerHTML = "<span>Please enter valid positive values.</span>";
+  return;
+}
         
           const crypto = eur / rate;
         

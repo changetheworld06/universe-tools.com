@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 
   <!-- Google tag (gtag.js) - GA4 -->
@@ -11,19 +11,23 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+      "@type": "WebApplication",
+      "name": "PDF ↔ JPG Converter",
+      "url": "https://universe-tools.com/tools/pdf-jpg.html",
+      "description": "Convert a PDF page to JPG, or convert a JPG/PNG image to PDF directly in your browser — no upload, no server.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true
     }
-  </script>
+    </script>
   
   <meta charset="UTF-8" />
-  <title>Convertisseur PDF ↔ JPG – Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convertissez une page PDF en image JPG ou une image JPG/PNG en fichier PDF, directement dans votre navigateur, sans envoi de fichier.">
+  <title>PDF ↔ JPG Converter – Universe Tools</title>
+  <meta name="description" content="Convert a PDF page to JPG, or turn a JPG/PNG image into a PDF — directly in your browser. No upload, no server, no data sent.">  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,9 +37,9 @@
 
   <!-- Canonical + hreflang (tu adapteras si besoin) -->
   <link rel="canonical" href="https://universe-tools.com/tools/pdf-jpg.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/pdf-jpg.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/pdf-jpg.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/pdf-jpg.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -346,18 +350,6 @@
     }
   </script>
 
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
@@ -381,17 +373,17 @@
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
           <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Essayez un autre outil</span>
+            <span>Try another tool</span>
             <span>→</span>
           </button>
         </nav>
@@ -402,29 +394,29 @@
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <h1 class="section-title">Convertisseur PDF ↔ JPG</h1>
+            <h1 class="section-title">PDF ↔ JPG Converter</h1>
             <p class="section-subtitle">
-              Convertissez une page PDF en image JPG, ou une image JPG/PNG en fichier PDF.
-              Tout se déroule directement dans votre navigateur, sans téléchargement vers un serveur.
+              Convert the first page of a PDF to a JPG image, or convert a JPG/PNG image to a PDF.
+              Everything runs locally in your browser — no upload to a server.
             </p>
           </div>
 
           <article id="tool-pdf-jpg" class="tool-section">
             <p>
-              Sélectionnez d’abord le type de conversion, puis choisissez votre fichier.
-            </p>
+                First choose the conversion type, then pick your file.
+              </p>
 
             <form class="tool-form" onsubmit="event.preventDefault(); convertPdfJpg();">
               <div class="field">
-                <label for="pdfJpgMode">Type de conversion</label>
+                <label for="pdfJpgMode">Conversion type</label>
                 <select id="pdfJpgMode" onchange="updatePdfJpgAccept()">
-                  <option value="pdf-to-jpg">PDF → JPG (première page)</option>
-                  <option value="jpg-to-pdf">JPG/PNG → PDF</option>
+                    <option value="pdf-to-jpg">PDF → JPG (first page)</option>
+                    <option value="jpg-to-pdf">JPG/PNG → PDF</option>
                 </select>
               </div>
 
               <div class="field">
-                <label for="pdfJpgFile">Fichier à convertir</label>
+                <label for="pdfJpgFile">File to convert</label>
                 <input
                   id="pdfJpgFile"
                   type="file"
@@ -434,12 +426,23 @@
             </form>
 
             <div style="margin-top:0.9rem;">
-              <button class="btn-tool" type="button" onclick="convertPdfJpg()">
-                Démarrer la conversion
-              </button>
+                <button class="btn-tool" type="button" onclick="convertPdfJpg()">
+                    Start conversion
+                  </button>
             </div>
 
             <div class="tool-result" id="pdfJpgResult"></div>
+
+            <section class="tool-section" aria-label="About the PDF JPG converter">
+                <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">Convert PDF to JPG or JPG/PNG to PDF (no upload)</h2>
+                <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
+                  This PDF ↔ JPG converter lets you export the first page of a PDF as a JPG image, or turn a JPG/PNG image into a PDF.
+                  Processing happens locally in your browser, so your files are not sent to any server.
+                </p>
+                <p style="color:var(--muted);line-height:1.65;">
+                  Useful for sharing a single PDF page as an image, creating a PDF from a photo, or preparing a document for printing.
+                </p>
+              </section>
 
             <canvas
               id="pdfJpgCanvas"
@@ -457,9 +460,9 @@
             </div>
 
             <div class="small-note">
-              Limitations : pour l’instant, la conversion PDF → JPG ne traite que la première page.
-              L’outil prend en charge les images JPG et PNG pour la conversion en PDF.
-            </div>
+                Limitations: for now, PDF → JPG converts only the first page.
+                The tool supports JPG and PNG images for JPG/PNG → PDF.
+              </div>
           </article>
         </div>
       </section>
@@ -467,11 +470,11 @@
 
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. Tous droits réservés.</span>
+        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
         <div class="footer-links">
-          <a href="/privacy.html">Confidentialité</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/#tools">Tous les outils</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/#tools">All tools</a>
         </div>
       </div>
     </footer>
@@ -483,7 +486,7 @@
     (function () {
       const pdfLib = window["pdfjs-dist/build/pdf"];
       if (!pdfLib) {
-        console.error("pdf.js n'est pas correctement chargé.");
+        console.error("pdf.js is not loaded correctly.");
         return;
       }
       window.pdfjsLib = pdfLib;
@@ -523,7 +526,7 @@
       const mode = modeSelect.value;
 
       if (!fileInput.files || fileInput.files.length === 0) {
-        resultEl.textContent = "Sélectionne d'abord un fichier à convertir.";
+        resultEl.textContent = "Please choose a file to convert first.";
         return;
       }
 
@@ -531,11 +534,11 @@
 
       if (mode === "pdf-to-jpg") {
         if (!window.pdfjsLib) {
-          resultEl.textContent = "Erreur : la librairie pdf.js n'est pas chargée.";
+          resultEl.textContent = "Error: pdf.js library is not loaded.";
           return;
         }
 
-        resultEl.textContent = "Conversion du PDF en JPG en cours...";
+        resultEl.textContent = "Converting PDF to JPG...";
         const reader = new FileReader();
 
         reader.onload = async function (e) {
@@ -560,7 +563,7 @@
 
             canvas.toBlob(function (blob) {
               if (!blob) {
-                resultEl.textContent = "Impossible de générer l'image.";
+                resultEl.textContent = "Unable to generate the image.";
                 return;
               }
               const url = URL.createObjectURL(blob);
@@ -568,23 +571,23 @@
               link.download = "page-1.jpg";
               link.style.display = "inline-block";
               resultEl.innerHTML =
-                "<strong>Conversion terminée.</strong> Tu peux maintenant télécharger l'image JPG.";
+                "<strong>Done.</strong> You can now download the JPG image.";
             }, "image/jpeg", 0.92);
           } catch (err) {
             console.error(err);
             resultEl.textContent =
-              "Erreur lors de la conversion du PDF. Vérifie que le fichier n'est pas corrompu.";
+              "Error while converting the PDF. Please check that the file is not corrupted.";
           }
         };
 
         reader.readAsArrayBuffer(file);
       } else {
         if (!window.jspdf || !window.jspdf.jsPDF) {
-          resultEl.textContent = "Erreur : la librairie jsPDF n'est pas chargée.";
+          resultEl.textContent = "Error: jsPDF library is not loaded.";
           return;
         }
 
-        resultEl.textContent = "Conversion de l'image en PDF en cours...";
+        resultEl.textContent = "Converting image to PDF...";
 
         const img = new Image();
         img.onload = function () {
@@ -616,12 +619,12 @@
           canvas.style.display = "none";
 
           resultEl.innerHTML =
-            "<strong>PDF généré.</strong> Tu peux maintenant le télécharger.";
+            "<strong>PDF created.</strong> You can now download it.";
         };
 
         img.onerror = function () {
           resultEl.textContent =
-            "Impossible de lire l'image. Vérifie que le fichier est bien un JPG ou un PNG.";
+            "Unable to read the image. Please make sure the file is a JPG or PNG.";
         };
 
         img.src = URL.createObjectURL(file);

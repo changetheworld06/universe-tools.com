@@ -13,18 +13,21 @@
 
   <!-- SEO JSON-LD WebSite -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Universe Tools",
-    "url": "https://universe-tools.com"
-  }
-  </script>
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Universe Tools – Flow rate converter",
+      "url": "https://universe-tools.com/tools/flow-rate.html",
+      "description": "Convert a flow rate between liters per minute (L/min) and cubic meters per hour (m³/h).",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
+    </script>
 
   <meta charset="UTF-8" />
-  <title>Energy converter: Joules ↔ kcal ↔ kWh | Universe Tools</title>
+  <title>Flow rate converter (L/min ↔ m³/h) | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convert energy between Joules, food calories (kcal) and kilowatt-hours (kWh). All calculations are done locally in your browser.">
+  <meta name="description" content="Convert a flow rate between liters per minute (L/min) and cubic meters per hour (m³/h). Instant local calculation, no data sent.">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,10 +37,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/energy.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/energy.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/energy.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/energy.html" />
+  <link rel="canonical" href="https://universe-tools.com/tools/flow-rate.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/flow-rate.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/flow-rate.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/flow-rate.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -433,20 +436,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
         <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
+            <span>Try another tool</span>          <span>→</span>
           <span>→</span>
         </button>
       </div>
@@ -489,6 +492,18 @@
           </form>
         
           <div id="flowResult" class="tool-result"></div>
+
+          <p class="seo-text">
+            This <strong>flow rate converter</strong> helps you convert water flow between
+            <strong>liters per minute (L/min)</strong> and <strong>cubic meters per hour (m³/h)</strong>.
+            It’s commonly used for pumps, irrigation, plumbing and water distribution systems.
+          </p>
+          
+          <p class="seo-text">
+            The conversion is straightforward: <strong>1 L/min = 0.06 m³/h</strong>.
+            Use this tool to quickly compare datasheets, size equipment, or interpret network flow readings.
+            All calculations run locally in your browser.
+          </p>
         
           <div class="small-note">
             Reference: 1 L/min = 0.06 m³/h.

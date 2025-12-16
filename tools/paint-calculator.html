@@ -292,22 +292,21 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
-          <a href="/fr/">FR</a>
-        </nav>
-
-        <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
-          <span>→</span>
-        </button>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/fr/">FR</a>
+            <button class="nav-cta" onclick="window.location.href='/'">
+              <span>Try another tool</span>
+              <span>→</span>
+            </button>
+          </nav>
       </div>
     </header>
 
@@ -361,6 +360,13 @@
 
             <div id="paintResult" class="tool-result"></div>
 
+            <p class="small-note">
+                This paint calculator helps you estimate how many liters of paint you need
+                based on surface area, paint coverage (m² per liter) and number of coats.
+                Ideal for walls, ceilings and renovation projects. Calculation is done locally
+                in your browser.
+              </p>
+
             <div class="small-note">
               This is an estimate. Porous surfaces, texture, and color changes can increase paint consumption.
             </div>
@@ -403,15 +409,19 @@
         resultEl.innerHTML = "<span>Please enter valid area, coverage and coats.</span>";
         return;
       }
-      const coats = Math.round(coatsRaw);
-
+      const coats = Math.floor(coatsRaw);
+if (!Number.isFinite(coats) || coats < 1) {
+  resultEl.innerHTML = "<span>Number of coats must be an integer ≥ 1.</span>";
+  return;
+}
       if (area <= 0 || coverage <= 0 || coats <= 0) {
         resultEl.innerHTML = "<span>Area, coverage and coats must be greater than 0.</span>";
         return;
       }
 
-      const extraPct = (extraPctRaw === null || extraPctRaw < 0) ? 0 : extraPctRaw;
-
+      let extraPct = (extraPctRaw === null) ? 0 : extraPctRaw;
+if (extraPct < 0) extraPct = 0;
+if (extraPct > 100) extraPct = 100;
       const litersNoExtra = (area * coats) / coverage;
       const litersWithExtra = litersNoExtra * (1 + extraPct / 100);
 

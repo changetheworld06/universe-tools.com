@@ -1,51 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google tag (gtag.js) - GA4 -->
+  <!-- Google tag (gtag.js) - GA4 + Google Ads (single gtag loader) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'G-15ST5Y0Z1C');     // GA4
+    gtag('config', 'AW-325165312');     // Google Ads
   </script>
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
-    }
-  </script>
-  
-  <meta charset="UTF-8" />
-  <title>QR Code generator – Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Generate a QR Code from any URL or short text, directly in your browser. No data upload, fully local.">
+  <title>Random Picker – Pick a Random Name or Item | Universe Tools</title>
+  <meta name="description" content="Pick a random name or item from a list in one click. Works 100% locally in your browser (no upload, no tracking of your list)." />
 
+  <!-- Optional but useful -->
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/qr-code.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <!-- Canonical + hreflang (PAGE-SPECIFIC) -->
+  <link rel="canonical" href="https://universe-tools.com/tools/random-picker.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/random-picker.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/random-picker.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/random-picker.html" />
 
-  <meta name="theme-color" content="#4f46e5">
+  <!-- Open Graph (social share) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Universe Tools" />
+  <meta property="og:title" content="Random Picker – Pick a Random Name or Item" />
+  <meta property="og:description" content="Pick a random name or item from a list in one click. 100% local in your browser." />
+  <meta property="og:url" content="https://universe-tools.com/tools/random-picker.html" />
 
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Random Picker – Universe Tools" />
+  <meta name="twitter:description" content="Pick a random name or item from a list. Local-only, no upload." />
+
+  <!-- Google Ads: conversion helper (unchanged) -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) !== 'undefined') window.location = url;
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+  <!-- Structured Data : WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication (PAGE-SPECIFIC) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Random Picker",
+    "url": "https://universe-tools.com/tools/random-picker.html",
+    "description": "Pick a random name or item from a list. Runs locally in the browser (no upload).",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
   </script>
 
   <!-- Styles : même CSS que la home/tool PDF -->
@@ -367,18 +404,6 @@
     }
   </script>
 
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
@@ -454,6 +479,26 @@
               </form>
       
               <div id="randomResult" class="tool-result"></div>
+
+              <section class="tool-section" aria-label="About this random picker">
+                <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">
+                  Random Picker (local, fast, and private)
+                </h2>
+              
+                <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
+                  This random picker lets you paste a list of names, items, or options and select one at random.
+                  It is useful for giveaways, classroom activities, quick decisions, team assignments, or choosing a winner.
+                </p>
+              
+                <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
+                  Everything runs locally in your browser: your list is not uploaded to a server.
+                  You can reroll as many times as you want and keep the tool open for repeated draws.
+                </p>
+              
+                <p style="color:var(--muted);line-height:1.65;">
+                  Tip: one item per line works best. You can also remove empty lines to avoid blank results.
+                </p>
+              </section>
       
               <div class="small-note">
                 Selection is done using JavaScript’s random generator.

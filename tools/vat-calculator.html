@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Analytics -->
+  <title>VAT Calculator (net ↔ gross) | Universe Tools</title>
+  <meta name="description" content="Calculate VAT, net price (excl. tax) or gross price (incl. tax) with any VAT rate. Local calculation in your browser." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'G-15ST5Y0Z1C'); // GA4
+    gtag('config', 'AW-325165312'); // Google Ads
   </script>
 
-  <!-- SEO JSON-LD -->
+  <!-- Event snippet conversion (optional) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
+    }
+  </script>
+
+  <!-- SEO JSON-LD WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -21,10 +43,20 @@
   }
   </script>
 
-  <meta charset="UTF-8" />
-  <title>Tile calculator (m² + waste) | Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Estimate how many tiles you need based on room size, tile size and a waste percentage for cuts and breakage. Rounded up to the next tile.">
+  <!-- Structured Data : WebApplication (page-specific) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "VAT Calculator (net ↔ gross)",
+    "url": "https://universe-tools.com/tools/vat-calculator.html",
+    "description": "Calculate VAT, net price (excl. tax) or gross price (incl. tax) with any VAT rate. Local-only calculation in your browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -33,34 +65,25 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/tile-calculator.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/tile-calculator.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/tile-calculator.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/tile-calculator.html" />
+  <!-- Canonical + hreflang (page-specific) -->
+  <link rel="canonical" href="https://universe-tools.com/tools/vat-calculator.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/vat-calculator.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/vat-calculator.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/vat-calculator.html" />
 
-  <meta name="theme-color" content="#4f46e5">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Universe Tools" />
+  <meta property="og:title" content="VAT Calculator (net ↔ gross)" />
+  <meta property="og:description" content="Calculate VAT, net or gross price with any VAT rate. Local-only." />
+  <meta property="og:url" content="https://universe-tools.com/tools/vat-calculator.html" />
 
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () { if (url) window.location = url; };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-        'event_callback': callback
-      });
-      return false;
-    }
-  </script>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="VAT Calculator (net ↔ gross) | Universe Tools" />
+  <meta name="twitter:description" content="Calculate VAT, net or gross price instantly. Local-only." />
 
-  <!-- STYLES : même base que les autres pages outils -->
+  <!-- STYLES : same base as your other tools -->
   <style>
     :root {
       --bg: #050816;
@@ -130,7 +153,7 @@
     .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
     .brand-tagline { font-size: 0.72rem; color: var(--muted); }
 
-    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; }
+    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; flex-wrap: wrap; justify-content: flex-end; }
     .nav-links a {
       color: var(--muted);
       padding: 0.25rem 0;
@@ -167,13 +190,7 @@
     }
 
     .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.5;
-    }
+    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
 
     .tool-section {
       border-radius: 20px;
@@ -184,11 +201,7 @@
       margin-bottom: 1.4rem;
     }
 
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
+    .tool-section p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem; }
 
     .tool-form {
       display: grid;
@@ -203,9 +216,8 @@
 
     .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
     .field label { color: var(--muted); }
-    .field small { color: #6b7280; font-size: 0.72rem; }
 
-    .field input, .field select {
+    .field input {
       border-radius: var(--radius-sm);
       border: 1px solid rgba(75, 85, 99, 0.9);
       background: radial-gradient(circle at top left, #020617, #020617);
@@ -228,6 +240,8 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
+      user-select: none;
+      white-space: nowrap;
     }
 
     .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
@@ -257,19 +271,6 @@
     .footer-links a { color: #6b7280; }
     .footer-links a:hover { color: #e5e7eb; }
   </style>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Tile calculator",
-      "url": "https://universe-tools.com/tools/tile-calculator.html",
-      "description": "Estimate how many tiles you need based on room size, tile size and a waste percentage.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
@@ -278,8 +279,8 @@
     <header>
       <div class="container nav">
         <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -292,134 +293,156 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
-        <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
+          </button>
         </nav>
-
-        <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
-          <span>→</span>
-        </button>
       </div>
     </header>
 
     <main>
-        <section class="section">
+      <section class="section">
         <div class="container">
-        
-        <div class="section-header">
-          <h1 class="section-title">VAT calculator (net ↔ gross)</h1>
-          <p class="section-subtitle">
-            Calculate VAT, net price (excluding tax) or gross price (including tax)
-            with any VAT rate. Local calculation only.
-          </p>
-        </div>
-        
-        <article class="tool-section">
-          <form class="tool-form" onsubmit="event.preventDefault(); calculateVAT();">
-        
-            <div class="field">
-              <label>Net price (€)</label>
-              <input id="netPrice" type="number" step="0.01" placeholder="Ex: 100">
-            </div>
-        
-            <div class="field">
-              <label>VAT rate (%)</label>
-              <input id="vatRate" type="number" step="0.1" placeholder="Ex: 20">
-            </div>
-        
-            <div class="field">
-              <label>Gross price (€)</label>
-              <input id="grossPrice" type="number" step="0.01" placeholder="Ex: 120">
-            </div>
-        
-            <div class="field">
-              <button class="btn-tool" type="button" onclick="calculateVAT()">
-                Calculate
-              </button>
-            </div>
-        
-          </form>
-        
-          <div id="vatResult" class="tool-result"></div>
-        
-          <div class="small-note">
-            VAT amount = Gross price − Net price.
+
+          <div class="section-header">
+            <h1 class="section-title">VAT calculator (net ↔ gross)</h1>
+            <p class="section-subtitle">
+              Calculate VAT, net price (excluding tax) or gross price (including tax) with any VAT rate. Local calculation only.
+            </p>
           </div>
-        </article>
-        
+
+          <article class="tool-section" id="tool-vat">
+            <p>Enter a VAT rate and either a net price or a gross price. The other values are calculated automatically.</p>
+
+            <form class="tool-form" onsubmit="event.preventDefault(); calculateVAT();">
+              <div class="field">
+                <label for="netPrice">Net price (€)</label>
+                <input id="netPrice" type="number" step="0.01" min="0" placeholder="Ex: 100" />
+              </div>
+
+              <div class="field">
+                <label for="vatRate">VAT rate (%)</label>
+                <input id="vatRate" type="number" step="0.1" min="0" placeholder="Ex: 20" />
+              </div>
+
+              <div class="field">
+                <label for="grossPrice">Gross price (€)</label>
+                <input id="grossPrice" type="number" step="0.01" min="0" placeholder="Ex: 120" />
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="calculateVAT()">Calculate</button>
+              </div>
+            </form>
+
+            <div id="vatResult" class="tool-result"></div>
+
+            <div class="small-note">VAT amount = Gross price − Net price.</div>
+          </article>
+
+          <!-- SEO text -->
+          <section class="tool-section" aria-label="About VAT calculation">
+            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">How VAT calculations work</h2>
+            <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
+              VAT (Value Added Tax) is added to the net price to obtain the gross price. This calculator helps you convert
+              net ↔ gross using any VAT rate, and shows the VAT amount separately. Useful for invoices, quotes, budgeting,
+              and quick price comparisons.
+            </p>
+            <ul style="color:var(--muted);line-height:1.65;padding-left:1.1rem;margin:0;">
+              <li><strong>Gross</strong> = Net × (1 + rate)</li>
+              <li><strong>Net</strong> = Gross ÷ (1 + rate)</li>
+              <li><strong>VAT</strong> = Gross − Net</li>
+            </ul>
+          </section>
+
         </div>
-        </section>
-        </main>
-        
-        <footer>
-          <div class="container footer-inner">
-            <span>© <span id="year"></span> Universe Tools</span>
-            <span>Local calculation only</span>
-          </div>
-        </footer>
-        
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
         </div>
-        
-        <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-        
-        function parseNum(v){
-          return parseFloat(String(v || "").replace(",", "."));
-        }
-        
-        function calculateVAT(){
-          const netInput = document.getElementById("netPrice");
-          const grossInput = document.getElementById("grossPrice");
-          const rateInput = document.getElementById("vatRate");
-          const res = document.getElementById("vatResult");
-        
-          const net = parseNum(netInput.value);
-          const gross = parseNum(grossInput.value);
-          const rate = parseNum(rateInput.value);
-        
-          if (!rate || rate <= 0) {
-            res.innerHTML = "<span>Please enter a valid VAT rate.</span>";
-            return;
-          }
-        
-          const r = rate / 100;
-        
-          if (!isNaN(net)) {
-            const grossVal = net * (1 + r);
-            const vatVal = grossVal - net;
-            grossInput.value = grossVal.toFixed(2);
-            res.innerHTML = `
-              <strong>Net: ${net.toFixed(2)} €</strong>
-              <span>VAT: ${vatVal.toFixed(2)} €</span>
-              <span>Gross: ${grossVal.toFixed(2)} €</span>
-            `;
-            return;
-          }
-        
-          if (!isNaN(gross)) {
-            const netVal = gross / (1 + r);
-            const vatVal = gross - netVal;
-            netInput.value = netVal.toFixed(2);
-            res.innerHTML = `
-              <strong>Gross: ${gross.toFixed(2)} €</strong>
-              <span>VAT: ${vatVal.toFixed(2)} €</span>
-              <span>Net: ${netVal.toFixed(2)} €</span>
-            `;
-            return;
-          }
-        
-          res.innerHTML = "<span>Please enter a net or gross price.</span>";
-        }
-        </script>
-        
-        </body>
-        </html>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function parseNum(v){
+      const n = parseFloat(String(v || "").replace(",", "."));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function calculateVAT(){
+      const netInput = document.getElementById("netPrice");
+      const grossInput = document.getElementById("grossPrice");
+      const rateInput = document.getElementById("vatRate");
+      const res = document.getElementById("vatResult");
+
+      const net = parseNum(netInput.value);
+      const gross = parseNum(grossInput.value);
+      const rate = parseNum(rateInput.value);
+
+      if (rate === null || rate < 0) {
+        res.innerHTML = "<span>Please enter a valid VAT rate (0 or more).</span>";
+        return;
+      }
+
+      const r = rate / 100;
+
+      const hasNet = net !== null && net > 0;
+      const hasGross = gross !== null && gross > 0;
+
+      if (hasNet && hasGross) {
+        res.innerHTML = "<span>Please fill either Net OR Gross (not both), then click Calculate.</span>";
+        return;
+      }
+
+      if (!hasNet && !hasGross) {
+        res.innerHTML = "<span>Please enter a net or gross price (greater than 0).</span>";
+        return;
+      }
+
+      if (hasNet) {
+        const grossVal = net * (1 + r);
+        const vatVal = grossVal - net;
+        grossInput.value = grossVal.toFixed(2);
+
+        res.innerHTML = `
+          <strong>Net: ${net.toFixed(2)} €</strong>
+          <span>VAT (${rate.toFixed(1)}%): ${vatVal.toFixed(2)} €</span>
+          <span>Gross: ${grossVal.toFixed(2)} €</span>
+        `;
+        return;
+      }
+
+      // hasGross
+      const netVal = gross / (1 + r);
+      const vatVal = gross - netVal;
+      netInput.value = netVal.toFixed(2);
+
+      res.innerHTML = `
+        <strong>Gross: ${gross.toFixed(2)} €</strong>
+        <span>VAT (${rate.toFixed(1)}%): ${vatVal.toFixed(2)} €</span>
+        <span>Net: ${netVal.toFixed(2)} €</span>
+      `;
+    }
+  </script>
+</body>
+</html>

@@ -11,20 +11,21 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+      "@type": "WebApplication",
+      "name": "Universe Tools – Monthly savings simulator",
+      "url": "https://universe-tools.com/tools/monthly-savings.html",
+      "description": "Simulate monthly savings growth with compound interest: final amount, total invested and interest gained. Local calculation in the browser.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
     }
   </script>
   
   <meta charset="UTF-8" />
-  <title>Lumens ↔ Watts (LED) – Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convert lumens to watts for LED lighting, or watts to lumens, using an average LED efficiency of about 90 lm/W. Simple and local calculator.">
-
+  <title>Monthly savings simulator | Universe Tools</title>  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Monthly savings simulator: estimate final amount, invested total and interest gained with monthly contributions and a fixed annual rate. Local calculation in your browser.">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -32,10 +33,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/lumens-led.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <link rel="canonical" href="https://universe-tools.com/tools/monthly-savings.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/monthly-savings.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/monthly-savings.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/monthly-savings.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -159,7 +160,7 @@
 
     .tool-form {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(2,1fr);      
       gap: .8rem;
       margin-top: .8rem;
     }
@@ -304,6 +305,12 @@
       </form>
     
       <div id="savingsResult" class="tool-result"></div>
+
+      <p class="section-subtitle" style="margin-top:1.5rem">
+        This monthly savings simulator estimates how your savings can grow over time with monthly contributions and a fixed annual interest rate.
+        It shows the final amount, the total money you contributed, and the interest gained with monthly compounding.
+        The calculation runs locally in your browser, so no data is sent anywhere.
+      </p>
     
       <div class="small-note">
         Calculation uses monthly compounding. Results are indicative only.
@@ -327,8 +334,9 @@
     document.getElementById("year").textContent = new Date().getFullYear();
     
     function parseNum(v){
-      return parseFloat(String(v || "").replace(",", "."));
-    }
+  const n = parseFloat(String(v ?? "").replace(",", "."));
+  return Number.isFinite(n) ? n : null;
+}
     
     function simulateSavings(){
       const monthly = parseNum(document.getElementById("saveMonthly").value);
@@ -336,8 +344,7 @@
       const years = parseNum(document.getElementById("saveYears").value);
       const res = document.getElementById("savingsResult");
     
-      if(!monthly || monthly <= 0 || rate < 0 || !years || years <= 0){
-        res.innerHTML = "<span>Please enter valid values.</span>";
+      if(monthly === null || monthly <= 0 || rate === null || rate < 0 || years === null || years <= 0){        res.innerHTML = "<span>Please enter valid values.</span>";
         return;
       }
     

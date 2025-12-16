@@ -11,19 +11,22 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+      "@type": "WebApplication",
+      "name": "Universe Tools – Net ↔ gross salary calculator",
+      "url": "https://universe-tools.com/tools/net-gross-salary.html",
+      "description": "Convert gross salary to net (or net to gross) using a custom contribution rate. Local calculation in the browser. Results are estimates.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
     }
   </script>
   
   <meta charset="UTF-8" />
-  <title>Lumens ↔ Watts (LED) – Universe Tools</title>
+  <title>Net ↔ gross salary calculator | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convert lumens to watts for LED lighting, or watts to lumens, using an average LED efficiency of about 90 lm/W. Simple and local calculator.">
+  <meta name="description" content="Convert gross to net salary (or net to gross) using your own contribution rate. Simple local calculator — results are estimates.">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -32,10 +35,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/lumens-led.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+<link rel="canonical" href="https://universe-tools.com/tools/net-gross-salary.html" />  
+<link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/net-gross-salary.html" />
+<link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/net-gross-salary.html" />
+<link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/net-gross-salary.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -159,7 +162,7 @@
 
     .tool-form {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(2,1fr);      
       gap: .8rem;
       margin-top: .8rem;
     }
@@ -301,6 +304,12 @@
       </form>
     
       <div id="salaryResult" class="tool-result"></div>
+
+      <p class="section-subtitle" style="margin-top:1.5rem">
+        This net ↔ gross salary calculator helps you estimate net pay from gross salary (or gross from net)
+        using a contribution rate you choose. Because payroll rules vary by country and status, results are indicative.
+        The calculation runs locally in your browser and does not send any data.
+      </p>
     
       <div class="small-note">
         Net = Gross × (1 − rate). Gross = Net ÷ (1 − rate). This is an estimate only.
@@ -324,8 +333,9 @@
     document.getElementById("year").textContent = new Date().getFullYear();
     
     function parseNum(v){
-      return parseFloat(String(v || "").replace(",", "."));
-    }
+  const n = parseFloat(String(v ?? "").replace(",", "."));
+  return Number.isFinite(n) ? n : null;
+}
     
     function calculateSalary(){
       const grossInput = document.getElementById("grossSalary");
@@ -337,7 +347,7 @@
       const net = parseNum(netInput.value);
       const ratePct = parseNum(rateInput.value);
     
-      if (!ratePct || ratePct <= 0 || ratePct >= 100) {
+      if (ratePct === null || ratePct <= 0 || ratePct >= 100) {        
         res.innerHTML = "<span>Please enter a valid rate (between 0 and 100).</span>";
         return;
       }
@@ -345,7 +355,7 @@
       const r = ratePct / 100;
       const factor = 1 - r;
     
-      if (!isNaN(gross)) {
+      if (gross !== null) {
         const netVal = gross * factor;
         netInput.value = netVal.toFixed(2);
         res.innerHTML = `
@@ -356,7 +366,7 @@
         return;
       }
     
-      if (!isNaN(net)) {
+      if (net !== null) {
         const grossVal = net / factor;
         grossInput.value = grossVal.toFixed(2);
         res.innerHTML = `

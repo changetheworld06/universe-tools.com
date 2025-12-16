@@ -12,19 +12,23 @@
   </script>
 
   <!-- SEO JSON-LD WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Universe Tools",
-    "url": "https://universe-tools.com"
-  }
-  </script>
+<!-- Structured Data : WebApplication (tool) -->
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Universe Tools – Fake data generator",
+      "url": "https://universe-tools.com/tools/fake-data-generator.html",
+      "description": "Generate realistic but fake test profiles (name, email, address, phone) locally in your browser.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All"
+    }
+    </script>
 
   <meta charset="UTF-8" />
-  <title>Energy converter: Joules ↔ kcal ↔ kWh | Universe Tools</title>
+  <title>Fake data generator (test profiles) | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convert energy between Joules, food calories (kcal) and kilowatt-hours (kWh). All calculations are done locally in your browser.">
+  <meta name="description" content="Generate realistic but completely fake profiles (name, email, address, phone) for testing. 100% local in your browser.">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,10 +38,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/energy.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/energy.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/energy.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/energy.html" />
+  <link rel="canonical" href="https://universe-tools.com/tools/fake-data-generator.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/fake-data-generator.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/fake-data-generator.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/fake-data-generator.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -433,20 +437,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
         <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
+            <span>Try another tool</span>          <span>→</span>
           <span>→</span>
         </button>
       </div>
@@ -480,6 +484,18 @@
             </form>
         
             <div id="fakeResult" class="tool-result"></div>
+
+            <p class="seo-text">
+                This <strong>fake data generator</strong> creates random test profiles for demos, UI mockups,
+                QA, and development. Each profile includes a fake name, email, address and phone number.
+                All data is generated locally in your browser (no API, no tracking input).
+              </p>
+              
+              <p class="seo-text">
+                Use it to test signup forms, CRM imports, validation rules, or to populate placeholder
+                content quickly. Generated data is <strong>fictional</strong> and should not be used to
+                impersonate real people.
+              </p>
         
             <div class="small-note">
               All generated data is random and does not correspond to real people.

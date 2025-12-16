@@ -13,18 +13,21 @@
 
   <!-- SEO JSON-LD WebSite -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Universe Tools",
-    "url": "https://universe-tools.com"
-  }
-  </script>
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Universe Tools – Fraction ↔ Decimal converter",
+      "url": "https://universe-tools.com/tools/fraction-decimal.html",
+      "description": "Convert fractions (a/b) to decimals and decimals to fractions with an approximation method.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
+    </script>
 
   <meta charset="UTF-8" />
-  <title>Energy converter: Joules ↔ kcal ↔ kWh | Universe Tools</title>
+  <title>Fraction to decimal converter (a/b ↔ 0.75) | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convert energy between Joules, food calories (kcal) and kilowatt-hours (kWh). All calculations are done locally in your browser.">
+  <meta name="description" content="Convert fractions to decimals and decimals to fractions instantly (a/b ↔ 0.75). Local calculation in your browser, no data sent.">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,10 +37,11 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/energy.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/energy.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/energy.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/energy.html" />
+
+  <link rel="canonical" href="https://universe-tools.com/tools/fraction-decimal.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/fraction-decimal.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/fraction-decimal.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/fraction-decimal.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -433,20 +437,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
         <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
+            <span>Try another tool</span>          <span>→</span>
           <span>→</span>
         </button>
       </div>
@@ -487,6 +491,18 @@
           </form>
         
           <div id="fractionResult" class="tool-result"></div>
+
+          <p class="seo-text">
+            This <strong>fraction to decimal and percentage converter</strong> turns values like
+            <strong>1/4</strong> into <strong>0.25</strong> and <strong>25%</strong>, and also converts a
+            decimal or a percentage back to a simplified fraction.
+          </p>
+          
+          <p class="seo-text">
+            It’s helpful for school math, recipes, measurements, discounts, and quick mental checks.
+            The calculation runs <strong>100% locally</strong> in your browser (no data is sent).
+            Fractions are simplified when possible (for example <strong>2/4 → 1/2</strong>).
+          </p>
         
           <div class="small-note">
             Decimal to fraction uses an approximation (max denominator: 1000).
@@ -541,10 +557,10 @@
             const num = parseNum(parts[0]);
             const den = parseNum(parts[1]);
         
-            if (!num || !den || den === 0) {
-              res.innerHTML = "<span>Invalid fraction.</span>";
-              return;
-            }
+            if (!Number.isFinite(num) || !Number.isFinite(den) || den === 0) {
+  res.innerHTML = "<span>Invalid fraction.</span>";
+  return;
+}
         
             const decimal = num / den;
             res.innerHTML = `

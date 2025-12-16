@@ -40,6 +40,7 @@
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/crypto-pnl.html" />
 
   <meta name="theme-color" content="#4f46e5">
+  <meta name="robots" content="index,follow">
 
   <!-- Google Ads (conversion) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
@@ -292,20 +293,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
         <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
+            <span>Try another tool</span>
           <span>→</span>
         </button>
       </div>
@@ -361,6 +362,28 @@
             </form>
 
             <div id="cpResult" class="tool-result"></div>
+
+            <section class="tool-section" aria-label="SEO content">
+                <h2 style="font-size:1.05rem; margin-bottom:0.6rem;">How to calculate crypto profit and loss (PnL)</h2>
+              
+                <p>
+                  This crypto PnL calculator estimates your profit or loss based on three inputs:
+                  <strong>entry price</strong>, <strong>current price</strong>, and <strong>quantity</strong>.
+                  It returns both the PnL amount and the PnL percentage.
+                </p>
+              
+                <p>
+                  The formulas are simple:
+                  <strong>PnL = (current price − entry price) × quantity</strong>,
+                  and <strong>PnL % = ((current price ÷ entry price) − 1) × 100</strong>.
+                  Fees, spreads and taxes are not included.
+                </p>
+              
+                <p>
+                  Everything runs locally in your browser (no API calls). For real trading results,
+                  always confirm prices and fees on your exchange.
+                </p>
+              </section>
 
             <div class="small-note">
               This calculator ignores taxes and funding/interest. It’s a simple estimate of PnL.
@@ -426,6 +449,10 @@
         <span>Position value: ${positionValue.toFixed(2)} (current ${current} × qty ${qty})</span>
       `;
     }
+  </script>
+  <script>
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

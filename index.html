@@ -37,7 +37,6 @@
   <link rel="canonical" href="https://universe-tools.com/" />
 
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
 
 <meta name="theme-color" content="#4f46e5">
@@ -966,13 +965,8 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
           <a href="/#tools">Tous les outils</a>
           <a href="/legal.html">Mentions légales</a>
           <a href="/privacy.html">Confidentialité</a>
-          <a href="/fr/">FR</a>
         </nav>
 
-        <nav class="lang-switch">
-          <a href="/">English</a> |
-          <a href="/fr/">Français</a>
-        </nav>
 
         <button class="nav-cta" type="button" onclick="addToFavorites()">
           <span>Add to favorites</span>
@@ -2437,7 +2431,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
           </p>
       
           <p style="margin-top:1rem; color:#9ca3af; font-size:0.9rem;">
-            The site offers 30+ tools grouped into several categories:
+            The site offers 60+ tools grouped into several categories:
             converters (km ↔ miles, kg ↔ lb, °C ↔ °F, cm ↔ inches,
             liters ↔ gallons, days ↔ hours / minutes / seconds, KB / MB / GB / TB,
             manual currency converter, flow rate L/min ↔ m³/h, area ↔ volume),
@@ -2557,5 +2551,44 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
     document.head.appendChild(s);
   }
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("toolSearch");
+    const cards = Array.from(document.querySelectorAll(".tool-card"));
+    const tags = Array.from(document.querySelectorAll(".tool-tag"));
+  
+    if (!input || cards.length === 0) return;
+  
+    let activeCategory = "all";
+  
+    function applyFilters() {
+      const q = (input.value || "").trim().toLowerCase();
+  
+      cards.forEach(card => {
+        const name = (card.getAttribute("data-name") || "").toLowerCase();
+        const cat = (card.getAttribute("data-category") || "").toLowerCase();
+  
+        const matchText = q === "" || name.includes(q);
+        const matchCat = activeCategory === "all" || cat === activeCategory;
+  
+        card.classList.toggle("hidden", !(matchText && matchCat));
+      });
+    }
+  
+    input.addEventListener("input", applyFilters);
+  
+    tags.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tags.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeCategory = (btn.getAttribute("data-filter") || "all").toLowerCase();
+        applyFilters();
+      });
+    });
+  
+    // init
+    applyFilters();
+  });
+  </script>
 </body>
 </html>

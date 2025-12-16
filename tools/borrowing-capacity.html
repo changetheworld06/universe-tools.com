@@ -295,22 +295,22 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
-          <a href="/fr/">FR</a>
-        </nav>
-
-        <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
-          <span>→</span>
-        </button>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/fr/">FR</a>
+          </nav>
+          
+          <button class="nav-cta" onclick="window.location.href='/'">
+            <span>Try another tool</span>
+            <span>→</span>
+          </button>
       </div>
     </header>
 
@@ -343,7 +343,7 @@
               <div class="field">
                 <label for="bcExpenses">Monthly expenses</label>
                 <input id="bcExpenses" type="number" step="0.01" min="0" placeholder="Ex: 900" />
-                <small>Recurring fixed expenses.</small>
+                <small>Recurring fixed expenses (and/or existing monthly debts).</small>
               </div>
 
               <div class="field">
@@ -372,6 +372,35 @@
             </form>
 
             <div id="bcResult" class="tool-result"></div>
+
+            <section class="tool-section" aria-label="SEO content">
+                <h2 class="section-title" style="font-size:1.1rem; margin-bottom:0.5rem;">
+                  How this borrowing capacity calculator works
+                </h2>
+              
+                <p>
+                  This <strong>borrowing capacity calculator</strong> estimates your
+                  <strong>maximum affordable monthly loan payment</strong> and an indicative
+                  <strong>maximum loan amount</strong> based on your monthly income, recurring expenses,
+                  a target <strong>debt-to-income ratio (DTI)</strong>, an interest rate and a loan duration.
+                </p>
+              
+                <p>
+                  The tool first applies the chosen debt ratio to your income to compute a theoretical maximum
+                  total debt payment. It then subtracts your recurring expenses to estimate what could remain
+                  available for a mortgage or loan payment.
+                </p>
+              
+                <p>
+                  The estimated loan amount is calculated using a standard present value formula for a fixed-rate loan.
+                  This result is indicative: lenders may also include borrower profile, insurance, fees, remaining
+                  disposable income, existing loans, and underwriting policies.
+                </p>
+              
+                <p class="small-note">
+                  Disclaimer: this tool provides a simplified estimate and is not financial advice.
+                </p>
+              </section>
 
             <div class="small-note">
               This is a simplified estimate. Banks also consider insurance, fees, remaining disposable income,

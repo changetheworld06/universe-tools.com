@@ -13,18 +13,21 @@
 
   <!-- SEO JSON-LD WebSite -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Universe Tools",
-    "url": "https://universe-tools.com"
-  }
-  </script>
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Universe Tools – File size converter",
+      "url": "https://universe-tools.com/tools/file-size-converter.html",
+      "description": "Convert file sizes between bytes, KB, MB, GB and TB using the binary 1024 standard.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
+    </script>
 
   <meta charset="UTF-8" />
-  <title>Energy converter: Joules ↔ kcal ↔ kWh | Universe Tools</title>
+  <title>File size converter (bytes ↔ KB ↔ MB ↔ GB ↔ TB) | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convert energy between Joules, food calories (kcal) and kilowatt-hours (kWh). All calculations are done locally in your browser.">
+  <meta name="description" content="Convert file sizes between bytes, KB, MB, GB and TB (binary 1024 standard). Instant local calculation, no data sent.">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,10 +37,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/energy.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/energy.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/energy.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/energy.html" />
+  <link rel="canonical" href="https://universe-tools.com/tools/file-size-converter.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/file-size-converter.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/file-size-converter.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/file-size-converter.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -433,20 +436,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
         <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
+            <span>Try another tool</span>          <span>→</span>
           <span>→</span>
         </button>
       </div>
@@ -491,6 +494,17 @@
           </form>
         
           <div id="sizeResult" class="tool-result"></div>
+
+          <p class="seo-text">
+            This <strong>file size converter</strong> helps you convert storage and data sizes between
+            <strong>bytes</strong>, <strong>KB</strong>, <strong>MB</strong>, <strong>GB</strong> and <strong>TB</strong>.
+            It uses the <strong>binary standard</strong> (base 1024), which is common for RAM, file systems and many tools.
+          </p>
+          
+          <p class="seo-text">
+            Use it to understand downloads, disk usage, backups, cloud storage, videos, photos, archives (ZIP),
+            or to compare sizes shown by different operating systems. All calculations run locally in your browser.
+          </p>
         
           <div class="small-note">
             Binary units used: 1 KB = 1024 B, 1 MB = 1024 KB, etc.

@@ -1,54 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google tag (gtag.js) - GA4 -->
+  <title>Salary converter (annual ↔ monthly ↔ hourly) | Universe Tools</title>
+  <meta name="description" content="Convert salary between annual, monthly and hourly values based on weekly working hours. 100% local in your browser (no upload)." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'G-15ST5Y0Z1C'); // GA4
+    gtag('config', 'AW-325165312'); // Google Ads
   </script>
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+  <!-- Event snippet conversion -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
     }
   </script>
-  
-  <meta charset="UTF-8" />
-  <title>Running Power Zones – Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Calculate your running power training zones based on your FTP (critical power). Simple running power zone calculator in your browser.">
 
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication (page-specific) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Salary converter (annual monthly hourly)",
+    "url": "https://universe-tools.com/tools/salary-time.html",
+    "description": "Convert salary between annual, monthly and hourly values based on weekly working hours. Runs locally in the browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/running-power.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <!-- Canonical + hreflang (page-specific) -->
+  <link rel="canonical" href="https://universe-tools.com/tools/salary-time.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/salary-time.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/salary-time.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/salary-time.html" />
 
-  <meta name="theme-color" content="#4f46e5">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Universe Tools" />
+  <meta property="og:title" content="Salary converter (annual ↔ monthly ↔ hourly)" />
+  <meta property="og:description" content="Convert salary between annual, monthly and hourly values based on weekly hours. Local-only tool." />
+  <meta property="og:url" content="https://universe-tools.com/tools/salary-time.html" />
 
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Salary converter | Universe Tools" />
+  <meta name="twitter:description" content="Annual ↔ monthly ↔ hourly salary converter (local-only)." />
 
-  <!-- Styles : même base que les autres outils -->
+  <!-- Styles : same base as your other tools (kept) -->
   <style>
     :root {
       --bg: #050816;
@@ -69,116 +104,51 @@
       --max-width: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
       color: var(--text);
       min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
 
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
+      position: sticky; top: 0; z-index: 20;
       backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
       border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+    .brand { display: flex; align-items: center; gap: 0.65rem; }
 
     .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 34px; height: 34px; border-radius: 999px;
+      display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      box-shadow:
-        0 0 30px rgba(79, 70, 229, 0.45),
-        0 0 4px rgba(148, 163, 184, 0.8);
+      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
       background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
+    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
+    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
+    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
 
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.3rem;
-      font-size: 0.9rem;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; }
     .nav-links a {
       color: var(--muted);
       padding: 0.25rem 0;
       border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
+      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
     }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
+    .nav-links a:hover { color: #e5e7eb; border-color: rgba(129, 140, 248, 0.7); transform: translateY(-1px); }
 
     .nav-cta {
       padding: 0.45rem 0.9rem;
@@ -195,35 +165,13 @@
       box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
       cursor: pointer;
     }
+    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
 
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
+    .section { padding: 1.5rem 0 3.5rem; }
 
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.5;
-    }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
+    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
 
     .tool-section {
       border-radius: 20px;
@@ -234,12 +182,6 @@
       margin-bottom: 1.4rem;
     }
 
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-
     .tool-form {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -247,37 +189,13 @@
       align-items: end;
       margin-bottom: 1rem;
     }
+    @media (max-width: 900px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
 
-    @media (max-width: 900px) {
-      .tool-form {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
+    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
+    .field label { color: var(--muted); }
 
-    @media (max-width: 650px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field small {
-      color: #6b7280;
-      font-size: 0.72rem;
-    }
-
-    .field input,
-    .field select {
+    .field input {
       border-radius: var(--radius-sm);
       border: 1px solid rgba(75, 85, 99, 0.9);
       background: radial-gradient(circle at top left, #020617, #020617);
@@ -285,10 +203,6 @@
       padding: 0.45rem 0.55rem;
       font-size: 0.85rem;
       outline: none;
-    }
-
-    .field input::placeholder {
-      color: #6b7280;
     }
 
     .btn-tool {
@@ -306,46 +220,16 @@
       box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
     }
 
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
+    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
+    .tool-result span { display:block; margin-top:.25rem; color: var(--muted); }
 
-    .zones-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.8rem;
-      font-size: 0.8rem;
-    }
-
-    .zones-table th,
-    .zones-table td {
-      padding: 0.45rem 0.5rem;
-      border-bottom: 1px solid rgba(55, 65, 81, 0.9);
-      text-align: left;
-    }
-
-    .zones-table th {
-      color: #e5e7eb;
-      font-weight: 600;
-    }
-
-    .zones-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-    }
+    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
 
     footer {
       border-top: 1px solid rgba(30, 64, 175, 0.6);
       background: radial-gradient(circle at top, #020617, #020617);
       margin-top: auto;
     }
-
     .footer-inner {
       padding: 1rem 0 1.4rem;
       font-size: 0.75rem;
@@ -356,46 +240,10 @@
       justify-content: space-between;
       align-items: center;
     }
-
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-    }
+    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .footer-links a { color: #6b7280; }
+    .footer-links a:hover { color: #e5e7eb; }
   </style>
-
-  <!-- Event snippet conversion -->
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-          'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
@@ -403,8 +251,8 @@
     <header>
       <div class="container nav">
         <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -422,118 +270,153 @@
           </div>
         </div>
 
-        <nav class="nav-links">
+        <nav class="nav-links" aria-label="Primary">
           <a href="/#tools">All tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
-          <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Try another tool</span>
-            <span>→</span>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
           </button>
         </nav>
       </div>
     </header>
 
-<main>
-<section class="section">
-<div class="container">
+    <main>
+      <section class="section">
+        <div class="container">
 
-<h1 class="section-title">Annual ↔ monthly ↔ hourly salary</h1>
-<p class="section-subtitle">
-Convert your salary between annual, monthly and hourly values based on your weekly working hours.
-</p>
+          <div class="section-header">
+            <h1 class="section-title">Annual ↔ Monthly ↔ Hourly Salary</h1>
+            <p class="section-subtitle">
+              Convert your salary between annual, monthly and hourly values based on your weekly working hours.
+            </p>
+          </div>
 
-<article class="tool-section" id="tool-salary-time">
+          <article class="tool-section" id="tool-salary-time">
+            <p>
+              Enter at least one salary value (annual, monthly or hourly), plus your weekly hours.
+              The tool will calculate the other two. Everything runs locally.
+            </p>
 
-<form class="tool-form" onsubmit="event.preventDefault(); calculateSalary();">
+            <form class="tool-form" onsubmit="event.preventDefault(); calculateSalary();">
+              <div class="field">
+                <label for="annual">Annual salary</label>
+                <input id="annual" type="number" step="0.01" min="0" placeholder="e.g. 42000" />
+              </div>
 
-  <div class="field">
-    <label for="annual">Annual salary</label>
-    <input id="annual" type="number" step="0.01" placeholder="Ex: 42000">
+              <div class="field">
+                <label for="monthly">Monthly salary</label>
+                <input id="monthly" type="number" step="0.01" min="0" placeholder="e.g. 3500" />
+              </div>
+
+              <div class="field">
+                <label for="hourly">Hourly wage</label>
+                <input id="hourly" type="number" step="0.01" min="0" placeholder="e.g. 22" />
+              </div>
+
+              <div class="field">
+                <label for="hours">Hours / week</label>
+                <input id="hours" type="number" step="0.1" min="0" placeholder="e.g. 35" />
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="calculateSalary()">Convert</button>
+              </div>
+            </form>
+
+            <div id="result" class="tool-result" aria-live="polite"></div>
+
+            <div class="small-note">
+              Assumes 52 weeks/year and 12 months/year. Results are indicative.
+            </div>
+          </article>
+
+          <!-- Mini SEO text -->
+          <section class="tool-section" aria-label="About this salary converter">
+            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">
+              Convert annual salary to monthly and hourly (local & private)
+            </h2>
+            <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
+              This tool helps you quickly estimate an annual salary from a monthly pay or an hourly wage, and vice-versa.
+              It can be useful when comparing job offers, contracts, freelancing rates, or budgeting.
+            </p>
+            <p style="color:var(--muted);line-height:1.65;">
+              The conversion uses your weekly working hours and standard calendar assumptions (52 weeks, 12 months).
+              No data is sent to a server.
+            </p>
+          </section>
+
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
+      </div>
+    </footer>
   </div>
 
-  <div class="field">
-    <label for="monthly">Monthly salary</label>
-    <input id="monthly" type="number" step="0.01" placeholder="Ex: 3500">
-  </div>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  <div class="field">
-    <label for="hourly">Hourly wage</label>
-    <input id="hourly" type="number" step="0.01" placeholder="Ex: 22">
-  </div>
-
-  <div class="field">
-    <label for="hours">Hours / week</label>
-    <input id="hours" type="number" step="0.1" placeholder="Ex: 35">
-  </div>
-
-  <div class="field">
-    <button class="btn-tool" type="button" onclick="calculateSalary()">Convert</button>
-  </div>
-
-</form>
-
-<div id="result" class="tool-result"></div>
-
-<div class="small-note">
-Assumes 52 weeks per year and 12 months per year. Results are indicative.
-</div>
-
-</article>
-</div>
-</section>
-</main>
-
-<footer>
-© <span id="year"></span> Universe Tools
-</footer>
-
-</div>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-
-function parseNum(v){
-  const n = parseFloat(String(v||"").replace(",","."));
-  return Number.isFinite(n) ? n : null;
-}
-
-function calculateSalary(){
-  const annual = parseNum(document.getElementById("annual").value);
-  const monthly = parseNum(document.getElementById("monthly").value);
-  const hourly = parseNum(document.getElementById("hourly").value);
-  const hours = parseNum(document.getElementById("hours").value);
-  const el = document.getElementById("result");
-
-  if(!hours || hours <= 0){
-    el.innerHTML = "<span>Please enter valid weekly working hours.</span>";
-    return;
-  }
-
-  let annualCalc = annual;
-
-  if(annualCalc === null){
-    if(monthly !== null){
-      annualCalc = monthly * 12;
-    } else if(hourly !== null){
-      annualCalc = hourly * hours * 52;
-    } else {
-      el.innerHTML = "<span>Please enter at least one salary value.</span>";
-      return;
+    function parseNum(v){
+      const n = parseFloat(String(v ?? "").replace(",", "."));
+      return Number.isFinite(n) ? n : null;
     }
-  }
 
-  const monthlyCalc = annualCalc / 12;
-  const hourlyCalc = annualCalc / (hours * 52);
+    function calculateSalary(){
+      const annualEl = document.getElementById("annual");
+      const monthlyEl = document.getElementById("monthly");
+      const hourlyEl = document.getElementById("hourly");
+      const hoursEl  = document.getElementById("hours");
+      const el = document.getElementById("result");
 
-  el.innerHTML = `
-    <strong>Annual salary: ${annualCalc.toFixed(2)}</strong>
-    <span>Monthly salary: ${monthlyCalc.toFixed(2)}</span>
-    <span>Hourly wage: ${hourlyCalc.toFixed(2)}</span>
-  `;
-}
-</script>
+      if (!annualEl || !monthlyEl || !hourlyEl || !hoursEl || !el) return;
 
+      const annual  = parseNum(annualEl.value);
+      const monthly = parseNum(monthlyEl.value);
+      const hourly  = parseNum(hourlyEl.value);
+      const hours   = parseNum(hoursEl.value);
+
+      if (!hours || hours <= 0) {
+        el.innerHTML = "<span>Please enter valid weekly working hours.</span>";
+        return;
+      }
+
+      let annualCalc = annual;
+
+      if (annualCalc === null) {
+        if (monthly !== null) {
+          annualCalc = monthly * 12;
+        } else if (hourly !== null) {
+          annualCalc = hourly * hours * 52;
+        } else {
+          el.innerHTML = "<span>Please enter at least one salary value (annual, monthly or hourly).</span>";
+          return;
+        }
+      }
+
+      const monthlyCalc = annualCalc / 12;
+      const hourlyCalc  = annualCalc / (hours * 52);
+
+      // Optional: fill the other fields for convenience (do not overwrite the one used as source if present)
+      if (annual === null) annualEl.value = annualCalc.toFixed(2);
+      if (monthly === null) monthlyEl.value = monthlyCalc.toFixed(2);
+      if (hourly === null) hourlyEl.value = hourlyCalc.toFixed(2);
+
+      el.innerHTML = `
+        <strong>Annual salary: ${annualCalc.toFixed(2)}</strong>
+        <span>Monthly salary: ${monthlyCalc.toFixed(2)}</span>
+        <span>Hourly wage: ${hourlyCalc.toFixed(2)}</span>
+      `;
+    }
+  </script>
 </body>
 </html>

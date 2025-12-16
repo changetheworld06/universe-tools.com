@@ -1,44 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Homepage (EN) -->
+  <!-- Home -->
   <url>
     <loc>https://universe-tools.com/</loc>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
 
-  <!-- Version Française -->
-  <url>
-    <loc>https://universe-tools.com/fr/</loc>
-    <priority>0.9</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <!-- FR - Pages légales -->
+  <!-- Legal -->
   <url>
     <loc>https://universe-tools.com/legal.html</loc>
     <priority>0.3</priority>
     <changefreq>monthly</changefreq>
   </url>
-
   <url>
     <loc>https://universe-tools.com/privacy.html</loc>
     <priority>0.3</priority>
     <changefreq>monthly</changefreq>
   </url>
 
-  <!-- EN - Pages légales -->
-  <url>
-    <loc>https://universe-tools.com/legal-en.html</loc>
-    <priority>0.3</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://universe-tools.com/privacy-en.html</loc>
-    <priority>0.3</priority>
-    <changefreq>monthly</changefreq>
-  </url>
+  <!-- Tools -->
+  <url><loc>https://universe-tools.com/tools/age-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/amortization.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/angle-converter.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/average-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/barcode.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/bill-splitter.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/bmi.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/borrowing-capacity.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/cm-inches.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/concrete.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/countdown-days.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/crypto-eur.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/crypto-pnl.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/currency-converter.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/days-to-hours.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/decimal-hours.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/distance-km-miles.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/electricity-consumption.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/energy-converter.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/energy.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/fake-data-generator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/file-size-converter.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/flow-rate.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/fraction-decimal.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/fraction.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/hours-minutes.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/insulation.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/liters-gallons.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/loan-payment.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/lumens-led.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/meters-feet.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/monthly-budget.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/monthly-savings.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/net-gross-salary.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/notary-fees.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/paint-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/password-generator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/pdf-jpg.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/percentage-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/pressure-converter.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/qr-code.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/random-picker.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/rental-yield.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/running-power.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/salary-time.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/savings-goal.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/sha256-hash.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/speed-kmh-mph.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/speed-ms-kmh.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/stopwatch-timer.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/suggest-tool.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/target-heart-rate.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/tdee.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/temperature.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/tile-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/travel-time.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/unit-price.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/vat-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/week-number.html</loc><priority>0.8</priority></url>
+  <url><loc>https://universe-tools.com/tools/weight-kg-lb.html</loc><priority>0.8</priority></url>
 
 </urlset>

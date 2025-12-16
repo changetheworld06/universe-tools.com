@@ -1,17 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Analytics -->
+  <title>Rental Yield Calculator (Gross & Net) | Universe Tools</title>
+  <meta name="description" content="Estimate gross and net rental yield from purchase price, monthly rent and yearly expenses. 100% local in your browser — no upload." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'G-15ST5Y0Z1C'); // GA4
+    gtag('config', 'AW-325165312'); // Google Ads
   </script>
 
-  <!-- SEO JSON-LD WebSite -->
+  <!-- Event snippet conversion -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
+    }
+  </script>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Canonical + hreflang (page-specific) -->
+  <link rel="canonical" href="https://universe-tools.com/tools/rental-yield.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/rental-yield.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/rental-yield.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/rental-yield.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Universe Tools" />
+  <meta property="og:title" content="Rental Yield Calculator (Gross & Net)" />
+  <meta property="og:description" content="Estimate gross and net rental yield from price, rent and expenses. Runs locally in your browser." />
+  <meta property="og:url" content="https://universe-tools.com/tools/rental-yield.html" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Rental Yield Calculator | Universe Tools" />
+  <meta name="twitter:description" content="Estimate gross and net rental yield from price, rent and expenses. Local-only tool." />
+
+  <!-- Structured Data : WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -21,46 +68,22 @@
   }
   </script>
 
-  <meta charset="UTF-8" />
-  <title>Rental yield calculator | Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Quickly estimate the gross and net rental yield of a property from purchase price, monthly rent and yearly expenses.">
-
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/rental-yield.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/rental-yield.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/rental-yield.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/rental-yield.html" />
-
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () { if (url) window.location = url; };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-        'event_callback': callback
-      });
-      return false;
-    }
+  <!-- Structured Data : WebApplication (page-specific) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Rental Yield Calculator",
+    "url": "https://universe-tools.com/tools/rental-yield.html",
+    "description": "Estimate gross and net rental yield from purchase price, monthly rent and yearly expenses. Runs locally in the browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
   </script>
 
-  <!-- STYLES globaux + mise en forme outil -->
+  <!-- STYLES (unchanged) -->
   <style>
     :root {
       --bg: #050816;
@@ -81,117 +104,51 @@
       --max-width: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
       color: var(--text);
       min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
 
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
 
-    /* HEADER */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
+      position: sticky; top: 0; z-index: 20;
       backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
       border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+    .brand { display: flex; align-items: center; gap: 0.65rem; }
 
     .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 34px; height: 34px; border-radius: 999px;
+      display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      box-shadow:
-        0 0 30px rgba(79, 70, 229, 0.45),
-        0 0 4px rgba(148, 163, 184, 0.8);
+      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
       background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
+    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
+    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
+    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
 
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.3rem;
-      font-size: 0.9rem;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; }
     .nav-links a {
       color: var(--muted);
       padding: 0.25rem 0;
       border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
+      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
     }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
+    .nav-links a:hover { color: #e5e7eb; border-color: rgba(129, 140, 248, 0.7); transform: translateY(-1px); }
 
     .nav-cta {
       padding: 0.45rem 0.9rem;
@@ -208,37 +165,12 @@
       box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
       cursor: pointer;
     }
+    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
 
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
-
-    /* SECTION / TOOL STYLES */
-
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.5;
-    }
+    .section { padding: 1.5rem 0 3.5rem; }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
+    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
 
     .tool-section {
       border-radius: 20px;
@@ -249,11 +181,7 @@
       margin-bottom: 1.4rem;
     }
 
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
+    .tool-section p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem; line-height: 1.55; }
 
     .tool-form {
       display: grid;
@@ -263,33 +191,12 @@
       margin-bottom: 1rem;
     }
 
-    @media (max-width: 900px) {
-      .tool-form {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
+    @media (max-width: 900px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
 
-    @media (max-width: 650px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field small {
-      color: #6b7280;
-      font-size: 0.72rem;
-    }
+    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
+    .field label { color: var(--muted); }
+    .field small { color: #6b7280; font-size: 0.72rem; }
 
     .field input {
       border-radius: var(--radius-sm);
@@ -299,20 +206,11 @@
       padding: 0.45rem 0.55rem;
       font-size: 0.85rem;
       outline: none;
-      transition: border-color var(--transition-fast),
-        box-shadow var(--transition-fast), background var(--transition-fast);
     }
-
-    .field input::placeholder {
-      color: #6b7280;
-    }
-
+    .field input::placeholder { color: #6b7280; }
     .field input:focus {
       border-color: #818cf8;
-      box-shadow:
-        0 0 0 1px rgba(129, 140, 248, 0.6),
-        0 14px 32px rgba(15, 23, 42, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
+      box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.6), 0 14px 32px rgba(15, 23, 42, 0.9);
     }
 
     .btn-tool {
@@ -327,31 +225,12 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform var(--transition-fast),
-        box-shadow var(--transition-fast), opacity var(--transition-fast);
       box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
     }
 
-    .btn-tool:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 36px rgba(79, 70, 229, 0.7);
-    }
-
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
-
-    .tool-result strong {
-      color: #e5e7eb;
-    }
-
-    .tool-result span {
-      color: var(--muted);
-      font-size: 0.8rem;
-      display: block;
-      margin-top: 0.25rem;
-    }
+    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
+    .tool-result strong { color: #e5e7eb; }
+    .tool-result span { color: var(--muted); font-size: 0.8rem; display: block; margin-top: 0.25rem; }
 
     .yield-highlight {
       margin-top: 0.5rem;
@@ -362,18 +241,7 @@
       font-size: 0.84rem;
     }
 
-    .yield-highlight strong {
-      display: inline-block;
-      margin-right: 0.35rem;
-    }
-
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-    }
-
-    /* FOOTER */
+    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
 
     footer {
       border-top: 1px solid rgba(30, 64, 175, 0.6);
@@ -392,49 +260,21 @@
       align-items: center;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-      transition: color var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .footer-links a:hover {
-      color: #e5e7eb;
-      transform: translateY(-0.5px);
-    }
-
-    .hidden {
-      display: none;
-    }
+    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .footer-links a { color: #6b7280; }
+    .footer-links a:hover { color: #e5e7eb; }
   </style>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools – Rental yield calculator",
-      "url": "https://universe-tools.com/tools/rental-yield.html",
-      "description": "Calculate gross and net rental yield for a property investment.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
   <div class="page">
+
     <!-- HEADER -->
     <header>
       <div class="container nav">
         <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -447,21 +287,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
-        <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
-        <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
-          <span>→</span>
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span><span>→</span>
         </button>
       </div>
     </header>
@@ -470,42 +309,45 @@
     <main>
       <section class="section">
         <div class="container">
+
           <div class="section-header">
             <h1 class="section-title">Rental yield calculator</h1>
             <p class="section-subtitle">
-              Quickly estimate the gross and net rental yield of a property investment
-              from purchase price, monthly rent and yearly expenses.
+              Estimate gross and net rental yield from purchase price, monthly rent, and yearly expenses.
+              Runs 100% locally in your browser.
             </p>
           </div>
 
           <article id="tool-rental-yield" class="tool-section">
             <p>
-              Enter the purchase price (including notary / closing costs if you want),
-              the monthly rent, and your yearly expenses (tax, insurance, charges, etc.).
-              The tool will compute:
-              <ul>
-                <li>Annual rent</li>
-                <li>Gross rental yield</li>
-                <li>Net rental yield after expenses</li>
-              </ul>
+              Enter the purchase price (include closing costs if you want), the monthly rent, and yearly expenses
+              (property tax, insurance, HOA, maintenance, etc.). The calculator will return annual rent, gross yield,
+              and net yield after expenses.
             </p>
+
+            <!-- (Fix) do not put <ul> inside <p> -->
+            <ul style="color:var(--muted);margin:0 0 1rem 1.1rem;line-height:1.55;font-size:0.85rem;">
+              <li>Annual rent</li>
+              <li>Gross rental yield</li>
+              <li>Net rental yield (after expenses)</li>
+            </ul>
 
             <form class="tool-form" onsubmit="event.preventDefault(); calculateRentalYield();">
               <div class="field">
                 <label for="purchasePrice">Purchase price</label>
-                <input id="purchasePrice" type="number" step="0.01" min="0" placeholder="Ex: 200000" />
-                <small>Include notary / closing costs if you prefer.</small>
+                <input id="purchasePrice" type="number" step="0.01" min="0" placeholder="e.g. 200000" />
+                <small>Include closing costs if you prefer.</small>
               </div>
 
               <div class="field">
                 <label for="monthlyRent">Monthly rent</label>
-                <input id="monthlyRent" type="number" step="0.01" min="0" placeholder="Ex: 900" />
+                <input id="monthlyRent" type="number" step="0.01" min="0" placeholder="e.g. 900" />
                 <small>Expected rent received each month.</small>
               </div>
 
               <div class="field">
                 <label for="yearlyExpenses">Yearly expenses</label>
-                <input id="yearlyExpenses" type="number" step="0.01" min="0" placeholder="Ex: 2500" />
+                <input id="yearlyExpenses" type="number" step="0.01" min="0" placeholder="e.g. 2500" />
                 <small>Tax, insurance, HOA, maintenance, etc.</small>
               </div>
 
@@ -516,13 +358,29 @@
               </div>
             </form>
 
-            <div id="yieldResult" class="tool-result"></div>
+            <div id="yieldResult" class="tool-result" aria-live="polite"></div>
 
             <div class="small-note">
-              This is a simplified calculation for estimation purposes only.
-              Always check exact tax and legal details with a professional.
+              This is a simplified estimate (gross and net before financing and taxes).
+              For real-world decisions, consider vacancies, repairs, loan costs, and local tax rules.
             </div>
           </article>
+
+          <!-- Mini SEO text -->
+          <section class="tool-section" aria-label="About this rental yield calculator">
+            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">
+              Calculate gross and net rental yield (local & private)
+            </h2>
+            <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
+              Rental yield helps you compare property investments by relating annual rental income to the purchase price.
+              Gross yield uses rent only, while net yield subtracts yearly expenses such as insurance, taxes, HOA fees and maintenance.
+            </p>
+            <p style="color:var(--muted);line-height:1.65;">
+              This tool runs locally in your browser, so your numbers are not uploaded to a server.
+              Use it to quickly benchmark deals before doing a full cashflow analysis.
+            </p>
+          </section>
+
         </div>
       </section>
     </main>
@@ -530,14 +388,15 @@
     <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. Tous droits réservés.</span>
+        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
         <div class="footer-links">
-          <a href="/privacy.html">Confidentialité</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/#tools">Tous les outils</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
         </div>
       </div>
     </footer>
+
   </div>
 
   <!-- SCRIPTS -->
@@ -545,32 +404,45 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     function parseNum(v) {
-      return parseFloat(String(v || "").replace(",", "."));
+      const n = parseFloat(String(v ?? "").replace(",", "."));
+      return Number.isFinite(n) ? n : NaN;
     }
 
     function calculateRentalYield() {
-      const price = parseNum(document.getElementById("purchasePrice").value);
-      const monthly = parseNum(document.getElementById("monthlyRent").value);
-      const yearlyExp = parseNum(document.getElementById("yearlyExpenses").value);
+      const price = parseNum(document.getElementById("purchasePrice")?.value);
+      const monthly = parseNum(document.getElementById("monthlyRent")?.value);
+      const yearlyExp = parseNum(document.getElementById("yearlyExpenses")?.value);
       const resultEl = document.getElementById("yieldResult");
 
-      if (!price || price <= 0 || !monthly || monthly < 0 || yearlyExp < 0) {
-        resultEl.innerHTML = "<span>Please enter a valid price, monthly rent and expenses.</span>";
+      if (!resultEl) return;
+
+      // Validate
+      if (!Number.isFinite(price) || price <= 0) {
+        resultEl.innerHTML = "<span>Please enter a valid purchase price (&gt; 0).</span>";
+        return;
+      }
+      if (!Number.isFinite(monthly) || monthly < 0) {
+        resultEl.innerHTML = "<span>Please enter a valid monthly rent (≥ 0).</span>";
+        return;
+      }
+      const exp = Number.isFinite(yearlyExp) ? yearlyExp : 0;
+      if (exp < 0) {
+        resultEl.innerHTML = "<span>Please enter valid yearly expenses (≥ 0).</span>";
         return;
       }
 
       const annualRent = monthly * 12;
       const grossYield = (annualRent / price) * 100;
-      const netRent = annualRent - (yearlyExp || 0);
-      const netYield = (netRent / price) * 100;
+      const netIncome = annualRent - exp;
+      const netYield = (netIncome / price) * 100;
 
       resultEl.innerHTML = `
         <strong>Annual rent: ${annualRent.toFixed(2)}</strong>
-        <span>Gross yield: ${grossYield.toFixed(2)} %</span>
-        <span>Net yield (after expenses): ${netYield.toFixed(2)} %</span>
+        <span>Gross yield: ${grossYield.toFixed(2)}%</span>
+        <span>Net income (after expenses): ${netIncome.toFixed(2)}</span>
+        <span>Net yield (after expenses): ${netYield.toFixed(2)}%</span>
         <div class="yield-highlight">
-          <strong>Summary:</strong>
-          Gross ${grossYield.toFixed(2)}% – Net ${netYield.toFixed(2)}%
+          <strong>Summary:</strong> Gross ${grossYield.toFixed(2)}% – Net ${netYield.toFixed(2)}%
         </div>
       `;
     }

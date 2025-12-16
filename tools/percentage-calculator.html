@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Google tag (gtag.js) - GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
@@ -11,19 +13,8 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
-    }
-  </script>
-  
-  <meta charset="UTF-8" />
-  <title>Convertisseur PDF ↔ JPG – Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convertissez une page PDF en image JPG ou une image JPG/PNG en fichier PDF, directement dans votre navigateur, sans envoi de fichier.">
+  <title>Percentage Calculator (Increase / Discount) – Universe Tools</title>
+  <meta name="description" content="Calculate percentage increase or discount from an initial value. Get the final value and the amount of change. Runs 100% locally in your browser." />
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,11 +22,11 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang (tu adapteras si besoin) -->
-  <link rel="canonical" href="https://universe-tools.com/tools/pdf-jpg.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/percentage-calculator.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/percentage-calculator.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/percentage-calculator.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/percentage-calculator.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -48,9 +39,47 @@
     gtag('config', 'AW-325165312');
   </script>
 
-  <!-- TON GROS CSS INLINE (copié de la home) -->
+  <!-- Event snippet conversion -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) !== 'undefined') window.location = url;
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+  <!-- Structured Data : WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication (page-specific) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Percentage Calculator",
+    "url": "https://universe-tools.com/tools/percentage-calculator.html",
+    "description": "Calculate a percentage increase or discount from an initial value. Runs locally in your browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Styles : same base as your other tools -->
   <style>
-    /* 👇 tout le CSS que tu as collé dans ton message, inchangé */
     :root {
       --bg: #050816;
       --bg-soft: #0b1020;
@@ -70,30 +99,17 @@
       --max-width: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
       color: var(--text);
       min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    a { color: inherit; text-decoration: none; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
 
     .container {
       width: 100%;
@@ -116,71 +132,23 @@
       border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+    .brand { display: flex; align-items: center; gap: 0.65rem; }
 
     .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 34px; height: 34px; border-radius: 999px;
+      display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      box-shadow:
-        0 0 30px rgba(79, 70, 229, 0.45),
-        0 0 4px rgba(148, 163, 184, 0.8);
+      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
       background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
+    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
+    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
+    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
 
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.3rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
-    }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; }
+    .nav-links a { color: var(--muted); }
     .nav-cta {
       padding: 0.45rem 0.9rem;
       border-radius: 999px;
@@ -188,186 +156,89 @@
       background: radial-gradient(circle at top left, #4f46e5, #0f172a);
       font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
       display: flex;
-      align-items: center;
       gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
       cursor: pointer;
     }
 
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
-
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 480px;
-      line-height: 1.5;
-    }
+    .section { padding: 1.5rem 0 3.5rem; }
+    .section-title { font-size: 1.5rem; }
+    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
 
     .tool-section {
+      margin-top: 1.2rem;
       border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
+      border: 1px solid rgba(55,65,81,.9);
+      background: radial-gradient(circle at top left,#020617,#020617);
+      padding: 1.2rem;
       box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
     }
 
     .tool-form {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: .8rem;
       align-items: end;
     }
 
-    @media (max-width: 600px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
+    @media (max-width: 900px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) { .tool-form { grid-template-columns: 1fr; } }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      font-size: 0.8rem;
-    }
+    .field { display: flex; flex-direction: column; font-size: .8rem; gap: .25rem; }
+    .field label { color: var(--muted); }
 
-    .field label {
-      color: var(--muted);
-    }
-
-    .field input,
-    .field select {
+    .field input, .field select {
+      padding: .45rem .55rem;
       border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
+      border: 1px solid rgba(75,85,99,.9);
+      background: #020617;
       color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
+      font-size: .85rem;
     }
 
     .btn-tool {
-      border-radius: var(--radius-sm);
+      padding: .55rem .85rem;
       border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg,#4f46e5,#6366f1);
+      color: #fff;
       font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
     }
 
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
+    .tool-result { margin-top: .8rem; font-size: .9rem; }
+    .tool-result span { display: block; color: var(--muted); margin-top: .25rem; }
 
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-    }
+    .small-note { font-size: .72rem; color: #6b7280; margin-top: .6rem; }
 
     footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
+      border-top: 1px solid rgba(30,64,175,.6);
+      background: radial-gradient(circle at top,#020617,#020617);
       margin-top: auto;
     }
 
     .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
+      padding: 1rem;
+      font-size: .75rem;
       color: #6b7280;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
       justify-content: space-between;
+      gap: .75rem;
+      flex-wrap: wrap;
       align-items: center;
     }
-
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-    }
   </style>
-
-  <!-- Event snippet pour conversion (inchangé) -->
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-          'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
   <div class="page">
+
     <header>
       <div class="container nav">
         <div class="brand">
           <div class="brand-logo">
-            <!-- même logo que sur la home -->
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -381,113 +252,126 @@
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
-        <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
-          <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Essayez un autre outil</span>
-            <span>→</span>
-          </button>
+          <button class="nav-cta" onclick="window.location.href='/'" type="button">Try another tool →</button>
         </nav>
       </div>
     </header>
 
     <main>
-        <section class="section">
-          <div class="container">
-      
-            <div class="section-header">
-              <h1 class="section-title">Percentage calculator</h1>
-              <p class="section-subtitle">
-                Calculate a percentage increase or discount from an initial value.
-                Runs 100% locally.
-              </p>
-            </div>
-      
-            <article class="tool-section">
-              <form class="tool-form" onsubmit="event.preventDefault(); calculatePercentage();">
-      
-                <div class="field">
-                  <label>Initial value</label>
-                  <input id="baseValue" type="number" step="0.01" placeholder="Ex: 100">
-                </div>
-      
-                <div class="field">
-                  <label>Percentage (%)</label>
-                  <input id="percentValue" type="number" step="0.01" placeholder="Ex: 20">
-                </div>
-      
-                <div class="field">
-                  <label>Type</label>
-                  <select id="percentType">
-                    <option value="increase">Increase</option>
-                    <option value="decrease">Discount</option>
-                  </select>
-                </div>
-      
-                <div class="field">
-                  <button class="btn-tool" type="button" onclick="calculatePercentage()">
-                    Calculate
-                  </button>
-                </div>
-      
-              </form>
-      
-              <div id="percentageResult" class="tool-result"></div>
-      
-              <div class="small-note">
-                Example: 100 + 20% = 120 · 100 − 20% = 80
-              </div>
-            </article>
-      
+      <section class="section">
+        <div class="container">
+
+          <div class="section-header">
+            <h1 class="section-title">Percentage Calculator</h1>
+            <p class="section-subtitle">
+              Calculate a percentage increase or discount from an initial value.
+              Runs 100% locally in your browser.
+            </p>
           </div>
-        </section>
-      </main>
-      
-      <footer>
-        <div class="container footer-inner">
-          <span>© <span id="year"></span> Universe Tools</span>
-          <span>Client-side only</span>
+
+          <article class="tool-section" id="tool-percentage">
+            <form class="tool-form" onsubmit="event.preventDefault(); calculatePercentage();">
+
+              <div class="field">
+                <label for="baseValue">Initial value</label>
+                <input id="baseValue" type="number" step="0.01" min="0" placeholder="e.g. 100">
+              </div>
+
+              <div class="field">
+                <label for="percentValue">Percentage (%)</label>
+                <input id="percentValue" type="number" step="0.01" min="0" placeholder="e.g. 20">
+              </div>
+
+              <div class="field">
+                <label for="percentType">Type</label>
+                <select id="percentType">
+                  <option value="increase">Increase</option>
+                  <option value="decrease">Discount</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="calculatePercentage()">Calculate</button>
+              </div>
+
+            </form>
+
+            <div id="percentageResult" class="tool-result" aria-live="polite"></div>
+
+            <div class="small-note">
+              Examples: 100 + 20% = 120 · 100 − 20% = 80
+            </div>
+          </article>
+
+          <!-- Mini SEO text -->
+          <section class="tool-section" aria-label="About this percentage calculator">
+            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">How to calculate a percentage increase or discount</h2>
+            <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
+              Use this percentage calculator to compute a final value after applying an increase or a discount.
+              It also shows the absolute change (the amount added or subtracted).
+              Everything runs locally in your browser for faster results and better privacy.
+            </p>
+            <p style="color:var(--muted);line-height:1.65;">
+              Common uses include sales discounts, VAT estimation, price increases, tips, and budget adjustments.
+              Enter your initial value, the percentage, pick “Increase” or “Discount”, then calculate.
+            </p>
+          </section>
+
         </div>
-      </footer>
-      
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <span>Client-side only</span>
       </div>
-      
-      <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-      
-        function parseNum(v) {
-          return parseFloat(String(v || "").replace(",", "."));
-        }
-      
-        function calculatePercentage() {
-          const base = parseNum(document.getElementById("baseValue").value);
-          const percent = parseNum(document.getElementById("percentValue").value);
-          const type = document.getElementById("percentType").value;
-          const res = document.getElementById("percentageResult");
-      
-          if (!base || !percent) {
-            res.innerHTML = "<span>Please enter valid values.</span>";
-            return;
-          }
-      
-          const delta = base * (percent / 100);
-          const finalValue = type === "increase"
-            ? base + delta
-            : base - delta;
-      
-          res.innerHTML = `
-            <strong>${finalValue.toFixed(2)}</strong>
-            <span>
-              ${type === "increase" ? "Increase" : "Discount"} of ${percent}% 
-              (${delta.toFixed(2)})
-            </span>
-          `;
-        }
-      </script>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function parseNum(v) {
+      const n = parseFloat(String(v || "").replace(",", "."));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function calculatePercentage() {
+      const base = parseNum(document.getElementById("baseValue").value);
+      const percent = parseNum(document.getElementById("percentValue").value);
+      const type = document.getElementById("percentType").value;
+      const res = document.getElementById("percentageResult");
+
+      if (base === null || percent === null) {
+        res.innerHTML = "<span>Please enter valid numbers.</span>";
+        return;
+      }
+      if (base < 0 || percent < 0) {
+        res.innerHTML = "<span>Values must be 0 or greater.</span>";
+        return;
+      }
+
+      const delta = base * (percent / 100);
+      const finalValue = (type === "increase") ? (base + delta) : (base - delta);
+
+      res.innerHTML = `
+        <strong>${finalValue.toFixed(2)}</strong>
+        <span>${type === "increase" ? "Increase" : "Discount"}: ${percent.toFixed(2)}%</span>
+        <span>Change amount: ${delta.toFixed(2)}</span>
+        <span>Initial value: ${base.toFixed(2)}</span>
+      `;
+    }
+  </script>
+</body>
+</html>

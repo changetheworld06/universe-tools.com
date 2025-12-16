@@ -1,54 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google tag (gtag.js) - GA4 -->
+  <title>Stopwatch & Timer | Universe Tools</title>
+  <meta name="description" content="Free online stopwatch and countdown timer. Start, pause, reset, add laps. Local-only: runs in your browser." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'G-15ST5Y0Z1C'); // GA4
+    gtag('config', 'AW-325165312'); // Google Ads
   </script>
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+  <!-- Event snippet conversion -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
     }
   </script>
-  
-  <meta charset="UTF-8" />
-  <title>Running Power Zones – Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Calculate your running power training zones based on your FTP (critical power). Simple running power zone calculator in your browser.">
 
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication (page-specific) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Stopwatch & Timer",
+    "url": "https://universe-tools.com/tools/stopwatch-timer.html",
+    "description": "Online stopwatch and countdown timer with start/pause/reset and laps. Local-only calculation.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/running-power.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <!-- Canonical + hreflang (page-specific) -->
+  <link rel="canonical" href="https://universe-tools.com/tools/stopwatch-timer.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/stopwatch-timer.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/stopwatch-timer.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/stopwatch-timer.html" />
 
-  <meta name="theme-color" content="#4f46e5">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Universe Tools" />
+  <meta property="og:title" content="Stopwatch & Timer" />
+  <meta property="og:description" content="Free online stopwatch and countdown timer. Local-only: runs in your browser." />
+  <meta property="og:url" content="https://universe-tools.com/tools/stopwatch-timer.html" />
 
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Stopwatch & Timer | Universe Tools" />
+  <meta name="twitter:description" content="Free online stopwatch and countdown timer. Local-only." />
 
-  <!-- Styles : même base que les autres outils -->
+  <!-- Styles : same base as your other tools (kept) -->
   <style>
     :root {
       --bg: #050816;
@@ -69,116 +104,50 @@
       --max-width: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
       color: var(--text);
       min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
+      position: sticky; top: 0; z-index: 20;
       backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
       border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+    .brand { display: flex; align-items: center; gap: 0.65rem; }
 
     .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 34px; height: 34px; border-radius: 999px;
+      display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      box-shadow:
-        0 0 30px rgba(79, 70, 229, 0.45),
-        0 0 4px rgba(148, 163, 184, 0.8);
+      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
       background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
+    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
+    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
+    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
 
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.3rem;
-      font-size: 0.9rem;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; flex-wrap: wrap; justify-content:flex-end; }
     .nav-links a {
       color: var(--muted);
       padding: 0.25rem 0;
       border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
+      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
     }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
+    .nav-links a:hover { color: #e5e7eb; border-color: rgba(129, 140, 248, 0.7); transform: translateY(-1px); }
 
     .nav-cta {
       padding: 0.45rem 0.9rem;
@@ -195,35 +164,13 @@
       box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
       cursor: pointer;
     }
+    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
 
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
+    .section { padding: 1.5rem 0 3.5rem; }
 
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.5;
-    }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
+    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
 
     .tool-section {
       border-radius: 20px;
@@ -231,14 +178,10 @@
       background: radial-gradient(circle at top left, #020617, #020617);
       padding: 1.2rem 1.1rem 1.4rem;
       box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.2rem;
     }
 
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
+    .tool-section p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem; }
 
     .tool-form {
       display: grid;
@@ -247,37 +190,14 @@
       align-items: end;
       margin-bottom: 1rem;
     }
+    @media (max-width: 900px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
 
-    @media (max-width: 900px) {
-      .tool-form {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
+    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
+    .field label { color: var(--muted); }
+    .field small { color: #6b7280; font-size: 0.72rem; }
 
-    @media (max-width: 650px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field small {
-      color: #6b7280;
-      font-size: 0.72rem;
-    }
-
-    .field input,
-    .field select {
+    .field input {
       border-radius: var(--radius-sm);
       border: 1px solid rgba(75, 85, 99, 0.9);
       background: radial-gradient(circle at top left, #020617, #020617);
@@ -285,10 +205,6 @@
       padding: 0.45rem 0.55rem;
       font-size: 0.85rem;
       outline: none;
-    }
-
-    .field input::placeholder {
-      color: #6b7280;
     }
 
     .btn-tool {
@@ -304,48 +220,69 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
+      user-select: none;
+      white-space: nowrap;
     }
 
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
+    .btn-secondary {
+      background: radial-gradient(circle at top left, rgba(148,163,184,0.22), rgba(2,6,23,0.9));
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: none;
     }
 
-    .zones-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.8rem;
-      font-size: 0.8rem;
+    .btn-danger {
+      background: radial-gradient(circle at top left, rgba(239,68,68,0.25), rgba(2,6,23,0.9));
+      border: 1px solid rgba(239,68,68,0.35);
+      box-shadow: none;
     }
 
-    .zones-table th,
-    .zones-table td {
-      padding: 0.45rem 0.5rem;
-      border-bottom: 1px solid rgba(55, 65, 81, 0.9);
-      text-align: left;
+    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
+    .tool-result span { display:block; margin-top:.25rem; color: var(--muted); }
+
+    .time-display {
+      font-variant-numeric: tabular-nums;
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.9rem;
     }
 
-    .zones-table th {
-      color: #e5e7eb;
-      font-weight: 600;
+    .split {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1rem;
     }
+    @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
 
-    .zones-table tr:last-child td {
-      border-bottom: none;
+    .laps {
+      border-top: 1px solid rgba(55,65,81,0.7);
+      margin-top: 0.9rem;
+      padding-top: 0.9rem;
+      display: grid;
+      gap: 0.5rem;
+      max-height: 260px;
+      overflow: auto;
     }
+    .lap-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.45rem 0.55rem;
+      border: 1px solid rgba(55,65,81,0.6);
+      border-radius: 10px;
+      background: rgba(2,6,23,0.55);
+      font-size: 0.85rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .lap-item span { color: var(--muted); }
 
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-    }
+    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
 
     footer {
       border-top: 1px solid rgba(30, 64, 175, 0.6);
       background: radial-gradient(circle at top, #020617, #020617);
       margin-top: auto;
     }
-
     .footer-inner {
       padding: 1rem 0 1.4rem;
       font-size: 0.75rem;
@@ -356,46 +293,9 @@
       justify-content: space-between;
       align-items: center;
     }
-
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-    }
+    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .footer-links a { color: #6b7280; }
   </style>
-
-  <!-- Event snippet conversion -->
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-          'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
@@ -403,8 +303,8 @@
     <header>
       <div class="container nav">
         <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -422,166 +322,369 @@
           </div>
         </div>
 
-        <nav class="nav-links">
+        <nav class="nav-links" aria-label="Primary">
           <a href="/#tools">All tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
-          <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Try another tool</span>
-            <span>→</span>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
           </button>
         </nav>
       </div>
     </header>
 
     <main>
-        <section class="section">
-          <div class="container">
-      
-            <div class="section-header">
-              <h1 class="section-title">Stopwatch & timer</h1>
-              <p class="section-subtitle">
-                Use a simple stopwatch or a countdown timer.
-                Everything runs locally in your browser.
-              </p>
-            </div>
-      
-            <article class="tool-section">
-              <p>
-                The stopwatch counts up, while the timer counts down from a chosen duration.
-              </p>
-      
-              <form class="tool-form" onsubmit="event.preventDefault();">
+      <section class="section">
+        <div class="container">
+
+          <div class="section-header">
+            <h1 class="section-title">Stopwatch & Timer</h1>
+            <p class="section-subtitle">
+              A simple stopwatch (with laps) and a countdown timer. Runs locally in your browser.
+            </p>
+          </div>
+
+          <div class="split">
+            <!-- Stopwatch -->
+            <article class="tool-section" id="tool-stopwatch">
+              <p>Use the stopwatch for workouts, cooking, or any timing task. Add laps to mark splits.</p>
+
+              <div class="time-display" id="swDisplay">00:00.00</div>
+
+              <div class="tool-form" style="grid-template-columns: repeat(4, minmax(0, 1fr));">
+                <button class="btn-tool" type="button" id="swStartBtn" onclick="swStart()">Start</button>
+                <button class="btn-tool btn-secondary" type="button" id="swLapBtn" onclick="swLap()" disabled>Lap</button>
+                <button class="btn-tool btn-secondary" type="button" id="swPauseBtn" onclick="swPause()" disabled>Pause</button>
+                <button class="btn-tool btn-danger" type="button" onclick="swReset()">Reset</button>
+              </div>
+
+              <div class="small-note">Precision depends on the browser/tab scheduling.</div>
+
+              <div class="laps" id="swLaps" aria-label="Laps list"></div>
+            </article>
+
+            <!-- Timer -->
+            <article class="tool-section" id="tool-timer">
+              <p>Set a countdown. When it reaches 0, the page will alert and flash the title.</p>
+
+              <form class="tool-form" onsubmit="event.preventDefault(); timerStart();">
                 <div class="field">
-                  <label>Minutes (timer)</label>
-                  <input id="timerMinutes" type="number" min="0" placeholder="Ex: 5">
+                  <label for="tMin">Minutes</label>
+                  <input id="tMin" type="number" min="0" step="1" placeholder="Ex: 5" />
                 </div>
-      
                 <div class="field">
-                  <label>Seconds (timer)</label>
-                  <input id="timerSeconds" type="number" min="0" max="59" placeholder="Ex: 30">
+                  <label for="tSec">Seconds</label>
+                  <input id="tSec" type="number" min="0" max="59" step="1" placeholder="Ex: 30" />
                 </div>
-      
                 <div class="field">
-                  <button class="btn-tool" type="button" onclick="startTimer()">Start timer</button>
-                </div>
-      
-                <div class="field">
-                  <button class="btn-tool" type="button" onclick="startStopwatch()">Start stopwatch</button>
-                </div>
-      
-                <div class="field">
-                  <button class="btn-tool" type="button" onclick="stopAll()">Stop / Reset</button>
+                  <button class="btn-tool" type="button" id="tStartBtn" onclick="timerStart()">Start timer</button>
                 </div>
               </form>
-      
-              <div id="timeDisplay" class="tool-result">
-                <strong>00:00</strong>
+
+              <div class="time-display" id="tDisplay">00:00</div>
+
+              <div class="tool-form" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
+                <button class="btn-tool btn-secondary" type="button" id="tPauseBtn" onclick="timerPause()" disabled>Pause</button>
+                <button class="btn-tool btn-secondary" type="button" id="tResumeBtn" onclick="timerResume()" disabled>Resume</button>
+                <button class="btn-tool btn-danger" type="button" onclick="timerReset()">Reset</button>
               </div>
-      
-              <div class="small-note">
-                No sound, no notifications, no tracking. Simple visual timer only.
-              </div>
+
+              <div class="small-note">Tip: keep the tab open for best reliability.</div>
             </article>
-      
           </div>
-        </section>
-      </main>
-      
-      <footer>
-        <div class="container footer-inner">
-          <span>© <span id="year"></span> Universe Tools</span>
-          <span>Client-side only</span>
+
+          <!-- Mini SEO text -->
+          <section class="tool-section" aria-label="About stopwatch and timers">
+            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">
+              What’s the difference between a stopwatch and a timer?
+            </h2>
+            <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
+              A stopwatch counts up from zero to measure elapsed time (great for workouts and lap splits).
+              A countdown timer counts down from a set duration to zero (great for cooking and reminders).
+            </p>
+          </section>
+
         </div>
-      </footer>
-      
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
       </div>
-      
-      <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-      
-        let interval = null;
-        let currentSeconds = 0;
-      
-        function parseNum(v) {
-          const n = parseInt(String(v || "").replace(",", "."), 10);
-          return Number.isFinite(n) ? n : 0;
-        }
-      
-        function updateDisplay() {
-          const m = Math.floor(currentSeconds / 60);
-          const s = currentSeconds % 60;
-          document.getElementById("timeDisplay").innerHTML =
-            "<strong>" +
-            String(m).padStart(2, "0") + ":" +
-            String(s).padStart(2, "0") +
-            "</strong>";
-        }
-      
-        function stopAll() {
-          if (interval) clearInterval(interval);
-          interval = null;
-          currentSeconds = 0;
-          updateDisplay();
-        }
-      
-        function startStopwatch() {
-          stopAll();
-          interval = setInterval(() => {
-            currentSeconds++;
-            updateDisplay();
-          }, 1000);
-        }
-      
-        function startTimer() {
-          stopAll();
-      
-          const mins = parseNum(document.getElementById("timerMinutes").value);
-          const secs = parseNum(document.getElementById("timerSeconds").value);
-      
-          currentSeconds = mins * 60 + secs;
-      
-          if (currentSeconds <= 0) {
-            document.getElementById("timeDisplay").innerHTML =
-              "<span>Please enter a duration.</span>";
-            return;
-          }
-      
-          updateDisplay();
-      
-          interval = setInterval(() => {
-            currentSeconds--;
-            updateDisplay();
-      
-            if (currentSeconds <= 0) {
-              clearInterval(interval);
-              interval = null;
-              currentSeconds = 0;
-              updateDisplay();
-              playBeep(); // 🔊 son de fin
-            }
-          }, 1000);
-        }
-      
-        function playBeep() {
-          const AudioCtx = window.AudioContext || window.webkitAudioContext;
-          if (!AudioCtx) return;
-      
-          const ctx = new AudioCtx();
-          const oscillator = ctx.createOscillator();
-          const gain = ctx.createGain();
-      
-          oscillator.type = "sine";
-          oscillator.frequency.value = 880;
-          gain.gain.value = 0.15;
-      
-          oscillator.connect(gain);
-          gain.connect(ctx.destination);
-      
-          oscillator.start();
-          oscillator.stop(ctx.currentTime + 0.6);
-        }
-      
-        updateDisplay();
-      </script>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // --------------------
+    // Stopwatch
+    // --------------------
+    let swRunning = false;
+    let swStartTs = 0;
+    let swElapsedMs = 0;
+    let swRaf = null;
+    let swLapCount = 0;
+
+    const swDisplay = document.getElementById("swDisplay");
+    const swLapsEl = document.getElementById("swLaps");
+    const swStartBtn = document.getElementById("swStartBtn");
+    const swLapBtn = document.getElementById("swLapBtn");
+    const swPauseBtn = document.getElementById("swPauseBtn");
+
+    function formatStopwatch(ms){
+      const total = Math.max(0, Math.floor(ms));
+      const minutes = Math.floor(total / 60000);
+      const seconds = Math.floor((total % 60000) / 1000);
+      const centis  = Math.floor((total % 1000) / 10);
+      const mm = String(minutes).padStart(2, "0");
+      const ss = String(seconds).padStart(2, "0");
+      const cc = String(centis).padStart(2, "0");
+      return `${mm}:${ss}.${cc}`;
+    }
+
+    function swTick(){
+      if (!swRunning) return;
+      const now = performance.now();
+      const ms = swElapsedMs + (now - swStartTs);
+      swDisplay.textContent = formatStopwatch(ms);
+      swRaf = requestAnimationFrame(swTick);
+    }
+
+    function swStart(){
+      if (swRunning) return;
+      swRunning = true;
+      swStartTs = performance.now();
+      swStartBtn.textContent = "Running";
+      swStartBtn.disabled = true;
+      swLapBtn.disabled = false;
+      swPauseBtn.disabled = false;
+      swTick();
+    }
+
+    function swPause(){
+      if (!swRunning) return;
+      swRunning = false;
+      cancelAnimationFrame(swRaf);
+      swRaf = null;
+      swElapsedMs += (performance.now() - swStartTs);
+      swStartBtn.textContent = "Resume";
+      swStartBtn.disabled = false;
+      swPauseBtn.disabled = true;
+      // keep lap enabled so user can mark a lap after pausing? usually no:
+      swLapBtn.disabled = true;
+    }
+
+    function swReset(){
+      swRunning = false;
+      cancelAnimationFrame(swRaf);
+      swRaf = null;
+      swStartTs = 0;
+      swElapsedMs = 0;
+      swLapCount = 0;
+      swDisplay.textContent = "00:00.00";
+      swLapsEl.innerHTML = "";
+      swStartBtn.textContent = "Start";
+      swStartBtn.disabled = false;
+      swLapBtn.disabled = true;
+      swPauseBtn.disabled = true;
+    }
+
+    function swLap(){
+      if (!swRunning) return;
+      const now = performance.now();
+      const ms = swElapsedMs + (now - swStartTs);
+      swLapCount += 1;
+
+      const item = document.createElement("div");
+      item.className = "lap-item";
+      item.innerHTML = `<strong>Lap ${swLapCount}</strong><span>${formatStopwatch(ms)}</span>`;
+      swLapsEl.prepend(item);
+    }
+
+    // --------------------
+    // Timer
+    // --------------------
+    let tRunning = false;
+    let tRemainingMs = 0;
+    let tEndTs = 0;
+    let tInterval = null;
+    let titleBase = document.title;
+    let titleFlashInterval = null;
+
+    const tMin = document.getElementById("tMin");
+    const tSec = document.getElementById("tSec");
+    const tDisplay = document.getElementById("tDisplay");
+    const tPauseBtn = document.getElementById("tPauseBtn");
+    const tResumeBtn = document.getElementById("tResumeBtn");
+    const tStartBtn = document.getElementById("tStartBtn");
+
+    function clampInt(n, min, max){
+      const v = parseInt(String(n), 10);
+      if (!Number.isFinite(v)) return null;
+      return Math.max(min, Math.min(max, v));
+    }
+
+    function formatTimer(ms){
+      const totalSec = Math.max(0, Math.ceil(ms / 1000));
+      const m = Math.floor(totalSec / 60);
+      const s = totalSec % 60;
+      return `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+    }
+
+    function timerRender(){
+      tDisplay.textContent = formatTimer(tRemainingMs);
+    }
+
+    function timerStopInterval(){
+      if (tInterval) clearInterval(tInterval);
+      tInterval = null;
+    }
+
+    function timerFlashTitleStart(){
+      timerFlashTitleStop();
+      let on = false;
+      titleFlashInterval = setInterval(() => {
+        on = !on;
+        document.title = on ? "⏰ Time's up!" : titleBase;
+      }, 700);
+    }
+
+    function timerFlashTitleStop(){
+      if (titleFlashInterval) clearInterval(titleFlashInterval);
+      titleFlashInterval = null;
+      document.title = titleBase;
+    }
+
+    let audioCtx = null;
+
+function beep(times = 3, duration = 0.12, gap = 0.08, freq = 880) {
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    // iOS/Safari peut nécessiter resume()
+    if (audioCtx.state === "suspended") audioCtx.resume();
+
+    const now = audioCtx.currentTime;
+    for (let i = 0; i < times; i++) {
+      const t0 = now + i * (duration + gap);
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, t0);
+
+      // attaque / release pour éviter le "clic"
+      gain.gain.setValueAtTime(0.0001, t0);
+      gain.gain.exponentialRampToValueAtTime(0.2, t0 + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t0 + duration);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(t0);
+      osc.stop(t0 + duration + 0.02);
+    }
+  } catch (e) {
+    // si audio indisponible, on ne bloque pas
+  }
+}
+
+    function timerDone(){
+      timerStopInterval();
+      tRunning = false;
+      tRemainingMs = 0;
+      timerRender();
+      tPauseBtn.disabled = true;
+      tResumeBtn.disabled = true;
+      tStartBtn.disabled = false;
+      timerFlashTitleStart();
+      beep(4, 0.12, 0.08, 880); // 4 bips
+      // alert("Time's up!");
+      // stop flashing after a short while
+      setTimeout(timerFlashTitleStop, 5000);
+    }
+
+    function timerTick(){
+      if (!tRunning) return;
+      const now = performance.now();
+      tRemainingMs = Math.max(0, tEndTs - now);
+      timerRender();
+      if (tRemainingMs <= 0) timerDone();
+    }
+
+    function timerStart(){
+      timerFlashTitleStop();
+
+      const m = clampInt(tMin.value, 0, 1000000);
+      const s = clampInt(tSec.value, 0, 59);
+
+      const mm = (m === null) ? 0 : m;
+      const ss = (s === null) ? 0 : s;
+
+      const totalMs = (mm * 60 + ss) * 1000;
+
+      if (!totalMs || totalMs <= 0){
+        tDisplay.textContent = "00:00";
+        alert("Please enter a valid duration (minutes/seconds).");
+        return;
+      }
+
+      tRunning = true;
+      tRemainingMs = totalMs;
+      tEndTs = performance.now() + totalMs;
+
+      tStartBtn.disabled = true;
+      tPauseBtn.disabled = false;
+      tResumeBtn.disabled = true;
+
+      timerStopInterval();
+      timerTick();
+      tInterval = setInterval(timerTick, 200);
+    }
+
+    function timerPause(){
+      if (!tRunning) return;
+      timerTick();
+      tRunning = false;
+      timerStopInterval();
+      tPauseBtn.disabled = true;
+      tResumeBtn.disabled = false;
+      tStartBtn.disabled = true;
+    }
+
+    function timerResume(){
+      if (tRunning) return;
+      if (!tRemainingMs || tRemainingMs <= 0) return;
+      tRunning = true;
+      tEndTs = performance.now() + tRemainingMs;
+      tPauseBtn.disabled = false;
+      tResumeBtn.disabled = true;
+      tStartBtn.disabled = true;
+
+      timerStopInterval();
+      timerTick();
+      tInterval = setInterval(timerTick, 200);
+    }
+
+    function timerReset(){
+      timerStopInterval();
+      timerFlashTitleStop();
+      tRunning = false;
+      tRemainingMs = 0;
+      tEndTs = 0;
+      tDisplay.textContent = "00:00";
+      tPauseBtn.disabled = true;
+      tResumeBtn.disabled = true;
+      tStartBtn.disabled = false;
+    }
+  </script>
+</body>
+</html>

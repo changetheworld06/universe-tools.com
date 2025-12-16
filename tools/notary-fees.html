@@ -11,19 +11,21 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+      "@type": "WebApplication",
+      "name": "Universe Tools – Notary / closing costs calculator",
+      "url": "https://universe-tools.com/tools/notary-fees.html",
+      "description": "Estimate notary / closing costs and total property purchase cost from price and fee percentage. Local calculation in the browser.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
     }
   </script>
   
   <meta charset="UTF-8" />
-  <title>Concrete calculator (volume + bags) – Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Estimate concrete volume in m³ and the number of cement bags required for a slab, using a standard cement dosage (kg/m³). All in your browser.">
+  <title>Notary / closing costs calculator | Universe Tools</title>  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Estimate notary / closing costs and total property purchase cost from price and fee percentage. Local calculator in your browser.">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -32,10 +34,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/concrete.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <link rel="canonical" href="https://universe-tools.com/tools/notary-fees.html" />
+<link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/notary-fees.html" />
+<link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/notary-fees.html" />
+<link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/notary-fees.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -426,10 +428,12 @@
 <section class="section">
 <div class="container">
 
-<h1 class="section-title">Notary / closing costs</h1>
-<p class="section-subtitle">
-Estimate notary or closing costs and total property purchase cost from price and fee percentage.
-</p>
+    <div class="section-header">
+        <h1 class="section-title">Notary / closing costs</h1>
+        <p class="section-subtitle">
+          Estimate notary or closing costs and total property purchase cost from price and fee percentage.
+        </p>
+      </div>
 
 <article class="tool-section" id="tool-notary-fees">
 
@@ -437,12 +441,12 @@ Estimate notary or closing costs and total property purchase cost from price and
 
   <div class="field">
     <label for="price">Property price</label>
-    <input id="price" type="number" step="0.01" placeholder="Ex: 250000">
+    <input id="price" type="number" step="0.01" min="0" placeholder="Ex: 250000">
   </div>
 
   <div class="field">
     <label for="rate">Fees (%)</label>
-    <input id="rate" type="number" step="0.1" placeholder="Ex: 8">
+    <input id="rate" type="number" step="0.1" min="0" placeholder="Ex: 8">
   </div>
 
   <div class="field">
@@ -454,14 +458,26 @@ Estimate notary or closing costs and total property purchase cost from price and
 
 <div id="result" class="tool-result"></div>
 
+<div class="tool-section">
+    <p>
+      This notary / closing costs calculator provides a quick estimate of purchase fees based on a simple percentage.
+      Enter the property price and a fee rate (for example, 7–8% for older property or lower for new builds, depending on country and situation).
+      The result is indicative only: actual closing costs may include taxes, registration fees, notary fees, agency fees, and other charges.
+      All calculations run locally in your browser.
+    </p>
+  </div>
+
 </article>
 </div>
 </section>
 </main>
 
 <footer>
-© <span id="year"></span> Universe Tools
-</footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Universe Tools</span>
+      <span>Indicative result – no financial advice</span>
+    </div>
+  </footer>
 
 </div>
 

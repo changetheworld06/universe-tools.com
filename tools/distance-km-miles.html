@@ -13,18 +13,22 @@
 
   <!-- SEO JSON-LD -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Universe Tools",
-    "url": "https://universe-tools.com"
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Kilometers ↔ miles converter",
+      "url": "https://universe-tools.com/tools/distance-km-miles.html",
+      "description": "Convert kilometers to miles and miles to kilometers instantly. Runs locally in your browser.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
   </script>
 
   <meta charset="UTF-8" />
-  <title>Crypto gains & losses (PnL %) | Universe Tools</title>
+  <title>Kilometers to miles converter (km ↔ mi) | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Calculate crypto profit/loss in amount and percentage from entry price, current price and quantity.">
+  <meta name="description" content="Convert kilometers to miles and miles to kilometers instantly. Local calculation in your browser, no API, no tracking.">
+  <meta name="robots" content="index,follow">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -34,10 +38,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/crypto-pnl.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/crypto-pnl.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/crypto-pnl.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/crypto-pnl.html" />
+<link rel="canonical" href="https://universe-tools.com/tools/distance-km-miles.html" />
+<link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/distance-km-miles.html" />
+<link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/distance-km-miles.html" />
+<link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/distance-km-miles.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -292,20 +296,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
         <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
+            <span>Try another tool</span>
           <span>→</span>
         </button>
       </div>
@@ -345,6 +349,18 @@
             </form>
         
             <div id="distanceResult" class="tool-result"></div>
+
+            <section class="tool-section" aria-label="SEO content">
+                <h2 style="font-size:1.05rem; margin-bottom:0.6rem;">How to convert km to miles</h2>
+                <p>
+                  The standard conversion is: <strong>1 kilometer = 0.621371 miles</strong>.
+                  To convert kilometers to miles, multiply by 0.621371.
+                </p>
+                <p>
+                  For the reverse conversion: <strong>1 mile = 1.60934 kilometers</strong>.
+                  This tool converts both ways instantly and runs locally in your browser.
+                </p>
+              </section>
         
             <div class="small-note">
               Conversion based on international standards. Results are rounded.
@@ -379,8 +395,7 @@
           const km = parseNum(kmInput.value);
           const mi = parseNum(miInput.value);
         
-          if(!isNaN(km)){
-            const miles = km * 0.621371;
+          if(Number.isFinite(km)){            const miles = km * 0.621371;
             miInput.value = miles.toFixed(3);
             res.innerHTML = `
               <strong>${km.toFixed(2)} km</strong>
@@ -389,8 +404,7 @@
             return;
           }
         
-          if(!isNaN(mi)){
-            const kms = mi * 1.60934;
+          if(Number.isFinite(mi)){            const kms = mi * 1.60934;
             kmInput.value = kms.toFixed(3);
             res.innerHTML = `
               <strong>${mi.toFixed(2)} miles</strong>

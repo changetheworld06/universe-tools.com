@@ -11,20 +11,22 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+      "@type": "WebApplication",
+      "name": "Universe Tools – Liters to US gallons converter",
+      "url": "https://universe-tools.com/tools/liters-gallons.html",
+      "description": "Convert volume between liters (L) and US gallons. Local calculation in the browser.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
     }
   </script>
   
   <meta charset="UTF-8" />
-  <title>Insulation calculator (R, U → thickness) – Universe Tools</title>
+  <title>Liters ↔ gallons (US) converter | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Compute insulation thickness from thermal resistance R, U-value or thermal conductivity λ. Building physics helper directly in your browser.">
-
+  <meta name="description" content="Convert volume between liters (L) and US gallons instantly. All calculations are done locally in your browser.">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -32,10 +34,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/insulation.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <link rel="canonical" href="https://universe-tools.com/tools/liters-gallons.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/liters-gallons.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/liters-gallons.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/liters-gallons.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -242,7 +244,7 @@
 
     .tool-form {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.8rem;
       align-items: end;
       margin-bottom: 1rem;
@@ -451,6 +453,38 @@
           </form>
         
           <div id="litersGallonsResult" class="tool-result"></div>
+
+          <section class="tool-section" aria-label="About liters and US gallons">
+            <h2>Convert liters to US gallons (and gallons to liters)</h2>
+          
+            <p>
+              This <strong>liters to US gallons converter</strong> helps you switch between the metric unit
+              <strong>liter (L)</strong> and the American unit <strong>US gallon (gal)</strong>.
+              It’s useful when reading US product labels, following American recipes, converting tank volumes,
+              or comparing fuel and liquid container capacities. The conversion is computed
+              <strong>instantly</strong> and runs <strong>locally in your browser</strong>.
+            </p>
+          
+            <h3>Exact conversion factor used</h3>
+            <p>
+              This tool uses the standard relationship:
+              <strong>1 liter = 0.264172 US gallons</strong>.
+              To convert liters to US gallons, multiply by 0.264172.
+              To convert US gallons to liters, divide by 0.264172.
+            </p>
+          
+            <h3>US gallons vs UK gallons</h3>
+            <p>
+              Be careful: a <strong>US gallon</strong> is not the same as a <strong>UK (imperial) gallon</strong>.
+              This page converts <strong>liters ↔ US gallons only</strong>. If you are working with UK units,
+              you need an imperial-gallon conversion tool, because the values are different.
+            </p>
+          
+            <p class="small-note">
+              Tip: Enter a value in either field (liters or gallons) and press “Convert”.
+              The other unit will be calculated automatically.
+            </p>
+          </section>
         
           <div class="small-note">
             Reference: 1 liter = 0.264172 US gallons.

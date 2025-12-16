@@ -11,13 +11,16 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
-    }
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Concrete calculator (volume + bags)",
+    "url": "https://universe-tools.com/tools/concrete.html",
+    "description": "Estimate concrete volume in m³ and the number of cement bags required for a slab.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All"
+  }
   </script>
   
   <meta charset="UTF-8" />
@@ -33,9 +36,9 @@
 
   <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://universe-tools.com/tools/concrete.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/concrete.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/concrete.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/concrete.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -512,6 +515,34 @@
 
             <div id="concreteResult" class="tool-result"></div>
 
+            <section class="tool-section">
+              <h2 style="font-size:1.1rem; margin-bottom:0.6rem;">
+                About this concrete volume and cement bags calculator
+              </h2>
+            
+              <p>
+                This concrete calculator helps you estimate the volume of concrete needed for a rectangular slab
+                using its length, width, and thickness. The volume is expressed in cubic meters (m³), which is the
+                standard unit used by ready-mix suppliers and on construction plans.
+              </p>
+            
+              <p>
+                It also estimates the amount of cement required based on a chosen cement dosage (kg of cement per m³ of concrete),
+                then converts that total into an approximate number of cement bags depending on the bag weight (for example 25 kg,
+                35 kg, or 40 kg). This is useful when preparing a small slab, footing, shed base, walkway, or similar work.
+              </p>
+            
+              <p>
+                The calculation is simplified and does not include aggregates, water ratio, reinforcement, site losses, or specific
+                standards for different concrete classes. In practice, it is common to add a safety margin (for example 5–10%)
+                to account for waste, uneven thickness, and handling.
+              </p>
+            
+              <p>
+                All calculations are performed locally in your browser (client-side). No form data is uploaded or stored.
+              </p>
+            </section>
+
             <div class="small-note">
               This is an indicative estimation. Always add a safety margin (e.g. +5–10%) and
               follow local standards and supplier recommendations.
@@ -555,10 +586,16 @@
       const dosage = parseNumber(dosageEl.value);
       const bagWeight = parseNumber(bagWeightEl.value);
 
-      if (!length || !width || !thickness_cm || !dosage || !bagWeight) {
-        resultEl.innerHTML = "<span>Please fill all fields with valid positive values.</span>";
-        return;
-      }
+      if (
+  !Number.isFinite(length) || length <= 0 ||
+  !Number.isFinite(width) || width <= 0 ||
+  !Number.isFinite(thickness_cm) || thickness_cm <= 0 ||
+  !Number.isFinite(dosage) || dosage <= 0 ||
+  !Number.isFinite(bagWeight) || bagWeight <= 0
+) {
+  resultEl.innerHTML = "<span>Please fill all fields with valid positive values.</span>";
+  return;
+}
 
       // Convert thickness to meters
       const thickness_m = thickness_cm / 100;

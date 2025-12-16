@@ -1,54 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google tag (gtag.js) - GA4 -->
+  <title>Suggest a Tool | Universe Tools</title>
+  <meta name="description" content="Suggest a new calculator or converter for Universe Tools. Send your idea in seconds — no account required." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'G-15ST5Y0Z1C'); // GA4
+    gtag('config', 'AW-325165312'); // Google Ads
   </script>
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+  <!-- Event snippet conversion -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
     }
   </script>
-  
-  <meta charset="UTF-8" />
-  <title>Running Power Zones – Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Calculate your running power training zones based on your FTP (critical power). Simple running power zone calculator in your browser.">
 
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication (page-specific) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Suggest a Tool",
+    "url": "https://universe-tools.com/tools/suggest-tool.html",
+    "description": "Suggest a new tool idea for Universe Tools. Sends via your email client (mailto).",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/running-power.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <!-- Canonical + hreflang (page-specific) -->
+  <link rel="canonical" href="https://universe-tools.com/tools/suggest-tool.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/suggest-tool.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/suggest-tool.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/suggest-tool.html" />
 
-  <meta name="theme-color" content="#4f46e5">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Universe Tools" />
+  <meta property="og:title" content="Suggest a Tool" />
+  <meta property="og:description" content="Suggest a new calculator or converter for Universe Tools. No account required." />
+  <meta property="og:url" content="https://universe-tools.com/tools/suggest-tool.html" />
 
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Suggest a Tool | Universe Tools" />
+  <meta name="twitter:description" content="Suggest a new calculator or converter for Universe Tools." />
 
-  <!-- Styles : même base que les autres outils -->
+  <!-- Styles : same base as your other tools (kept) -->
   <style>
     :root {
       --bg: #050816;
@@ -69,116 +104,50 @@
       --max-width: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
       color: var(--text);
       min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
+      position: sticky; top: 0; z-index: 20;
       backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
       border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+    .brand { display: flex; align-items: center; gap: 0.65rem; }
 
     .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 34px; height: 34px; border-radius: 999px;
+      display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      box-shadow:
-        0 0 30px rgba(79, 70, 229, 0.45),
-        0 0 4px rgba(148, 163, 184, 0.8);
+      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
       background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
+    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
+    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
+    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
 
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.3rem;
-      font-size: 0.9rem;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; flex-wrap: wrap; justify-content:flex-end; }
     .nav-links a {
       color: var(--muted);
       padding: 0.25rem 0;
       border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
+      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
     }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
+    .nav-links a:hover { color: #e5e7eb; border-color: rgba(129, 140, 248, 0.7); transform: translateY(-1px); }
 
     .nav-cta {
       padding: 0.45rem 0.9rem;
@@ -195,35 +164,13 @@
       box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
       cursor: pointer;
     }
+    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
 
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
+    .section { padding: 1.5rem 0 3.5rem; }
 
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.5;
-    }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
+    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
 
     .tool-section {
       border-radius: 20px;
@@ -231,14 +178,10 @@
       background: radial-gradient(circle at top left, #020617, #020617);
       padding: 1.2rem 1.1rem 1.4rem;
       box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.2rem;
     }
 
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
+    .tool-section p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem; }
 
     .tool-form {
       display: grid;
@@ -247,49 +190,24 @@
       align-items: end;
       margin-bottom: 1rem;
     }
-
-    @media (max-width: 900px) {
-      .tool-form {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 650px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field small {
-      color: #6b7280;
-      font-size: 0.72rem;
-    }
+    @media (max-width: 900px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
+    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
+    .field label { color: var(--muted); }
+    .field small { color: #6b7280; font-size: 0.72rem; }
 
     .field input,
-    .field select {
+    .field textarea {
       border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
+      border: 1px solid rgba(75,85,99,0.9);
       background: radial-gradient(circle at top left, #020617, #020617);
       color: var(--text);
-      padding: 0.45rem 0.55rem;
+      padding: 0.55rem;
       font-size: 0.85rem;
       outline: none;
     }
 
-    .field input::placeholder {
-      color: #6b7280;
-    }
+    .field textarea { resize: vertical; min-height: 110px; }
 
     .btn-tool {
       border-radius: var(--radius-sm);
@@ -304,48 +222,20 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
+      user-select: none;
+      white-space: nowrap;
     }
 
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
+    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
+    .tool-result span { display:block; margin-top:.25rem; color: var(--muted); }
 
-    .zones-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.8rem;
-      font-size: 0.8rem;
-    }
-
-    .zones-table th,
-    .zones-table td {
-      padding: 0.45rem 0.5rem;
-      border-bottom: 1px solid rgba(55, 65, 81, 0.9);
-      text-align: left;
-    }
-
-    .zones-table th {
-      color: #e5e7eb;
-      font-weight: 600;
-    }
-
-    .zones-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-    }
+    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
 
     footer {
       border-top: 1px solid rgba(30, 64, 175, 0.6);
       background: radial-gradient(circle at top, #020617, #020617);
       margin-top: auto;
     }
-
     .footer-inner {
       padding: 1rem 0 1.4rem;
       font-size: 0.75rem;
@@ -356,46 +246,9 @@
       justify-content: space-between;
       align-items: center;
     }
-
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-    }
+    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .footer-links a { color: #6b7280; }
   </style>
-
-  <!-- Event snippet conversion -->
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-          'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
@@ -403,8 +256,8 @@
     <header>
       <div class="container nav">
         <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -422,117 +275,106 @@
           </div>
         </div>
 
-        <nav class="nav-links">
+        <nav class="nav-links" aria-label="Primary">
           <a href="/#tools">All tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
-          <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Try another tool</span>
-            <span>→</span>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
           </button>
         </nav>
       </div>
     </header>
 
     <main>
-        <section class="section">
-          <div class="container">
-      
-            <div class="section-header">
-              <h1 class="section-title">Suggest a new tool</h1>
-              <p class="section-subtitle">
-                Have an idea for a useful calculator or converter?
-                Send it to us in a few seconds — no account required.
-              </p>
-            </div>
-      
-            <article class="tool-section">
-              <p>
-                We regularly add new tools based on user feedback.
-                Your suggestion helps improve Universe Tools.
-              </p>
-      
-              <form
-                class="tool-form"
-                onsubmit="event.preventDefault(); sendSuggestion();"
-              >
-                <div class="field">
-                  <label>Your email (optional)</label>
-                  <input
-                    id="suggestEmail"
-                    type="email"
-                    placeholder="Ex: la.fabrique.des.reves06@gmail.com"
-                  >
-                </div>
-      
-                <div class="field" style="grid-column: 1 / -1;">
-                  <label>Your idea</label>
-                  <textarea
-                    id="suggestMessage"
-                    rows="4"
-                    placeholder="Describe the tool you would like to see..."
-                    style="
-                      resize: vertical;
-                      border-radius: var(--radius-sm);
-                      border: 1px solid rgba(75,85,99,0.9);
-                      background: radial-gradient(circle at top left, #020617, #020617);
-                      color: var(--text);
-                      padding: 0.55rem;
-                      font-size: 0.85rem;
-                    "
-                  ></textarea>
-                </div>
-      
-                <div class="field">
-                  <button class="btn-tool" type="submit">
-                    Send suggestion
-                  </button>
-                </div>
-              </form>
-      
-              <div id="suggestResult" class="tool-result"></div>
-      
-              <div class="small-note">
-                Your message will be sent by email. No data is stored on the website.
-              </div>
-            </article>
-      
+      <section class="section">
+        <div class="container">
+
+          <div class="section-header">
+            <h1 class="section-title">Suggest a new tool</h1>
+            <p class="section-subtitle">
+              Have an idea for a useful calculator or converter? Send it to us in a few seconds — no account required.
+            </p>
           </div>
-        </section>
-      </main>
-      
-      <footer>
-        <div class="container footer-inner">
-          <span>© <span id="year"></span> Universe Tools</span>
-          <span>User feedback powered</span>
+
+          <article class="tool-section">
+            <p>
+              We regularly add new tools based on user feedback. Your suggestion helps improve Universe Tools.
+            </p>
+
+            <form class="tool-form" onsubmit="event.preventDefault(); sendSuggestion();">
+              <div class="field">
+                <label for="suggestEmail">Your email (optional)</label>
+                <input id="suggestEmail" type="email" placeholder="Ex: name@example.com" />
+                <small>Only used to identify you in the email draft.</small>
+              </div>
+
+              <div class="field" style="grid-column: 1 / -1;">
+                <label for="suggestMessage">Your idea</label>
+                <textarea id="suggestMessage" rows="4" placeholder="Describe the tool you would like to see..."></textarea>
+                <small>We recommend: purpose + inputs + expected output.</small>
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="submit">Send suggestion</button>
+              </div>
+            </form>
+
+            <div id="suggestResult" class="tool-result" aria-live="polite"></div>
+
+            <div class="small-note">
+              This page opens your email client (mailto). Nothing is stored on the website.
+            </div>
+          </article>
+
+          <section class="tool-section" aria-label="About tool suggestions">
+            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">What makes a great suggestion?</h2>
+            <p style="color:var(--muted);line-height:1.65;">
+              Include the goal, the fields to fill, and a concrete example with expected results.
+              This helps us implement it faster and match your use case.
+            </p>
+          </section>
+
         </div>
-      </footer>
-      
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
       </div>
-      
-      <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-      
-        function sendSuggestion() {
-          const email = document.getElementById("suggestEmail").value.trim();
-          const message = document.getElementById("suggestMessage").value.trim();
-          const result = document.getElementById("suggestResult");
-      
-          if (!message) {
-            result.innerHTML = "<span>Please describe your idea.</span>";
-            return;
-          }
-      
-          const subject = encodeURIComponent("Universe Tools – New tool suggestion");
-          const body = encodeURIComponent(
-            "Suggested by: " + (email || "Anonymous") + "\n\n" + message
-          );
-      
-          window.location.href =
-            "mailto:la.fabrique.des.reves06@gmail.com?subject=" + subject + "&body=" + body;
-      
-          result.innerHTML =
-            "<strong>Thank you!</strong><span>Your email client should open.</span>";
-        }
-      </script>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function sendSuggestion() {
+      const email = document.getElementById("suggestEmail").value.trim();
+      const message = document.getElementById("suggestMessage").value.trim();
+      const result = document.getElementById("suggestResult");
+
+      if (!message) {
+        result.innerHTML = "<span>Please describe your idea.</span>";
+        return;
+      }
+
+      const subject = encodeURIComponent("Universe Tools – New tool suggestion");
+      const body = encodeURIComponent(
+        "Suggested by: " + (email || "Anonymous") + "\n\n" + message
+      );
+
+      window.location.href =
+        "mailto:la.fabrique.des.reves06@gmail.com?subject=" + subject + "&body=" + body;
+
+      result.innerHTML = "<strong>Thank you!</strong><span>Your email client should open.</span>";
+    }
+  </script>
+</body>
+</html>

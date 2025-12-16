@@ -433,21 +433,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
         <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
-          <span>→</span>
+            <span>Try another tool</span>          <span>→</span>
         </button>
       </div>
     </header>
@@ -466,12 +465,13 @@
 
           <article id="tool-energy" class="tool-section">
             <p>
-              Enter a value in one field (Joules, kcal or kWh), then click "Convert energy".
-              The tool will automatically fill in the other units using standard physics
-              conversions:
-              <ul>
-                <li>1 kcal = 4 184 Joules</li>
-                <li>1 kWh = 3 600 000 Joules</li>
+                Enter a value in one field (Joules, kcal or kWh), then click "Convert energy".
+                The tool will automatically fill in the other units using standard physics conversions:
+              </p>
+              
+              <ul class="small-note" style="margin-top:0.25rem; margin-left:1.1rem;">
+                <li>1 kcal = 4,184 joules</li>
+                <li>1 kWh = 3,600,000 joules</li>
               </ul>
             </p>
 
@@ -503,6 +503,21 @@
 
             <div id="energyResult" class="tool-result"></div>
 
+            <p class="seo-text">
+                This energy converter helps you quickly convert between <strong>Joules (J)</strong>,
+                <strong>kilocalories (kcal)</strong> and <strong>kilowatt-hours (kWh)</strong>,
+                three of the most commonly used energy units in physics, nutrition and electricity billing.
+                Whether you need to convert food calories into joules, joules into kWh, or understand
+                how energy consumption relates to electricity usage, this calculator provides instant
+                and accurate results using standard scientific formulas.
+              </p>
+              
+              <p class="seo-text">
+                All conversions are performed locally in your browser, with no data sent to any server.
+                This makes the tool fast, private and reliable for students, engineers, athletes,
+                nutrition tracking or anyone needing a simple <strong>energy unit converter</strong>.
+              </p>
+
             <div class="small-note">
               Conversions use standard approximations:
               1 kcal = 4 184 J and 1 kWh = 3 600 000 J.
@@ -516,11 +531,11 @@
     <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. Tous droits réservés.</span>
+        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
         <div class="footer-links">
-          <a href="/privacy.html">Confidentialité</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/#tools">Tous les outils</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
         </div>
       </div>
     </footer>
@@ -546,10 +561,10 @@
       const kwhVal = parseNum(kwhInput.value);
 
       const values = [
-        !isNaN(jVal) && jVal !== 0,
-        !isNaN(kcalVal) && kcalVal !== 0,
-        !isNaN(kwhVal) && kwhVal !== 0
-      ];
+  Number.isFinite(jVal),
+  Number.isFinite(kcalVal),
+  Number.isFinite(kwhVal)
+];
       const filledCount = values.filter(Boolean).length;
 
       if (filledCount !== 1) {

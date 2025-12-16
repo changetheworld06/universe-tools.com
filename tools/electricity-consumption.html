@@ -25,6 +25,7 @@
   <title>Electricity consumption (W → kWh → €) | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Estimate device electricity consumption from watts: kWh used and total cost in €. Local calculation, no data sent.">
+  <meta name="robots" content="index,follow">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -293,6 +294,14 @@
     .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
     .footer-links a { color: #6b7280; }
     .footer-links a:hover { color: #e5e7eb; }
+
+    .tool-section ul{
+  margin: 0.6rem 0 0.9rem 1.1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.tool-section li{ margin: 0.25rem 0; }
   </style>
 
   <!-- Structured Data : WebApplication -->
@@ -303,7 +312,7 @@
       "name": "Universe Tools – Electricity consumption calculator",
       "url": "https://universe-tools.com/tools/electricity-consumption.html",
       "description": "Estimate electricity consumption from watts to kWh and total cost in €.",
-      "applicationCategory": "FinanceApplication",
+      "applicationCategory": "Utility"
       "operatingSystem": "All"
     }
   </script>
@@ -328,21 +337,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
         <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span><span>→</span>
-        </button>
+            <span>Try another tool</span>        </button>
       </div>
     </header>
 
@@ -358,13 +366,12 @@
           </div>
 
           <article id="tool-electricity" class="tool-section">
-            <p>
-              Enter device power and usage time. The calculator outputs:
-              <ul>
-                <li>Energy used in kWh</li>
-                <li>Total cost in €</li>
-                <li>Daily / monthly / yearly estimates</li>
-              </ul>
+            <p>Enter device power and usage time. The calculator outputs:</p>
+            <ul>
+              <li>Energy used in kWh</li>
+              <li>Total cost in €</li>
+              <li>Daily / monthly / yearly estimates</li>
+            </ul>
             </p>
 
             <form class="tool-form" onsubmit="event.preventDefault(); calculateElectricity();">
@@ -395,6 +402,18 @@
 
             <div id="electricityResult" class="tool-result"></div>
 
+            <section class="tool-section" aria-label="Electricity cost explanation">
+                <h2 style="font-size:1.05rem; margin-bottom:0.6rem;">How the electricity cost is calculated</h2>
+                <p>
+                  We convert watts to kilowatt-hours using: <strong>kWh = (W ÷ 1000) × hours</strong>.
+                  Then the cost is: <strong>cost = kWh × price per kWh</strong>.
+                </p>
+                <p>
+                  Monthly and yearly values are estimates based on <strong>30</strong> and <strong>365</strong> days.
+                  For a more precise result, use your real billing period.
+                </p>
+              </section>
+
             <div class="small-note">
               Formula: kWh = (W / 1000) × hours.  
               Monthly = daily × 30, yearly = daily × 365 (approx).
@@ -406,8 +425,7 @@
 
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. Tous droits réservés.</span>
-        <div class="footer-links">
+        <span>© <span id="year"></span> Universe Tools</span>        <div class="footer-links">
           <a href="/privacy.html">Confidentialité</a>
           <a href="/legal.html">Mentions légales</a>
           <a href="/#tools">Tous les outils</a>
@@ -430,7 +448,7 @@
       const priceKwh = parseNum(document.getElementById("priceKwh").value);
       const out = document.getElementById("electricityResult");
 
-      if (!isFinite(powerW) || !isFinite(hoursPerDay) || !isFinite(priceKwh) || powerW < 0 || hoursPerDay < 0 || priceKwh < 0) {
+      if (!Number.isFinite(powerW) || !Number.isFinite(hoursPerDay) || !Number.isFinite(priceKwh) || powerW < 0 || hoursPerDay < 0 || priceKwh < 0) {
         out.innerHTML = "<span>Please enter valid values for power, usage and price.</span>";
         return;
       }

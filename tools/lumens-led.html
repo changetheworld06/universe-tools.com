@@ -11,12 +11,15 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+      "@type": "WebApplication",
+      "name": "Universe Tools – Lumens ↔ Watts (LED)",
+      "url": "https://universe-tools.com/tools/lumens-led.html",
+      "description": "Convert lumens to watts for LED lighting, or watts to lumens, using an efficiency assumption (lm/W). Local calculation in the browser.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
     }
   </script>
   
@@ -33,9 +36,9 @@
 
   <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://universe-tools.com/tools/lumens-led.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/lumens-led.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/lumens-led.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/lumens-led.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -293,6 +296,38 @@ Estimate LED power consumption from lumens, or lumens from LED wattage, using an
 
 <div id="lumensLedResult" class="tool-result"></div>
 
+<section class="tool-section" aria-label="About lumens and watts LED conversion">
+    <h2>Convert lumens to watts for LED lighting</h2>
+  
+    <p>
+      This <strong>lumens to watts LED converter</strong> helps you estimate the electrical power
+      consumption of an LED light based on its luminous flux.
+      Unlike incandescent or halogen bulbs, LEDs produce much more light for the same power,
+      which is why a direct watt-to-watt comparison is misleading.
+    </p>
+  
+    <p>
+      The conversion between <strong>lumens (lm)</strong> and <strong>watts (W)</strong> depends on
+      the luminous efficiency of the LED, expressed in lumens per watt (lm/W).
+      In this calculator, an average efficiency of <strong>90 lm/W</strong> is used,
+      which is representative of many modern household LED bulbs.
+    </p>
+  
+    <p>
+      For example, a 9-watt LED lamp typically produces around 800 lumens,
+      which corresponds to the brightness of an old 60-watt incandescent bulb.
+      This makes lumens the most reliable unit for comparing brightness,
+      while watts indicate energy consumption.
+    </p>
+  
+    <p>
+      This tool performs all calculations <strong>locally in your browser</strong>.
+      No data is sent to a server, and results are provided instantly.
+      The values are indicative and may vary depending on LED quality,
+      optical losses, color temperature and manufacturer specifications.
+    </p>
+  </section>
+
 <div class="small-note">
 Assumption used: average LED efficiency ≈ <strong>90 lumens per watt</strong>.
 Actual values depend on LED quality and technology.
@@ -322,15 +357,21 @@ function parseNum(v){
 }
 
 function calculateLumensLed(){
-  const lm = parseNum(document.getElementById("lumens").value);
-  const w = parseNum(document.getElementById("watts").value);
-  const res = document.getElementById("lumensLedResult");
-  const efficiency = 90; // lm/W (approximate)
+    const lmVal = parseNum(document.getElementById("lumens").value);
+const wVal  = parseNum(document.getElementById("watts").value);
 
-  if(lm === null && w === null){
-    res.innerHTML = "<span>Please enter lumens or watts.</span>";
-    return;
-  }
+const hasLm = lmVal !== null;
+const hasW  = wVal !== null;
+
+if (!hasLm && !hasW) {
+  res.innerHTML = "<span>Please enter lumens or watts.</span>";
+  return;
+}
+
+if (hasLm && hasW) {
+  res.innerHTML = "<span>Please fill only one field (lumens OR watts).</span>";
+  return;
+}
 
   let lumens, watts;
 

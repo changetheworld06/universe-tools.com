@@ -1,243 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Target Heart Rate Calculator | Universe Tools</title>
+  <meta name="description" content="Estimate your target heart rate training zones using age and resting heart rate (Karvonen method). Local calculation in your browser." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'G-15ST5Y0Z1C'); // GA4
+    gtag('config', 'AW-325165312'); // Google Ads
   </script>
 
-  <meta charset="UTF-8" />
-  <title>Target Heart Rate Calculator | Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Estimate your target heart rate zones for training using age and resting heart rate. Local calculation, no data sent.">
-
-  <link rel="icon" href="/favicon.ico">
-  <link rel="canonical" href="https://universe-tools.com/tools/target-heart-rate.html" />
-
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- STYLE (identique aux autres outils) -->
-  <style>
-    :root {
-      --bg: #050816;
-      --accent: #4f46e5;
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --radius: 12px;
-      --shadow: 0 14px 35px rgba(15,23,42,.7);
+  <!-- Event snippet conversion -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
     }
+  </script>
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 1120px;
-      margin: auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(16px);
-      background: rgba(15,23,42,.85);
-      border-bottom: 1px solid rgba(148,163,184,.2);
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-    }
-
-    .nav a {
-      color: var(--muted);
-      text-decoration: none;
-      margin-left: 1rem;
-      font-size: .9rem;
-    }
-
-    .section {
-      padding: 2.5rem 0 4rem;
-    }
-
-    .section-title {
-      font-size: 1.6rem;
-      margin-bottom: .5rem;
-    }
-
-    .section-subtitle {
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 1.8rem;
-      font-size: .95rem;
-    }
-
-    .tool-section {
-      background: radial-gradient(circle at top left, #020617, #020617);
-      border: 1px solid rgba(55,65,81,.9);
-      border-radius: 20px;
-      padding: 1.4rem;
-      box-shadow: var(--shadow);
-    }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    label {
-      font-size: .8rem;
-      color: var(--muted);
-      margin-bottom: .2rem;
-      display: block;
-    }
-
-    input {
-      width: 100%;
-      padding: .5rem;
-      border-radius: 8px;
-      border: 1px solid rgba(75,85,99,.9);
-      background: #020617;
-      color: var(--text);
-    }
-
-    .btn {
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      border: none;
-      color: white;
-      font-weight: 600;
-      border-radius: 8px;
-      padding: .6rem;
-      cursor: pointer;
-      margin-top: .5rem;
-    }
-
-    .result {
-      margin-top: 1rem;
-      font-size: .9rem;
-    }
-
-    .result span {
-      display: block;
-      color: var(--muted);
-      margin-top: .3rem;
-    }
-
-    footer {
-      border-top: 1px solid rgba(30,64,175,.6);
-      margin-top: 3rem;
-      padding: 1rem 0;
-      font-size: .75rem;
-      color: #6b7280;
-      text-align: center;
-    }
-  </style>
-
-  <!-- Structured Data -->
+  <!-- Structured Data : WebApplication (page-specific) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Target Heart Rate Calculator",
     "url": "https://universe-tools.com/tools/target-heart-rate.html",
+    "description": "Estimate your training heart rate zones based on age and resting heart rate using the Karvonen method. Local-only calculation.",
     "applicationCategory": "HealthApplication",
-    "operatingSystem": "All"
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
   }
   </script>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Canonical + hreflang (page-specific) -->
+  <link rel="canonical" href="https://universe-tools.com/tools/target-heart-rate.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/target-heart-rate.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/target-heart-rate.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/target-heart-rate.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Universe Tools" />
+  <meta property="og:title" content="Target Heart Rate Calculator" />
+  <meta property="og:description" content="Estimate your target heart rate zones using age and resting heart rate. Local calculation in your browser." />
+  <meta property="og:url" content="https://universe-tools.com/tools/target-heart-rate.html" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Target Heart Rate Calculator | Universe Tools" />
+  <meta name="twitter:description" content="Estimate your target heart rate zones. Local-only calculation." />
+
+  <!-- Styles : same base as your other tools -->
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.12);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #ef4444;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease-out;
+      --max-width: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+
+    header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+    .brand { display: flex; align-items: center; gap: 0.65rem; }
+
+    .brand-logo {
+      width: 34px; height: 34px; border-radius: 999px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
+      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
+    }
+
+    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
+    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
+    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 1.3rem;
+      font-size: 0.9rem; flex-wrap: wrap; justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+      border-color: rgba(129, 140, 248, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(129, 140, 248, 0.6);
+      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+      cursor: pointer;
+    }
+
+    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
+
+    .section { padding: 1.5rem 0 3.5rem; }
+
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
+    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
+
+    .tool-section {
+      border-radius: 20px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      padding: 1.2rem 1.1rem 1.4rem;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.2rem;
+    }
+
+    .tool-section p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem; }
+
+    .tool-form {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      align-items: end;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 900px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
+
+    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
+    .field label { color: var(--muted); }
+    .field small { color: #6b7280; font-size: 0.72rem; }
+
+    .field input {
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      color: var(--text);
+      padding: 0.45rem 0.55rem;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .btn-tool {
+      border-radius: var(--radius-sm);
+      border: none;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.84rem;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #e5e7eb;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
+    .tool-result span { display:block; margin-top:.25rem; color: var(--muted); }
+
+    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
+
+    footer {
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      background: radial-gradient(circle at top, #020617, #020617);
+      margin-top: auto;
+    }
+    .footer-inner {
+      padding: 1rem 0 1.4rem;
+      font-size: 0.75rem;
+      color: #6b7280;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .footer-links a { color: #6b7280; }
+  </style>
 </head>
 
 <body>
-<header>
-  <div class="container nav">
-    <strong>Universe Tools</strong>
-    <div>
-      <a href="/#tools">All tools</a>
-      <a href="/privacy.html">Privacy</a>
-    </div>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
+          </div>
+        </div>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/fr/">FR</a>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+
+          <div class="section-header">
+            <h1 class="section-title">Target Heart Rate Calculator</h1>
+            <p class="section-subtitle">
+              Estimate your training heart rate zones using age and resting heart rate.
+              Indicative only — not medical advice.
+            </p>
+          </div>
+
+          <article class="tool-section">
+            <p>Use this calculator to estimate moderate and intense training zones using the Karvonen method.</p>
+
+            <form class="tool-form" onsubmit="event.preventDefault(); calculateHR();">
+              <div class="field">
+                <label for="age">Age</label>
+                <input id="age" type="number" min="1" step="1" placeholder="Ex: 30" />
+                <small>Used to estimate HRmax = 220 − age.</small>
+              </div>
+
+              <div class="field">
+                <label for="rest">Resting heart rate (bpm)</label>
+                <input id="rest" type="number" min="30" step="1" placeholder="Ex: 60" />
+                <small>Your resting heart rate in beats per minute.</small>
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="calculateHR()">Calculate</button>
+                <small>Local calculation only.</small>
+              </div>
+            </form>
+
+            <div id="result" class="tool-result"></div>
+
+            <div class="small-note">
+              Formula: Karvonen method. Moderate: 50–70% reserve. Intense: 70–85% reserve.
+            </div>
+          </article>
+
+          <!-- Mini SEO text -->
+          <section class="tool-section" aria-label="About target heart rate">
+            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">
+              How are target heart rate zones calculated?
+            </h2>
+            <p style="color:var(--muted);line-height:1.65;">
+              This page uses an estimated maximum heart rate (HRmax = 220 − age) and a heart-rate reserve
+              (HRR = HRmax − resting HR). Zones are computed as: Target HR = resting HR + HRR × intensity.
+            </p>
+          </section>
+
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools. Indicative values only.</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
+      </div>
+    </footer>
   </div>
-</header>
 
-<main>
-  <section class="section">
-    <div class="container">
-      <h1 class="section-title">Target Heart Rate Calculator</h1>
-      <p class="section-subtitle">
-        Estimate your training heart rate zones based on age and resting heart rate.
-        This tool is indicative only and not medical advice.
-      </p>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-      <article class="tool-section">
-        <form class="tool-form" onsubmit="event.preventDefault(); calculateHR();">
-          <div>
-            <label for="age">Age</label>
-            <input id="age" type="number" min="1" placeholder="Ex: 30">
-          </div>
+    function calculateHR() {
+      const age = parseFloat(document.getElementById("age").value);
+      const rest = parseFloat(document.getElementById("rest").value);
+      const out = document.getElementById("result");
 
-          <div>
-            <label for="rest">Resting heart rate (bpm)</label>
-            <input id="rest" type="number" min="30" placeholder="Ex: 60">
-          </div>
+      if (!Number.isFinite(age) || age <= 0 || !Number.isFinite(rest) || rest <= 0) {
+        out.innerHTML = "<span>Please enter valid values.</span>";
+        return;
+      }
 
-          <div>
-            <button class="btn" type="button" onclick="calculateHR()">Calculate</button>
-          </div>
-        </form>
+      const hrMax = Math.round(220 - age);
+      const reserve = hrMax - rest;
 
-        <div id="result" class="result"></div>
+      if (reserve <= 0) {
+        out.innerHTML = "<span>Please check your values (resting HR must be lower than estimated HRmax).</span>";
+        return;
+      }
 
-        <p style="margin-top:.8rem;font-size:.75rem;color:#6b7280;">
-          Formula: Karvonen method (HRmax = 220 − age).
-        </p>
-      </article>
-    </div>
-  </section>
-</main>
+      const moderateLow  = Math.round(rest + reserve * 0.50);
+      const moderateHigh = Math.round(rest + reserve * 0.70);
+      const intenseLow   = Math.round(rest + reserve * 0.70);
+      const intenseHigh  = Math.round(rest + reserve * 0.85);
 
-<footer>
-  © <span id="year"></span> Universe Tools — Indicative values only
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  function calculateHR() {
-    const age = parseFloat(document.getElementById("age").value);
-    const rest = parseFloat(document.getElementById("rest").value);
-    const out = document.getElementById("result");
-
-    if (!age || !rest) {
-      out.innerHTML = "<span>Please enter valid values.</span>";
-      return;
+      out.innerHTML = `
+        <strong>Results:</strong>
+        <span>Estimated HRmax: ${hrMax} bpm</span>
+        <span>Moderate zone (50–70%): ${moderateLow} – ${moderateHigh} bpm</span>
+        <span>Intense zone (70–85%): ${intenseLow} – ${intenseHigh} bpm</span>
+      `;
     }
-
-    const hrMax = 220 - age;
-    const reserve = hrMax - rest;
-
-    const moderateLow = Math.round(rest + reserve * 0.5);
-    const moderateHigh = Math.round(rest + reserve * 0.7);
-    const intenseLow = Math.round(rest + reserve * 0.7);
-    const intenseHigh = Math.round(rest + reserve * 0.85);
-
-    out.innerHTML = `
-      <strong>Results:</strong>
-      <span>Maximum HR: ${hrMax} bpm</span>
-      <span>Moderate zone: ${moderateLow} – ${moderateHigh} bpm</span>
-      <span>Intense zone: ${intenseLow} – ${intenseHigh} bpm</span>
-    `;
-  }
-</script>
+  </script>
 </body>
 </html>

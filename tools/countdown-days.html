@@ -11,20 +11,22 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+      "@type": "WebApplication",
+      "name": "Countdown (days)",
+      "url": "https://universe-tools.com/tools/countdown-days.html",
+      "description": "Enter a target date and see how many days remain or have passed. Runs locally in your browser.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
     }
-  </script>
+    </script>
   
   <meta charset="UTF-8" />
-  <title>Concrete calculator (volume + bags) – Universe Tools</title>
+  <title>Countdown (days) – Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Estimate concrete volume in m³ and the number of cement bags required for a slab, using a standard cement dosage (kg/m³). All in your browser.">
-
+  <meta name="description" content="Enter a target date and see how many days remain (or how many days have passed). Runs locally in your browser, no data sent.">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -32,10 +34,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/concrete.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <link rel="canonical" href="https://universe-tools.com/tools/countdown-days.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/countdown-days.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/countdown-days.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/countdown-days.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -371,18 +373,6 @@
     }
   </script>
 
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
@@ -453,6 +443,29 @@
               </form>
       
               <div id="countdownResult" class="tool-result"></div>
+
+              <section class="tool-section">
+                <h2 style="font-size:1.1rem; margin-bottom:0.6rem;">
+                  About this countdown (days) calculator
+                </h2>
+              
+                <p>
+                  This countdown tool calculates the number of full days between today and a target date.
+                  It can show how many days remain before an upcoming event (trip, exam, birthday, deadline)
+                  or how many days have passed since a date in the past.
+                </p>
+              
+                <p>
+                  The calculation is based on your local timezone: the tool normalizes both dates to midnight
+                  (00:00) before computing the difference, then rounds to whole days. This avoids “partial day”
+                  issues caused by the current time of day.
+                </p>
+              
+                <p>
+                  Everything runs locally in your browser (client-side). No dates are sent to a server and no
+                  data is stored by this page.
+                </p>
+              </section>
       
               <div class="small-note">
                 Calculation based on local timezone. Result is rounded to full days.
@@ -473,6 +486,8 @@
       </div>
       
       <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+      
         function calculateCountdown() {
           const input = document.getElementById("targetDate").value;
           const result = document.getElementById("countdownResult");
@@ -483,7 +498,8 @@
           }
       
           const today = new Date();
-          const target = new Date(input);
+          const [y, m, d] = input.split("-").map(Number);
+          const target = new Date(y, m - 1, d);
       
           today.setHours(0, 0, 0, 0);
           target.setHours(0, 0, 0, 0);
@@ -510,3 +526,5 @@
           }
         }
       </script>
+</body>
+</html>

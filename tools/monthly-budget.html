@@ -11,20 +11,21 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+      "@type": "WebApplication",
+      "name": "Universe Tools – Monthly budget calculator",
+      "url": "https://universe-tools.com/tools/monthly-budget.html",
+      "description": "Monthly budget calculator: compute remaining money and category percentages from income and expenses. Local calculation in the browser.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
     }
   </script>
   
   <meta charset="UTF-8" />
-  <title>Lumens ↔ Watts (LED) – Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convert lumens to watts for LED lighting, or watts to lumens, using an average LED efficiency of about 90 lm/W. Simple and local calculator.">
-
+  <title>Monthly budget calculator | Universe Tools</title>  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Monthly budget calculator: enter income and expenses (housing, food, transport, other) to estimate remaining money and percentages. Local calculation in your browser.">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -32,10 +33,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/lumens-led.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <link rel="canonical" href="https://universe-tools.com/tools/monthly-budget.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/monthly-budget.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/monthly-budget.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/monthly-budget.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -159,7 +160,7 @@
 
     .tool-form {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(2,1fr);
       gap: .8rem;
       margin-top: .8rem;
     }
@@ -312,6 +313,13 @@
       </form>
     
       <div id="budgetResult" class="tool-result"></div>
+
+      <p class="section-subtitle" style="margin-top:1.5rem">
+        This monthly budget calculator helps you understand where your money goes each month.
+        Enter your income and common expense categories (housing, food, transport and other)
+        to estimate your remaining money and the percentage each category represents.
+        The tool runs locally in your browser, so your data is not sent anywhere.
+      </p>
     
       <div class="small-note">
         Percentages are calculated relative to your total income.

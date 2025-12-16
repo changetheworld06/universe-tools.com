@@ -11,20 +11,22 @@
     gtag('config', 'G-15ST5Y0Z1C');
   </script>
 
-  <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+      "@type": "WebApplication",
+      "name": "Universe Tools – Loan monthly payment calculator",
+      "url": "https://universe-tools.com/tools/loan-payment.html",
+      "description": "Compute a monthly loan payment from amount, annual interest rate and duration (years). Local calculation in the browser.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
     }
   </script>
   
   <meta charset="UTF-8" />
-  <title>Insulation calculator (R, U → thickness) – Universe Tools</title>
+  <title>Loan monthly payment calculator | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Compute insulation thickness from thermal resistance R, U-value or thermal conductivity λ. Building physics helper directly in your browser.">
-
+  <meta name="description" content="Calculate your estimated monthly loan payment from amount, annual interest rate and duration. Local calculation in your browser.">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -32,10 +34,10 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/insulation.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/" />
+  <link rel="canonical" href="https://universe-tools.com/tools/loan-payment.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/loan-payment.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/loan-payment.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/loan-payment.html" />
 
   <meta name="theme-color" content="#4f46e5">
 
@@ -456,6 +458,45 @@
           </form>
         
           <div id="loanResult" class="tool-result"></div>
+
+          <section class="tool-section" aria-label="About monthly loan payments">
+            <h2>How a monthly loan payment is calculated</h2>
+          
+            <p>
+              This <strong>loan monthly payment calculator</strong> estimates the fixed monthly installment
+              of a standard amortized loan (also called an installment loan). You enter the
+              <strong>borrowed amount</strong>, the <strong>annual interest rate</strong>, and the
+              <strong>loan duration in years</strong>, and the tool computes the monthly payment instantly.
+              All calculations run <strong>locally in your browser</strong>.
+            </p>
+          
+            <p>
+              Most mortgages and personal loans are repaid using a fixed payment each month.
+              That payment generally includes two parts:
+              <strong>interest</strong> (the cost of borrowing) and <strong>principal</strong>
+              (the portion that repays the borrowed amount). Early in the loan, the interest share
+              is usually higher; later, more of the payment goes to principal.
+            </p>
+          
+            <h3>Loan payment formula used</h3>
+            <p>
+              This calculator uses the classic amortization formula with fixed monthly payments.
+              It converts the annual rate to a monthly rate and applies it over the total number
+              of months. Results are an estimate and may differ from a bank offer due to fees,
+              insurance, rounding rules, or different compounding conventions.
+            </p>
+          
+            <h3>What this tool does not include</h3>
+            <p>
+              For clarity, the computation does not include optional costs such as loan insurance,
+              notary fees, origination fees, taxes, or variable-rate scenarios. If you want a more
+              realistic budget, you can add those costs on top of the monthly payment result.
+            </p>
+          
+            <p class="small-note">
+              Note: This tool is for informational purposes only and does not provide financial advice.
+            </p>
+          </section>
         
           <div class="small-note">
             Formula: standard amortized loan with fixed monthly payments.
@@ -488,7 +529,7 @@
           const years = parseNum(document.getElementById("loanYears").value);
           const res = document.getElementById("loanResult");
         
-          if (!amount || !rate || !years){
+          if (!(amount > 0) || !(years > 0) || rate < 0 || isNaN(rate)){
             res.innerHTML = "<span>Please enter valid values.</span>";
             return;
           }

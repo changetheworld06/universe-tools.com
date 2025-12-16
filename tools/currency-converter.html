@@ -13,18 +13,22 @@
 
   <!-- SEO JSON-LD -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Universe Tools",
-    "url": "https://universe-tools.com"
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Currency converter (manual exchange rate)",
+      "url": "https://universe-tools.com/tools/currency-converter.html",
+      "description": "Convert euros to another currency (or back) using your own manual exchange rate. No API, no tracking.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
   </script>
 
   <meta charset="UTF-8" />
-  <title>Crypto gains & losses (PnL %) | Universe Tools</title>
+  <title>Currency converter (manual exchange rate) | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Calculate crypto profit/loss in amount and percentage from entry price, current price and quantity.">
+  <meta name="description" content="Convert euros to another currency (or back) using your own manual exchange rate. No API, no tracking.">
+  <meta name="robots" content="index,follow">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -292,20 +296,20 @@
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
           </div>
         </div>
 
         <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
+            <a href="/#tools">All tools</a>
+            <a href="/legal.html">Legal</a>
+            <a href="/privacy.html">Privacy</a>
           <a href="/fr/">FR</a>
         </nav>
 
         <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
+            <span>Try another tool</span>
           <span>→</span>
         </button>
       </div>
@@ -327,21 +331,18 @@
           <form class="tool-form" onsubmit="event.preventDefault(); convertCurrency();">
         
             <div class="field">
-              <label>Amount</label>
-              <input id="fxAmount" type="number" step="0.01" placeholder="Ex: 100">
+                <label for="fxAmount">Amount</label>              <input id="fxAmount" type="number" step="0.01" placeholder="Ex: 100">
             </div>
         
             <div class="field">
-              <label>Direction</label>
-              <select id="fxDirection">
+                <label for="fxDirection">Direction</label>              <select id="fxDirection">
                 <option value="eurTo">€ → Other</option>
                 <option value="toEur">Other → €</option>
               </select>
             </div>
         
             <div class="field">
-              <label>Rate</label>
-              <input id="fxRate" type="number" step="0.0001" placeholder="Ex: 1.08">
+                <label for="fxRate">Rate</label>              <input id="fxRate" type="number" step="0.0001" placeholder="Ex: 1.08">
               <small>Example: 1 € = 1.08 $</small>
             </div>
         
@@ -352,6 +353,21 @@
           </form>
         
           <div id="fxResult" class="tool-result"></div>
+
+          <section class="tool-section" aria-label="SEO content">
+            <h2 style="font-size:1.05rem; margin-bottom:0.6rem;">How to use a manual exchange rate</h2>
+            <p>
+              This currency converter works with a manual exchange rate you enter yourself.
+              Choose the direction (€ → other currency or other currency → €), type an amount, then provide the rate.
+            </p>
+            <p>
+              Example: if <strong>1 € = 1.08 USD</strong>, converting 100 € gives 108 (other currency).
+              Converting back uses the inverse operation (division).
+            </p>
+            <p>
+              No live rates are fetched (no API). For real payments, always check the official rate and any bank fees.
+            </p>
+          </section>
         
           <div class="small-note">
             Manual rate only. Results are indicative.
