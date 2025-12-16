@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>AI Prompt Generator (ChatGPT, Midjourney, Veo, Sora) | Universe Tools</title>
+  <meta name="description" content="Generate high-quality prompts for ChatGPT, Midjourney, Veo and Sora. Everything runs locally in your browser — no upload." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
+  </script>
+
+  <!-- Event snippet conversion -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
+    }
+  </script>
+
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AI Prompt Generator",
+    "url": "https://universe-tools.com/tools/ai-prompt-generator.html",
+    "description": "Generate high-quality prompts for ChatGPT, Midjourney, Veo and Sora locally in your browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/ai-prompt-generator.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/ai-prompt-generator.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/ai-prompt-generator.html" />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.12);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
+      --transition-fast: 0.18s ease-out;
+      --max-width: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+
+    header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 1rem; }
+    .brand { display: flex; align-items: center; gap: 0.65rem; }
+    .brand-logo {
+      width: 34px; height: 34px; border-radius: 999px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
+      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
+      flex: 0 0 auto;
+    }
+    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
+    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
+    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 1.1rem;
+      font-size: 0.9rem; flex-wrap: wrap; justify-content: flex-end;
+    }
+    .nav-links a {
+      color: var(--muted);
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+    .nav-links a:hover { color: #e5e7eb; border-color: rgba(129, 140, 248, 0.7); transform: translateY(-1px); }
+
+    .nav-cta {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(129, 140, 248, 0.6);
+      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
+
+    .section { padding: 1.5rem 0 3.5rem; }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
+    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 680px; line-height: 1.5; }
+
+    .tool-section {
+      border-radius: 20px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      padding: 1.2rem 1.1rem 1.4rem;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.4rem;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+    @media (max-width: 900px) { .tool-grid { grid-template-columns: 1fr; } }
+
+    .field { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.82rem; }
+    .field label { color: var(--muted); }
+
+    input, select, textarea {
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      color: var(--text);
+      padding: 0.55rem 0.6rem;
+      font-size: 0.9rem;
+      outline: none;
+      width: 100%;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+
+    .row {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 0.9rem;
+    }
+
+    .btn {
+      border-radius: var(--radius-sm);
+      border: none;
+      padding: 0.6rem 0.95rem;
+      font-size: 0.9rem;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #e5e7eb;
+      font-weight: 650;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
+      user-select: none;
+    }
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid rgba(129, 140, 248, 0.55);
+      box-shadow: none;
+    }
+
+    .output {
+      margin-top: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      background: rgba(2, 6, 23, 0.65);
+      padding: 0.9rem;
+    }
+    .output pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #e5e7eb;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .hint { color: var(--muted); font-size: 0.8rem; margin-top: 0.55rem; line-height: 1.55; }
+
+    footer {
+      border-top: 1px solid rgba(30, 64, 175, 0.6);
+      background: radial-gradient(circle at top, #020617, #020617);
+      margin-top: auto;
+    }
+    .footer-inner {
+      padding: 1rem 0 1.4rem;
+      font-size: 0.75rem;
+      color: #6b7280;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .footer-links a { color: #6b7280; }
+    .footer-links a:hover { color: #e5e7eb; }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
+          </div>
+        </div>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h1 class="section-title">AI Prompt Generator</h1>
+            <p class="section-subtitle">
+              Create ready-to-use prompts for <strong>ChatGPT</strong>, <strong>Midjourney</strong>, <strong>Veo</strong> and <strong>Sora</strong>.
+              Everything runs locally in your browser — no upload.
+            </p>
+          </div>
+
+          <article class="tool-section">
+            <div class="tool-grid">
+              <div class="field">
+                <label for="mode">Mode</label>
+                <select id="mode">
+                  <option value="chatgpt">ChatGPT (text / reasoning / code)</option>
+                  <option value="midjourney">Midjourney (image)</option>
+                  <option value="veo">Veo / Sora (video)</option>
+                  <option value="universal">Universal (any AI)</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="lang">Output language</label>
+                <select id="lang">
+                  <option value="en" selected>English</option>
+                  <option value="fr">French</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="goal">Goal / Result you want</label>
+                <input id="goal" type="text" placeholder="Example: Write a sales page / Generate a logo / Create a cinematic video..." />
+              </div>
+
+              <div class="field">
+                <label for="topic">Subject / Topic</label>
+                <input id="topic" type="text" placeholder="Example: a futuristic city / a SaaS landing page / a product photo..." />
+              </div>
+
+              <div class="field">
+                <label for="context">Context (optional)</label>
+                <textarea id="context" placeholder="Key details, constraints, audience, brand, etc."></textarea>
+              </div>
+
+              <div class="field">
+                <label for="style">Style / Tone</label>
+                <input id="style" type="text" placeholder="Example: professional, cinematic, minimal, hyper-realistic..." />
+              </div>
+
+              <div class="field">
+                <label for="detail">Detail level</label>
+                <select id="detail">
+                  <option value="short">Short</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High (very detailed)</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="format">Format / Constraints</label>
+                <input id="format" type="text" placeholder="Example: 9:16, 8 seconds, 4K, no subtitles, etc." />
+              </div>
+
+              <div class="field">
+                <label for="camera">Camera (video/image)</label>
+                <input id="camera" type="text" placeholder="Example: close-up, dolly-in, handheld, wide shot..." />
+              </div>
+
+              <div class="field">
+                <label for="extras">Extra instructions (optional)</label>
+                <textarea id="extras" placeholder="Example: include a shot list / add negative prompts / ask for 3 variants..."></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <button class="btn" type="button" onclick="generatePrompt()">Generate</button>
+              <button class="btn secondary" type="button" onclick="copyPrompt()">Copy</button>
+              <button class="btn secondary" type="button" onclick="resetForm()">Reset</button>
+            </div>
+
+            <div class="output" aria-live="polite" style="margin-top:1rem;">
+              <pre id="out">Fill the fields, then click “Generate”.</pre>
+            </div>
+
+            <div class="hint">
+              Tip: for best results, be specific (subject, context, style, constraints). This tool only builds prompts — it does not call any API.
+            </div>
+          </article>
+
+          <article class="tool-section">
+            <p style="color:#9ca3af; font-size:0.9rem; line-height:1.6;">
+              This prompt generator helps you structure better instructions for popular AI tools.
+              Use it for marketing copy, coding tasks, image creation prompts, or video generation prompts.
+              Everything is generated locally in your browser — no file uploads, no tracking of your inputs.
+            </p>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const $ = (id) => document.getElementById(id);
+
+    function t(en, fr) {
+      return ($("lang").value === "fr") ? fr : en;
+    }
+
+    function clean(v) {
+      return String(v || "").trim();
+    }
+
+    function block(title, content) {
+      const c = clean(content);
+      if (!c) return "";
+      return `${title}: ${c}\n`;
+    }
+
+    function generatePrompt() {
+      const mode = $("mode").value;
+      const goal = clean($("goal").value);
+      const topic = clean($("topic").value);
+      const context = clean($("context").value);
+      const style = clean($("style").value);
+      const detail = $("detail").value;
+      const format = clean($("format").value);
+      const camera = clean($("camera").value);
+      const extras = clean($("extras").value);
+
+      if (!goal && !topic) {
+        $("out").textContent = t(
+          "Please fill at least “Goal” or “Subject”.",
+          "Remplis au moins “Goal” ou “Subject”."
+        );
+        return;
+      }
+
+      let p = "";
+
+      if (mode === "chatgpt") {
+        p += t(
+          "You are an expert assistant. Follow the instructions strictly.\n\n",
+          "Tu es un assistant expert. Suis les instructions strictement.\n\n"
+        );
+        p += block(t("Goal", "Objectif"), goal);
+        p += block(t("Topic", "Sujet"), topic);
+        p += block(t("Context", "Contexte"), context);
+        p += block(t("Tone/Style", "Ton/Style"), style);
+
+        p += "\n" + t("Output requirements:", "Contraintes de sortie :") + "\n";
+        p += "- " + t("Be clear and structured.", "Sois clair et structuré.") + "\n";
+        p += "- " + t("Ask clarifying questions only if necessary.", "Pose des questions seulement si nécessaire.") + "\n";
+        p += "- " + t("Provide actionable steps.", "Donne des étapes actionnables.") + "\n";
+
+        if (detail === "short") p += "- " + t("Keep it concise.", "Reste concis.") + "\n";
+        if (detail === "high") p += "- " + t("Be very detailed.", "Sois très détaillé.") + "\n";
+
+        if (extras) p += "\n" + t("Extra instructions:", "Instructions supplémentaires :") + "\n" + extras + "\n";
+      }
+
+      if (mode === "midjourney") {
+        p += t("Midjourney prompt:\n", "Prompt Midjourney :\n");
+        p += clean(topic) ? topic : t("subject", "sujet");
+        if (style) p += `, ${style}`;
+        if (context) p += `, ${context}`;
+
+        if (camera) p += `, ${t("camera", "caméra")}: ${camera}`;
+        if (format) p += `, ${t("constraints", "contraintes")}: ${format}`;
+
+        p += "\n\n" + t("Add / tweak parameters if needed:", "Ajoute / ajuste les paramètres si besoin :") + "\n";
+        p += t("- Example: --ar 16:9 --stylize 100 --v 6\n", "- Exemple : --ar 16:9 --stylize 100 --v 6\n");
+        if (extras) p += "\n" + t("Extra:", "Extra :") + "\n" + extras + "\n";
+      }
+
+      if (mode === "veo") {
+        p += t("Video prompt (Veo / Sora):\n\n", "Prompt vidéo (Veo / Sora) :\n\n");
+        p += block(t("Goal", "Objectif"), goal);
+        p += block(t("Subject", "Sujet"), topic);
+        p += block(t("Action / Scene context", "Action / Contexte de scène"), context);
+        p += block(t("Style / Mood", "Style / Ambiance"), style);
+        p += block(t("Camera movement / Framing", "Mouvement caméra / Cadrage"), camera);
+        p += block(t("Format / Duration / Constraints", "Format / Durée / Contraintes"), format);
+
+        p += "\n" + t("Rules:", "Règles :") + "\n";
+        p += "- " + t("Describe what happens on screen.", "Décris ce qui se passe à l’écran.") + "\n";
+        p += "- " + t("Be precise: lighting, environment, pacing.", "Sois précis : lumière, environnement, rythme.") + "\n";
+        if (detail === "high") p += "- " + t("Include shot-level details.", "Inclure des détails plan par plan.") + "\n";
+        if (extras) p += "\n" + t("Extra instructions:", "Instructions supplémentaires :") + "\n" + extras + "\n";
+      }
+
+      if (mode === "universal") {
+        p += t("Universal AI prompt:\n\n", "Prompt IA universel :\n\n");
+        p += block(t("Goal", "Objectif"), goal);
+        p += block(t("Subject", "Sujet"), topic);
+        p += block(t("Context", "Contexte"), context);
+        p += block(t("Style", "Style"), style);
+        p += block(t("Constraints", "Contraintes"), format);
+        if (detail === "short") p += t("\nKeep it short and direct.\n", "\nReste court et direct.\n");
+        if (detail === "high") p += t("\nBe detailed and structured.\n", "\nSois détaillé et structuré.\n");
+        if (extras) p += "\n" + t("Extra instructions:", "Instructions supplémentaires :") + "\n" + extras + "\n";
+      }
+
+      $("out").textContent = p.trim();
+    }
+
+    async function copyPrompt() {
+      const text = $("out").textContent || "";
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (e) {
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+    }
+
+    function resetForm() {
+      $("mode").value = "chatgpt";
+      $("lang").value = "en";
+      $("goal").value = "";
+      $("topic").value = "";
+      $("context").value = "";
+      $("style").value = "";
+      $("detail").value = "medium";
+      $("format").value = "";
+      $("camera").value = "";
+      $("extras").value = "";
+      $("out").textContent = "Fill the fields, then click “Generate”.";
+    }
+  </script>
+</body>
+</html>
