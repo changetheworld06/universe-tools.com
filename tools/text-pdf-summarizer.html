@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Text / PDF Summarizer (local) | Universe Tools</title>
+  <meta name="description" content="Summarize text or extract text from a PDF and summarize it locally in your browser. No upload, no server." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- GA4 + Ads (single loader) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
+  </script>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://universe-tools.com/tools/text-pdf-summarizer.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/text-pdf-summarizer.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/text-pdf-summarizer.html" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Text / PDF Summarizer (local)",
+    "url": "https://universe-tools.com/tools/text-pdf-summarizer.html",
+    "description": "Summarize text or extract text from a PDF and summarize it locally in your browser. No upload.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "isAccessibleForFree": true,
+    "browserRequirements": "Requires JavaScript"
+  }
+  </script>
+
+  <!-- Styles (same vibe as your tools) -->
+  <style>
+    :root{
+      --bg:#050816;--bg-soft:#0b1020;--accent:#4f46e5;--accent-soft:rgba(79,70,229,.12);
+      --text:#f9fafb;--muted:#9ca3af;--border:#1f2937;--radius-lg:18px;--radius-md:12px;--radius-sm:8px;
+      --shadow-card:0 14px 35px rgba(15,23,42,.7);--max-width:1120px;--t:.18s ease-out;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+      background:radial-gradient(circle at top,#111827,#020617 55%,#000 100%);
+      color:var(--text);min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    .page{min-height:100vh;display:flex;flex-direction:column}
+    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.5rem}
+    header{
+      position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);
+      background:linear-gradient(to bottom,rgba(15,23,42,.92),rgba(15,23,42,.75),transparent);
+      border-bottom:1px solid rgba(148,163,184,.18);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.65rem}
+    .brand-logo{
+      width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+      box-shadow:0 0 30px rgba(79,70,229,.45),0 0 4px rgba(148,163,184,.8);
+      background:radial-gradient(circle at 30% 0%,#e5e7eb,#4f46e5 55%,#020617);
+      flex:0 0 auto;
+    }
+    .brand-name{font-weight:700;letter-spacing:.04em;font-size:.95rem}
+    .brand-tagline{font-size:.72rem;color:var(--muted)}
+    .nav-links{display:flex;align-items:center;gap:1.1rem;font-size:.9rem;flex-wrap:wrap;justify-content:flex-end}
+    .nav-links a{color:var(--muted);border-bottom:2px solid transparent;padding:.25rem 0;transition:color var(--t),border-color var(--t),transform var(--t)}
+    .nav-links a:hover{color:#e5e7eb;border-color:rgba(129,140,248,.7);transform:translateY(-1px)}
+    .nav-cta{
+      padding:.45rem .9rem;border-radius:999px;border:1px solid rgba(129,140,248,.6);
+      background:radial-gradient(circle at top left,#4f46e5,#0f172a);
+      font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+      display:inline-flex;align-items:center;gap:.3rem;box-shadow:0 8px 25px rgba(79,70,229,.4);
+      cursor:pointer;white-space:nowrap;
+    }
+
+    .section{padding:1.5rem 0 3.5rem}
+    .section-header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
+    .section-title{font-size:1.5rem;letter-spacing:-.03em}
+    .section-subtitle{font-size:.9rem;color:var(--muted);max-width:680px;line-height:1.5}
+
+    .tool-section{
+      border-radius:20px;border:1px solid rgba(55,65,81,.9);
+      background:radial-gradient(circle at top left,#020617,#020617);
+      padding:1.2rem 1.1rem 1.4rem;box-shadow:var(--shadow-card);margin-bottom:1.4rem;
+    }
+    .tool-section p{font-size:.85rem;color:var(--muted);margin-bottom:.9rem;line-height:1.55}
+
+    .row{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem}
+    @media (max-width:900px){.row{grid-template-columns:1fr}}
+
+    .field{display:flex;flex-direction:column;gap:.35rem;font-size:.8rem}
+    .field label{color:var(--muted)}
+    textarea, input[type="file"]{
+      border-radius:var(--radius-sm);
+      border:1px solid rgba(75,85,99,.9);
+      background:radial-gradient(circle at top left,#020617,#020617);
+      color:var(--text);
+      padding:.6rem .65rem;
+      font-size:.9rem;outline:none;
+    }
+    textarea{min-height:220px;resize:vertical;line-height:1.55}
+    .controls{display:flex;gap:.8rem;flex-wrap:wrap;align-items:end}
+    .btn{
+      border-radius:var(--radius-sm);border:none;padding:.6rem .9rem;font-size:.84rem;
+      background:linear-gradient(135deg,#4f46e5,#6366f1);color:#e5e7eb;font-weight:600;
+      cursor:pointer;box-shadow:0 12px 28px rgba(79,70,229,.5);user-select:none;
+    }
+    .btn.secondary{background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none}
+    .btn[disabled]{opacity:.55;cursor:not-allowed}
+
+    .slider{
+      width:100%;
+      accent-color: var(--accent);
+    }
+    .hint{font-size:.75rem;color:#6b7280;margin-top:.35rem;line-height:1.5}
+
+    .result{
+      margin-top:.8rem;
+      border-radius:var(--radius-md);
+      border:1px solid rgba(55,65,81,.8);
+      background:rgba(2,6,23,.55);
+      padding:1rem;
+    }
+    .result h2{font-size:1rem;margin-bottom:.6rem}
+    .result pre{
+      white-space:pre-wrap;word-break:break-word;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size:.88rem;color:#e5e7eb;
+    }
+
+    .progress{
+      margin-top:.9rem;padding:.8rem .9rem;border-radius:var(--radius-md);
+      border:1px solid rgba(55,65,81,.8);background:rgba(2,6,23,.65);display:none;
+    }
+    .progress-row{display:flex;justify-content:space-between;gap:1rem;font-size:.82rem;color:var(--muted)}
+    .bar{margin-top:.55rem;width:100%;height:8px;border-radius:999px;background:rgba(148,163,184,.16);overflow:hidden}
+    .bar>div{height:100%;width:0%;background:linear-gradient(90deg,#4f46e5,#7c3aed,#ec4899);transition:width .2s ease-out}
+
+    footer{border-top:1px solid rgba(30,64,175,.6);background:radial-gradient(circle at top,#020617,#020617);margin-top:auto}
+    .footer-inner{
+      padding:1rem 0 1.4rem;font-size:.75rem;color:#6b7280;display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center
+    }
+    .footer-links{display:flex;gap:.9rem;flex-wrap:wrap}
+    .footer-links a{color:#6b7280}
+    .footer-links a:hover{color:#e5e7eb}
+  </style>
+
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
+          </div>
+        </div>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h1 class="section-title">Text / PDF Summarizer (local)</h1>
+            <p class="section-subtitle">
+              Paste text or select a <strong>text-based PDF</strong>. The summary is created locally in your browser (no upload).
+            </p>
+          </div>
+
+          <article class="tool-section">
+            <div class="row">
+              <div class="field">
+                <label for="inputText">Text to summarize</label>
+                <textarea id="inputText" placeholder="Paste your text here..."></textarea>
+                <div class="hint">
+                  Tip: you can also load a PDF below to auto-fill this field (only works if the PDF contains selectable text).
+                </div>
+              </div>
+
+              <div>
+                <div class="field" style="margin-bottom:1rem;">
+                  <label for="pdfFile">PDF (optional)</label>
+                  <input id="pdfFile" type="file" accept="application/pdf" />
+                  <div class="hint">
+                    If your PDF is a scanned image, there is no selectable text → it will extract nothing (OCR not included).
+                  </div>
+                </div>
+
+                <div class="field" style="margin-bottom:.6rem;">
+                  <label for="ratio">Summary length</label>
+                  <input id="ratio" class="slider" type="range" min="10" max="60" value="25" />
+                  <div class="hint">
+                    Target: <span id="ratioLabel">25%</span> of the original length.
+                  </div>
+                </div>
+
+                <div class="controls">
+                  <button id="btnSummarize" class="btn" type="button">Summarize</button>
+                  <button id="btnClear" class="btn secondary" type="button">Clear</button>
+                  <button id="btnCopy" class="btn secondary" type="button" disabled>Copy</button>
+                  <button id="btnDownload" class="btn secondary" type="button" disabled>Download .txt</button>
+                </div>
+
+                <div id="progressBox" class="progress" aria-live="polite">
+                  <div class="progress-row">
+                    <span id="progressText">Preparing…</span>
+                    <span id="progressPct">0%</span>
+                  </div>
+                  <div class="bar"><div id="progressBar"></div></div>
+                </div>
+
+                <div id="status" class="hint" style="margin-top:.75rem;"></div>
+              </div>
+            </div>
+
+            <div id="resultBox" class="result" style="display:none;">
+              <h2>Summary</h2>
+              <pre id="summaryOut"></pre>
+            </div>
+          </article>
+
+          <article class="tool-section">
+            <p>
+              This summarizer uses a simple extractive method (sentence scoring). It works great for articles, notes,
+              reports and long messages — but it won’t perfectly preserve complex structure like tables.
+            </p>
+            <p style="margin-bottom:0;">
+              Everything runs on your device: your text and your PDF never leave your browser.
+            </p>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  <script type="module">
+import * as pdfjsLib from "/tools/vendor/pdf.min.js";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
+  
+    // ---------- Helpers ----------
+    const $ = (id) => document.getElementById(id);
+  
+    function setProgress(show, pct = 0, text = "") {
+      const box = $("progressBox");
+      box.style.display = show ? "block" : "none";
+      $("progressBar").style.width = Math.max(0, Math.min(100, pct)) + "%";
+      $("progressPct").textContent = Math.round(pct) + "%";
+      $("progressText").textContent = text || "";
+    }
+  
+    function setStatus(msg) {
+      $("status").textContent = msg || "";
+    }
+  
+    function enableResultActions(enabled) {
+      $("btnCopy").disabled = !enabled;
+      $("btnDownload").disabled = !enabled;
+    }
+  
+    function normalizeSpaces(s) {
+      return String(s || "").replace(/\s+/g, " ").trim();
+    }
+  
+    // ---------- PDF extraction (local) ----------
+    async function extractTextFromPdf(file) {
+      if (!file) return "";
+  
+      setProgress(true, 5, "Reading PDF…");
+      const buf = await file.arrayBuffer();
+  
+      const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+  
+      let all = "";
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const pct = 5 + (i - 1) * (70 / Math.max(1, pdf.numPages));
+        setProgress(true, pct, `Extracting text (${i}/${pdf.numPages})…`);
+  
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+  
+        const pageText = (content.items || [])
+          .map((it) => (it && it.str ? it.str : ""))
+          .join(" ");
+  
+        all += "\n" + pageText;
+      }
+  
+      setProgress(true, 80, "Cleaning text…");
+      const cleaned = normalizeSpaces(all);
+      setProgress(false);
+  
+      return cleaned;
+    }
+  
+    // ---------- Summarizer (extractive) ----------
+    function splitSentences(text) {
+      const raw = String(text || "").replace(/\s+/g, " ").trim();
+      if (!raw) return [];
+      return raw
+        .split(/(?<=[.!?])\s+/g)
+        .map((s) => s.trim())
+        .filter(Boolean);
+    }
+  
+    function tokenize(text) {
+      return String(text || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9\s'-]/g, " ")
+        .split(/\s+/)
+        .map((w) => w.trim())
+        .filter(Boolean);
+    }
+  
+    function buildWordFreq(sentences) {
+      const freq = Object.create(null);
+      const stop = new Set([
+        "the","a","an","and","or","but","to","of","in","on","for","with","as","at","by","from",
+        "is","are","was","were","be","been","it","this","that","these","those","i","you","we","they"
+      ]);
+      for (const s of sentences) {
+        for (const w of tokenize(s)) {
+          if (stop.has(w)) continue;
+          freq[w] = (freq[w] || 0) + 1;
+        }
+      }
+      return freq;
+    }
+  
+    function scoreSentence(sentence, freq) {
+      const words = tokenize(sentence);
+      if (!words.length) return 0;
+      let score = 0;
+      for (const w of words) score += (freq[w] || 0);
+      return score / Math.sqrt(words.length);
+    }
+  
+    function summarize(text, ratioPct) {
+      const sentences = splitSentences(text);
+      if (sentences.length <= 2) return sentences.join(" ");
+  
+      const freq = buildWordFreq(sentences);
+      const scored = sentences.map((s, idx) => ({ s, idx, score: scoreSentence(s, freq) }));
+  
+      const keep = Math.max(
+        2,
+        Math.min(sentences.length, Math.round(sentences.length * (ratioPct / 100)))
+      );
+  
+      scored.sort((a, b) => b.score - a.score);
+      const top = scored.slice(0, keep).sort((a, b) => a.idx - b.idx);
+  
+      return top.map((x) => x.s).join(" ");
+    }
+  
+    // ---------- UI actions ----------
+    function clearAll() {
+      $("inputText").value = "";
+      $("pdfFile").value = "";
+      $("summaryOut").textContent = "";
+      $("resultBox").style.display = "none";
+      enableResultActions(false);
+      setStatus("");
+      setProgress(false);
+    }
+  
+    async function onPdfSelected() {
+      const file = $("pdfFile").files && $("pdfFile").files[0];
+      if (!file) return;
+  
+      try {
+        setStatus("");
+        const txt = await extractTextFromPdf(file);
+        if (!txt) {
+          setStatus("No selectable text found in this PDF (it may be scanned).");
+          return;
+        }
+        $("inputText").value = txt;
+        setStatus("PDF text extracted into the text box.");
+      } catch (e) {
+        setProgress(false);
+        setStatus("PDF extraction failed: " + (e && e.message ? e.message : String(e)));
+        console.error(e);
+      }
+    }
+  
+    function onSummarize() {
+      const cleaned = normalizeSpaces($("inputText").value || "");
+      if (!cleaned) {
+        setStatus("Please paste some text or load a text-based PDF first.");
+        return;
+      }
+  
+      const ratio = parseInt($("ratio").value, 10) || 25;
+  
+      setProgress(true, 30, "Summarizing…");
+      setTimeout(() => {
+        const out = summarize(cleaned, ratio);
+        $("summaryOut").textContent = out || "";
+        $("resultBox").style.display = "block";
+        enableResultActions(Boolean(out));
+        setProgress(false);
+        setStatus("Done.");
+      }, 30);
+    }
+  
+    async function copySummary() {
+      const txt = $("summaryOut").textContent || "";
+      if (!txt) return;
+      try {
+        await navigator.clipboard.writeText(txt);
+        setStatus("Copied to clipboard.");
+      } catch {
+        setStatus("Copy failed (browser restriction).");
+      }
+    }
+  
+    function downloadSummary() {
+      const txt = $("summaryOut").textContent || "";
+      if (!txt) return;
+      const blob = new Blob([txt], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "summary.txt";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      setStatus("Downloaded summary.txt");
+    }
+  
+    // ---------- Init ----------
+    document.addEventListener("DOMContentLoaded", () => {
+      $("year").textContent = new Date().getFullYear();
+  
+      const r = $("ratio");
+      const lbl = $("ratioLabel");
+      lbl.textContent = r.value + "%";
+      r.addEventListener("input", () => (lbl.textContent = r.value + "%"));
+  
+      $("pdfFile").addEventListener("change", onPdfSelected);
+      $("btnSummarize").addEventListener("click", onSummarize);
+      $("btnClear").addEventListener("click", clearAll);
+      $("btnCopy").addEventListener("click", copySummary);
+      $("btnDownload").addEventListener("click", downloadSummary);
+  
+      setStatus("Tip: paste text or load a PDF.");
+      console.log("PDF.js loaded:", typeof pdfjsLib.getDocument === "function");
+    });
+  </script>

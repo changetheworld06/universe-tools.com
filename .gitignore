@@ -1,3 +1,6 @@
 # Disable French pages
 fr/
 *-fr.html
+node_modules/
+package-lock.json
+package.json

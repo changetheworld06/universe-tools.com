@@ -1052,6 +1052,9 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
                 <button class="tool-tag" data-filter="divers" type="button">
                   Organization & misc
                 </button>
+                <button class="tool-tag" data-filter="ai" type="button">
+                  AI
+                </button>
               </div>
 
               <div class="tool-preview">
@@ -1143,6 +1146,28 @@ onclick="window.location.href='tools/ai-prompt-generator.html'"
   <span>✔ Local</span>
   <span>No API</span>
 </div>
+</article>
+
+<article
+  class="tool-card"
+  data-name="summarizer summarize text pdf summary tl;dr local"
+  data-category="ai"
+  onclick="window.location.href='tools/text-pdf-summarizer.html'"
+>
+  <div class="tool-card-header">
+    <div class="tool-card-title">Text / PDF Summarizer</div>
+    <div class="tool-card-tag">AI</div>
+  </div>
+
+  <p class="tool-card-desc">
+    Paste text or extract text from a PDF and summarize it locally in your browser.
+    No upload.
+  </p>
+
+  <div class="tool-card-meta">
+    <span>✔ Local</span>
+    <span>No upload</span>
+  </div>
 </article>
 
           <!-- PDF ↔ JPG converter -->
@@ -2612,6 +2637,17 @@ onclick="window.location.href='tools/ai-prompt-generator.html'"
     // init
     applyFilters();
   });
+  </script>
+  <script type="module">
+    import * as pdfjsLib from "/tools/vendor/pdf.min.mjs";
+  
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.mjs";
+  
+    // test rapide
+    console.log("pdfjsLib loaded:", typeof pdfjsLib.getDocument === "function");
+  
+    // Exemple minimal: tu pourras appeler ça depuis ton code
+    window.__pdfjs = pdfjsLib;
   </script>
 </body>
 </html>
