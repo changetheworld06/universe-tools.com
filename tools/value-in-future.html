@@ -600,16 +600,13 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      $("year").textContent = new Date().getFullYear();
-      $("btnCalc").addEventListener("click", run);
-      $("btnReset").addEventListener("click", resetAll);
+  $("year").textContent = new Date().getFullYear();
+  $("btnCalc").addEventListener("click", run);
+  $("btnReset").addEventListener("click", resetAll);
 
-      // Prefill a useful default example
-      $("principal").value = "10000";
-      $("returnRate").value = "7";
-      $("inflationRate").value = "2.5";
-      run();
-    });
+  // page starts empty (no auto-calc)
+  resetAll();
+});
   </script>
 </body>
 </html>

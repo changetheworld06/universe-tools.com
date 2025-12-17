@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Cookie & GDPR Analyzer (Local) | Universe Tools</title>
+  <meta name="description" content="Analyze cookies accessible in your browser and get GDPR risk indicators. Local tool, no upload." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- GA4 + Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
+  </script>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://universe-tools.com/tools/cookie-rgpd-analyzer.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/cookie-rgpd-analyzer.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/cookie-rgpd-analyzer.html" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Cookie & GDPR Analyzer (Local)",
+    "url": "https://universe-tools.com/tools/cookie-rgpd-analyzer.html",
+    "description": "Analyze cookies accessible in your browser and get GDPR risk indicators. Local tool.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "isAccessibleForFree": true,
+    "browserRequirements": "Requires JavaScript"
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#050816;--bg-soft:#0b1020;--accent:#4f46e5;--accent-soft:rgba(79,70,229,.12);
+      --text:#f9fafb;--muted:#9ca3af;--border:#1f2937;
+      --radius-lg:18px;--radius-md:12px;--radius-sm:8px;
+      --shadow-card:0 14px 35px rgba(15,23,42,.7);
+      --max-width:1120px;--t:.18s ease-out;
+      --danger:#ef4444;--warn:#f59e0b;--ok:#22c55e;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+      background:radial-gradient(circle at top,#111827,#020617 55%,#000 100%);
+      color:var(--text);min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    .page{min-height:100vh;display:flex;flex-direction:column}
+    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.5rem}
+
+    header{
+      position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);
+      background:linear-gradient(to bottom,rgba(15,23,42,.92),rgba(15,23,42,.75),transparent);
+      border-bottom:1px solid rgba(148,163,184,.18);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.65rem}
+    .brand-logo{
+      width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+      box-shadow:0 0 30px rgba(79,70,229,.45),0 0 4px rgba(148,163,184,.8);
+      background:radial-gradient(circle at 30% 0%,#e5e7eb,#4f46e5 55%,#020617);
+      flex:0 0 auto;
+    }
+    .brand-name{font-weight:700;letter-spacing:.04em;font-size:.95rem}
+    .brand-tagline{font-size:.72rem;color:var(--muted)}
+    .nav-links{display:flex;align-items:center;gap:1.1rem;font-size:.9rem;flex-wrap:wrap;justify-content:flex-end}
+    .nav-links a{color:var(--muted);border-bottom:2px solid transparent;padding:.25rem 0;transition:color var(--t),border-color var(--t),transform var(--t)}
+    .nav-links a:hover{color:#e5e7eb;border-color:rgba(129,140,248,.7);transform:translateY(-1px)}
+    .nav-cta{
+      padding:.45rem .9rem;border-radius:999px;border:1px solid rgba(129,140,248,.6);
+      background:radial-gradient(circle at top left,#4f46e5,#0f172a);
+      font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+      display:inline-flex;align-items:center;gap:.3rem;box-shadow:0 8px 25px rgba(79,70,229,.4);
+      cursor:pointer;white-space:nowrap;
+    }
+
+    .section{padding:1.5rem 0 3.5rem}
+    .section-header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
+    .section-title{font-size:1.5rem;letter-spacing:-.03em}
+    .section-subtitle{font-size:.9rem;color:var(--muted);max-width:760px;line-height:1.5}
+
+    .tool-section{
+      border-radius:20px;border:1px solid rgba(55,65,81,.9);
+      background:radial-gradient(circle at top left,#020617,#020617);
+      padding:1.2rem 1.1rem 1.4rem;box-shadow:var(--shadow-card);margin-bottom:1.2rem;
+    }
+    .tool-section p{font-size:.85rem;color:var(--muted);margin-bottom:.9rem;line-height:1.55}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr 1fr 1fr 1fr;
+      gap:.8rem;
+      align-items:end;
+    }
+    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media (max-width:650px){.grid{grid-template-columns:1fr;}}
+
+    .field{display:flex;flex-direction:column;gap:.35rem;font-size:.8rem}
+    .field label{color:var(--muted)}
+    .field input, .field select, .field textarea{
+      border-radius:var(--radius-sm);
+      border:1px solid rgba(75,85,99,.9);
+      background:radial-gradient(circle at top left,#020617,#020617);
+      color:var(--text);
+      padding:.55rem .6rem;
+      font-size:.9rem;outline:none;
+    }
+    .field textarea{min-height:92px;resize:vertical;line-height:1.55}
+    .field small{color:#6b7280;font-size:.72rem;line-height:1.35}
+
+    .btn{
+      border-radius:var(--radius-sm);border:none;padding:.62rem .95rem;font-size:.86rem;
+      background:linear-gradient(135deg,#4f46e5,#6366f1);color:#e5e7eb;font-weight:700;
+      cursor:pointer;box-shadow:0 12px 28px rgba(79,70,229,.5);user-select:none;
+    }
+    .btn.secondary{background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;font-weight:600}
+    .btn[disabled]{opacity:.55;cursor:not-allowed}
+
+    .results{
+      margin-top:1rem;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:.8rem;
+    }
+    @media (max-width:900px){.results{grid-template-columns:1fr;}}
+    .card{
+      border-radius:var(--radius-md);
+      border:1px solid rgba(55,65,81,.8);
+      background:rgba(2,6,23,.55);
+      padding:1rem;
+    }
+    .card h2{font-size:1rem;margin-bottom:.45rem}
+    .big{font-size:1.35rem;font-weight:800;letter-spacing:-.02em}
+    .muted{color:var(--muted);font-size:.82rem;margin-top:.25rem;line-height:1.45}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:.9rem;
+      font-size:.88rem;
+      overflow:hidden;
+      border-radius:var(--radius-md);
+      border:1px solid rgba(55,65,81,.8);
+    }
+    th, td{padding:.7rem .75rem;border-bottom:1px solid rgba(55,65,81,.6);text-align:left}
+    th{color:#e5e7eb;background:rgba(2,6,23,.65);font-weight:700}
+    td{color:#e5e7eb}
+    tr:last-child td{border-bottom:none}
+
+    .pill{
+      display:inline-flex;align-items:center;gap:.35rem;
+      font-size:.74rem;
+      padding:.22rem .55rem;
+      border-radius:999px;
+      border:1px solid rgba(55,65,81,.8);
+      background:rgba(2,6,23,.45);
+      color:#e5e7eb;
+      white-space:nowrap;
+    }
+    .pill.ok{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.08);color:#bbf7d0}
+    .pill.warn{border-color:rgba(245,158,11,.35);background:rgba(245,158,11,.08);color:#fde68a}
+    .pill.danger{border-color:rgba(239,68,68,.35);background:rgba(239,68,68,.08);color:#fecaca}
+
+    .note{font-size:.74rem;color:#6b7280;margin-top:.75rem;line-height:1.55}
+
+    footer{border-top:1px solid rgba(30,64,175,.6);background:radial-gradient(circle at top,#020617,#020617);margin-top:auto}
+    .footer-inner{
+      padding:1rem 0 1.4rem;font-size:.75rem;color:#6b7280;
+      display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center
+    }
+    .footer-links{display:flex;gap:.9rem;flex-wrap:wrap}
+    .footer-links a{color:#6b7280}
+    .footer-links a:hover{color:#e5e7eb}
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
+          </div>
+        </div>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h1 class="section-title">Cookie & GDPR Analyzer (local)</h1>
+            <p class="section-subtitle">
+              Reads cookies accessible via <code>document.cookie</code> and flags common tracking patterns. No upload.
+              Note: HttpOnly cookies are not visible to JavaScript.
+            </p>
+          </div>
+
+          <article class="tool-section">
+            <p>
+              Paste an optional list of cookies you expect (one per line) and compare with what the browser exposes.
+              This helps spot unexpected tracking cookies.
+            </p>
+
+            <form class="grid" onsubmit="event.preventDefault();">
+              <div class="field" style="grid-column: span 2;">
+                <label for="expected">Expected cookies (optional, one per line)</label>
+                <textarea id="expected" placeholder="Example:
+_ga
+_gid
+sessionid"></textarea>
+                <small>Optional. Leave empty to just analyze current readable cookies.</small>
+              </div>
+
+              <div class="field">
+                <label for="strictMode">Classification mode</label>
+                <select id="strictMode">
+                  <option value="normal" selected>Normal</option>
+                  <option value="strict">Strict (more tracking matches)</option>
+                </select>
+                <small>Strict flags more cookies as “tracking”.</small>
+              </div>
+
+              <div class="field">
+                <button id="btnAnalyze" class="btn" type="button">Analyze</button>
+              </div>
+
+              <div class="field">
+                <button id="btnReset" class="btn secondary" type="button">Reset</button>
+              </div>
+
+              <div class="field">
+                <label for="filter">Filter</label>
+                <input id="filter" type="text" placeholder="Search cookie name..." />
+                <small>Instant filter (client-side).</small>
+              </div>
+
+              <div class="field">
+                <label for="sort">Sort</label>
+                <select id="sort">
+                  <option value="risk" selected>Risk (high → low)</option>
+                  <option value="name">Name (A → Z)</option>
+                </select>
+                <small>Sorting only (display).</small>
+              </div>
+
+              <div class="field">
+                <button id="btnCopy" class="btn secondary" type="button" disabled>Copy report</button>
+              </div>
+            </form>
+
+            <div id="quickResults" class="results" style="display:none;">
+              <div class="card">
+                <h2>Readable cookies</h2>
+                <div id="cTotal" class="big">—</div>
+                <div class="muted">Cookies found via <code>document.cookie</code></div>
+              </div>
+              <div class="card">
+                <h2>Tracking signals</h2>
+                <div id="cTrack" class="big">—</div>
+                <div class="muted">Likely analytics/ads identifiers</div>
+              </div>
+              <div class="card">
+                <h2>Unexpected</h2>
+                <div id="cUnexpected" class="big">—</div>
+                <div class="muted">Not in your “expected” list</div>
+              </div>
+            </div>
+
+            <div id="tableWrap" style="display:none;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Cookie name</th>
+                    <th>Category</th>
+                    <th>GDPR risk</th>
+                    <th>Expected?</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+              </table>
+
+              <div id="msg" class="note"></div>
+
+              <div class="note">
+                <strong>Limitations:</strong> This tool can’t read <code>HttpOnly</code> cookies, server-side cookies,
+                or some third-party cookies blocked by the browser. This is a quick indicator, not a legal audit.
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-section">
+            <p>
+              <strong>How to use:</strong> Open your site, then open this tool in the same browser. Click “Analyze”.
+              If you see tracking signals, make sure your consent banner blocks non-essential cookies before consent.
+            </p>
+            <p style="margin-bottom:0;">
+              Always review your CMP settings and documentation (Privacy Policy, Cookie Policy, consent logs).
+            </p>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    // --- Heuristics (local, no API) ---
+    const TRACK_KEYS_NORMAL = [
+      "_ga","_gid","_gat","ga","gid","gtm","gcl","ad","ads","doubleclick","dclid","fbp","fbc","pixel",
+      "analytics","utm","track"
+    ];
+    const TRACK_KEYS_STRICT = [
+      ...TRACK_KEYS_NORMAL,
+      "id","uid","uuid","visitor","session","client","device","fingerprint","cmp","consent"
+    ];
+
+    function normalizeName(s){
+      return String(s || "").trim();
+    }
+
+    function getReadableCookies(){
+      const raw = document.cookie || "";
+      if (!raw.trim()) return [];
+      return raw.split(";").map(x => normalizeName(x.split("=")[0]));
+    }
+
+    function parseExpected(){
+      const raw = $("expected").value || "";
+      return new Set(
+        raw.split("\n")
+          .map(x => normalizeName(x))
+          .filter(Boolean)
+          .map(x => x.toLowerCase())
+      );
+    }
+
+    function classify(name, strict){
+      const n = name.toLowerCase();
+      const keys = strict ? TRACK_KEYS_STRICT : TRACK_KEYS_NORMAL;
+
+      // tracking
+      if (keys.some(k => n.includes(k))) return { cat: "Tracking / Analytics", risk: "High", cls: "danger", score: 3 };
+
+      // session-ish
+      if (n.includes("sess") || n.includes("session") || n.startsWith("sid")) return { cat: "Session", risk: "Medium", cls: "warn", score: 2 };
+
+      // preference
+      if (n.includes("pref") || n.includes("lang") || n.includes("theme")) return { cat: "Preferences", risk: "Low", cls: "ok", score: 1 };
+
+      // fallback
+      return { cat: "Functional", risk: "Low", cls: "ok", score: 1 };
+    }
+
+    function buildReport(rows, totals){
+      const lines = [];
+      lines.push("Universe Tools — Cookie & GDPR Analyzer");
+      lines.push("Readable cookies via document.cookie (JavaScript)");
+      lines.push("");
+      lines.push(`Total: ${totals.total}`);
+      lines.push(`Tracking signals: ${totals.tracking}`);
+      lines.push(`Unexpected: ${totals.unexpected}`);
+      lines.push("");
+      lines.push("Details:");
+      rows.forEach(r => {
+        lines.push(`- ${r.name} | ${r.cat} | risk=${r.risk} | expected=${r.expected ? "yes" : "no"}`);
+      });
+      return lines.join("\n");
+    }
+
+    function render(){
+      const strict = $("strictMode").value === "strict";
+      const expected = parseExpected();
+      const filter = ($("filter").value || "").trim().toLowerCase();
+      const sort = $("sort").value;
+
+      const cookies = getReadableCookies()
+        .map(name => {
+          const meta = classify(name, strict);
+          const isExp = expected.size ? expected.has(name.toLowerCase()) : true; // if no list, treat as expected
+          return { name, expected: isExp, ...meta };
+        })
+        .filter(r => !filter || r.name.toLowerCase().includes(filter));
+
+      if (sort === "name") cookies.sort((a,b) => a.name.localeCompare(b.name));
+      else cookies.sort((a,b) => (b.score - a.score) || a.name.localeCompare(b.name));
+
+      const totalAll = getReadableCookies().length;
+      const trackingAll = getReadableCookies().filter(n => classify(n, strict).risk === "High").length;
+      const unexpectedAll = expected.size
+        ? getReadableCookies().filter(n => !expected.has(n.toLowerCase())).length
+        : 0;
+
+      $("quickResults").style.display = "grid";
+      $("cTotal").textContent = String(totalAll);
+      $("cTrack").textContent = String(trackingAll);
+      $("cUnexpected").textContent = expected.size ? String(unexpectedAll) : "—";
+
+      $("tableWrap").style.display = "block";
+
+      // table
+      const tbody = $("tbody");
+      tbody.innerHTML = cookies.length ? "" : `<tr><td colspan="4">No readable cookies matched your filter.</td></tr>`;
+
+      cookies.forEach(r => {
+        const expTxt = expected.size ? (r.expected ? `<span class="pill ok">yes</span>` : `<span class="pill danger">no</span>`) : `<span class="pill">n/a</span>`;
+        tbody.insertAdjacentHTML("beforeend", `
+          <tr>
+            <td>${r.name}</td>
+            <td>${r.cat}</td>
+            <td><span class="pill ${r.cls}">${r.risk}</span></td>
+            <td>${expTxt}</td>
+          </tr>
+        `);
+      });
+
+      // message
+      if (!totalAll){
+        $("msg").textContent = "No readable cookies detected via document.cookie.";
+      } else if (trackingAll){
+        $("msg").innerHTML = `<span class="pill danger">Action</span> Tracking signals detected. Ensure non-essential cookies are blocked until consent.`;
+      } else {
+        $("msg").innerHTML = `<span class="pill ok">Good</span> No obvious tracking signals detected in readable cookies.`;
+      }
+
+      // enable copy
+      $("btnCopy").disabled = (totalAll === 0);
+
+      // store report for copy
+      const rowsAll = getReadableCookies().map(name => {
+        const meta = classify(name, strict);
+        const isExp = expected.size ? expected.has(name.toLowerCase()) : true;
+        return { name, expected: isExp, cat: meta.cat, risk: meta.risk };
+      });
+
+      $("btnCopy").dataset.report = buildReport(rowsAll, {
+        total: totalAll,
+        tracking: trackingAll,
+        unexpected: unexpectedAll
+      });
+    }
+
+    async function copyReport(){
+      const txt = $("btnCopy").dataset.report || "";
+      if (!txt) return;
+      try{
+        await navigator.clipboard.writeText(txt);
+        $("msg").innerHTML = `<span class="pill ok">Copied</span> Report copied to clipboard.`;
+      }catch{
+        $("msg").innerHTML = `<span class="pill danger">Error</span> Copy failed (browser restriction).`;
+      }
+    }
+
+    function resetAll(){
+      $("expected").value = "";
+      $("strictMode").value = "normal";
+      $("filter").value = "";
+      $("sort").value = "risk";
+      $("quickResults").style.display = "none";
+      $("tableWrap").style.display = "none";
+      $("tbody").innerHTML = "";
+      $("msg").textContent = "";
+      $("btnCopy").disabled = true;
+      $("btnCopy").dataset.report = "";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      $("year").textContent = new Date().getFullYear();
+      $("btnAnalyze").addEventListener("click", render);
+      $("btnReset").addEventListener("click", resetAll);
+      $("filter").addEventListener("input", () => {
+        if ($("tableWrap").style.display !== "none") render();
+      });
+      $("sort").addEventListener("change", () => {
+        if ($("tableWrap").style.display !== "none") render();
+      });
+      $("strictMode").addEventListener("change", () => {
+        if ($("tableWrap").style.display !== "none") render();
+      });
+      $("btnCopy").addEventListener("click", copyReport);
+
+      // page starts empty (no auto run)
+      resetAll();
+    });
+  </script>
+</body>
+</html>
