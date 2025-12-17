@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Name Generator (Business / Baby / Brand) | Universe Tools</title>
+  <meta name="description" content="Generate names for a business, baby or brand with styles, language feel and length filters. Local tool, no upload." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- GA4 + Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
+  </script>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://universe-tools.com/tools/name-generator.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/name-generator.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/name-generator.html" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Name Generator (Business / Baby / Brand)",
+    "url":"https://universe-tools.com/tools/name-generator.html",
+    "description":"Generate names for a business, baby or brand with styles, language feel and length filters. Local tool.",
+    "applicationCategory":"Utility",
+    "operatingSystem":"All",
+    "isAccessibleForFree":true,
+    "browserRequirements":"Requires JavaScript"
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#050816;--bg-soft:#0b1020;--accent:#4f46e5;--accent-soft:rgba(79,70,229,.12);
+      --text:#f9fafb;--muted:#9ca3af;--border:#1f2937;
+      --radius-lg:18px;--radius-md:12px;--radius-sm:8px;
+      --shadow-card:0 14px 35px rgba(15,23,42,.7);
+      --max-width:1120px;--t:.18s ease-out;
+      --danger:#ef4444;--ok:#22c55e;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+      background:radial-gradient(circle at top,#111827,#020617 55%,#000 100%);
+      color:var(--text);min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    .page{min-height:100vh;display:flex;flex-direction:column}
+    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.5rem}
+
+    header{
+      position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);
+      background:linear-gradient(to bottom,rgba(15,23,42,.92),rgba(15,23,42,.75),transparent);
+      border-bottom:1px solid rgba(148,163,184,.18);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.65rem}
+    .brand-logo{
+      width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+      box-shadow:0 0 30px rgba(79,70,229,.45),0 0 4px rgba(148,163,184,.8);
+      background:radial-gradient(circle at 30% 0%,#e5e7eb,#4f46e5 55%,#020617);
+      flex:0 0 auto;
+    }
+    .brand-name{font-weight:700;letter-spacing:.04em;font-size:.95rem}
+    .brand-tagline{font-size:.72rem;color:var(--muted)}
+    .nav-links{display:flex;align-items:center;gap:1.1rem;font-size:.9rem;flex-wrap:wrap;justify-content:flex-end}
+    .nav-links a{color:var(--muted);border-bottom:2px solid transparent;padding:.25rem 0;transition:color var(--t),border-color var(--t),transform var(--t)}
+    .nav-links a:hover{color:#e5e7eb;border-color:rgba(129,140,248,.7);transform:translateY(-1px)}
+    .nav-cta{
+      padding:.45rem .9rem;border-radius:999px;border:1px solid rgba(129,140,248,.6);
+      background:radial-gradient(circle at top left,#4f46e5,#0f172a);
+      font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+      display:inline-flex;align-items:center;gap:.3rem;box-shadow:0 8px 25px rgba(79,70,229,.4);
+      cursor:pointer;white-space:nowrap;
+    }
+
+    .section{padding:1.5rem 0 3.5rem}
+    .section-header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.2rem}
+    .section-title{font-size:1.5rem;letter-spacing:-.03em}
+    .section-subtitle{font-size:.9rem;color:var(--muted);max-width:760px;line-height:1.5}
+
+    .tool-section{
+      border-radius:20px;border:1px solid rgba(55,65,81,.9);
+      background:radial-gradient(circle at top left,#020617,#020617);
+      padding:1.2rem 1.1rem 1.4rem;box-shadow:var(--shadow-card);margin-bottom:1.2rem;
+    }
+    .tool-section p{font-size:.85rem;color:var(--muted);margin-bottom:.9rem;line-height:1.55}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap:.8rem;
+      align-items:end;
+    }
+    @media (max-width:1000px){.grid{grid-template-columns:1fr;}}
+    .field{display:flex;flex-direction:column;gap:.35rem;font-size:.8rem}
+    .field label{color:var(--muted)}
+    .field input, .field select, .field textarea{
+      border-radius:var(--radius-sm);
+      border:1px solid rgba(75,85,99,.9);
+      background:radial-gradient(circle at top left,#020617,#020617);
+      color:var(--text);
+      padding:.55rem .6rem;
+      font-size:.9rem;outline:none;
+    }
+    .field textarea{min-height:84px;resize:vertical;line-height:1.55}
+    .hint{font-size:.74rem;color:#6b7280;line-height:1.45;margin-top:.2rem}
+
+    .controls{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin-top:.6rem}
+    .btn{
+      border-radius:var(--radius-sm);border:none;padding:.62rem .95rem;font-size:.86rem;
+      background:linear-gradient(135deg,#4f46e5,#6366f1);color:#e5e7eb;font-weight:800;
+      cursor:pointer;box-shadow:0 12px 28px rgba(79,70,229,.5);user-select:none;
+    }
+    .btn.secondary{background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;font-weight:600}
+    .btn[disabled]{opacity:.55;cursor:not-allowed}
+
+    .pill-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
+    .pill{
+      font-size:.74rem;color:#e5e7eb;
+      border:1px solid rgba(129,140,248,.35);
+      background:rgba(79,70,229,.10);
+      padding:.25rem .55rem;border-radius:999px;
+    }
+
+    .results-top{
+      display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;
+      margin-top:.2rem;
+    }
+    .count{color:var(--muted);font-size:.82rem}
+    .list{margin-top:.8rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+    @media (max-width:900px){.list{grid-template-columns:1fr}}
+    .name-card{
+      border-radius:var(--radius-md);
+      border:1px solid rgba(55,65,81,.8);
+      background:rgba(2,6,23,.55);
+      padding:1rem;
+    }
+    .name-title{
+      display:flex;justify-content:space-between;gap:.8rem;align-items:baseline;flex-wrap:wrap;
+    }
+    .name{
+      font-size:1.08rem;font-weight:900;letter-spacing:-.02em;
+    }
+    .score{font-size:.78rem;color:var(--muted)}
+    .name-meta{margin-top:.45rem;display:flex;gap:.5rem;flex-wrap:wrap}
+    .tag{
+      font-size:.72rem;color:#e5e7eb;
+      border:1px solid rgba(55,65,81,.8);
+      background:rgba(2,6,23,.45);
+      padding:.22rem .5rem;border-radius:999px;
+    }
+    .actions{margin-top:.65rem;display:flex;gap:.55rem;flex-wrap:wrap}
+    .mini{
+      padding:.45rem .7rem;font-size:.78rem;font-weight:800;
+    }
+    .mini.secondary{font-weight:700}
+    .status{margin-top:.65rem;font-size:.78rem;color:var(--muted);line-height:1.45}
+    .status b{color:#e5e7eb}
+    .warn{color:var(--danger)}
+    .ok{color:var(--ok)}
+    .note{
+      font-size:.74rem;color:#6b7280;margin-top:.85rem;line-height:1.55
+    }
+
+    footer{border-top:1px solid rgba(30,64,175,.6);background:radial-gradient(circle at top,#020617,#020617);margin-top:auto}
+    .footer-inner{
+      padding:1rem 0 1.4rem;font-size:.75rem;color:#6b7280;
+      display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center
+    }
+    .footer-links{display:flex;gap:.9rem;flex-wrap:wrap}
+    .footer-links a{color:#6b7280}
+    .footer-links a:hover{color:#e5e7eb}
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
+          </div>
+        </div>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h1 class="section-title">Name Generator (Business / Baby / Brand)</h1>
+            <p class="section-subtitle">
+              Enter keywords, pick a type and a style. This tool generates name ideas locally (no upload).
+              You can also create “brandable” names from syllables.
+            </p>
+          </div>
+
+          <article class="tool-section">
+            <div class="grid">
+              <div class="field">
+                <label for="keywords">Keywords (comma separated)</label>
+                <textarea id="keywords" placeholder="Example: water, clean, secure, scan"></textarea>
+                <div class="hint">Use 1–5 keywords. The generator mixes words + variations.</div>
+              </div>
+
+              <div class="field">
+                <label for="type">Type</label>
+                <select id="type">
+                  <option value="business" selected>Business</option>
+                  <option value="brand">Brand / Product</option>
+                  <option value="baby">Baby name</option>
+                </select>
+                <div class="pill-row">
+                  <span class="pill">local</span><span class="pill">no upload</span><span class="pill">copy / export</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="style">Style</label>
+                <select id="style">
+                  <option value="modern" selected>Modern</option>
+                  <option value="classic">Classic</option>
+                  <option value="cute">Cute</option>
+                  <option value="luxury">Luxury</option>
+                  <option value="tech">Tech</option>
+                  <option value="short">Short</option>
+                </select>
+                <div class="hint">Style influences prefixes/suffixes + syllables.</div>
+              </div>
+
+              <div class="field">
+                <label for="languageFeel">Language feel</label>
+                <select id="languageFeel">
+                  <option value="neutral" selected>Neutral</option>
+                  <option value="english">English-ish</option>
+                  <option value="french">French-ish</option>
+                  <option value="latin">Latin-ish</option>
+                  <option value="nordic">Nordic-ish</option>
+                </select>
+                <div class="hint">Affects syllables / endings (approximate).</div>
+              </div>
+
+              <div class="field">
+                <label for="maxLen">Max length</label>
+                <select id="maxLen">
+                  <option value="8">8</option>
+                  <option value="10" selected>10</option>
+                  <option value="12">12</option>
+                  <option value="14">14</option>
+                  <option value="18">18</option>
+                  <option value="30">30</option>
+                </select>
+                <div class="hint">For multi-word names, length applies to each word.</div>
+              </div>
+
+              <div class="field">
+                <label for="count">How many results</label>
+                <select id="count">
+                  <option value="12">12</option>
+                  <option value="20" selected>20</option>
+                  <option value="30">30</option>
+                  <option value="50">50</option>
+                </select>
+                <div class="hint">More results = more mixing/variants.</div>
+              </div>
+            </div>
+
+            <div class="controls">
+              <button id="btnGen" class="btn" type="button">Generate</button>
+              <button id="btnShuffle" class="btn secondary" type="button">Shuffle</button>
+              <button id="btnCopyAll" class="btn secondary" type="button" disabled>Copy all</button>
+              <button id="btnDownload" class="btn secondary" type="button" disabled>Download .txt</button>
+              <button id="btnReset" class="btn secondary" type="button">Reset</button>
+            </div>
+
+            <div id="status" class="note"></div>
+
+            <div class="results-top">
+              <div class="count" id="countLabel"></div>
+            </div>
+
+            <div id="list" class="list"></div>
+
+            <div class="note">
+              <strong>Availability checks:</strong> “Domain check” opens a new tab (no API). Trademark checks are not included.
+            </div>
+          </article>
+
+          <article class="tool-section">
+            <p>
+              <strong>Tips:</strong> Use 2–3 strong keywords, keep names short, and try different styles (Tech / Luxury).
+              For baby names, you can use themes like “nature, sky, ocean” or “strong, brave”.
+            </p>
+            <p style="margin-bottom:0;">
+              This is an idea generator — always check pronunciation, meaning in other languages, and domain/trademark availability.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    // ---------- Utils ----------
+    function randInt(min, max){ return Math.floor(Math.random()*(max-min+1))+min; }
+    function pick(arr){ return arr[randInt(0, arr.length-1)]; }
+    function uniq(arr){
+      const seen = new Set();
+      const out = [];
+      for (const x of arr){
+        const k = String(x).toLowerCase();
+        if (!k || seen.has(k)) continue;
+        seen.add(k); out.push(x);
+      }
+      return out;
+    }
+    function titleCase(s){
+      return String(s||"")
+        .split(/\s+/).filter(Boolean)
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ");
+    }
+    function cleanWord(s){
+      return String(s||"")
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g," ")
+        .replace(/\s+/g," ")
+        .trim();
+    }
+    function slugify(s){
+      return cleanWord(s).replace(/\s+/g,"").replace(/-+/g,"");
+    }
+    function scoreName(name){
+      // Simple heuristic score (0..100)
+      const raw = String(name||"").trim();
+      const n = raw.replace(/\s+/g,"");
+      let score = 50;
+      if (n.length <= 6) score += 18;
+      else if (n.length <= 10) score += 10;
+      else if (n.length <= 14) score += 4;
+      else score -= 8;
+
+      if (/^[A-Z]/.test(raw)) score += 4;
+      if (/[aeiou]/i.test(n) && /[bcdfghjklmnpqrstvwxyz]/i.test(n)) score += 8; // pronounceable-ish
+      if (/(.)\1\1/.test(n)) score -= 10; // triple letters
+      if (/[0-9]/.test(n)) score -= 6;
+      if (/\s/.test(raw)) score -= 2; // multiword slightly less brandable (depends)
+      return Math.max(0, Math.min(100, Math.round(score)));
+    }
+
+    // ---------- Dictionaries (local) ----------
+    const BUSINESS_SUFFIX = ["Labs","Works","Studio","Group","Systems","Solutions","Partners","Agency","Co","Company"];
+    const TECH_SUFFIX = ["AI","Cloud","Data","Secure","Scan","Ops","Stack","Node","Tech","Net","Flow"];
+    const LUX_SUFFIX = ["Maison","Atelier","Couture","Signature","Select","Elite","Luxe","Prime","Reserve"];
+    const CUTE_SUFFIX = ["Buddy","Panda","Lily","Spark","Sunny","Boo","Mimi","Kiki"];
+    const CLASSIC_SUFFIX = ["Associates","Consulting","Holdings","Services","International","Enterprise"];
+
+    const PREFIX = {
+      modern: ["Nova","Urban","Bright","Pure","Zen","Swift","Blue","Eco","Omni","Veri","Clair","Vita"],
+      classic: ["Royal","Grand","United","Heritage","Crown","Golden","Central","Prime","Ever"],
+      cute: ["Tiny","Happy","Sweet","Little","Cozy","Hug","Soft","Mini"],
+      luxury: ["Lux","Aurum","Velvet","Noir","Opal","Silk","Monaco","Étoile","Riviera"],
+      tech: ["Cyber","Quantum","Neuro","Vector","Pixel","Crypto","Meta","Nano","Syn","Byte"],
+      short: ["Up","Go","On","In","Hi","Zen","Lux","Neo","Pro"]
+    };
+
+    const SYLLABLES = {
+      neutral: {
+        start: ["na","no","ne","vi","vo","va","re","ra","ri","lo","lu","li","sa","se","so","ta","te","ti","ka","ke","ki","mo","mi","zo","zu","xa","xe"],
+        mid:   ["la","le","li","lo","lu","ra","re","ri","ro","ru","va","ve","vi","vo","za","ze","zi","zo","sa","se","si","so","ta","te","ti","to"],
+        end:   ["ly","io","ia","on","en","or","us","ix","ex","ify","ium","a","o","e","os","ar","is","um"]
+      },
+      english: {
+        start: ["br","cl","cr","dr","fl","gl","pl","pr","st","tr","sw","sk","bl","gr","fr","sn","sp"],
+        mid: ["a","e","i","o","u","ai","ea","oo","ou","er","ar","or","el","en"],
+        end: ["ly","ify","ster","wise","well","works","soft","byte","core","nest","labs"]
+      },
+      french: {
+        start: ["clair","bel","dou","lu","mar","noir","bleu","sol","val","viv","ser","bon"],
+        mid: ["a","e","i","o","u","ou","ai","ei","on","en","eu"],
+        end: ["elle","ette","ier","ique","eau","ois","ance","ence","eur","in","ine"]
+      },
+      latin: {
+        start: ["aura","vita","nove","lume","cora","veri","aqua","sola","terra","forti"],
+        mid: ["a","e","i","o","u","ae","ia","io","ui","or","um"],
+        end: ["us","um","ia","io","ora","aris","ensis","iva","orum","atus"]
+      },
+      nordic: {
+        start: ["sk","fj","bj","sv","st","tr","dr","kr","fr","gl","br","stor","lys","vind"],
+        mid: ["a","e","i","o","u","y","ae","oe","ia","ei"],
+        end: ["vik","holm","fjord","sen","son","land","gard","ly","run","ska"]
+      }
+    };
+
+    // Baby name seeds (simple, local)
+    const BABY_BASE = {
+      modern: ["Luna","Noah","Mila","Liam","Nina","Leo","Maya","Eden","Ava","Elio","Milo","Iris"],
+      classic: ["Emma","Lucas","Alice","Hugo","Chloe","Louis","Arthur","Sarah","Julie","Paul","Anna","David"],
+      cute: ["Lili","Nono","Mimi","Toto","Kiki","Nana","Coco","Lola","Poppy","Bibi"],
+      luxury: ["Celeste","Aurora","Valentin","Isadora","Octave","Ariane","Victoire","Gabriel","Raphael"],
+      tech: ["Nova","Aria","Orion","Lyra","Atlas","Sirius","Neo","Vega"],
+      short: ["Ava","Leo","Mia","Eli","Noa","Lia","Tom","Max","Sam","Kai"]
+    };
+
+    function getSuffixList(type, style){
+      if (type === "baby") return [];
+      if (style === "tech") return uniq([...TECH_SUFFIX, ...BUSINESS_SUFFIX]);
+      if (style === "luxury") return uniq([...LUX_SUFFIX, ...BUSINESS_SUFFIX]);
+      if (style === "cute") return uniq([...CUTE_SUFFIX, ...BUSINESS_SUFFIX]);
+      if (style === "classic") return uniq([...CLASSIC_SUFFIX, ...BUSINESS_SUFFIX]);
+      if (style === "short") return ["Labs","Co","Studio","AI"];
+      return BUSINESS_SUFFIX;
+    }
+
+    function buildFromKeywords(words, style, maxLen){
+      const out = [];
+      const pref = PREFIX[style] || PREFIX.modern;
+
+      for (const w of words){
+        if (!w) continue;
+        const base = titleCase(w);
+        out.push(base);
+
+        out.push(titleCase(pick(pref)) + base);
+        out.push(base + titleCase(pick(pref)).replace(/\s+/g,""));
+
+        // merge with another word
+        const w2 = pick(words);
+        if (w2 && w2 !== w){
+          const b2 = titleCase(w2);
+          out.push(base + b2);
+          out.push(base + " " + b2);
+        }
+
+        // short brandy truncations
+        if (base.length >= 6){
+          out.push(base.slice(0,4) + base.slice(-2));
+          out.push(base.slice(0,5));
+        }
+      }
+
+      return out
+        .map(n => n.replace(/\s+/g," ").trim())
+        .filter(n => n.length > 1)
+        .filter(n => n.split(" ").every(part => part.length <= maxLen));
+    }
+
+    function buildSyllableNames(style, feel, maxLen){
+      const out = [];
+      const s = SYLLABLES[feel] || SYLLABLES.neutral;
+
+      const attempts = 220; // generate many then filter/unique
+      for (let i=0;i<attempts;i++){
+        let name = "";
+        if (feel === "english"){
+          // english-ish: consonant cluster + vowel + ending
+          name = pick(s.start) + pick(s.mid) + pick(s.end);
+        } else if (feel === "french"){
+          name = pick(s.start) + pick(s.mid) + pick(s.end);
+        } else {
+          // neutral/latin/nordic: 2-3 syllables + ending
+          const parts = [pick(s.start), pick(s.mid)];
+          if (Math.random() < 0.55) parts.push(pick(s.mid));
+          parts.push(pick(s.end));
+          name = parts.join("");
+        }
+
+        name = name.replace(/--+/g,"-").replace(/\s+/g,"").trim();
+        name = name.charAt(0).toUpperCase() + name.slice(1);
+
+        // style tweaks
+        if (style === "short") name = name.slice(0, Math.min(name.length, randInt(3,6)));
+        if (style === "luxury" && Math.random()<0.35) name = name + (Math.random()<0.5 ? "é" : "a");
+        if (style === "tech" && Math.random()<0.25) name = name + (Math.random()<0.5 ? "X" : "AI");
+
+        // length filter
+        if (name.length <= maxLen && name.length >= 3) out.push(name);
+      }
+      return out;
+    }
+
+    function buildBabyNames(style, feel, maxLen){
+      const base = BABY_BASE[style] || BABY_BASE.modern;
+      const out = [];
+
+      // direct base
+      out.push(...base);
+
+      // variants
+      const suffix = (feel === "french") ? ["a","e","ine","ette","on","el","éo"] :
+                     (feel === "latin") ? ["us","a","ia","io","or"] :
+                     (feel === "nordic") ? ["son","sen","vik","ly"] :
+                     ["a","e","y","o","i"];
+
+      for (let i=0;i<160;i++){
+        const n = pick(base);
+        if (!n) continue;
+        let v = n;
+
+        if (Math.random() < 0.55) v = v + pick(suffix);
+        if (Math.random() < 0.35 && v.length > 4) v = v.slice(0, v.length-1);
+        if (Math.random() < 0.25) v = v.replace(/a/g,"e");
+        if (Math.random() < 0.25) v = v.replace(/o/g,"a");
+
+        v = v.replace(/[^a-zA-ZÀ-ÿ'-]/g,"");
+        v = v.charAt(0).toUpperCase() + v.slice(1);
+
+        if (v.length <= maxLen && v.length >= 3) out.push(v);
+      }
+      return out;
+    }
+
+    function attachSuffix(names, suffixes, maxLen){
+      if (!suffixes.length) return names;
+      const out = [];
+      for (const n of names){
+        out.push(n);
+        const s = pick(suffixes);
+        if (!s) continue;
+
+        // sometimes separate word, sometimes merged
+        if (Math.random() < 0.55) out.push(`${n} ${s}`);
+        else out.push(`${n}${s}`);
+
+        // check per-word maxLen
+      }
+      return out
+        .map(x => x.replace(/\s+/g," ").trim())
+        .filter(x => x.split(" ").every(part => part.length <= maxLen));
+    }
+
+    function buildAll(){
+      const raw = $("keywords").value || "";
+      const type = $("type").value;
+      const style = $("style").value;
+      const feel = $("languageFeel").value;
+      const maxLen = parseInt($("maxLen").value, 10) || 10;
+      const count = parseInt($("count").value, 10) || 20;
+
+      // parse keywords
+      const words = uniq(
+        raw.split(",")
+          .map(x => cleanWord(x))
+          .flatMap(x => x.split(/\s+/))
+          .map(x => x.trim())
+          .filter(Boolean)
+          .filter(x => x.length >= 2)
+      ).slice(0, 8);
+
+      const suffixes = getSuffixList(type, style);
+
+      let names = [];
+
+      if (type === "baby"){
+        names = buildBabyNames(style, feel, maxLen);
+      } else {
+        if (words.length) names.push(...buildFromKeywords(words, style, maxLen));
+        names.push(...buildSyllableNames(style, feel, maxLen));
+        names = attachSuffix(names, suffixes, maxLen);
+      }
+
+      names = uniq(names);
+
+      // filter: no very short unless short style
+      names = names.filter(n => {
+        const compact = n.replace(/\s+/g,"");
+        if (style === "short") return compact.length >= 3;
+        return compact.length >= 4;
+      });
+
+      // score + sort by score desc, then length asc
+      const scored = names.map(n => ({ n, s: scoreName(n), len: n.replace(/\s+/g,"").length }));
+      scored.sort((a,b) => (b.s - a.s) || (a.len - b.len) || a.n.localeCompare(b.n));
+
+      // keep
+      const final = scored.slice(0, count);
+
+      return { final, words };
+    }
+
+    // ---------- UI ----------
+    function setStatus(html){
+      $("status").innerHTML = html || "";
+    }
+
+    function render(results){
+      const list = $("list");
+      list.innerHTML = "";
+
+      $("countLabel").textContent = results.length ? `${results.length} results` : "";
+
+      const items = results.map((it, idx) => {
+        const name = it.n;
+        const score = it.s;
+
+        const domainBase = slugify(name);
+        const domainQuery = domainBase ? `${domainBase}.com` : "";
+        const tld = ".com";
+
+        // links (no API, just open searches)
+        const duck = `https://duckduckgo.com/?q=${encodeURIComponent(name + " brand")}`;
+        const whois = `https://duckduckgo.com/?q=${encodeURIComponent(domainQuery + " whois")}`;
+        const check = `https://duckduckgo.com/?q=${encodeURIComponent("site:" + tld + " " + domainBase)}`;
+
+        return `
+          <div class="name-card">
+            <div class="name-title">
+              <div class="name">${name}</div>
+              <div class="score">Score: <b>${score}</b>/100</div>
+            </div>
+            <div class="name-meta">
+              <span class="tag">${name.replace(/\s+/g,"").length} chars</span>
+              <span class="tag">${/ /.test(name) ? "multi-word" : "single-word"}</span>
+              <span class="tag">${domainQuery ? domainQuery : "—"}</span>
+            </div>
+
+            <div class="actions">
+              <button class="btn mini secondary" type="button" data-copy="${encodeURIComponent(name)}">Copy</button>
+              <button class="btn mini secondary" type="button" data-copy="${encodeURIComponent(domainQuery)}" ${domainQuery ? "" : "disabled"}>Copy .com</button>
+              <a class="btn mini secondary" href="${whois}" target="_blank" rel="noopener">Domain check</a>
+              <a class="btn mini secondary" href="${duck}" target="_blank" rel="noopener">Web search</a>
+            </div>
+
+            <div class="status">
+              <span class="muted">Tip:</span> search “${name}” + “trademark” in your target country.
+            </div>
+          </div>
+        `;
+      });
+
+      list.innerHTML = items.join("");
+
+      // bind copy buttons
+      list.querySelectorAll("button[data-copy]").forEach(btn => {
+        btn.addEventListener("click", async () => {
+          const val = decodeURIComponent(btn.getAttribute("data-copy") || "");
+          if (!val) return;
+          try {
+            await navigator.clipboard.writeText(val);
+            setStatus(`Copied: <b>${val}</b>`);
+          } catch {
+            setStatus(`<span class="warn">Copy failed (browser restriction).</span>`);
+          }
+        });
+      });
+    }
+
+    async function copyAll(){
+      const cards = Array.from(document.querySelectorAll(".name-card .name")).map(x => x.textContent.trim()).filter(Boolean);
+      if (!cards.length) return;
+      const txt = cards.join("\n");
+      try {
+        await navigator.clipboard.writeText(txt);
+        setStatus(`Copied <b>${cards.length}</b> names to clipboard.`);
+      } catch {
+        setStatus(`<span class="warn">Copy failed (browser restriction).</span>`);
+      }
+    }
+
+    function downloadTxt(){
+      const cards = Array.from(document.querySelectorAll(".name-card .name")).map(x => x.textContent.trim()).filter(Boolean);
+      if (!cards.length) return;
+      const txt = cards.join("\n");
+      const blob = new Blob([txt], {type:"text/plain;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "name-ideas.txt";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      setStatus(`Downloaded <b>name-ideas.txt</b>.`);
+    }
+
+    function resetAll(){
+      $("keywords").value = "";
+      $("type").value = "business";
+      $("style").value = "modern";
+      $("languageFeel").value = "neutral";
+      $("maxLen").value = "10";
+      $("count").value = "20";
+      $("list").innerHTML = "";
+      $("countLabel").textContent = "";
+      $("btnCopyAll").disabled = true;
+      $("btnDownload").disabled = true;
+      setStatus("");
+    }
+
+    function run(){
+      const { final, words } = buildAll();
+
+      if (!final.length){
+        setStatus(`<span class="warn">No results. Try adding keywords or increasing max length.</span>`);
+        $("btnCopyAll").disabled = true;
+        $("btnDownload").disabled = true;
+        render([]);
+        return;
+      }
+
+      const previewWords = words.length ? words.map(w => `<span class="pill">${w}</span>`).join(" ") : `<span class="pill">no keywords</span>`;
+      setStatus(`Generated using: ${previewWords}`);
+
+      render(final);
+
+      $("btnCopyAll").disabled = false;
+      $("btnDownload").disabled = false;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      $("year").textContent = new Date().getFullYear();
+
+      $("btnGen").addEventListener("click", run);
+      $("btnShuffle").addEventListener("click", run);
+      $("btnCopyAll").addEventListener("click", copyAll);
+      $("btnDownload").addEventListener("click", downloadTxt);
+      $("btnReset").addEventListener("click", resetAll);
+
+      // optional default to show it works immediately
+      $("keywords").value = "secure, scan, universe";
+      run();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Future Value Calculator (10/20/30 years) | Universe Tools</title>
+  <meta name="description" content="Calculate how much your money could be worth in 10, 20 and 30 years with inflation and/or annual return. Local calculator, no upload." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- GA4 + Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
+  </script>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://universe-tools.com/tools/value-in-future.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/value-in-future.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/value-in-future.html" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Future Value Calculator (10/20/30 years)",
+    "url": "https://universe-tools.com/tools/value-in-future.html",
+    "description": "Calculate how much your money could be worth in 10, 20 and 30 years with inflation and/or annual return.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "isAccessibleForFree": true,
+    "browserRequirements": "Requires JavaScript"
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#050816;--bg-soft:#0b1020;--accent:#4f46e5;--accent-soft:rgba(79,70,229,.12);
+      --text:#f9fafb;--muted:#9ca3af;--border:#1f2937;
+      --radius-lg:18px;--radius-md:12px;--radius-sm:8px;
+      --shadow-card:0 14px 35px rgba(15,23,42,.7);
+      --max-width:1120px;--t:.18s ease-out;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+      background:radial-gradient(circle at top,#111827,#020617 55%,#000 100%);
+      color:var(--text);min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    .page{min-height:100vh;display:flex;flex-direction:column}
+    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.5rem}
+
+    header{
+      position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);
+      background:linear-gradient(to bottom,rgba(15,23,42,.92),rgba(15,23,42,.75),transparent);
+      border-bottom:1px solid rgba(148,163,184,.18);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.65rem}
+    .brand-logo{
+      width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+      box-shadow:0 0 30px rgba(79,70,229,.45),0 0 4px rgba(148,163,184,.8);
+      background:radial-gradient(circle at 30% 0%,#e5e7eb,#4f46e5 55%,#020617);
+      flex:0 0 auto;
+    }
+    .brand-name{font-weight:700;letter-spacing:.04em;font-size:.95rem}
+    .brand-tagline{font-size:.72rem;color:var(--muted)}
+    .nav-links{display:flex;align-items:center;gap:1.1rem;font-size:.9rem;flex-wrap:wrap;justify-content:flex-end}
+    .nav-links a{color:var(--muted);border-bottom:2px solid transparent;padding:.25rem 0;transition:color var(--t),border-color var(--t),transform var(--t)}
+    .nav-links a:hover{color:#e5e7eb;border-color:rgba(129,140,248,.7);transform:translateY(-1px)}
+    .nav-cta{
+      padding:.45rem .9rem;border-radius:999px;border:1px solid rgba(129,140,248,.6);
+      background:radial-gradient(circle at top left,#4f46e5,#0f172a);
+      font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+      display:inline-flex;align-items:center;gap:.3rem;box-shadow:0 8px 25px rgba(79,70,229,.4);
+      cursor:pointer;white-space:nowrap;
+    }
+
+    .section{padding:1.5rem 0 3.5rem}
+    .section-header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
+    .section-title{font-size:1.5rem;letter-spacing:-.03em}
+    .section-subtitle{font-size:.9rem;color:var(--muted);max-width:760px;line-height:1.5}
+
+    .tool-section{
+      border-radius:20px;border:1px solid rgba(55,65,81,.9);
+      background:radial-gradient(circle at top left,#020617,#020617);
+      padding:1.2rem 1.1rem 1.4rem;box-shadow:var(--shadow-card);margin-bottom:1.2rem;
+    }
+    .tool-section p{font-size:.85rem;color:var(--muted);margin-bottom:.9rem;line-height:1.55}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap:.8rem;
+      align-items:end;
+    }
+    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media (max-width:650px){.grid{grid-template-columns:1fr;}}
+
+    .field{display:flex;flex-direction:column;gap:.35rem;font-size:.8rem}
+    .field label{color:var(--muted)}
+    .field input, .field select{
+      border-radius:var(--radius-sm);
+      border:1px solid rgba(75,85,99,.9);
+      background:radial-gradient(circle at top left,#020617,#020617);
+      color:var(--text);
+      padding:.55rem .6rem;
+      font-size:.9rem;outline:none;
+    }
+    .field small{color:#6b7280;font-size:.72rem;line-height:1.35}
+    .btn{
+      border-radius:var(--radius-sm);border:none;padding:.62rem .95rem;font-size:.86rem;
+      background:linear-gradient(135deg,#4f46e5,#6366f1);color:#e5e7eb;font-weight:700;
+      cursor:pointer;box-shadow:0 12px 28px rgba(79,70,229,.5);user-select:none;
+    }
+    .btn.secondary{background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;font-weight:600}
+    .btn[disabled]{opacity:.55;cursor:not-allowed}
+
+    .results{
+      margin-top:1rem;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:.8rem;
+    }
+    @media (max-width:900px){.results{grid-template-columns:1fr;}}
+    .card{
+      border-radius:var(--radius-md);
+      border:1px solid rgba(55,65,81,.8);
+      background:rgba(2,6,23,.55);
+      padding:1rem;
+    }
+    .card h2{font-size:1rem;margin-bottom:.45rem}
+    .big{font-size:1.35rem;font-weight:800;letter-spacing:-.02em}
+    .muted{color:var(--muted);font-size:.82rem;margin-top:.25rem;line-height:1.45}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:.9rem;
+      font-size:.88rem;
+      overflow:hidden;
+      border-radius:var(--radius-md);
+      border:1px solid rgba(55,65,81,.8);
+    }
+    th, td{padding:.7rem .75rem;border-bottom:1px solid rgba(55,65,81,.6);text-align:left}
+    th{color:#e5e7eb;background:rgba(2,6,23,.65);font-weight:700}
+    td{color:#e5e7eb}
+    tr:last-child td{border-bottom:none}
+    .right{text-align:right}
+    .note{font-size:.74rem;color:#6b7280;margin-top:.75rem;line-height:1.55}
+
+    .chart-wrap{
+      margin-top:1rem;
+      border-radius:var(--radius-md);
+      border:1px solid rgba(55,65,81,.8);
+      background:rgba(2,6,23,.45);
+      padding:.75rem;
+    }
+    canvas{width:100%;height:260px;display:block}
+
+    footer{border-top:1px solid rgba(30,64,175,.6);background:radial-gradient(circle at top,#020617,#020617);margin-top:auto}
+    .footer-inner{
+      padding:1rem 0 1.4rem;font-size:.75rem;color:#6b7280;
+      display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center
+    }
+    .footer-links{display:flex;gap:.9rem;flex-wrap:wrap}
+    .footer-links a{color:#6b7280}
+    .footer-links a:hover{color:#e5e7eb}
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
+          </div>
+        </div>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h1 class="section-title">How much will it be worth in 10 / 20 / 30 years?</h1>
+            <p class="section-subtitle">
+              Enter a starting amount, an annual return and/or inflation. You’ll get values for 10, 20 and 30 years,
+              plus a detailed table and a simple chart. Everything runs locally.
+            </p>
+          </div>
+
+          <article class="tool-section">
+            <p>
+              Choose what you want to estimate:
+              <strong>Nominal value</strong> (with returns) and/or <strong>real value</strong> (adjusted for inflation).
+            </p>
+
+            <form class="grid" onsubmit="event.preventDefault();">
+              <div class="field">
+                <label for="principal">Starting amount</label>
+                <input id="principal" type="number" step="0.01" min="0" placeholder="Ex: 10000" />
+                <small>Example: 10000 = $10,000 (or €10,000)</small>
+              </div>
+
+              <div class="field">
+                <label for="returnRate">Annual return (%)</label>
+                <input id="returnRate" type="number" step="0.01" placeholder="Ex: 7" />
+                <small>Optional. Use 0 if you want inflation-only.</small>
+              </div>
+
+              <div class="field">
+                <label for="inflationRate">Inflation (%)</label>
+                <input id="inflationRate" type="number" step="0.01" placeholder="Ex: 2.5" />
+                <small>Optional. Used to compute “real” value.</small>
+              </div>
+
+              <div class="field">
+                <label for="mode">Show</label>
+                <select id="mode">
+                  <option value="both" selected>Nominal + Real (inflation-adjusted)</option>
+                  <option value="nominal">Nominal only</option>
+                  <option value="real">Real only</option>
+                </select>
+                <small>Real value = nominal / (1+inflation)^years</small>
+              </div>
+
+              <div class="field">
+                <button id="btnCalc" class="btn" type="button">Calculate</button>
+              </div>
+
+              <div class="field">
+                <button id="btnReset" class="btn secondary" type="button">Reset</button>
+              </div>
+
+              <div class="field">
+                <label for="currency">Currency symbol</label>
+                <input id="currency" type="text" value="€" maxlength="3" />
+                <small>€ / $ / £ … just a display symbol.</small>
+              </div>
+
+              <div class="field">
+                <label for="decimals">Decimals</label>
+                <select id="decimals">
+                  <option value="0">0</option>
+                  <option value="2" selected>2</option>
+                </select>
+                <small>Formatting only (not calculations).</small>
+              </div>
+            </form>
+
+            <div id="quickResults" class="results" style="display:none;">
+              <div class="card">
+                <h2>10 years</h2>
+                <div id="v10" class="big">—</div>
+                <div id="v10sub" class="muted"></div>
+              </div>
+              <div class="card">
+                <h2>20 years</h2>
+                <div id="v20" class="big">—</div>
+                <div id="v20sub" class="muted"></div>
+              </div>
+              <div class="card">
+                <h2>30 years</h2>
+                <div id="v30" class="big">—</div>
+                <div id="v30sub" class="muted"></div>
+              </div>
+            </div>
+
+            <div id="tableWrap" style="display:none;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Year</th>
+                    <th class="right">Nominal</th>
+                    <th class="right">Real (inflation-adjusted)</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+              </table>
+
+              <div class="chart-wrap">
+                <canvas id="chart" width="1100" height="260"></canvas>
+              </div>
+
+              <div class="note">
+                <strong>Notes:</strong> This is a simple compound calculation. It is not financial advice.
+                Results depend heavily on future return and inflation assumptions.
+              </div>
+            </div>
+
+            <div id="msg" class="note" style="margin-top:.9rem;"></div>
+          </article>
+
+          <article class="tool-section">
+            <p>
+              <strong>How it works:</strong> nominal value uses compound growth:
+              value = principal × (1 + return)^years.
+              Real value discounts inflation:
+              real = nominal ÷ (1 + inflation)^years.
+            </p>
+            <p style="margin-bottom:0;">
+              This tool is useful for quick intuition: savings goals, long-term budgets, and comparing “today’s money” vs “future money”.
+            </p>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    function toNumber(v) {
+      const n = parseFloat(String(v).replace(",", "."));
+      return Number.isFinite(n) ? n : NaN;
+    }
+
+    function clampPct(p) {
+      // allow negatives (deflation / negative return) but keep sane bounds
+      if (!Number.isFinite(p)) return NaN;
+      if (p < -99.99) return -99.99;
+      if (p > 9999) return 9999;
+      return p;
+    }
+
+    function fmtMoney(value, symbol, decimals) {
+      if (!Number.isFinite(value)) return "—";
+      const d = parseInt(decimals, 10) || 0;
+      const x = value.toFixed(d);
+      // simple thousands separators (en-style)
+      const parts = x.split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return symbol + parts.join(d ? "." : "");
+    }
+
+    function calc(principal, r, infl, years) {
+      const nominal = principal * Math.pow(1 + r, years);
+      const real = (infl === null) ? null : (nominal / Math.pow(1 + infl, years));
+      return { nominal, real };
+    }
+
+    function setModeVisibility(mode) {
+      // table always has both columns; we hide values if needed
+      // quick cards also adapt
+      return mode;
+    }
+
+    function drawChart(labels, nominalArr, realArr, mode) {
+      const canvas = $("chart");
+      const ctx = canvas.getContext("2d");
+      const W = canvas.width, H = canvas.height;
+
+      ctx.clearRect(0, 0, W, H);
+
+      // padding
+      const padL = 55, padR = 18, padT = 14, padB = 32;
+      const w = W - padL - padR;
+      const h = H - padT - padB;
+
+      // choose series
+      const series = [];
+      if (mode === "nominal" || mode === "both") series.push({ name:"Nominal", data: nominalArr });
+      if (mode === "real" || mode === "both") series.push({ name:"Real", data: realArr });
+
+      // y scale
+      let maxV = 0;
+      for (const s of series) for (const v of s.data) if (Number.isFinite(v)) maxV = Math.max(maxV, v);
+      if (!maxV || !Number.isFinite(maxV)) maxV = 1;
+
+      // axes
+      ctx.globalAlpha = 1;
+      ctx.lineWidth = 1;
+
+      // grid lines
+      ctx.strokeStyle = "rgba(148,163,184,0.18)";
+      ctx.fillStyle = "rgba(156,163,175,0.9)";
+      ctx.font = "12px system-ui, -apple-system, Segoe UI, sans-serif";
+
+      const ticks = 4;
+      for (let i = 0; i <= ticks; i++) {
+        const y = padT + (h * i / ticks);
+        ctx.beginPath();
+        ctx.moveTo(padL, y);
+        ctx.lineTo(padL + w, y);
+        ctx.stroke();
+
+        const val = maxV * (1 - i / ticks);
+        const label = (val >= 1000) ? Math.round(val).toLocaleString("en-US") : val.toFixed(0);
+        ctx.fillText(label, 6, y + 4);
+      }
+
+      // x labels (0,10,20,30)
+      ctx.fillStyle = "rgba(156,163,175,0.9)";
+      const showIdx = new Set([0, 10, 20, 30]);
+      labels.forEach((lab, i) => {
+        if (!showIdx.has(i)) return;
+        const x = padL + (w * (i / (labels.length - 1)));
+        ctx.fillText(lab, x - 6, padT + h + 22);
+      });
+
+      // plot function
+      function plot(data, stroke) {
+        ctx.strokeStyle = stroke;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        data.forEach((v, i) => {
+          const x = padL + (w * (i / (labels.length - 1)));
+          const y = padT + (h * (1 - (v / maxV)));
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+
+        // dots
+        ctx.fillStyle = stroke;
+        data.forEach((v, i) => {
+          if (![0,10,20,30].includes(i)) return;
+          const x = padL + (w * (i / (labels.length - 1)));
+          const y = padT + (h * (1 - (v / maxV)));
+          ctx.beginPath();
+          ctx.arc(x, y, 3, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      // colors (simple but fixed)
+      // Nominal: accent-ish, Real: pink-ish
+      if (mode === "nominal") plot(nominalArr, "rgba(129,140,248,0.95)");
+      if (mode === "real") plot(realArr, "rgba(236,72,153,0.95)");
+      if (mode === "both") {
+        plot(nominalArr, "rgba(129,140,248,0.95)");
+        plot(realArr, "rgba(236,72,153,0.95)");
+      }
+
+      // legend
+      ctx.font = "12px system-ui, -apple-system, Segoe UI, sans-serif";
+      let lx = padL, ly = padT + 12;
+      if (mode === "both") {
+        ctx.fillStyle = "rgba(129,140,248,0.95)"; ctx.fillRect(lx, ly-9, 10, 3);
+        ctx.fillStyle = "rgba(229,231,235,0.95)"; ctx.fillText("Nominal", lx+14, ly-6);
+        lx += 86;
+        ctx.fillStyle = "rgba(236,72,153,0.95)"; ctx.fillRect(lx, ly-9, 10, 3);
+        ctx.fillStyle = "rgba(229,231,235,0.95)"; ctx.fillText("Real", lx+14, ly-6);
+      } else if (mode === "nominal") {
+        ctx.fillStyle = "rgba(129,140,248,0.95)"; ctx.fillRect(lx, ly-9, 10, 3);
+        ctx.fillStyle = "rgba(229,231,235,0.95)"; ctx.fillText("Nominal", lx+14, ly-6);
+      } else {
+        ctx.fillStyle = "rgba(236,72,153,0.95)"; ctx.fillRect(lx, ly-9, 10, 3);
+        ctx.fillStyle = "rgba(229,231,235,0.95)"; ctx.fillText("Real", lx+14, ly-6);
+      }
+    }
+
+    function resetAll() {
+      $("principal").value = "";
+      $("returnRate").value = "";
+      $("inflationRate").value = "";
+      $("mode").value = "both";
+      $("currency").value = "€";
+      $("decimals").value = "2";
+      $("quickResults").style.display = "none";
+      $("tableWrap").style.display = "none";
+      $("tbody").innerHTML = "";
+      $("msg").textContent = "";
+    }
+
+    function run() {
+      $("msg").textContent = "";
+
+      const principal = toNumber($("principal").value);
+      let rPct = clampPct(toNumber($("returnRate").value));
+      let iPct = clampPct(toNumber($("inflationRate").value));
+      const mode = $("mode").value;
+      const sym = ($("currency").value || "€").trim() || "€";
+      const decimals = $("decimals").value;
+
+      if (!Number.isFinite(principal) || principal < 0) {
+        $("msg").textContent = "Please enter a valid starting amount (>= 0).";
+        return;
+      }
+
+      // default empty inputs to 0
+      if (!Number.isFinite(rPct)) rPct = 0;
+      if (!Number.isFinite(iPct)) iPct = 0;
+
+      const r = rPct / 100;
+      const infl = iPct / 100;
+
+      // Quick results
+      const yList = [10, 20, 30];
+      const quick = yList.map(y => calc(principal, r, infl, y));
+
+      function setCard(year, obj, idMain, idSub) {
+        const nominal = fmtMoney(obj.nominal, sym, decimals);
+        const real = fmtMoney(obj.real, sym, decimals);
+
+        if (mode === "nominal") {
+          $(idMain).textContent = nominal;
+          $(idSub).textContent = `Return: ${rPct}% / year`;
+        } else if (mode === "real") {
+          $(idMain).textContent = real;
+          $(idSub).textContent = `Inflation-adjusted (inflation ${iPct}% / year)`;
+        } else {
+          $(idMain).textContent = nominal;
+          $(idSub).innerHTML = `Real (inflation-adjusted): <strong>${real}</strong>`;
+        }
+      }
+
+      setCard(10, quick[0], "v10", "v10sub");
+      setCard(20, quick[1], "v20", "v20sub");
+      setCard(30, quick[2], "v30", "v30sub");
+
+      $("quickResults").style.display = "grid";
+
+      // Table 0..30
+      const rows = [];
+      const labels = [];
+      const nominalArr = [];
+      const realArr = [];
+
+      for (let y = 0; y <= 30; y++) {
+        const { nominal, real } = calc(principal, r, infl, y);
+        labels.push(String(y));
+        nominalArr.push(nominal);
+        realArr.push(real);
+
+        const nominalTxt = fmtMoney(nominal, sym, decimals);
+        const realTxt = fmtMoney(real, sym, decimals);
+
+        rows.push(`
+          <tr>
+            <td>${y}</td>
+            <td class="right">${mode === "real" ? "—" : nominalTxt}</td>
+            <td class="right">${mode === "nominal" ? "—" : realTxt}</td>
+          </tr>
+        `);
+      }
+
+      $("tbody").innerHTML = rows.join("");
+      $("tableWrap").style.display = "block";
+
+      // Chart
+      drawChart(labels, nominalArr, realArr, mode);
+
+      // small message
+      if (mode === "real" && iPct === 0) {
+        $("msg").textContent = "Real mode with inflation = 0% means real = nominal.";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      $("year").textContent = new Date().getFullYear();
+      $("btnCalc").addEventListener("click", run);
+      $("btnReset").addEventListener("click", resetAll);
+
+      // Prefill a useful default example
+      $("principal").value = "10000";
+      $("returnRate").value = "7";
+      $("inflationRate").value = "2.5";
+      run();
+    });
+  </script>
+</body>
+</html>
