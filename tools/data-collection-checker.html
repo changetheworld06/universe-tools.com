@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>What Data Does a Website Collect? Checker | Universe Tools</title>
+  <meta name="description" content="Check what data a website may collect by analyzing its HTML/trackers, cookies hints, forms and third-party scripts. Local tool, no upload." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- GA4 + Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
+  </script>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://universe-tools.com/tools/data-collection-checker.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/data-collection-checker.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/data-collection-checker.html" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "What Data Does a Website Collect? Checker",
+    "url": "https://universe-tools.com/tools/data-collection-checker.html",
+    "description": "Analyze HTML for trackers, third-party scripts, cookies hints and forms to estimate what data a site may collect. Local tool, no upload.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "isAccessibleForFree": true,
+    "browserRequirements": "Requires JavaScript"
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#050816;--bg-soft:#0b1020;--accent:#4f46e5;--accent-soft:rgba(79,70,229,.12);
+      --text:#f9fafb;--muted:#9ca3af;--border:#1f2937;
+      --radius-lg:18px;--radius-md:12px;--radius-sm:8px;
+      --shadow-card:0 14px 35px rgba(15,23,42,.7);
+      --max-width:1120px;--t:.18s ease-out;
+      --danger:#ef4444;--ok:#22c55e;--warn:#f59e0b;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+      background:radial-gradient(circle at top,#111827,#020617 55%,#000 100%);
+      color:var(--text);min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    .page{min-height:100vh;display:flex;flex-direction:column}
+    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.5rem}
+
+    header{
+      position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);
+      background:linear-gradient(to bottom,rgba(15,23,42,.92),rgba(15,23,42,.75),transparent);
+      border-bottom:1px solid rgba(148,163,184,.18);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.65rem}
+    .brand-logo{
+      width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+      box-shadow:0 0 30px rgba(79,70,229,.45),0 0 4px rgba(148,163,184,.8);
+      background:radial-gradient(circle at 30% 0%,#e5e7eb,#4f46e5 55%,#020617);
+      flex:0 0 auto;
+    }
+    .brand-name{font-weight:700;letter-spacing:.04em;font-size:.95rem}
+    .brand-tagline{font-size:.72rem;color:var(--muted)}
+    .nav-links{display:flex;align-items:center;gap:1.1rem;font-size:.9rem;flex-wrap:wrap;justify-content:flex-end}
+    .nav-links a{color:var(--muted);border-bottom:2px solid transparent;padding:.25rem 0;transition:color var(--t),border-color var(--t),transform var(--t)}
+    .nav-links a:hover{color:#e5e7eb;border-color:rgba(129,140,248,.7);transform:translateY(-1px)}
+    .nav-cta{
+      padding:.45rem .9rem;border-radius:999px;border:1px solid rgba(129,140,248,.6);
+      background:radial-gradient(circle at top left,#4f46e5,#0f172a);
+      font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+      display:inline-flex;align-items:center;gap:.3rem;box-shadow:0 8px 25px rgba(79,70,229,.4);
+      cursor:pointer;white-space:nowrap;
+    }
+
+    .section{padding:1.5rem 0 3.5rem}
+    .section-header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
+    .section-title{font-size:1.5rem;letter-spacing:-.03em}
+    .section-subtitle{font-size:.9rem;color:var(--muted);max-width:820px;line-height:1.5}
+
+    .tool-section{
+      border-radius:20px;border:1px solid rgba(55,65,81,.9);
+      background:radial-gradient(circle at top left,#020617,#020617);
+      padding:1.2rem 1.1rem 1.4rem;box-shadow:var(--shadow-card);margin-bottom:1.2rem;
+    }
+    .tool-section p{font-size:.85rem;color:var(--muted);margin-bottom:.9rem;line-height:1.55}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap:.8rem;
+      align-items:end;
+    }
+    @media (max-width:1000px){.grid{grid-template-columns:1fr;}}
+    .field{display:flex;flex-direction:column;gap:.35rem;font-size:.8rem}
+    .field label{color:var(--muted)}
+    .field input, .field select, .field textarea{
+      border-radius:var(--radius-sm);
+      border:1px solid rgba(75,85,99,.9);
+      background:radial-gradient(circle at top left,#020617,#020617);
+      color:var(--text);
+      padding:.55rem .6rem;
+      font-size:.9rem;outline:none;
+    }
+    .field textarea{min-height:140px;resize:vertical;line-height:1.55}
+    .hint{font-size:.74rem;color:#6b7280;line-height:1.45;margin-top:.15rem}
+
+    .controls{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin-top:.6rem}
+    .btn{
+      border-radius:var(--radius-sm);border:none;padding:.62rem .95rem;font-size:.86rem;
+      background:linear-gradient(135deg,#4f46e5,#6366f1);color:#e5e7eb;font-weight:800;
+      cursor:pointer;box-shadow:0 12px 28px rgba(79,70,229,.5);user-select:none;
+    }
+    .btn.secondary{background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;font-weight:600}
+    .btn[disabled]{opacity:.55;cursor:not-allowed}
+
+    .results{
+      margin-top:1rem;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:.8rem;
+    }
+    @media (max-width:900px){.results{grid-template-columns:1fr;}}
+    .card{
+      border-radius:var(--radius-md);
+      border:1px solid rgba(55,65,81,.8);
+      background:rgba(2,6,23,.55);
+      padding:1rem;
+    }
+    .card h2{font-size:1rem;margin-bottom:.5rem}
+    .badge{
+      display:inline-flex;align-items:center;gap:.35rem;
+      padding:.2rem .55rem;border-radius:999px;
+      border:1px solid rgba(55,65,81,.9);font-size:.76rem;
+      background:rgba(2,6,23,.5);color:#e5e7eb;
+      margin-right:.45rem;margin-bottom:.4rem;
+    }
+    .ok{color:var(--ok)}
+    .warn{color:var(--warn)}
+    .danger{color:var(--danger)}
+    ul{margin-left:1.15rem}
+    li{color:#e5e7eb;font-size:.86rem;line-height:1.55;margin:.2rem 0}
+    .muted{color:var(--muted);font-size:.82rem;line-height:1.45;margin-top:.35rem}
+
+    pre{
+      white-space:pre-wrap;word-break:break-word;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      font-size:.82rem;color:#e5e7eb;
+      background:rgba(2,6,23,.45);
+      border:1px solid rgba(55,65,81,.7);
+      border-radius:var(--radius-md);
+      padding:.8rem;
+      margin-top:.55rem;
+    }
+
+    footer{border-top:1px solid rgba(30,64,175,.6);background:radial-gradient(circle at top,#020617,#020617);margin-top:auto}
+    .footer-inner{
+      padding:1rem 0 1.4rem;font-size:.75rem;color:#6b7280;
+      display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center
+    }
+    .footer-links{display:flex;gap:.9rem;flex-wrap:wrap}
+    .footer-links a{color:#6b7280}
+    .footer-links a:hover{color:#e5e7eb}
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">60+ free online tools</div>
+          </div>
+        </div>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">All tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+          <button class="nav-cta" type="button" onclick="window.location.href='/'">
+            <span>Try another tool</span><span>→</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h1 class="section-title">What data does a website collect?</h1>
+            <p class="section-subtitle">
+              This checker analyzes <strong>HTML</strong> for trackers, third-party scripts, cookies hints and form fields.
+              It can’t prove what the server stores, but it shows common collection signals. Everything runs locally (no upload).
+            </p>
+          </div>
+
+          <article class="tool-section">
+            <p>
+              Best method: open the target site in a new tab and use the bookmarklet below (it reads the page you are viewing).
+              If you prefer, you can paste the HTML source into the box.
+            </p>
+
+            <div class="grid">
+              <div class="field">
+                <label for="url">Try fetch URL (optional)</label>
+                <input id="url" type="url" placeholder="https://example.com" />
+                <div class="hint">
+                  Fetch may fail because of CORS. If it fails, use the bookmarklet or paste HTML.
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="mode">Analysis depth</label>
+                <select id="mode">
+                  <option value="fast" selected>Fast (trackers + forms)</option>
+                  <option value="deep">Deep (more patterns + third-parties)</option>
+                </select>
+                <div class="hint">Deep mode finds more hints but can include false positives.</div>
+              </div>
+
+              <div class="field">
+                <label for="maxThird">Third-party domains list</label>
+                <select id="maxThird">
+                  <option value="10" selected>Top 10</option>
+                  <option value="20">Top 20</option>
+                  <option value="50">Top 50</option>
+                </select>
+                <div class="hint">Extracted from scripts, iframes, images, links.</div>
+              </div>
+            </div>
+
+            <div class="controls">
+              <button id="btnFetch" class="btn secondary" type="button">Fetch & Analyze</button>
+              <button id="btnAnalyze" class="btn" type="button">Analyze pasted HTML</button>
+              <button id="btnClear" class="btn secondary" type="button">Clear</button>
+              <button id="btnCopy" class="btn secondary" type="button" disabled>Copy report</button>
+              <button id="btnDownload" class="btn secondary" type="button" disabled>Download .txt</button>
+            </div>
+
+            <div class="field" style="margin-top:.9rem;">
+              <label for="html">HTML source (paste here)</label>
+              <textarea id="html" placeholder="Paste page HTML here (View Source)…"></textarea>
+              <div class="hint">
+                Tip: in browser → right click → “View page source” → copy all. Or use bookmarklet.
+              </div>
+
+              <div class="hint" style="margin-top:.6rem;">
+                Bookmarklet (drag to bookmarks bar, open target site, click it):
+              </div>
+              <pre id="bookmarkletBox"></pre>
+            </div>
+
+            <div id="msg" class="muted" style="margin-top:.8rem;"></div>
+
+            <div id="results" class="results" style="display:none;">
+              <div class="card">
+                <h2>Detected trackers / analytics</h2>
+                <div id="trackBadges"></div>
+                <ul id="trackList"></ul>
+                <div class="muted" id="trackNote"></div>
+              </div>
+
+              <div class="card">
+                <h2>Potential data collection signals</h2>
+                <div id="signalBadges"></div>
+                <ul id="signalList"></ul>
+                <div class="muted" id="signalNote"></div>
+              </div>
+
+              <div class="card">
+                <h2>Forms & user inputs</h2>
+                <ul id="formList"></ul>
+                <div class="muted" id="formNote"></div>
+              </div>
+
+              <div class="card">
+                <h2>Third-party domains found</h2>
+                <ul id="thirdList"></ul>
+                <div class="muted" id="thirdNote"></div>
+              </div>
+
+              <div class="card" style="grid-column:1 / -1;">
+                <h2>Report (copy/export)</h2>
+                <pre id="reportOut"></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-section">
+            <p>
+              <strong>Important:</strong> This tool cannot see server-side logs, database storage, or what happens after JS runs.
+              It detects common client-side signals (scripts, pixels, forms, and embedded services).
+            </p>
+            <p style="margin-bottom:0;">
+              For a serious RGPD check, always compare with the site’s privacy policy and cookie banner behavior.
+            </p>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+  
+    // ---------------- UI helpers ----------------
+    function setMsg(t, type){
+      const el = $("msg");
+      if (!el) return;
+      el.textContent = t || "";
+      // type: "ok" | "warn" | "danger" | undefined
+      if (type === "ok") el.style.color = "var(--ok)";
+      else if (type === "warn") el.style.color = "var(--warn)";
+      else if (type === "danger") el.style.color = "var(--danger)";
+      else el.style.color = "var(--muted)";
+    }
+  
+    function esc(s){
+      return String(s||"").replace(/[&<>"]/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"
+      }[m]));
+    }
+  
+    function normalizeUrl(input){
+      let u = String(input || "").trim();
+      if (!u) return "";
+      if (!/^https?:\/\//i.test(u)) u = "https://" + u;
+      try { new URL(u); return u; } catch { return ""; }
+    }
+  
+    function uniq(arr){
+      const out = [];
+      const seen = new Set();
+      for (const x of arr){
+        const k = String(x||"").trim();
+        if (!k) continue;
+        const key = k.toLowerCase();
+        if (seen.has(key)) continue;
+        seen.add(key);
+        out.push(k);
+      }
+      return out;
+    }
+  
+    function parseHost(u){
+      try { return new URL(normalizeUrl(u)).hostname.toLowerCase(); } catch { return ""; }
+    }
+  
+    function hostOf(urlLike){
+      try { return new URL(urlLike, "https://example.com").hostname.toLowerCase(); } catch { return ""; }
+    }
+  
+    function extractAttrs(doc, selectors, attr){
+      const out = [];
+      doc.querySelectorAll(selectors).forEach(el => {
+        const v = el.getAttribute(attr);
+        if (v) out.push(v);
+      });
+      return out;
+    }
+  
+    function badge(text, cls){
+      return `<span class="badge ${cls||""}">${esc(text)}</span>`;
+    }
+  
+    // ---------------- heuristics ----------------
+    function looksLikePIIField(name){
+      const n = String(name||"").toLowerCase();
+      return /(email|e-mail|mail|phone|tel|mobile|address|street|zip|postcode|city|country|name|firstname|first_name|lastname|last_name|surname|birth|dob|age|gender|passport|idcard|ssn|iban|bic|card|cc|payment)/.test(n);
+    }
+  
+    function findTrackers(html){
+      const h = String(html||"").toLowerCase();
+      const hits = [];
+      const add = (key, why, severity) => hits.push({ key, why, severity });
+  
+      // Google
+      if (h.includes("googletagmanager.com/gtm.js") || h.includes("gtm.start")) add("Google Tag Manager", "Tag container can load multiple trackers.", "warn");
+      if (h.includes("gtag/js?id=") || h.includes("gtag('config'")) add("Google Analytics (gtag)", "Analytics measurement / events.", "warn");
+      if (h.includes("google-analytics.com/analytics.js") || h.includes("ga('create'")) add("Google Analytics (legacy)", "Legacy analytics tracking.", "warn");
+      if (h.includes("doubleclick.net") || h.includes("googlesyndication.com")) add("Google Ads / AdSense", "Advertising & measurement.", "warn");
+  
+      // Meta
+      if (h.includes("connect.facebook.net") || h.includes("fbq(")) add("Meta Pixel", "Advertising pixel / conversions.", "warn");
+  
+      // TikTok / X / LinkedIn
+      if (h.includes("analytics.tiktok.com") || (h.includes("tiktok") && h.includes("pixel"))) add("TikTok Pixel", "Advertising pixel.", "warn");
+      if (h.includes("static.ads-twitter.com") || h.includes("twq(")) add("X (Twitter) Pixel", "Advertising pixel.", "warn");
+      if (h.includes("snap.licdn.com") || (h.includes("linkedin") && h.includes("insight"))) add("LinkedIn Insight", "Advertising / analytics.", "warn");
+  
+      // Hotjar / Clarity
+      if (h.includes("hotjar.com") || h.includes("hjsiteid")) add("Hotjar", "Session recording / heatmaps.", "danger");
+      if (h.includes("clarity.ms") || h.includes("clarity(")) add("Microsoft Clarity", "Session recording / heatmaps.", "danger");
+  
+      // Others
+      if (h.includes("stripe.com") || h.includes("js.stripe.com")) add("Stripe", "Payments (may collect billing/payment data).", "warn");
+      if (h.includes("paypal.com") || h.includes("www.paypalobjects.com")) add("PayPal", "Payments (may collect billing/payment data).", "warn");
+      if (h.includes("recaptcha") || h.includes("www.google.com/recaptcha")) add("reCAPTCHA", "Anti-bot service (may set cookies / signals).", "warn");
+      if (h.includes("intercom") || h.includes("widget.intercom.io")) add("Intercom", "Customer chat / support tracking.", "warn");
+      if (h.includes("zendesk") || h.includes("zopim")) add("Zendesk Chat", "Customer chat / tracking.", "warn");
+  
+      // Consent platforms
+      if (h.includes("cookiebot") || h.includes("cookiebot.com")) add("Cookiebot", "Consent management platform.", "ok");
+      if (h.includes("onetrust") || h.includes("cookielaw") || h.includes("optanon")) add("OneTrust", "Consent management platform.", "ok");
+      if (h.includes("tarteaucitron") || h.includes("tarteaucitron.js")) add("tarteaucitron", "Consent manager.", "ok");
+  
+      // de-dupe by key
+      const byKey = new Map();
+      hits.forEach(x => { if (!byKey.has(x.key)) byKey.set(x.key, x); });
+      return Array.from(byKey.values());
+    }
+  
+    function findSignals(html, mode){
+      const h = String(html||"").toLowerCase();
+      const sig = [];
+      const add = (text, sev) => sig.push({text, sev});
+  
+      if (h.includes("document.cookie")) add("Uses document.cookie in scripts (cookie read/write).", "warn");
+      if (h.includes("localstorage") || h.includes("sessionstorage")) add("Uses localStorage/sessionStorage (client-side identifiers/settings).", "warn");
+      if (h.includes("navigator.sendbeacon")) add("Uses sendBeacon (background telemetry/events).", "warn");
+      if (h.includes("fingerprint") || (h.includes("canvas") && h.includes("todataurl"))) add("Possible fingerprinting-related patterns (heuristic).", "danger");
+  
+      if (h.includes("youtube.com/embed") || h.includes("youtu.be")) add("Embeds YouTube (may set third-party cookies depending on mode).", "warn");
+      if (h.includes("google.com/maps") || h.includes("maps.googleapis.com")) add("Embeds Google Maps (third-party requests).", "warn");
+      if (h.includes("player.vimeo.com")) add("Embeds Vimeo (third-party requests).", "warn");
+  
+      if (mode === "deep"){
+        if (h.includes("utm_") || h.includes("gclid") || h.includes("fbclid")) add("Contains campaign tracking parameters patterns (utm/gclid/fbclid).", "warn");
+        if (h.includes("set-cookie")) add("Mentions Set-Cookie (heuristic, may appear in text).", "warn");
+        if (h.includes("api.") || h.includes("/api/")) add("References API endpoints (may send user data).", "warn");
+      }
+  
+      return sig;
+    }
+  
+    function analyzeForms(doc){
+      const forms = [];
+      doc.querySelectorAll("form").forEach((f, idx) => {
+        const action = f.getAttribute("action") || "(no action)";
+        const method = (f.getAttribute("method") || "GET").toUpperCase();
+        const inputs = [];
+        f.querySelectorAll("input, textarea, select").forEach(el => {
+          const tag = el.tagName.toLowerCase();
+          const type = (el.getAttribute("type") || tag).toLowerCase();
+          const name = el.getAttribute("name") || el.getAttribute("id") || "";
+          const placeholder = el.getAttribute("placeholder") || "";
+          const label = name || placeholder || type;
+  
+          const pii =
+            looksLikePIIField(name) ||
+            looksLikePIIField(placeholder) ||
+            /email|phone|address|name|birth|iban|card/i.test(type);
+  
+          inputs.push({ type, label, pii });
+        });
+        forms.push({ index: idx+1, action, method, inputs });
+      });
+      return forms;
+    }
+  
+    function thirdPartyDomains(doc, baseHost, maxN){
+      const urls = [];
+      urls.push(...extractAttrs(doc, "script[src]", "src"));
+      urls.push(...extractAttrs(doc, "iframe[src]", "src"));
+      urls.push(...extractAttrs(doc, "img[src]", "src"));
+      urls.push(...extractAttrs(doc, "link[href]", "href"));
+      urls.push(...extractAttrs(doc, "a[href]", "href"));
+  
+      const domains = [];
+      urls.forEach(u => {
+        const h = hostOf(u);
+        if (!h) return;
+        if (baseHost && h === baseHost) return;
+        if (h === "example.com") return;
+        domains.push(h);
+      });
+  
+      const countMap = new Map();
+      domains.forEach(d => countMap.set(d, (countMap.get(d) || 0) + 1));
+  
+      const sorted = Array.from(countMap.entries())
+        .sort((a,b) => b[1]-a[1])
+        .slice(0, maxN);
+  
+      return sorted.map(([d,c]) => ({ domain:d, count:c }));
+    }
+  
+    // ---------------- report / rendering ----------------
+    function buildReport(payload){
+      const lines = [];
+      lines.push("=== Website Data Collection Checker (local) ===");
+      lines.push("Note: This is a client-side heuristic report (cannot see server logs/storage).");
+      lines.push("");
+  
+      if (payload.baseHost) lines.push("Base host: " + payload.baseHost);
+      if (payload.sourceType) lines.push("Source: " + payload.sourceType);
+      lines.push("Mode: " + payload.mode);
+      lines.push("");
+  
+      lines.push("Trackers / Analytics:");
+      if (!payload.trackers.length) lines.push("- none detected in HTML (or loaded dynamically).");
+      payload.trackers.forEach(t => lines.push(`- ${t.key}: ${t.why}`));
+      lines.push("");
+  
+      lines.push("Signals:");
+      if (!payload.signals.length) lines.push("- none detected.");
+      payload.signals.forEach(s => lines.push(`- ${s.text}`));
+      lines.push("");
+  
+      lines.push("Forms:");
+      if (!payload.forms.length) lines.push("- no <form> found.");
+      payload.forms.forEach(f => {
+        lines.push(`- Form #${f.index} | ${f.method} | action: ${f.action}`);
+        if (!f.inputs.length) lines.push("  (no inputs found)");
+        f.inputs.slice(0, 25).forEach(i => lines.push(`  - ${i.type}: ${i.label}${i.pii ? " (PII?)" : ""}`));
+      });
+      lines.push("");
+  
+      lines.push("Third-party domains (top):");
+      if (!payload.third.length) lines.push("- none detected (or all same host).");
+      payload.third.forEach(x => lines.push(`- ${x.domain} (${x.count})`));
+  
+      return lines.join("\n");
+    }
+  
+    function render(payload){
+      const { trackers, signals, forms, third } = payload;
+  
+      // trackers
+      const badges = [];
+      const list = [];
+      trackers.forEach(t => {
+        const cls = t.severity === "danger" ? "danger" : (t.severity === "warn" ? "warn" : "ok");
+        badges.push(badge(t.key, cls));
+        list.push(`<li><b>${esc(t.key)}</b> — ${esc(t.why)}</li>`);
+      });
+      $("trackBadges").innerHTML = badges.join(" ") || badge("No obvious trackers in HTML", "ok");
+      $("trackList").innerHTML = list.join("") || `<li>No obvious tracker patterns found in HTML.</li>`;
+      $("trackNote").textContent = "If a site loads trackers dynamically, they may not appear in static HTML.";
+  
+      // signals
+      const sb = [];
+      const sl = [];
+      signals.forEach(s => {
+        const cls = s.sev === "danger" ? "danger" : (s.sev === "warn" ? "warn" : "ok");
+        sb.push(badge(s.sev.toUpperCase(), cls));
+        sl.push(`<li>${esc(s.text)}</li>`);
+      });
+      $("signalBadges").innerHTML = sb.length ? sb.join(" ") : badge("No strong signals detected", "ok");
+      $("signalList").innerHTML = sl.join("") || `<li>No strong signals detected in HTML patterns.</li>`;
+      $("signalNote").textContent = "Signals are heuristics. Verify with consent banner + network requests.";
+  
+      // forms
+      const fl = [];
+      if (!forms.length){
+        fl.push("<li>No forms found.</li>");
+      } else {
+        forms.forEach(f => {
+          const piiCount = f.inputs.filter(i => i.pii).length;
+          fl.push(`<li><b>Form #${f.index}</b> — ${esc(f.method)} → ${esc(f.action)} (${piiCount} PII-like fields)</li>`);
+          const preview = f.inputs.slice(0, 12).map(i => `${i.type}:${i.label}${i.pii ? " (PII?)" : ""}`);
+          if (preview.length) fl.push(`<li class="muted" style="list-style:disc;">Fields: ${esc(preview.join(", "))}</li>`);
+        });
+      }
+      $("formList").innerHTML = fl.join("");
+      $("formNote").textContent = "PII fields are guessed by name/placeholder patterns (email, phone, address…).";
+  
+      // third parties
+      const tl = [];
+      if (!third.length){
+        tl.push("<li>No third-party domains found (or all same host).</li>");
+      } else {
+        third.forEach(x => tl.push(`<li><b>${esc(x.domain)}</b> <span class="muted">(${x.count})</span></li>`));
+      }
+      $("thirdList").innerHTML = tl.join("");
+      $("thirdNote").textContent = "Extracted from src/href attributes (scripts/iframes/images/links).";
+  
+      // report
+      $("reportOut").textContent = payload.report;
+  
+      // show results
+      $("results").style.display = "grid";
+      $("btnCopy").disabled = false;
+      $("btnDownload").disabled = false;
+    }
+  
+    function parseFromHtml(html, baseHost, sourceType){
+      const mode = $("mode").value;
+      const maxThird = parseInt($("maxThird").value, 10) || 10;
+  
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+  
+      const trackers = findTrackers(html);
+      const signals = findSignals(html, mode);
+      const forms = analyzeForms(doc);
+      const third = thirdPartyDomains(doc, baseHost, maxThird);
+  
+      const payload = { baseHost, sourceType, mode, trackers, signals, forms, third };
+      payload.report = buildReport(payload);
+      return payload;
+    }
+  
+    // ---------------- actions ----------------
+    async function copyReport(){
+      const txt = $("reportOut").textContent || "";
+      if (!txt) return;
+      try{
+        await navigator.clipboard.writeText(txt);
+        setMsg("Copied report to clipboard.", "ok");
+      }catch{
+        setMsg("Copy failed (browser restriction).", "danger");
+      }
+    }
+  
+    function downloadReport(){
+      const txt = $("reportOut").textContent || "";
+      if (!txt) return;
+      const blob = new Blob([txt], {type:"text/plain;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "data-collection-report.txt";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      setMsg("Downloaded data-collection-report.txt", "ok");
+    }
+  
+    function clearAll(){
+      $("url").value = "";
+      $("html").value = "";
+      $("results").style.display = "none";
+      $("reportOut").textContent = "";
+      $("btnCopy").disabled = true;
+      $("btnDownload").disabled = true;
+      setMsg("", undefined);
+    }
+  
+    async function fetchAndAnalyze(){
+      const url = normalizeUrl($("url").value || "");
+      if (!url){
+        setMsg("Please enter a valid URL (example: https://example.com).", "warn");
+        return;
+      }
+  
+      setMsg("Fetching… (many sites block CORS; if it fails, use bookmarklet or paste HTML)", "warn");
+      $("results").style.display = "none";
+      $("btnCopy").disabled = true;
+      $("btnDownload").disabled = true;
+  
+      try{
+        const res = await fetch(url, {
+          method: "GET",
+          mode: "cors",
+          credentials: "omit",
+          cache: "no-store"
+        });
+  
+        if (!res.ok) throw new Error("HTTP " + res.status + " " + res.statusText);
+  
+        const html = await res.text();
+        if (!html || html.length < 50) throw new Error("Empty/blocked response");
+  
+        $("html").value = html;
+  
+        const payload = parseFromHtml(html, parseHost(url), "fetch(url)");
+        render(payload);
+  
+        setMsg("Done ✅ HTML fetched and analyzed.", "ok");
+      }catch(e){
+        const err = (e && e.message) ? e.message : String(e);
+        setMsg(
+          "Fetch failed (very likely CORS). Fallback: opened site in a new tab. Use bookmarklet OR View Source → Copy HTML → paste here.\nError: " + err,
+          "danger"
+        );
+        try { window.open(url, "_blank", "noopener"); } catch {}
+        try { $("html").focus(); } catch {}
+      }
+    }
+  
+    function analyzePasted(){
+      const html = ($("html").value || "").trim();
+      if (!html){
+        setMsg("Paste some HTML first (or use the bookmarklet).", "warn");
+        return;
+      }
+  
+      setMsg("Analyzing pasted HTML…", "warn");
+      const baseHost = parseHost($("url").value || "");
+      const payload = parseFromHtml(html, baseHost, "pasted HTML");
+      render(payload);
+      setMsg("Done ✅", "ok");
+    }
+  
+    // ---------------- bookmarklet (postMessage, works even for huge HTML) ----------------
+    function buildBookmarklet(){
+      const toolUrl = "https://universe-tools.com/tools/data-collection-checker.html";
+  
+      const js =
+  `(function(){
+    try{
+      var html='<!doctype html>\\n'+document.documentElement.outerHTML;
+      var w=window.open('${toolUrl}','_blank','noopener');
+      if(!w){ alert('Popup blocked. Allow popups then retry.'); return; }
+      var tries=0;
+      var t=setInterval(function(){
+        tries++;
+        if(tries>80){ clearInterval(t); alert('Timeout sending HTML.'); return; }
+        try{
+          w.postMessage({type:'UT_HTML_DUMP', html: html}, 'https://universe-tools.com');
+          clearInterval(t);
+        }catch(e){}
+      }, 150);
+    }catch(e){
+      alert('Failed: '+(e&&e.message?e.message:e));
+    }
+  })();`;
+  
+      return "javascript:" + js.replace(/\s+/g, " ");
+    }
+  
+    function listenPostMessage(){
+      window.addEventListener("message", (ev) => {
+        try{
+          if (ev.origin !== "https://universe-tools.com") return;
+          const data = ev.data || {};
+          if (!data || data.type !== "UT_HTML_DUMP") return;
+  
+          const html = String(data.html || "");
+          if (html.length < 50) return;
+  
+          $("html").value = html;
+          setMsg("HTML received from bookmarklet. Click “Analyze pasted HTML”.", "ok");
+  
+          try { $("html").focus(); } catch {}
+        }catch{}
+      });
+    }
+  
+    // ---------------- optional: hash loader (old method) ----------------
+    function readHash(){
+      const h = location.hash || "";
+      if (!h.startsWith("#html=")) return;
+      try{
+        const html = decodeURIComponent(h.slice(6));
+        if (html && html.length > 20){
+          $("html").value = html;
+          setMsg("HTML loaded from bookmarklet (hash). Click “Analyze pasted HTML”.", "ok");
+        }
+        history.replaceState(null, "", location.pathname);
+      }catch{}
+    }
+  
+    // ---------------- init ----------------
+    document.addEventListener("DOMContentLoaded", () => {
+      $("year").textContent = new Date().getFullYear();
+  
+      $("btnFetch").addEventListener("click", fetchAndAnalyze);
+      $("btnAnalyze").addEventListener("click", analyzePasted);
+      $("btnClear").addEventListener("click", clearAll);
+      $("btnCopy").addEventListener("click", copyReport);
+      $("btnDownload").addEventListener("click", downloadReport);
+  
+      listenPostMessage();
+  
+      const bm = buildBookmarklet();
+      $("bookmarkletBox").textContent = bm;
+  
+      readHash();
+  
+      // start clean
+      $("results").style.display = "none";
+      $("btnCopy").disabled = true;
+      $("btnDownload").disabled = true;
+  
+      setMsg("Tip: many sites block CORS. Best: use bookmarklet or View Source → copy HTML.", "warn");
+    });
+  </script>
