@@ -21,6 +21,7 @@
   </url>
 
   <!-- Tools -->
+  <url><loc>https://universe-tools.com/tools/credible-excuses-generator.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://universe-tools.com/tools/data-collection-checker.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://universe-tools.com/tools/cookie-rgpd-analyzer.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://universe-tools.com/tools/name-generator.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
