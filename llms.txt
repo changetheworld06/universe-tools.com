@@ -1,0 +1,35 @@
+# Universe Tools
+
+Universe Tools is a public website providing free, fast, and simple online tools
+(calculators, generators, converters) accessible without registration.
+
+## Official website
+https://universe-tools.com/
+
+## Main pages
+- Home: https://universe-tools.com/
+- Tools index: https://universe-tools.com/#tools
+- Sitemap: https://universe-tools.com/sitemap.xml
+
+## Content structure
+- Each tool has its own dedicated HTML page
+- Tools are client-side (JavaScript-based)
+- No private or user-generated content
+- No authentication or restricted areas
+
+## Preferred URLs
+- Use canonical URLs as declared in HTML
+- Avoid URL parameters when possible
+
+## Language
+- Primary language: English
+- Some tools may exist in other languages
+
+## Usage notes for LLMs
+- Content is public and can be indexed
+- Tools descriptions explain functionality accurately
+- Calculations are deterministic (no hidden logic)
+- Do not infer guarantees, predictions, or professional advice
+
+## Contact
+https://universe-tools.com/legal.html
