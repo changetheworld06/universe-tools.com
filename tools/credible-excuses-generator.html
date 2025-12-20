@@ -5,11 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Credible Excuses Generator (Work / Couple / Family) | Universe Tools</title>
-  <meta name="description" content="Generate credible excuses for work, couple or family with tone and severity filters. Local tool, no upload." />
+  <meta name="description" content="Generate polite, credible rescheduling messages for work, couple, or family. Tone + severity filters. 100% local, no upload.">
   <meta name="robots" content="index,follow" />
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#4f46e5" />
 
-  <!-- GA4 + Ads -->
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/credible-excuses-generator.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/credible-excuses-generator.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/credible-excuses-generator.html" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,161 +34,53 @@
     gtag('config', 'AW-325165312');
   </script>
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://universe-tools.com/tools/credible-excuses-generator.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/credible-excuses-generator.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/credible-excuses-generator.html" />
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
+  <!-- JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
 
-  <!-- JSON-LD -->
+  <!-- JSON-LD WebApplication -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"WebApplication",
     "name":"Credible Excuses Generator (Work / Couple / Family)",
     "url":"https://universe-tools.com/tools/credible-excuses-generator.html",
-    "description":"Generate credible excuses for work, couple or family with tone and severity filters. Local tool, no upload.",
+    "description":"Generate polite, credible rescheduling messages for work, couple, or family with tone and severity filters. Local tool, no upload.",
     "applicationCategory":"Utility",
     "operatingSystem":"All",
     "isAccessibleForFree":true,
     "browserRequirements":"Requires JavaScript"
   }
   </script>
-
-  <style>
-    :root{
-      --bg:#050816;--bg-soft:#0b1020;--accent:#4f46e5;--accent-soft:rgba(79,70,229,.12);
-      --text:#f9fafb;--muted:#9ca3af;--border:#1f2937;
-      --radius-lg:18px;--radius-md:12px;--radius-sm:8px;
-      --shadow-card:0 14px 35px rgba(15,23,42,.7);
-      --max-width:1120px;--t:.18s ease-out;
-      --danger:#ef4444;--ok:#22c55e;--warn:#f59e0b;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
-      background:radial-gradient(circle at top,#111827,#020617 55%,#000 100%);
-      color:var(--text);min-height:100vh;
-    }
-    a{color:inherit;text-decoration:none}
-    .page{min-height:100vh;display:flex;flex-direction:column}
-    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.5rem}
-
-    header{
-      position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);
-      background:linear-gradient(to bottom,rgba(15,23,42,.92),rgba(15,23,42,.75),transparent);
-      border-bottom:1px solid rgba(148,163,184,.18);
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
-    .brand{display:flex;align-items:center;gap:.65rem}
-    .brand-logo{
-      width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;overflow:hidden;
-      box-shadow:0 0 30px rgba(79,70,229,.45),0 0 4px rgba(148,163,184,.8);
-      background:radial-gradient(circle at 30% 0%,#e5e7eb,#4f46e5 55%,#020617);
-      flex:0 0 auto;
-    }
-    .brand-name{font-weight:700;letter-spacing:.04em;font-size:.95rem}
-    .brand-tagline{font-size:.72rem;color:var(--muted)}
-    .nav-links{display:flex;align-items:center;gap:1.1rem;font-size:.9rem;flex-wrap:wrap;justify-content:flex-end}
-    .nav-links a{color:var(--muted);border-bottom:2px solid transparent;padding:.25rem 0;transition:color var(--t),border-color var(--t),transform var(--t)}
-    .nav-links a:hover{color:#e5e7eb;border-color:rgba(129,140,248,.7);transform:translateY(-1px)}
-    .nav-cta{
-      padding:.45rem .9rem;border-radius:999px;border:1px solid rgba(129,140,248,.6);
-      background:radial-gradient(circle at top left,#4f46e5,#0f172a);
-      font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
-      display:inline-flex;align-items:center;gap:.3rem;box-shadow:0 8px 25px rgba(79,70,229,.4);
-      cursor:pointer;white-space:nowrap;
-    }
-
-    .section{padding:1.5rem 0 3.5rem}
-    .section-header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
-    .section-title{font-size:1.5rem;letter-spacing:-.03em}
-    .section-subtitle{font-size:.9rem;color:var(--muted);max-width:760px;line-height:1.5}
-
-    .tool-section{
-      border-radius:20px;border:1px solid rgba(55,65,81,.9);
-      background:radial-gradient(circle at top left,#020617,#020617);
-      padding:1.2rem 1.1rem 1.4rem;box-shadow:var(--shadow-card);margin-bottom:1.2rem;
-    }
-    .tool-section p{font-size:.85rem;color:var(--muted);margin-bottom:.9rem;line-height:1.55}
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap:.8rem;
-      align-items:end;
-    }
-    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
-    @media (max-width:650px){.grid{grid-template-columns:1fr;}}
-
-    .field{display:flex;flex-direction:column;gap:.35rem;font-size:.8rem}
-    .field label{color:var(--muted)}
-    .field input, .field select, .field textarea{
-      border-radius:var(--radius-sm);
-      border:1px solid rgba(75,85,99,.9);
-      background:radial-gradient(circle at top left,#020617,#020617);
-      color:var(--text);
-      padding:.55rem .6rem;
-      font-size:.9rem;outline:none;
-    }
-    .field textarea{min-height:44px;resize:vertical;line-height:1.5}
-    .field small{color:#6b7280;font-size:.72rem;line-height:1.35}
-
-    .btn{
-      border-radius:var(--radius-sm);border:none;padding:.62rem .95rem;font-size:.86rem;
-      background:linear-gradient(135deg,#4f46e5,#6366f1);color:#e5e7eb;font-weight:700;
-      cursor:pointer;box-shadow:0 12px 28px rgba(79,70,229,.5);user-select:none;
-    }
-    .btn.secondary{background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;font-weight:600}
-    .btn[disabled]{opacity:.55;cursor:not-allowed}
-
-    .row{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin-top:.85rem}
-    .msg{margin-top:.75rem;font-size:.8rem;color:var(--muted);white-space:pre-wrap;line-height:1.45}
-
-    .results{margin-top:1rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
-    @media (max-width:900px){.results{grid-template-columns:1fr;}}
-    .card{
-      border-radius:var(--radius-md);
-      border:1px solid rgba(55,65,81,.8);
-      background:rgba(2,6,23,.55);
-      padding:1rem;
-    }
-    .topline{display:flex;justify-content:space-between;gap:.8rem;align-items:baseline;flex-wrap:wrap}
-    .excuse{font-size:1.05rem;font-weight:900;letter-spacing:-.02em}
-    .meta{color:var(--muted);font-size:.78rem}
-    .tags{margin-top:.45rem;display:flex;gap:.5rem;flex-wrap:wrap}
-    .tag{
-      font-size:.72rem;color:#e5e7eb;
-      border:1px solid rgba(55,65,81,.8);
-      background:rgba(2,6,23,.45);
-      padding:.22rem .5rem;border-radius:999px;
-    }
-    .actions{margin-top:.65rem;display:flex;gap:.55rem;flex-wrap:wrap}
-
-    footer{border-top:1px solid rgba(30,64,175,.6);background:radial-gradient(circle at top,#020617,#020617);margin-top:auto}
-    .footer-inner{
-      padding:1rem 0 1.4rem;font-size:.75rem;color:#6b7280;
-      display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center
-    }
-    .footer-links{display:flex;gap:.9rem;flex-wrap:wrap}
-    .footer-links a{color:#6b7280}
-    .footer-links a:hover{color:#e5e7eb}
-  </style>
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER -->
     <header>
       <div class="container nav">
-        <div class="brand">
+        <a class="brand" href="/">
           <div class="brand-logo" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -183,42 +90,48 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
-          <div>
+          <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="/#tools">All tools</a>
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <button class="nav-cta" type="button" onclick="window.location.href='/'">
-            <span>Try another tool</span><span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
+
           <div class="section-header">
             <h1 class="section-title">Credible Excuses Generator (Work / Couple / Family)</h1>
             <p class="section-subtitle">
-              Pick a context and a tone, add optional details, then generate multiple credible messages.
-              Everything is local (no upload).
+              Pick a context and a tone, add optional details, then generate multiple credible rescheduling messages.
+              Everything runs locally in your browser (no upload).
             </p>
           </div>
 
           <article class="tool-section">
             <p>
-              ⚠️ This is a writing helper. Use responsibly. Avoid lies that can hurt people or cause real-world harm.
+              This is a writing helper for polite rescheduling and quick explanations. Keep it honest, short, and consistent.
+              Avoid inventing details that can hurt trust or cause real-world harm.
             </p>
 
-            <form class="grid" onsubmit="event.preventDefault();">
+            <form class="tool-form" onsubmit="event.preventDefault();">
               <div class="field">
                 <label for="context">Context</label>
                 <select id="context">
@@ -226,17 +139,17 @@
                   <option value="couple">Couple</option>
                   <option value="family">Family</option>
                 </select>
-                <small>Controls vocabulary + typical scenarios.</small>
+                <small>Adjusts vocabulary and scenarios.</small>
               </div>
 
               <div class="field">
                 <label for="severity">Severity</label>
                 <select id="severity">
-                  <option value="light" selected>Light (small delay / quick excuse)</option>
-                  <option value="medium">Medium (need reschedule)</option>
-                  <option value="strong">Strong (serious reason)</option>
+                  <option value="light" selected>Light (small delay / quick message)</option>
+                  <option value="medium">Medium (need to reschedule)</option>
+                  <option value="strong">Strong (serious conflict)</option>
                 </select>
-                <small>Stronger = rarer / more “impact”.</small>
+                <small>Stronger = more urgent / less detail.</small>
               </div>
 
               <div class="field">
@@ -248,7 +161,7 @@
                   <option value="firm">Firm / short</option>
                   <option value="humor">Humor (soft)</option>
                 </select>
-                <small>How the message sounds.</small>
+                <small>Controls how it sounds.</small>
               </div>
 
               <div class="field">
@@ -262,34 +175,13 @@
               </div>
 
               <div class="field">
-                <label for="language">Language</label>
-                <select id="language">
-                  <option value="en" selected>English</option>
-                  <option value="fr">Français</option>
-                </select>
-                <small>Generates in EN/FR.</small>
-              </div>
-
-              <div class="field">
-                <label for="proof">Include a “proof” detail?</label>
-                <select id="proof">
+                <label for="support">Add a supporting detail?</label>
+                <select id="support">
                   <option value="none" selected>No</option>
                   <option value="soft">Soft (neutral detail)</option>
                   <option value="strong">Strong (more specific)</option>
                 </select>
-                <small>Example: “screenshot”, “ticket”, “call log”.</small>
-              </div>
-
-              <div class="field" style="grid-column: span 2;">
-                <label for="who">To whom? (optional)</label>
-                <input id="who" type="text" placeholder="Example: my manager / my partner / my parents" />
-                <small>Used to adjust formality.</small>
-              </div>
-
-              <div class="field" style="grid-column: span 2;">
-                <label for="details">Extra details (optional)</label>
-                <textarea id="details" placeholder="Example: train delay, dentist appointment, kid is sick, internet outage…"></textarea>
-                <small>Keep it simple; the tool will integrate it naturally.</small>
+                <small>Example: “calendar conflict”, “transport delay notice”.</small>
               </div>
 
               <div class="field">
@@ -300,81 +192,136 @@
                   <option value="14">14</option>
                   <option value="20">20</option>
                 </select>
-                <small>More = more variants.</small>
+                <small>Number of variants.</small>
+              </div>
+
+              <div class="field" style="grid-column: span 2;">
+                <label for="who">To whom? (optional)</label>
+                <input id="who" type="text" placeholder="Example: my manager / my partner / my parents" />
+                <small>Used to adapt wording slightly.</small>
+              </div>
+
+              <div class="field" style="grid-column: span 2;">
+                <label for="details">Extra details (optional)</label>
+                <textarea id="details" placeholder="Example: train delay, dentist appointment, internet outage, childcare issue…"></textarea>
+                <small>Keep it simple; the tool will integrate it.</small>
               </div>
 
               <div class="field">
-                <button id="btnGen" class="btn" type="button">Generate</button>
+                <button id="btnGen" class="btn-tool" type="button">Generate</button>
               </div>
 
               <div class="field">
-                <button id="btnShuffle" class="btn secondary" type="button">Shuffle</button>
+                <button id="btnShuffle" class="btn-tool" type="button" style="background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;">
+                  Shuffle
+                </button>
               </div>
 
               <div class="field">
-                <button id="btnCopyAll" class="btn secondary" type="button" disabled>Copy all</button>
+                <button id="btnCopyAll" class="btn-tool" type="button" disabled style="background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;">
+                  Copy all
+                </button>
               </div>
 
               <div class="field">
-                <button id="btnDownload" class="btn secondary" type="button" disabled>Download .txt</button>
+                <button id="btnDownload" class="btn-tool" type="button" disabled style="background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;">
+                  Download .txt
+                </button>
               </div>
 
               <div class="field">
-                <button id="btnReset" class="btn secondary" type="button">Reset</button>
+                <button id="btnReset" class="btn-tool" type="button" style="background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;">
+                  Reset
+                </button>
               </div>
             </form>
 
-            <div id="msg" class="msg"></div>
+            <div id="msg" class="tool-result" style="margin-top:.75rem;"></div>
+            <div id="results" class="tools-grid" style="display:none;margin-top:14px;"></div>
 
-            <div id="results" class="results" style="display:none;"></div>
+            <!-- SEO content (>= 300 words) -->
+            <section class="tool-section" aria-label="Credible excuses generator guide" style="margin-top:14px;">
+              <h2>Credible excuse messages: how to reschedule without over-explaining</h2>
+
+              <p>
+                A <strong>credible excuse</strong> is not about inventing a story. In real life, the most believable
+                message is usually a short, consistent explanation that matches the situation and respects the other
+                person’s time. This page is a <strong>credible excuses generator</strong> designed as a
+                <strong>writing helper</strong> for everyday communication: being late, needing to reschedule, or
+                giving a quick heads-up to your manager, your partner, or your family. Instead of spending ten minutes
+                rewriting the same text, you can generate multiple versions and choose the one that fits your tone.
+              </p>
+
+              <p>
+                The core structure of a good excuse message is simple: (1) a brief opener, (2) the situation in one line,
+                (3) the next step (new time, ETA, or a follow-up), and (4) a polite closer. Many messages sound suspicious
+                because they include too many details, too many apologies, or a long chain of justifications. In most cases,
+                you should avoid over-explaining. A professional message for work can be polite and direct:
+                “I have a last-minute conflict, can we move to 3pm?” A personal message can focus on reassurance:
+                “I’m delayed, but I’m on my way.”
+              </p>
+
+              <p>
+                This tool includes a <strong>tone</strong> selector (neutral, polite, apologetic, firm, humor) and a
+                <strong>severity</strong> selector (light, medium, strong). “Light” works for small delays or quick updates.
+                “Medium” works when you need to reschedule. “Strong” is best when you cannot discuss details and need to keep
+                things private: it produces shorter, more respectful messages that do not expose sensitive information.
+                Optionally, you can add a <strong>supporting detail</strong> (soft or strong) such as a calendar conflict,
+                transport disruption notice, or an appointment. The key is to keep supporting details neutral and truthful.
+              </p>
+
+              <p>
+                Like all Universe Tools pages, this generator runs <strong>100% locally</strong> in your browser. Your inputs
+                are not uploaded and are not stored by this page. You can generate variants, copy a single message, copy all,
+                or download a text file for later use.
+              </p>
+            </section>
+
+            <div class="small-note">
+              Tip: credible messages are short, consistent, and focus on the next step (ETA / new time).
+            </div>
           </article>
 
-          <article class="tool-section">
-            <p>
-              <strong>Tips:</strong> credible messages are usually short, consistent, and don’t over-explain.
-              If you add a “proof” detail, keep it neutral (ex: screenshot of train delay).
-            </p>
-            <p style="margin-bottom:0;">
-              This generator runs locally and doesn’t send your text anywhere.
-            </p>
-          </article>
+          <!-- RELATED TOOLS (maillage interne) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
 
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
         <span>© <span id="year"></span> Universe Tools</span>
-        <div class="footer-links">
-          <a href="/privacy.html">Privacy</a>
-          <a href="/legal.html">Legal</a>
-          <a href="/#tools">All tools</a>
-        </div>
+        <span>Local tool • No upload</span>
       </div>
     </footer>
+
   </div>
 
-  <script>
-    const $ = (id) => document.getElementById(id);
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
 
-    function setMsg(t, type){
-      const el = $("msg");
-      el.textContent = t || "";
-      if (type === "ok") el.style.color = "var(--ok)";
-      else if (type === "warn") el.style.color = "var(--warn)";
-      else if (type === "danger") el.style.color = "var(--danger)";
-      else el.style.color = "var(--muted)";
-    }
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const $ = (id) => document.getElementById(id);
 
     function esc(s){
       return String(s||"").replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
     }
-
     function clean(s){
       return String(s||"").replace(/\s+/g," ").trim();
     }
-
     function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
     function pick(arr){ return arr[randInt(0, arr.length-1)]; }
     function shuffle(arr){
@@ -385,7 +332,6 @@
       }
       return a;
     }
-
     function uniqStrings(arr){
       const out = [];
       const seen = new Set();
@@ -399,315 +345,195 @@
       return out;
     }
 
-    // ---------- Phrase banks (EN/FR) ----------
+    function setMsg(html){
+      const el = $("msg");
+      el.innerHTML = html || "";
+    }
+
+    // ---- English-only phrase bank (neutral, truthful, rescheduling-oriented) ----
     const BANK = {
-      en: {
-        openers: {
-          neutral: ["Hey", "Hi", "Hello", "Quick heads-up"],
-          polite: ["Hello", "Hi", "Good morning", "Good afternoon"],
-          apologetic: ["I’m really sorry", "Sorry about this", "Apologies", "I feel bad for the late notice"],
-          firm: ["FYI", "Just letting you know", "I won’t be able to", "I need to"],
-          humor: ["Tiny crisis", "Plot twist", "Reality check", "Life happened"]
-        },
-        closers: {
-          neutral: ["Thanks", "Thank you", "Appreciate it", "Talk soon"],
-          polite: ["Thank you for understanding", "Many thanks", "I appreciate your understanding", "Best regards"],
-          apologetic: ["Sorry again", "Thanks for your patience", "I appreciate your patience", "I’ll make it up to you"],
-          firm: ["Thanks for understanding", "I’ll follow up", "I’ll update you soon", "We’ll reschedule"],
-          humor: ["I owe you one", "I’ll compensate with coffee", "I’ll make it up to you", "Talk soon"]
-        },
-        work: {
-          light: [
-            "I’m running a bit behind because of a minor transit delay.",
-            "My calendar shifted unexpectedly and I’m a few minutes late.",
-            "I got pulled into a quick call that went over.",
-            "My internet is acting up — I’m reconnecting now.",
-            "I’m stuck in traffic, should be there shortly."
-          ],
-          medium: [
-            "Something urgent came up and I need to push our meeting back.",
-            "I’m dealing with an unexpected issue and can’t make the scheduled time.",
-            "I’ll need to reschedule — I’m not available at the planned hour.",
-            "I have a last-minute conflict that I can’t move.",
-            "I’m handling a time-sensitive situation and need a new slot."
-          ],
-          strong: [
-            "I have a personal emergency and need to step away today.",
-            "I’m not feeling well and I need to take the rest of the day offline.",
-            "A family situation requires my immediate attention.",
-            "I had an unexpected medical issue and can’t attend.",
-            "I need to take urgent leave for a serious reason."
-          ]
-        },
-        couple: {
-          light: [
-            "I’m running late — something small came up on the way.",
-            "My day got a bit chaotic, I’ll text you as soon as I’m moving.",
-            "I need 15–20 minutes, I’ll explain when I see you.",
-            "I’m delayed, but I’m on it. I’ll be there soon.",
-            "I’ll be a little late — not ignoring you, promise."
-          ],
-          medium: [
-            "Can we shift our plan a bit? I need to handle something first.",
-            "I can’t make it at the exact time — can we push it back?",
-            "I need to reschedule tonight. I want to do it properly, not rushed.",
-            "I’ve got an unexpected obligation — can we move to tomorrow?",
-            "I need to take a rain check; I’ll propose a new time."
-          ],
-          strong: [
-            "I’m dealing with something serious right now, I need space for a bit.",
-            "I’m not okay today and I don’t want to bring bad energy — can we talk later?",
-            "I have a family/health issue to handle right now.",
-            "I need to pause plans — something urgent happened.",
-            "I’m overwhelmed and I need to reset; I’ll explain when I can."
-          ]
-        },
-        family: {
-          light: [
-            "I’m running a bit late — small delay.",
-            "I got held up, but I’m on my way.",
-            "I’ll be there soon, just finishing something.",
-            "A quick thing came up, I’ll update you shortly.",
-            "I’ll be a little late, sorry!"
-          ],
-          medium: [
-            "I can’t make it today as planned — can we move it?",
-            "Something came up and I need to reschedule our visit/call.",
-            "I’m handling an unexpected task, can we push to tomorrow?",
-            "I won’t be available at that time; let’s pick another slot.",
-            "I need to rearrange — I’ll propose a new time."
-          ],
-          strong: [
-            "There’s an urgent situation I need to handle right now.",
-            "I’m dealing with a health issue today and need rest.",
-            "An emergency came up — I’ll call you when I’m able.",
-            "I need to take care of something serious immediately.",
-            "I’m not in a position to come today; I’ll explain later."
-          ]
-        },
-        proofSoft: [
-          "I can send you a quick screenshot if needed.",
-          "I can share a confirmation message if that helps.",
-          "If you want, I’ll forward the info I got.",
-          "I can show you the notice I received."
+      openers: {
+        neutral: ["Hi", "Hey", "Quick heads-up", "Just a heads-up"],
+        polite: ["Hello", "Good morning", "Good afternoon", "Hi there"],
+        apologetic: ["I’m sorry", "Apologies", "Sorry about this", "I’m really sorry"],
+        firm: ["FYI", "Just letting you know", "I need to", "I won’t be able to"],
+        humor: ["Tiny plot twist", "Small hiccup", "Life happened", "Mini delay alert"]
+      },
+      closers: {
+        neutral: ["Thanks", "Thank you", "Talk soon", "Appreciate it"],
+        polite: ["Thank you for understanding", "Best regards", "Many thanks", "I appreciate your understanding"],
+        apologetic: ["Sorry again", "Thanks for your patience", "I appreciate your patience", "I’ll make it up to you"],
+        firm: ["Thanks for understanding", "I’ll follow up shortly", "I’ll update you soon", "We’ll reschedule"],
+        humor: ["I owe you one", "I’ll compensate with coffee", "Thanks for understanding", "Talk soon"]
+      },
+
+      // Context x severity: keep reasons generic and non-harmful
+      work: {
+        light: [
+          "I’m running a few minutes behind due to a minor delay.",
+          "I’m a bit delayed — I’ll join as soon as I can.",
+          "My previous call ran over slightly; I’m on my way now.",
+          "I’m dealing with a quick technical hiccup and reconnecting.",
+          "I’m stuck in traffic briefly — I’ll be there shortly."
         ],
-        proofStrong: [
-          "I have the confirmation / ticket / notice if you need it.",
-          "I can forward the email/text as proof.",
-          "I have a call log / confirmation message.",
-          "I can send the screenshot right now."
+        medium: [
+          "A last-minute conflict came up and I need to move our meeting.",
+          "I won’t be able to make the scheduled time — can we reschedule?",
+          "Something unexpected requires my attention; can we push this back?",
+          "I need to shift the time today — can I propose a new slot?",
+          "I’m not available at the planned hour; let’s find another time."
         ],
-        oral: [
-          "If I say it out loud, I’ll keep it simple:",
-          "Orally, I’d say:",
-          "Quick version to say:",
-          "Short version:"
+        strong: [
+          "I have an urgent conflict and I need to step away today.",
+          "I won’t be able to attend due to an urgent situation on my side.",
+          "I need to postpone — I’ll follow up with a new time shortly.",
+          "I have to cancel for a serious conflict; I’ll propose alternatives.",
+          "I’m unable to make it today; I’ll update you as soon as I can."
         ]
       },
 
-      fr: {
-        openers: {
-          neutral: ["Salut", "Coucou", "Hello", "Petite info"],
-          polite: ["Bonjour", "Bonsoir", "Je vous informe", "Petit message"],
-          apologetic: ["Je suis désolé", "Pardon", "Désolé pour ça", "Toutes mes excuses"],
-          firm: ["Info", "Juste pour te dire", "Je ne pourrai pas", "Je dois"],
-          humor: ["Petit imprévu", "Plot twist", "La vie quoi", "Mini crise"]
-        },
-        closers: {
-          neutral: ["Merci", "À tout à l’heure", "On se tient au courant", "À bientôt"],
-          polite: ["Merci pour votre compréhension", "Bien à vous", "Merci d’avance", "Cordialement"],
-          apologetic: ["Encore désolé", "Merci pour ta patience", "Je te reviens vite", "Je me rattrape"],
-          firm: ["Merci de comprendre", "Je te tiens au courant", "Je reviens vers toi", "On reprogramme"],
-          humor: ["Je te dois un café", "Je me rattrape", "Promis je compense", "À très vite"]
-        },
-        work: {
-          light: [
-            "Je suis un peu en retard à cause d’un petit souci de transport.",
-            "Mon planning a bougé et je serai en léger retard.",
-            "On m’a retenu sur un appel qui a débordé.",
-            "Ma connexion internet fait des siennes — je me reconnecte.",
-            "Je suis bloqué dans les bouchons, j’arrive dès que possible."
-          ],
-          medium: [
-            "Un imprévu urgent vient de tomber, je dois décaler notre rendez-vous.",
-            "Je dois reprogrammer : je ne serai pas disponible à l’heure prévue.",
-            "J’ai un conflit de dernière minute que je ne peux pas déplacer.",
-            "Je gère un sujet prioritaire, on peut se caler un autre créneau ?",
-            "Je ne pourrai pas être présent, je te propose une autre heure."
-          ],
-          strong: [
-            "J’ai une urgence personnelle, je dois m’absenter aujourd’hui.",
-            "Je ne suis pas en état / je ne me sens pas bien, je dois couper.",
-            "Une situation familiale nécessite mon attention immédiate.",
-            "J’ai un souci médical imprévu, je ne pourrai pas venir.",
-            "Je dois poser une absence en urgence pour un motif sérieux."
-          ]
-        },
-        couple: {
-          light: [
-            "Je vais avoir un peu de retard — petit imprévu.",
-            "Ma journée a dérapé, je te tiens au courant dans 10 minutes.",
-            "Donne-moi 15–20 minutes, je t’explique après.",
-            "Je suis retardé, mais je gère. J’arrive.",
-            "Je suis en retard, pas en train de t’ignorer, promis."
-          ],
-          medium: [
-            "On peut décaler un peu ? Je dois gérer un truc avant.",
-            "Je ne pourrai pas à l’heure exacte — on repousse ?",
-            "Je préfère qu’on reprogramme, je veux être dispo à 100%.",
-            "J’ai une obligation imprévue — on décale à demain ?",
-            "Je te propose qu’on reporte, et je te donne un nouvel horaire."
-          ],
-          strong: [
-            "Je gère quelque chose de sérieux, j’ai besoin d’un peu de temps.",
-            "Je ne suis pas bien aujourd’hui, on en parle plus tard ?",
-            "J’ai un souci famille/santé à gérer là, tout de suite.",
-            "Je dois annuler pour une vraie urgence, je t’explique après.",
-            "Je suis submergé, j’ai besoin de souffler; je reviens vers toi."
-          ]
-        },
-        family: {
-          light: [
-            "Je suis un peu en retard — petit contretemps.",
-            "On m’a retenu, mais j’arrive.",
-            "Je finis un truc et je te rejoins.",
-            "Un petit imprévu, je te dis dès que je bouge.",
-            "Je serai un peu en retard, désolé."
-          ],
-          medium: [
-            "Je ne pourrai pas venir comme prévu, on peut reporter ?",
-            "Un imprévu est tombé, je dois décaler notre appel/visite.",
-            "Je gère quelque chose, on peut se caler demain ?",
-            "Je ne serai pas dispo à cette heure, on change ?",
-            "Je dois réorganiser, je te propose un autre créneau."
-          ],
-          strong: [
-            "J’ai une urgence à gérer là, tout de suite.",
-            "Je ne vais pas bien aujourd’hui, j’ai besoin de repos.",
-            "Il y a eu un souci, je te rappelle dès que je peux.",
-            "Je dois m’occuper d’un truc sérieux immédiatement.",
-            "Je ne suis pas en mesure de venir aujourd’hui; j’explique plus tard."
-          ]
-        },
-        proofSoft: [
-          "Si besoin, je peux te montrer une petite preuve (capture/info).",
-          "Je peux transférer le message si ça t’aide.",
-          "Je peux te partager la confirmation si tu veux.",
-          "Je peux te faire une capture si nécessaire."
+      couple: {
+        light: [
+          "I’m running a bit late — I’m on my way.",
+          "Small delay on my side; I’ll be there soon.",
+          "I’ll be a little late, but I’m moving now.",
+          "I need 10–15 minutes, then I’m good.",
+          "I’m delayed — not ignoring you, promise."
         ],
-        proofStrong: [
-          "J’ai la preuve (mail/message/confirmation) si besoin.",
-          "Je peux transférer l’email/le message tout de suite.",
-          "J’ai une capture d’écran / confirmation officielle.",
-          "Je peux envoyer la preuve maintenant."
+        medium: [
+          "Can we shift our plan a bit? I need to handle something first.",
+          "I can’t make it at the exact time — can we push it back?",
+          "I need to reschedule tonight; I want to be fully present.",
+          "Can we move this to later/tomorrow? I’ll propose a time.",
+          "I need to take a rain check — can we pick a new slot?"
         ],
-        oral: [
-          "À l’oral, je dirais simplement :",
-          "Version à dire :",
-          "Version courte :",
-          "Si je le dis vite :"
+        strong: [
+          "I need to pause plans for an urgent conflict right now.",
+          "I can’t do today as planned — I’ll explain when I can.",
+          "I need a little time to handle something important; can we talk later?",
+          "I’m not available right now due to a serious conflict; I’ll follow up.",
+          "I need to postpone — I’ll come back with a better time."
         ]
-      }
+      },
+
+      family: {
+        light: [
+          "I’m running a little late — small delay.",
+          "I got held up, but I’m on my way.",
+          "I’ll be there soon, just finishing something.",
+          "A quick thing came up; I’ll update you shortly.",
+          "I’ll be a bit late — sorry!"
+        ],
+        medium: [
+          "I can’t make it as planned — can we move it to another time?",
+          "Something came up and I need to reschedule our visit/call.",
+          "I won’t be available at that hour; let’s pick another slot.",
+          "Can we postpone to tomorrow/later this week? I’ll suggest options.",
+          "I need to rearrange plans; can we reschedule?"
+        ],
+        strong: [
+          "I have an urgent conflict I need to handle right now.",
+          "I can’t come today due to a serious situation on my side.",
+          "I need to postpone — I’ll reach out as soon as I’m able.",
+          "I won’t be able to make it today; I’ll explain later.",
+          "I need to cancel for an urgent reason; I’ll follow up soon."
+        ]
+      },
+
+      supportSoft: [
+        "I can share a quick update when I’m back.",
+        "I’ll send a confirmation once it’s sorted.",
+        "I’ll keep you posted.",
+        "I can follow up with details if needed."
+      ],
+      supportStrong: [
+        "I can forward the calendar update / notice if helpful.",
+        "I can share a quick screenshot of the update if needed.",
+        "I’ll send the updated invite/confirmation right after this.",
+        "I can provide the update message if that helps."
+      ],
+
+      followups: [
+        "I’ll propose two time options in a moment.",
+        "I’ll send a new time shortly.",
+        "Let me know what works best for you.",
+        "I’ll update you within the hour."
+      ]
     };
 
-    function buildOne({lang, context, severity, tone, length, proof, who, details}){
-      const B = BANK[lang] || BANK.en;
+    function buildOne({context, severity, tone, length, support, who, details}){
+      const opener = pick(BANK.openers[tone] || BANK.openers.neutral);
+      const base = pick((BANK[context] && BANK[context][severity]) ? BANK[context][severity] : BANK.work.light);
+      const closer = pick(BANK.closers[tone] || BANK.closers.neutral);
 
-      const opener = pick(B.openers[tone] || B.openers.neutral);
-      const base = pick(((B[context]||B.work)[severity]) || B.work.light);
-      const closer = pick(B.closers[tone] || B.closers.neutral);
-
-      const d = clean(details);
       const w = clean(who);
+      const d = clean(details);
 
-      // integrate details (lightly)
-      const detailChunk = d ? (lang==="fr" ? ` Détail: ${d}.` : ` Detail: ${d}.`) : "";
-      const toWho = w ? (lang==="fr" ? ` (${w})` : ` (${w})`) : "";
+      const toWho = w ? ` (${w})` : "";
+      const detailChunk = d ? ` Details: ${d.replace(/\.*$/,"")}.` : "";
 
-      // “proof”
-      let proofChunk = "";
-      if (proof === "soft") proofChunk = " " + pick(B.proofSoft);
-      if (proof === "strong") proofChunk = " " + pick(B.proofStrong);
+      let supportChunk = "";
+      if (support === "soft") supportChunk = " " + pick(BANK.supportSoft);
+      if (support === "strong") supportChunk = " " + pick(BANK.supportStrong);
 
-      // length shaping
       let msg = "";
       if (length === "short"){
         msg = `${opener}${toWho}: ${base}${d ? " " + d.replace(/\.*$/,"") + "." : ""} ${closer}.`;
       } else if (length === "medium"){
-        msg = `${opener}${toWho}: ${base}${detailChunk}${proofChunk} ${closer}.`;
+        msg = `${opener}${toWho}: ${base}${detailChunk}${supportChunk} ${closer}.`;
       } else {
-        // long: add a second sentence to sound human
-        const extra = (lang==="fr")
-          ? pick([
-              "Je préfère te prévenir tout de suite plutôt que de faire attendre.",
-              "Je te tiens au courant dès que j’ai plus d’infos.",
-              "Je m’organise et je reviens vers toi rapidement.",
-              "Merci de ta compréhension, je fais au plus vite."
-            ])
-          : pick([
-              "I wanted to let you know early rather than keep you waiting.",
-              "I’ll update you as soon as I have more info.",
-              "I’m sorting it out and I’ll follow up shortly.",
-              "Thanks for understanding — I’m doing my best."
-            ]);
-
-        msg = `${opener}${toWho}: ${base}${detailChunk}${proofChunk} ${extra} ${closer}.`;
+        const extra = pick(BANK.followups);
+        msg = `${opener}${toWho}: ${base}${detailChunk}${supportChunk} ${extra} ${closer}.`;
       }
 
-      // clean double spaces
-      msg = msg.replace(/\s+/g," ").trim();
-
-      return msg;
+      return msg.replace(/\s+/g," ").trim();
     }
 
-    function tagFor({context, severity, tone, length, proof, lang}){
-      const map = {
-        context: {work:"Work", couple:"Couple", family:"Family"},
-        severity: {light:"Light", medium:"Medium", strong:"Strong"},
-        tone: {neutral:"Neutral", polite:"Polite", apologetic:"Apologetic", firm:"Firm", humor:"Humor"},
-        length: {short:"Short", medium:"Medium", long:"Long"},
-        proof: {none:"No proof", soft:"Soft proof", strong:"Strong proof"}
+    function getState(){
+      return {
+        context: $("context").value,
+        severity: $("severity").value,
+        tone: $("tone").value,
+        length: $("length").value,
+        support: $("support").value,
+        who: $("who").value,
+        details: $("details").value,
+        count: parseInt($("count").value, 10) || 6
       };
-      if (lang === "fr"){
-        map.context = {work:"Travail", couple:"Couple", family:"Famille"};
-        map.severity = {light:"Léger", medium:"Moyen", strong:"Fort"};
-        map.tone = {neutral:"Neutre", polite:"Poli", apologetic:"Désolé", firm:"Ferme", humor:"Humour"};
-        map.length = {short:"Court", medium:"Moyen", long:"Long"};
-        map.proof = {none:"Sans preuve", soft:"Preuve légère", strong:"Preuve forte"};
-      }
-      return [
-        map.context[context] || context,
-        map.severity[severity] || severity,
-        map.tone[tone] || tone,
-        map.length[length] || length,
-        map.proof[proof] || proof
-      ];
     }
 
-    function renderList(list, tags){
+    function renderCards(messages, meta){
       const wrap = $("results");
-      if (!list.length){
+      if (!messages.length){
         wrap.style.display = "none";
         wrap.innerHTML = "";
         return;
       }
       wrap.style.display = "grid";
 
-      wrap.innerHTML = list.map((text, idx) => {
-        const t = tags[idx] || [];
-        const tagHtml = t.map(x => `<span class="tag">${esc(x)}</span>`).join("");
+      wrap.innerHTML = messages.map((text, idx) => {
+        const tags = [
+          meta.context.toUpperCase(),
+          meta.severity.toUpperCase(),
+          meta.tone.toUpperCase(),
+          meta.length.toUpperCase()
+        ];
+
         return `
-          <div class="card">
-            <div class="topline">
-              <div class="excuse">#${idx+1}</div>
-              <div class="meta">${esc(text.length)} chars</div>
+          <div class="tool-card" style="padding:16px;">
+            <div class="tool-card-top">
+              <div class="tool-title">#${idx+1}</div>
+              <div class="tool-badge">${esc(tags.join(" • "))}</div>
             </div>
-            <div style="margin-top:.5rem;font-size:.98rem;line-height:1.45;font-weight:800;">
-              ${esc(text)}
+            <div class="tool-desc" style="min-height:auto;opacity:1;">
+              <strong style="font-weight:800;line-height:1.45;display:block;">${esc(text)}</strong>
             </div>
-            <div class="tags">${tagHtml}</div>
-            <div class="actions">
-              <button class="btn secondary" type="button" data-copy="${encodeURIComponent(text)}">Copy</button>
+            <div class="tool-foot" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+              <span style="opacity:.65;">${text.length} chars</span>
+              <button class="btn-tool" type="button" data-copy="${encodeURIComponent(text)}"
+                style="padding:.45rem .75rem;font-size:.82rem;background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;">
+                Copy
+              </button>
             </div>
           </div>
         `;
@@ -718,63 +544,53 @@
           const val = decodeURIComponent(btn.getAttribute("data-copy") || "");
           try{
             await navigator.clipboard.writeText(val);
-            setMsg("Copied ✅", "ok");
+            setMsg(`<strong>Copied ✅</strong>`);
           }catch{
-            setMsg("Copy failed (browser restriction).", "warn");
+            setMsg(`<strong>Copy failed.</strong> Your browser blocked clipboard access.`);
           }
         });
       });
     }
 
-    function getState(){
-      return {
-        lang: $("language").value,
-        context: $("context").value,
-        severity: $("severity").value,
-        tone: $("tone").value,
-        length: $("length").value,
-        proof: $("proof").value,
-        who: $("who").value,
-        details: $("details").value,
-        count: parseInt($("count").value, 10) || 6
-      };
-    }
-
     function generate(){
-      setMsg("", "");
+      setMsg("");
       const s = getState();
 
       const out = [];
       for (let i=0;i<s.count;i++){
         out.push(buildOne(s));
       }
-
       const final = uniqStrings(out);
-      const tags = final.map(() => tagFor(s));
 
-      renderList(final, tags);
+      renderCards(final, s);
 
       $("btnCopyAll").disabled = !final.length;
       $("btnDownload").disabled = !final.length;
 
       if (!final.length){
-        setMsg("No result. Try changing tone/severity or adding details.", "warn");
+        setMsg(`<strong>No result.</strong> Try changing tone/severity or adding details.`);
       } else {
-        setMsg(`Generated ${final.length} excuses (local).`, "ok");
+        setMsg(`<strong>Generated ${final.length} messages</strong> (local).`);
       }
     }
 
     function shuffleGen(){
-      // shuffle tone slightly to create variety without forcing user to change UI
-      const tone = $("tone").value;
-      const options = ["neutral","polite","apologetic","firm","humor"].filter(x => x !== tone);
-      if (Math.random() < 0.55) $("tone").value = pick(options);
+      // mild variety: change tone sometimes
+      const currentTone = $("tone").value;
+      const options = ["neutral","polite","apologetic","firm","humor"].filter(x => x !== currentTone);
+      if (Math.random() < 0.6) $("tone").value = pick(options);
+
+      // sometimes change length
+      const currentLen = $("length").value;
+      const lenOptions = ["short","medium","long"].filter(x => x !== currentLen);
+      if (Math.random() < 0.35) $("length").value = pick(lenOptions);
+
       generate();
     }
 
     async function copyAll(){
-      const texts = Array.from(document.querySelectorAll("#results .card"))
-        .map(card => card.querySelector("div[style]")?.textContent?.trim() || "")
+      const texts = Array.from(document.querySelectorAll("#results .tool-card strong"))
+        .map(x => (x.textContent || "").trim())
         .filter(Boolean);
 
       if (!texts.length) return;
@@ -782,15 +598,15 @@
       const txt = texts.map((t,i) => `${i+1}. ${t}`).join("\n");
       try{
         await navigator.clipboard.writeText(txt);
-        setMsg(`Copied ${texts.length} items ✅`, "ok");
+        setMsg(`<strong>Copied ${texts.length} messages ✅</strong>`);
       }catch{
-        setMsg("Copy failed (browser restriction).", "warn");
+        setMsg(`<strong>Copy failed.</strong> Your browser blocked clipboard access.`);
       }
     }
 
     function downloadTxt(){
-      const texts = Array.from(document.querySelectorAll("#results .card"))
-        .map(card => card.querySelector("div[style]")?.textContent?.trim() || "")
+      const texts = Array.from(document.querySelectorAll("#results .tool-card strong"))
+        .map(x => (x.textContent || "").trim())
         .filter(Boolean);
 
       if (!texts.length) return;
@@ -798,14 +614,16 @@
       const txt = texts.map((t,i) => `${i+1}. ${t}`).join("\n");
       const blob = new Blob([txt], {type:"text/plain;charset=utf-8"});
       const url = URL.createObjectURL(blob);
+
       const a = document.createElement("a");
       a.href = url;
-      a.download = "credible-excuses.txt";
+      a.download = "credible-messages.txt";
       document.body.appendChild(a);
       a.click();
       a.remove();
+
       URL.revokeObjectURL(url);
-      setMsg("Downloaded credible-excuses.txt ✅", "ok");
+      setMsg(`<strong>Downloaded credible-messages.txt ✅</strong>`);
     }
 
     function resetAll(){
@@ -813,8 +631,7 @@
       $("severity").value = "light";
       $("tone").value = "neutral";
       $("length").value = "short";
-      $("language").value = "en";
-      $("proof").value = "none";
+      $("support").value = "none";
       $("who").value = "";
       $("details").value = "";
       $("count").value = "6";
@@ -823,12 +640,61 @@
       $("results").innerHTML = "";
       $("btnCopyAll").disabled = true;
       $("btnDownload").disabled = true;
-      setMsg("", "");
+      setMsg("");
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      $("year").textContent = new Date().getFullYear();
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
 
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
+
+    document.addEventListener("DOMContentLoaded", () => {
       $("btnGen").addEventListener("click", generate);
       $("btnShuffle").addEventListener("click", shuffleGen);
       $("btnCopyAll").addEventListener("click", copyAll);
@@ -839,5 +705,48 @@
       resetAll();
     });
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
 </body>
 </html>

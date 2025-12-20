@@ -1,29 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google tag (gtag.js) - GA4 -->
+  <title>Barcode generator (EAN-13 / EAN-8) | Universe Tools</title>
+  <meta name="description" content="Free barcode generator: create EAN-13 or EAN-8 barcodes from a numeric code and download as SVG. Runs locally in your browser, no data uploaded." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
   </script>
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com"
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
     }
   </script>
-  
-  <meta charset="UTF-8" />
-  <title>Barcode generator (EAN-13 / EAN-8) | Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Free barcode generator: create EAN-13 or EAN-8 barcodes from a numeric code and download as SVG. Runs locally in your browser, no data uploaded.">
+
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Barcode generator (EAN-13 / EAN-8)",
+    "url": "https://universe-tools.com/tools/barcode.html",
+    "description": "Generate EAN-13 or EAN-8 barcodes from a numeric code and download as SVG. Everything runs locally in your browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -35,362 +73,17 @@
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/barcode.html" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/barcode.html" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/barcode.html" />
-
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
-
-  <!-- Styles : même base que les autres pages outils -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow:
-        0 0 30px rgba(79, 70, 229, 0.45),
-        0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.3rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
-    }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
-
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 480px;
-      line-height: 1.5;
-    }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr);
-      gap: 0.8rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 600px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field input,
-    .field select {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-    }
-
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
-
-    .tool-result-error {
-      color: #fecaca;
-    }
-
-    .barcode-wrapper {
-      margin-top: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .barcode-box {
-      padding: 0.75rem 1rem;
-      border-radius: 16px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      min-height: 110px;
-      min-width: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-    }
-
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-      text-align: center;
-    }
-  </style>
-
-  <!-- Event snippet conversion -->
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-          'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER -->
     <header>
       <div class="container nav">
-        <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -400,54 +93,50 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
-        <nav class="nav-links">
-          <a href="/#tools">All tools</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <a href="/fr/">FR</a>
-          <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Try another tool</span>
-            <span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
           <div class="section-header">
             <h1 class="section-title">Barcode generator</h1>
             <p class="section-subtitle">
-              Generate a simple EAN-13 or EAN-8 barcode from a numeric code.
+              Generate a standard EAN-13 or EAN-8 barcode from digits and download it as SVG.
               Everything runs locally in your browser.
             </p>
           </div>
 
           <article id="tool-barcode" class="tool-section">
             <p>
-              Enter a numeric code and select the barcode type. The barcode is generated
-              directly in your browser, and you can download it as an SVG file.
+              Enter a numeric code, choose the format, then generate. The barcode is created in your browser and can be downloaded as an SVG file.
             </p>
 
             <form class="tool-form" onsubmit="event.preventDefault(); generateBarcode();">
               <div class="field">
                 <label for="barcodeValue">Numeric code</label>
-                <input
-                  id="barcodeValue"
-                  type="text"
-                  inputmode="numeric"
-                  pattern="[0-9]*"
-                  placeholder="Ex: 5901234123457"
-                />
+                <input id="barcodeValue" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="e.g. 5901234123457" />
+                <small>Digits only (0–9). EAN-13 = 13 digits, EAN-8 = 8 digits.</small>
               </div>
 
               <div class="field">
@@ -456,69 +145,102 @@
                   <option value="EAN13">EAN-13</option>
                   <option value="EAN8">EAN-8</option>
                 </select>
+                <small>Select the target EAN format.</small>
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="generateBarcode()">
+                  Generate barcode
+                </button>
               </div>
             </form>
 
-            <div>
-              <button class="btn-tool" type="button" onclick="generateBarcode()">
-                Generate barcode
-              </button>
+            <div id="barcodeMessage" class="tool-result" aria-live="polite"></div>
+
+            <div class="barcode-wrap" style="margin-top:14px;">
+              <div class="barcode-box" style="display:flex; justify-content:center; align-items:center; padding:16px; border-radius:18px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.03);">
+                <svg id="barcodeSvg" aria-label="Generated barcode"></svg>
+              </div>
+
+              <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="btn secondary" type="button" onclick="downloadBarcodeSvg()" id="btnDownload" style="display:none;">
+                  Download SVG
+                </button>
+                <button class="btn secondary" type="button" onclick="clearBarcode()" id="btnClear">
+                  Clear
+                </button>
+              </div>
             </div>
 
-            <div id="barcodeMessage" class="tool-result"></div>
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About this barcode generator">
+              <h2>About this barcode generator (EAN-13 and EAN-8)</h2>
 
-            <section class="tool-section" aria-label="SEO content">
-              <h2 class="section-title" style="font-size:1.1rem; margin-bottom:0.5rem;">
-                About this barcode generator
-              </h2>
-            
               <p>
-                This free <strong>barcode generator</strong> creates standard <strong>EAN-13</strong> and <strong>EAN-8</strong>
-                barcodes from a numeric code. It’s useful for product labels, inventory, retail, packaging mockups,
-                and quick testing before printing.
+                A <strong>barcode generator</strong> is a practical tool when you need to create scannable product labels,
+                test packaging mockups, or generate sample codes for internal inventory and retail workflows.
+                This page focuses on two widely used formats: <strong>EAN-13</strong> and <strong>EAN-8</strong>.
+                EAN barcodes are commonly printed on consumer products so scanners can identify items quickly at checkout
+                or during stock handling. With this tool, you simply enter digits, choose the target format, and the barcode
+                is drawn instantly on the page.
               </p>
-            
+
               <p>
-                The barcode is generated directly in your browser and can be downloaded as an <strong>SVG</strong>,
-                which is ideal for crisp printing at any size. No account is required, and no data is uploaded:
-                everything runs locally.
+                The key difference between the two is the code length and usage. <strong>EAN-13</strong> is the most common
+                retail barcode and is based on <strong>13 digits</strong>. <strong>EAN-8</strong> is a shorter variant designed
+                for small packages where space is limited and uses <strong>8 digits</strong>. If you type a code that does not
+                match the required length for the selected format, generation may fail or produce a barcode that is not valid
+                for real-world scanning. For best results, always double-check the number of digits and test with a scanner
+                before printing large batches.
               </p>
-            
+
               <p>
-                To avoid issues, choose the correct format (<strong>EAN-13</strong> uses 13 digits, <strong>EAN-8</strong> uses 8 digits)
-                and always test the result with a real scanner before using it in production.
+                This tool generates the barcode image in <strong>SVG</strong> format. SVG is ideal because it is a vector graphic:
+                it stays sharp at any size, making it suitable for both on-screen previews and printing. Once generated, you can
+                download the SVG file and place it into documents, design tools, or label templates. The generated barcode is a
+                visual representation of the digits you provide; it does not register or assign official product identifiers.
+                If you need an official GTIN/EAN for commercial distribution, you must obtain it through the appropriate issuing
+                organization or your company’s numbering system.
               </p>
-            
+
+              <p>
+                Privacy-wise, the generator runs <strong>locally in your browser</strong>. Your code is not uploaded for processing
+                by this page. The barcode is created directly on your device using a JavaScript library and rendered as an SVG element.
+                This makes the tool fast for quick iterations: try different codes, switch between EAN-13 and EAN-8, and export clean
+                vector output in seconds. If you are preparing production labels, remember that print quality, quiet zones, sizing,
+                and contrast are important for reliable scanning—so treat this tool as a convenient generator and always validate
+                the final result with real-world tests.
+              </p>
+
               <p class="small-note">
-                Note: Universe Tools generates the barcode image; it does not register product numbers or assign official GTINs.
+                Tip: export SVG, keep enough margin (“quiet zone”) around the bars, and test scanning with multiple devices.
               </p>
             </section>
 
-            <div class="barcode-wrapper">
-              <div class="barcode-box">
-                <svg id="barcodeSvg"></svg>
-              </div>
-              <a
-                id="barcodeDownload"
-                href="#"
-                style="display:none; font-size:0.85rem; color:#a5b4fc; text-decoration:underline;"
-              >
-                Download barcode (SVG)
-              </a>
-            </div>
-
             <div class="small-note">
-              Note: this simple tool works best with valid EAN-13 / EAN-8 numeric codes.
-              Always test your barcode with a scanner before using it in production.
+              Runs locally. Always test your barcode with a scanner before production printing.
             </div>
           </article>
+
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
+
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <span>© <span id="year"></span> Universe Tools</span>
         <div class="footer-links">
           <a href="/privacy.html">Privacy</a>
           <a href="/legal.html">Legal</a>
@@ -526,39 +248,76 @@
         </div>
       </div>
     </footer>
+
   </div>
 
-  <!-- Library for barcode generation (JsBarcode) -->
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
+  <!-- Barcode library (JsBarcode) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js"></script>
 
+  <!-- SCRIPTS -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    const $ = (id) => document.getElementById(id);
+
+    function showMsg(text, isError) {
+      const el = $("barcodeMessage");
+      el.innerHTML = isError ? `<span>${escapeHtml(text)}</span>` : `<strong>${escapeHtml(text)}</strong>`;
+      if (isError) el.style.color = "#fecaca";
+      else el.style.color = "";
+    }
+
+    function clearMsg() {
+      const el = $("barcodeMessage");
+      el.innerHTML = "";
+      el.style.color = "";
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function clearBarcode() {
+      clearMsg();
+      $("barcodeSvg").innerHTML = "";
+      $("btnDownload").style.display = "none";
+      $("barcodeValue").value = "";
+      $("barcodeType").value = "EAN13";
+    }
+
     function generateBarcode() {
-      const valueInput = document.getElementById("barcodeValue");
-      const typeSelect = document.getElementById("barcodeType");
-      const svg = document.getElementById("barcodeSvg");
-      const message = document.getElementById("barcodeMessage");
-      const downloadLink = document.getElementById("barcodeDownload");
+      const value = ($("barcodeValue").value || "").trim();
+      const type = $("barcodeType").value;
+      const svg = $("barcodeSvg");
 
-      const value = (valueInput.value || "").trim();
-      const type = typeSelect.value;
-
-      // Reset affichage
-      message.textContent = "";
-      message.classList.remove("tool-result-error");
+      clearMsg();
       svg.innerHTML = "";
-      downloadLink.style.display = "none";
+      $("btnDownload").style.display = "none";
 
       if (!value) {
-        message.textContent = "Please enter a numeric code.";
-        message.classList.add("tool-result-error");
+        showMsg("Please enter a numeric code.", true);
+        return;
+      }
+      if (!/^[0-9]+$/.test(value)) {
+        showMsg("Digits only (0–9).", true);
         return;
       }
 
-      if (!/^[0-9]+$/.test(value)) {
-        message.textContent = "The code must contain digits only (0–9).";
-        message.classList.add("tool-result-error");
+      // Soft validation: length check before calling JsBarcode
+      if (type === "EAN13" && value.length !== 13) {
+        showMsg("EAN-13 requires exactly 13 digits.", true);
+        return;
+      }
+      if (type === "EAN8" && value.length !== 8) {
+        showMsg("EAN-8 requires exactly 8 digits.", true);
         return;
       }
 
@@ -573,27 +332,136 @@
           height: 80
         });
 
-        message.textContent = "Barcode generated. You can download it as SVG.";
-
-        // Prépare le téléchargement SVG
-        const serializer = new XMLSerializer();
-        const svgString = serializer.serializeToString(svg);
-
-        const blob = new Blob([svgString], {
-          type: "image/svg+xml;charset=utf-8"
-        });
-        const url = URL.createObjectURL(blob);
-
-        downloadLink.href = url;
-        downloadLink.download = "barcode.svg";
-        downloadLink.style.display = "inline-block";
+        showMsg("Barcode generated. You can download it as SVG.", false);
+        $("btnDownload").style.display = "inline-flex";
       } catch (e) {
         console.error(e);
-        message.textContent =
-          "Unable to generate this barcode. Check that the code length is compatible with the selected format.";
-        message.classList.add("tool-result-error");
+        showMsg("Unable to generate this barcode. Please verify the digits and format.", true);
       }
     }
+
+    function downloadBarcodeSvg() {
+      const svg = $("barcodeSvg");
+      if (!svg || !svg.querySelector("*")) {
+        showMsg("Generate a barcode first.", true);
+        return;
+      }
+
+      try {
+        const serializer = new XMLSerializer();
+        const svgString = serializer.serializeToString(svg);
+        const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "barcode.svg";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+      } catch (e) {
+        console.error(e);
+        showMsg("Download failed in this browser. Try again or copy the SVG from the page source.", true);
+      }
+    }
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>

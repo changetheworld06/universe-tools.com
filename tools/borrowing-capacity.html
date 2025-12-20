@@ -1,17 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Analytics -->
+  <title>Borrowing capacity calculator | Universe Tools</title>
+  <meta name="description" content="Estimate your borrowing capacity: maximum affordable monthly payment and estimated loan amount based on income, expenses, debt ratio, interest rate and duration. Instant local calculation only." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
   </script>
 
-  <!-- SEO JSON-LD -->
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
+    }
+  </script>
+
+  <!-- SEO JSON-LD WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -21,10 +46,20 @@
   }
   </script>
 
-  <meta charset="UTF-8" />
-  <title>Borrowing capacity calculator | Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Estimate your borrowing capacity: maximum affordable monthly payment and estimated loan amount based on income, expenses, debt ratio, interest rate and duration.">
+  <!-- Structured Data : WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Borrowing capacity calculator",
+    "url":"https://universe-tools.com/tools/borrowing-capacity.html",
+    "description":"Estimate maximum affordable monthly payment and indicative maximum loan amount based on income, expenses, debt ratio, interest rate and duration. Runs locally in your browser.",
+    "applicationCategory":"FinanceApplication",
+    "operatingSystem":"All",
+    "browserRequirements":"Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -38,240 +73,6 @@
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/borrowing-capacity.html" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/borrowing-capacity.html" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/borrowing-capacity.html" />
-
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () { if (url) window.location = url; };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-        'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-
-  <!-- STYLES : même base que les autres pages outils -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand { display: flex; align-items: center; gap: 0.65rem; }
-
-    .brand-logo {
-      width: 34px; height: 34px; border-radius: 999px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
-    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
-    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
-
-    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; }
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-    }
-    .nav-links a:hover { color: #e5e7eb; border-color: rgba(129, 140, 248, 0.7); transform: translateY(-1px); }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
-
-    .section { padding: 1.5rem 0 3.5rem; }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.5;
-    }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-section p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem; }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.8rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 1000px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
-
-    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
-    .field label { color: var(--muted); }
-    .field small { color: #6b7280; font-size: 0.72rem; }
-
-    .field input, .field select {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-    }
-
-    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
-    .tool-result strong { color: #e5e7eb; }
-    .tool-result span { color: var(--muted); font-size: 0.8rem; display: block; margin-top: 0.25rem; }
-
-    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
-    .footer-links a { color: #6b7280; }
-    .footer-links a:hover { color: #e5e7eb; }
-  </style>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Borrowing capacity calculator",
-      "url": "https://universe-tools.com/tools/borrowing-capacity.html",
-      "description": "Estimate borrowing capacity and maximum loan from income, expenses and debt ratio.",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
@@ -280,9 +81,9 @@
     <!-- HEADER -->
     <header>
       <div class="container nav">
-        <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -292,76 +93,77 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
-        <nav class="nav-links">
-            <a href="/#tools">All tools</a>
-            <a href="/legal.html">Legal</a>
-            <a href="/privacy.html">Privacy</a>
-            <a href="/fr/">FR</a>
-          </nav>
-          
-          <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Try another tool</span>
-            <span>→</span>
-          </button>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">Tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+        </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
+
           <div class="section-header">
-            <h1 class="section-title">Simple borrowing capacity</h1>
+            <h1 class="section-title">Borrowing capacity calculator</h1>
             <p class="section-subtitle">
               Estimate your maximum affordable monthly payment and an indicative maximum loan amount
-              based on income, expenses and a target debt ratio.
+              from income, expenses, a target debt ratio, an interest rate and a duration.
             </p>
           </div>
 
           <article id="tool-borrowing-capacity" class="tool-section">
             <p>
-              Enter your monthly income and expenses, then choose a target debt ratio (DTI).
-              The tool estimates your maximum monthly payment and the loan amount you could borrow
-              for a given interest rate and duration.
+              Enter your monthly income and recurring expenses. Choose a target debt ratio (DTI),
+              then set the duration and interest rate. The calculator estimates how much you could
+              afford per month and the corresponding loan principal for a fixed-rate loan.
             </p>
 
             <form class="tool-form" onsubmit="event.preventDefault(); calculateBorrowingCapacity();">
               <div class="field">
                 <label for="bcIncome">Monthly income</label>
-                <input id="bcIncome" type="number" step="0.01" min="0" placeholder="Ex: 3500" />
+                <input id="bcIncome" type="number" step="0.01" min="0" placeholder="e.g. 3500" inputmode="decimal" />
                 <small>Total net income per month.</small>
               </div>
 
               <div class="field">
                 <label for="bcExpenses">Monthly expenses</label>
-                <input id="bcExpenses" type="number" step="0.01" min="0" placeholder="Ex: 900" />
-                <small>Recurring fixed expenses (and/or existing monthly debts).</small>
+                <input id="bcExpenses" type="number" step="0.01" min="0" placeholder="e.g. 900" inputmode="decimal" />
+                <small>Fixed expenses and/or existing monthly debts.</small>
               </div>
 
               <div class="field">
                 <label for="bcRatio">Target debt ratio (%)</label>
-                <input id="bcRatio" type="number" step="0.1" min="0" max="100" placeholder="Ex: 35" />
-                <small>Example: 35%.</small>
+                <input id="bcRatio" type="number" step="0.1" min="0" max="100" placeholder="e.g. 35" inputmode="decimal" />
+                <small>Debt-to-income ratio cap you want to apply.</small>
               </div>
 
               <div class="field">
                 <label for="bcYears">Loan duration (years)</label>
-                <input id="bcYears" type="number" step="1" min="1" placeholder="Ex: 25" />
-                <small>Number of years.</small>
+                <input id="bcYears" type="number" step="1" min="1" placeholder="e.g. 25" inputmode="numeric" />
+                <small>Loan term in years.</small>
               </div>
 
               <div class="field">
                 <label for="bcRate">Interest rate (% / year)</label>
-                <input id="bcRate" type="number" step="0.01" min="0" placeholder="Ex: 4.20" />
-                <small>Nominal annual rate.</small>
+                <input id="bcRate" type="number" step="0.01" min="0" placeholder="e.g. 4.20" inputmode="decimal" />
+                <small>Nominal annual rate (approx.).</small>
               </div>
 
               <div class="field">
@@ -371,42 +173,64 @@
               </div>
             </form>
 
-            <div id="bcResult" class="tool-result"></div>
+            <div id="bcResult" class="tool-result" aria-live="polite"></div>
 
-            <section class="tool-section" aria-label="SEO content">
-                <h2 class="section-title" style="font-size:1.1rem; margin-bottom:0.5rem;">
-                  How this borrowing capacity calculator works
-                </h2>
-              
-                <p>
-                  This <strong>borrowing capacity calculator</strong> estimates your
-                  <strong>maximum affordable monthly loan payment</strong> and an indicative
-                  <strong>maximum loan amount</strong> based on your monthly income, recurring expenses,
-                  a target <strong>debt-to-income ratio (DTI)</strong>, an interest rate and a loan duration.
-                </p>
-              
-                <p>
-                  The tool first applies the chosen debt ratio to your income to compute a theoretical maximum
-                  total debt payment. It then subtracts your recurring expenses to estimate what could remain
-                  available for a mortgage or loan payment.
-                </p>
-              
-                <p>
-                  The estimated loan amount is calculated using a standard present value formula for a fixed-rate loan.
-                  This result is indicative: lenders may also include borrower profile, insurance, fees, remaining
-                  disposable income, existing loans, and underwriting policies.
-                </p>
-              
-                <p class="small-note">
-                  Disclaimer: this tool provides a simplified estimate and is not financial advice.
-                </p>
-              </section>
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="How this borrowing capacity calculator works">
+              <h2>How this borrowing capacity calculator works</h2>
+
+              <p>
+                This free <strong>borrowing capacity calculator</strong> helps you estimate two key numbers before you start
+                comparing properties or talking to a lender: your <strong>maximum affordable monthly loan payment</strong> and an
+                <strong>indicative maximum loan amount</strong>. It is designed as a quick, privacy-friendly tool you can use on
+                desktop or mobile. All computations run <strong>locally in your browser</strong>, which means the values you enter
+                (income, expenses, interest rate) are not uploaded or stored by this page.
+              </p>
+
+              <p>
+                The first step is budgeting. You enter your <strong>monthly income</strong> and your <strong>monthly expenses</strong>.
+                Expenses may include recurring fixed costs and/or existing debt payments. Then you choose a target
+                <strong>debt-to-income ratio (DTI)</strong>, expressed as a percentage. The calculator applies this ratio to your income
+                to estimate a maximum “total monthly debt” amount. From that cap, it subtracts your declared expenses to estimate what
+                could remain available for a new loan payment. If the result is zero or negative, it means that with the chosen ratio
+                and your current expenses, there is no room for an additional monthly payment.
+              </p>
+
+              <p>
+                The second step converts that estimated monthly payment into a loan principal using a standard fixed-rate loan
+                present-value formula. In simple terms, a longer duration usually increases the principal you can borrow for the same
+                monthly payment, while a higher interest rate usually decreases it. This is an <strong>indicative estimate</strong>:
+                real borrowing capacity depends on other elements such as borrower profile, lender rules, loan insurance, fees,
+                down payment, taxes, and the required remaining disposable income after all charges.
+              </p>
+
+              <p>
+                Use this tool to compare scenarios: adjust the interest rate, change the duration, or test different debt ratios to see
+                how sensitive your project is. For final decisions, always confirm with a qualified professional who can account for
+                your complete situation and local lending requirements.
+              </p>
+
+              <p class="small-note">
+                Disclaimer: simplified estimate only. It is not financial advice and does not replace a lender’s assessment.
+              </p>
+            </section>
 
             <div class="small-note">
-              This is a simplified estimate. Banks also consider insurance, fees, remaining disposable income,
-              and other criteria.
+              Note: this tool estimates affordability and an indicative principal for a fixed-rate loan. Insurance and fees are not included.
             </div>
           </article>
+
+          <!-- RELATED TOOLS (maillage) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
+
         </div>
       </section>
     </main>
@@ -414,16 +238,19 @@
     <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. Tous droits réservés.</span>
+        <span>© <span id="year"></span> Universe Tools</span>
         <div class="footer-links">
-          <a href="/privacy.html">Confidentialité</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/#tools">Tous les outils</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
         </div>
       </div>
     </footer>
 
   </div>
+
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
 
   <!-- SCRIPTS -->
   <script>
@@ -434,6 +261,7 @@
       return Number.isFinite(n) ? n : null;
     }
 
+    // Present value of an annuity (loan principal from payment)
     function pvFromPayment(payment, annualRatePct, months) {
       const r = (annualRatePct / 100) / 12;
       if (months <= 0) return 0;
@@ -460,13 +288,14 @@
 
       const ratio = ratioPct / 100;
 
-      const maxDebtPayment = income * ratio;             // plafond théorique de mensualité (toutes dettes)
-      const availableForLoan = maxDebtPayment - expenses; // ce qui reste pour la mensualité du prêt
+      const maxDebtPayment = income * ratio;           // cap for total monthly debt
+      const availableForLoan = maxDebtPayment - expenses;
 
       if (availableForLoan <= 0) {
         resultEl.innerHTML = `
           <strong>Estimated max monthly loan payment: 0.00</strong>
-          <span>Your expenses already exceed the target debt ratio threshold.</span>
+          <span>Your expenses already exceed the selected debt-ratio cap.</span>
+          <span>Try lowering expenses, increasing income, or choosing a higher ratio (for comparison only).</span>
         `;
         return;
       }
@@ -476,11 +305,107 @@
 
       resultEl.innerHTML = `
         <strong>Estimated max monthly loan payment: ${availableForLoan.toFixed(2)}</strong>
-        <span>Debt ratio cap: ${(maxDebtPayment).toFixed(2)} (income ${income.toFixed(2)} × ${ratioPct.toFixed(1)}%)</span>
-        <span>Assumptions: ${years} years, ${ratePct.toFixed(2)}% / year (monthly repayment).</span>
-        <span>Estimated maximum loan amount: ${maxLoan.toFixed(2)}</span>
+        <span>Debt ratio cap: ${maxDebtPayment.toFixed(2)} (income ${income.toFixed(2)} × ${ratioPct.toFixed(1)}%)</span>
+        <span>Assumptions: ${years.toFixed(0)} years, ${ratePct.toFixed(2)}% / year (fixed-rate approximation).</span>
+        <span>Indicative maximum loan amount: ${maxLoan.toFixed(2)}</span>
       `;
     }
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>

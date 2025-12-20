@@ -1,32 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google tag (gtag.js) - GA4 -->
+  <title>BMI calculator (Body Mass Index) | Universe Tools</title>
+  <meta name="description" content="Free BMI calculator: calculate your Body Mass Index from height and weight and get an indicative weight category. Instant local calculation, no data sent." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
   </script>
 
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "BMI calculator",
-      "url": "https://universe-tools.com/tools/bmi.html",
-      "description": "Calculate your Body Mass Index (BMI) from height and weight with an instant local calculation.",
-      "applicationCategory": "HealthApplication",
-      "operatingSystem": "All"
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
     }
-    </script>
-  
-  <meta charset="UTF-8" />
-  <title>BMI calculator (Body Mass Index) | Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Free BMI calculator: calculate your Body Mass Index from height and weight and get an indicative weight category. Instant local calculation, no data sent.">
+  </script>
+
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"BMI calculator",
+    "url":"https://universe-tools.com/tools/bmi.html",
+    "description":"Calculate your Body Mass Index (BMI) from height and weight with an instant local calculation.",
+    "applicationCategory":"HealthApplication",
+    "operatingSystem":"All",
+    "browserRequirements":"Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,362 +73,17 @@
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/bmi.html" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/bmi.html" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/bmi.html" />
-
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
-
-  <!-- Styles : même base que les autres pages outils -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow:
-        0 0 30px rgba(79, 70, 229, 0.45),
-        0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.3rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
-    }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
-
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 480px;
-      line-height: 1.5;
-    }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr);
-      gap: 0.8rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 600px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field input,
-    .field select {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-    }
-
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
-
-    .tool-result-error {
-      color: #fecaca;
-    }
-
-    .barcode-wrapper {
-      margin-top: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .barcode-box {
-      padding: 0.75rem 1rem;
-      border-radius: 16px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      min-height: 110px;
-      min-width: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-    }
-
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-      text-align: center;
-    }
-  </style>
-
-  <!-- Event snippet conversion -->
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-          'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER -->
     <header>
       <div class="container nav">
-        <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -403,147 +93,276 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
-        <nav class="nav-links">
-          <a href="/#tools">All tools</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <a href="/fr/">FR</a>
-          <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Try another tool</span>
-            <span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
-        <section class="section">
-          <div class="container">
-      
-            <div class="section-header">
-              <h1 class="section-title">BMI calculator</h1>
-              <p class="section-subtitle">
-                Calculate your Body Mass Index (BMI) from your height and weight.
-                This gives an indicative weight category.
+      <section class="section">
+        <div class="container">
+
+          <div class="section-header">
+            <h1 class="section-title">BMI calculator</h1>
+            <p class="section-subtitle">
+              Calculate your Body Mass Index (BMI) from height and weight and get an indicative category.
+              Everything runs locally in your browser.
+            </p>
+          </div>
+
+          <article id="tool-bmi" class="tool-section">
+            <p>
+              Enter your weight and height. The tool calculates BMI using the standard formula:
+              weight (kg) ÷ height² (m²). The category shown is indicative only.
+            </p>
+
+            <form class="tool-form" onsubmit="event.preventDefault(); calculateBMI();">
+              <div class="field">
+                <label for="bmiWeight">Weight (kg)</label>
+                <input id="bmiWeight" type="number" step="0.1" min="0" placeholder="e.g. 70" inputmode="decimal" />
+                <small>Your body weight in kilograms.</small>
+              </div>
+
+              <div class="field">
+                <label for="bmiHeight">Height (cm)</label>
+                <input id="bmiHeight" type="number" step="0.1" min="0" placeholder="e.g. 175" inputmode="decimal" />
+                <small>Your height in centimeters.</small>
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="calculateBMI()">Calculate BMI</button>
+              </div>
+            </form>
+
+            <div id="bmiResult" class="tool-result" aria-live="polite"></div>
+
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About this BMI calculator">
+              <h2>About this BMI calculator (Body Mass Index)</h2>
+
+              <p>
+                This free <strong>BMI calculator</strong> helps you estimate your <strong>Body Mass Index (BMI)</strong>
+                from two simple measurements: your <strong>weight</strong> and your <strong>height</strong>. BMI is a widely
+                used indicator that provides a quick, standardized way to compare body weight relative to height. Because it is
+                simple, it is often used in everyday contexts (fitness, tracking changes over time) and in large-scale health studies.
+                The BMI formula is: <strong>BMI = weight (kg) ÷ height² (m²)</strong>. For example, a person who weighs 70 kg and
+                is 1.75 m tall has a BMI of 70 ÷ (1.75 × 1.75) ≈ 22.9.
+              </p>
+
+              <p>
+                Many people use BMI as an initial reference to see an indicative category such as
+                <strong>underweight</strong>, <strong>normal weight</strong>, <strong>overweight</strong>, or <strong>obesity</strong>.
+                These cutoffs can be helpful for a high-level overview, but BMI has important limitations. It does not directly measure
+                body fat, body composition, muscle mass, bone density, or fat distribution. As a result, a very muscular person may have
+                a high BMI without having excess body fat, and BMI may not reflect health risks equally for all ages and populations.
+                In other words, BMI is a useful screening indicator, but it is not a diagnosis.
+              </p>
+
+              <p>
+                This calculator intentionally focuses on speed and privacy. The computation runs <strong>locally in your browser</strong>:
+                no account is required, and your inputs are not stored or transmitted by this page. You can use it on desktop or mobile
+                for quick checks, to follow a trend over time, or to validate a BMI value from another source.
+              </p>
+
+              <p>
+                If you have health concerns, recent weight changes, or you need personalized guidance (for example, during pregnancy,
+                for children/teens, or for medical conditions), it’s best to consult a qualified healthcare professional. BMI can be one
+                piece of information among others (waist circumference, clinical history, lifestyle, lab results) to get a more accurate picture.
+              </p>
+
+              <p class="small-note">
+                Note: the displayed category is indicative only and should not be used as a medical diagnosis.
+              </p>
+            </section>
+
+            <div class="small-note">
+              Formula: BMI = weight (kg) / height² (m²). Categories are indicative only.
+            </div>
+          </article>
+
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
               </p>
             </div>
-      
-            <article class="tool-section">
-              <p>
-                BMI is calculated as weight divided by height squared.
-                It does not account for muscle mass or body composition.
-              </p>
-      
-              <form class="tool-form" onsubmit="event.preventDefault(); calculateBMI();">
-                <div class="field">
-                  <label for="bmiWeight">Weight (kg)</label>
-                  <input id="bmiWeight" type="number" step="0.1" placeholder="Ex: 70">
-                </div>
-      
-                <div class="field">
-                  <label for="bmiHeight">Height (cm)</label>
-                  <input id="bmiHeight" type="number" step="0.1" placeholder="Ex: 175">
-                </div>
-      
-                <div class="field">
-                  <button class="btn-tool" type="button" onclick="calculateBMI()">
-                    Calculate BMI
-                  </button>
-                </div>
-              </form>
-      
-              <div id="bmiResult" class="tool-result"></div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
 
-              <section class="tool-section" aria-label="SEO content">
-                <h2 class="section-title" style="font-size:1.1rem; margin-bottom:0.5rem;">
-                  About this BMI calculator
-                </h2>
-              
-                <p>
-                  This <strong>BMI calculator</strong> helps you quickly estimate your
-                  <strong>Body Mass Index (BMI)</strong> using your height and weight.
-                  BMI is a commonly used indicator to classify body weight into categories
-                  such as underweight, normal weight, overweight, or obesity.
-                </p>
-              
-                <p>
-                  The calculation is based on the standard formula:
-                  weight (kg) divided by height squared (m²).
-                  While BMI is widely used for population-level assessments, it does not take
-                  into account muscle mass, bone density, age, or body composition.
-                </p>
-              
-                <p>
-                  This tool provides an <strong>indicative result only</strong> and should not
-                  be used as a medical diagnosis. For health-related concerns or personalized advice,
-                  consult a qualified healthcare professional.
-                </p>
-              
-                <p>
-                  All calculations are performed directly in your browser.
-                  No personal data is stored, transmitted, or tracked.
-                </p>
-              
-                <p class="small-note">
-                  Source reference: World Health Organization (WHO) BMI classification.
-                </p>
-              </section>
-      
-              <div class="small-note">
-                BMI categories are indicative only and not a medical diagnosis.
-              </div>
-            </article>
-      
-          </div>
-        </section>
-      </main>
-      
-      <footer>
-        <div class="container footer-inner">
-          <span>© <span id="year"></span> Universe Tools</span>
-          <span>Local calculation – No data sent</span>
         </div>
-      </footer>
-      
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
       </div>
-      
-      <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-      
-        function parseNum(v) {
-          return parseFloat(String(v || "").replace(",", "."));
-        }
-      
-        function calculateBMI() {
-          const weight = parseNum(document.getElementById("bmiWeight").value);
-          const heightCm = parseNum(document.getElementById("bmiHeight").value);
-          const res = document.getElementById("bmiResult");
-      
-          if (!weight || !heightCm || weight <= 0 || heightCm <= 0) {
-            res.innerHTML = "<span>Please enter valid weight and height.</span>";
-            return;
-          }
-      
-          const heightM = heightCm / 100;
-          const bmi = weight / (heightM * heightM);
-      
-          let category = "";
-          if (bmi < 18.5) category = "Underweight";
-          else if (bmi < 25) category = "Normal weight";
-          else if (bmi < 30) category = "Overweight";
-          else category = "Obesity";
-      
-          res.innerHTML = `
-            <strong>BMI: ${bmi.toFixed(1)}</strong>
-            <span>Category: ${category}</span>
-          `;
-        }
-      </script>
+    </footer>
+
+  </div>
+
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
+  <!-- SCRIPTS -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function parseNum(v) {
+      const n = parseFloat(String(v || "").replace(",", "."));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function classifyBMI(bmi) {
+      if (!Number.isFinite(bmi)) return "";
+      if (bmi < 18.5) return "Underweight";
+      if (bmi < 25) return "Normal weight";
+      if (bmi < 30) return "Overweight";
+      return "Obesity";
+    }
+
+    function calculateBMI() {
+      const weight = parseNum(document.getElementById("bmiWeight").value);
+      const heightCm = parseNum(document.getElementById("bmiHeight").value);
+      const res = document.getElementById("bmiResult");
+
+      if (weight === null || heightCm === null || weight <= 0 || heightCm <= 0) {
+        res.innerHTML = "<span>Please enter valid weight and height values.</span>";
+        return;
+      }
+
+      const heightM = heightCm / 100;
+      const bmi = weight / (heightM * heightM);
+      const category = classifyBMI(bmi);
+
+      res.innerHTML = `
+        <strong>BMI: ${bmi.toFixed(1)}</strong>
+        <span>Category: ${category}</span>
+        <span>${weight.toFixed(1)} kg • ${heightCm.toFixed(1)} cm</span>
+      `;
+    }
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
+  </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
+</body>
+</html>

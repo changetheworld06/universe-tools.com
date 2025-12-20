@@ -7,9 +7,25 @@
   <title>Cookie & GDPR Analyzer (Local) | Universe Tools</title>
   <meta name="description" content="Analyze cookies accessible in your browser and get GDPR risk indicators. Local tool, no upload." />
   <meta name="robots" content="index,follow" />
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#4f46e5" />
 
-  <!-- GA4 + Ads -->
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/cookie-rgpd-analyzer.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/cookie-rgpd-analyzer.html" />
+  <!-- (Tu n’as pas donné l’URL FR : je ne sais pas.) -->
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/cookie-rgpd-analyzer.html" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,185 +35,53 @@
     gtag('config', 'AW-325165312');
   </script>
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://universe-tools.com/tools/cookie-rgpd-analyzer.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/cookie-rgpd-analyzer.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/cookie-rgpd-analyzer.html" />
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
+  <!-- JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
 
-  <!-- JSON-LD -->
+  <!-- JSON-LD WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Cookie & GDPR Analyzer (Local)",
     "url": "https://universe-tools.com/tools/cookie-rgpd-analyzer.html",
-    "description": "Analyze cookies accessible in your browser and get GDPR risk indicators. Local tool.",
+    "description": "Analyze cookies accessible in your browser (via document.cookie) and get GDPR risk indicators. Local tool, no upload.",
     "applicationCategory": "Utility",
     "operatingSystem": "All",
     "isAccessibleForFree": true,
     "browserRequirements": "Requires JavaScript"
   }
   </script>
-
-  <style>
-    :root{
-      --bg:#050816;--bg-soft:#0b1020;--accent:#4f46e5;--accent-soft:rgba(79,70,229,.12);
-      --text:#f9fafb;--muted:#9ca3af;--border:#1f2937;
-      --radius-lg:18px;--radius-md:12px;--radius-sm:8px;
-      --shadow-card:0 14px 35px rgba(15,23,42,.7);
-      --max-width:1120px;--t:.18s ease-out;
-      --danger:#ef4444;--warn:#f59e0b;--ok:#22c55e;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
-      background:radial-gradient(circle at top,#111827,#020617 55%,#000 100%);
-      color:var(--text);min-height:100vh;
-    }
-    a{color:inherit;text-decoration:none}
-    .page{min-height:100vh;display:flex;flex-direction:column}
-    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.5rem}
-
-    header{
-      position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);
-      background:linear-gradient(to bottom,rgba(15,23,42,.92),rgba(15,23,42,.75),transparent);
-      border-bottom:1px solid rgba(148,163,184,.18);
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
-    .brand{display:flex;align-items:center;gap:.65rem}
-    .brand-logo{
-      width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;overflow:hidden;
-      box-shadow:0 0 30px rgba(79,70,229,.45),0 0 4px rgba(148,163,184,.8);
-      background:radial-gradient(circle at 30% 0%,#e5e7eb,#4f46e5 55%,#020617);
-      flex:0 0 auto;
-    }
-    .brand-name{font-weight:700;letter-spacing:.04em;font-size:.95rem}
-    .brand-tagline{font-size:.72rem;color:var(--muted)}
-    .nav-links{display:flex;align-items:center;gap:1.1rem;font-size:.9rem;flex-wrap:wrap;justify-content:flex-end}
-    .nav-links a{color:var(--muted);border-bottom:2px solid transparent;padding:.25rem 0;transition:color var(--t),border-color var(--t),transform var(--t)}
-    .nav-links a:hover{color:#e5e7eb;border-color:rgba(129,140,248,.7);transform:translateY(-1px)}
-    .nav-cta{
-      padding:.45rem .9rem;border-radius:999px;border:1px solid rgba(129,140,248,.6);
-      background:radial-gradient(circle at top left,#4f46e5,#0f172a);
-      font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
-      display:inline-flex;align-items:center;gap:.3rem;box-shadow:0 8px 25px rgba(79,70,229,.4);
-      cursor:pointer;white-space:nowrap;
-    }
-
-    .section{padding:1.5rem 0 3.5rem}
-    .section-header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
-    .section-title{font-size:1.5rem;letter-spacing:-.03em}
-    .section-subtitle{font-size:.9rem;color:var(--muted);max-width:760px;line-height:1.5}
-
-    .tool-section{
-      border-radius:20px;border:1px solid rgba(55,65,81,.9);
-      background:radial-gradient(circle at top left,#020617,#020617);
-      padding:1.2rem 1.1rem 1.4rem;box-shadow:var(--shadow-card);margin-bottom:1.2rem;
-    }
-    .tool-section p{font-size:.85rem;color:var(--muted);margin-bottom:.9rem;line-height:1.55}
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1.1fr 1fr 1fr 1fr;
-      gap:.8rem;
-      align-items:end;
-    }
-    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
-    @media (max-width:650px){.grid{grid-template-columns:1fr;}}
-
-    .field{display:flex;flex-direction:column;gap:.35rem;font-size:.8rem}
-    .field label{color:var(--muted)}
-    .field input, .field select, .field textarea{
-      border-radius:var(--radius-sm);
-      border:1px solid rgba(75,85,99,.9);
-      background:radial-gradient(circle at top left,#020617,#020617);
-      color:var(--text);
-      padding:.55rem .6rem;
-      font-size:.9rem;outline:none;
-    }
-    .field textarea{min-height:92px;resize:vertical;line-height:1.55}
-    .field small{color:#6b7280;font-size:.72rem;line-height:1.35}
-
-    .btn{
-      border-radius:var(--radius-sm);border:none;padding:.62rem .95rem;font-size:.86rem;
-      background:linear-gradient(135deg,#4f46e5,#6366f1);color:#e5e7eb;font-weight:700;
-      cursor:pointer;box-shadow:0 12px 28px rgba(79,70,229,.5);user-select:none;
-    }
-    .btn.secondary{background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;font-weight:600}
-    .btn[disabled]{opacity:.55;cursor:not-allowed}
-
-    .results{
-      margin-top:1rem;
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:.8rem;
-    }
-    @media (max-width:900px){.results{grid-template-columns:1fr;}}
-    .card{
-      border-radius:var(--radius-md);
-      border:1px solid rgba(55,65,81,.8);
-      background:rgba(2,6,23,.55);
-      padding:1rem;
-    }
-    .card h2{font-size:1rem;margin-bottom:.45rem}
-    .big{font-size:1.35rem;font-weight:800;letter-spacing:-.02em}
-    .muted{color:var(--muted);font-size:.82rem;margin-top:.25rem;line-height:1.45}
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:.9rem;
-      font-size:.88rem;
-      overflow:hidden;
-      border-radius:var(--radius-md);
-      border:1px solid rgba(55,65,81,.8);
-    }
-    th, td{padding:.7rem .75rem;border-bottom:1px solid rgba(55,65,81,.6);text-align:left}
-    th{color:#e5e7eb;background:rgba(2,6,23,.65);font-weight:700}
-    td{color:#e5e7eb}
-    tr:last-child td{border-bottom:none}
-
-    .pill{
-      display:inline-flex;align-items:center;gap:.35rem;
-      font-size:.74rem;
-      padding:.22rem .55rem;
-      border-radius:999px;
-      border:1px solid rgba(55,65,81,.8);
-      background:rgba(2,6,23,.45);
-      color:#e5e7eb;
-      white-space:nowrap;
-    }
-    .pill.ok{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.08);color:#bbf7d0}
-    .pill.warn{border-color:rgba(245,158,11,.35);background:rgba(245,158,11,.08);color:#fde68a}
-    .pill.danger{border-color:rgba(239,68,68,.35);background:rgba(239,68,68,.08);color:#fecaca}
-
-    .note{font-size:.74rem;color:#6b7280;margin-top:.75rem;line-height:1.55}
-
-    footer{border-top:1px solid rgba(30,64,175,.6);background:radial-gradient(circle at top,#020617,#020617);margin-top:auto}
-    .footer-inner{
-      padding:1rem 0 1.4rem;font-size:.75rem;color:#6b7280;
-      display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center
-    }
-    .footer-links{display:flex;gap:.9rem;flex-wrap:wrap}
-    .footer-links a{color:#6b7280}
-    .footer-links a:hover{color:#e5e7eb}
-  </style>
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER -->
     <header>
       <div class="container nav">
-        <div class="brand">
+        <a class="brand" href="/">
           <div class="brand-logo" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -207,33 +91,38 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
-          <div>
+          <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="/#tools">All tools</a>
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <button class="nav-cta" type="button" onclick="window.location.href='/'">
-            <span>Try another tool</span><span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
+
           <div class="section-header">
             <h1 class="section-title">Cookie & GDPR Analyzer (local)</h1>
             <p class="section-subtitle">
-              Reads cookies accessible via <code>document.cookie</code> and flags common tracking patterns. No upload.
-              Note: HttpOnly cookies are not visible to JavaScript.
+              Reads cookies accessible via <code>document.cookie</code> and flags common tracking patterns.
+              No upload. Note: <code>HttpOnly</code> cookies are not visible to JavaScript.
             </p>
           </div>
 
@@ -243,14 +132,14 @@
               This helps spot unexpected tracking cookies.
             </p>
 
-            <form class="grid" onsubmit="event.preventDefault();">
-              <div class="field" style="grid-column: span 2;">
+            <form class="tool-form" onsubmit="event.preventDefault();">
+              <div class="field">
                 <label for="expected">Expected cookies (optional, one per line)</label>
-                <textarea id="expected" placeholder="Example:
+                <textarea id="expected" rows="5" placeholder="Example:
 _ga
 _gid
 sessionid"></textarea>
-                <small>Optional. Leave empty to just analyze current readable cookies.</small>
+                <small>Leave empty to analyze current readable cookies only.</small>
               </div>
 
               <div class="field">
@@ -260,14 +149,6 @@ sessionid"></textarea>
                   <option value="strict">Strict (more tracking matches)</option>
                 </select>
                 <small>Strict flags more cookies as “tracking”.</small>
-              </div>
-
-              <div class="field">
-                <button id="btnAnalyze" class="btn" type="button">Analyze</button>
-              </div>
-
-              <div class="field">
-                <button id="btnReset" class="btn secondary" type="button">Reset</button>
               </div>
 
               <div class="field">
@@ -286,78 +167,100 @@ sessionid"></textarea>
               </div>
 
               <div class="field">
-                <button id="btnCopy" class="btn secondary" type="button" disabled>Copy report</button>
+                <button id="btnAnalyze" class="btn-tool" type="button">Analyze</button>
+              </div>
+
+              <div class="field">
+                <button id="btnReset" class="btn-tool" type="button">Reset</button>
+              </div>
+
+              <div class="field">
+                <button id="btnCopy" class="btn-tool" type="button" disabled>Copy report</button>
               </div>
             </form>
 
-            <div id="quickResults" class="results" style="display:none;">
-              <div class="card">
-                <h2>Readable cookies</h2>
-                <div id="cTotal" class="big">—</div>
-                <div class="muted">Cookies found via <code>document.cookie</code></div>
-              </div>
-              <div class="card">
-                <h2>Tracking signals</h2>
-                <div id="cTrack" class="big">—</div>
-                <div class="muted">Likely analytics/ads identifiers</div>
-              </div>
-              <div class="card">
-                <h2>Unexpected</h2>
-                <div id="cUnexpected" class="big">—</div>
-                <div class="muted">Not in your “expected” list</div>
-              </div>
-            </div>
+            <div id="quickResults" class="tool-result" style="display:none;" aria-live="polite"></div>
 
-            <div id="tableWrap" style="display:none;">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Cookie name</th>
-                    <th>Category</th>
-                    <th>GDPR risk</th>
-                    <th>Expected?</th>
-                  </tr>
-                </thead>
-                <tbody id="tbody"></tbody>
-              </table>
+            <div id="tableWrap" style="display:none; margin-top:14px;">
+              <div style="overflow-x:auto;">
+                <table style="width:100%; border-collapse:collapse;">
+                  <thead>
+                    <tr>
+                      <th style="text-align:left; padding:10px;">Cookie name</th>
+                      <th style="text-align:left; padding:10px;">Category</th>
+                      <th style="text-align:left; padding:10px;">GDPR risk</th>
+                      <th style="text-align:left; padding:10px;">Expected?</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody"></tbody>
+                </table>
+              </div>
 
-              <div id="msg" class="note"></div>
+              <div id="msg" class="small-note" style="margin-top:10px;"></div>
 
-              <div class="note">
+              <div class="small-note" style="margin-top:10px;">
                 <strong>Limitations:</strong> This tool can’t read <code>HttpOnly</code> cookies, server-side cookies,
                 or some third-party cookies blocked by the browser. This is a quick indicator, not a legal audit.
               </div>
             </div>
           </article>
 
-          <article class="tool-section">
+          <!-- SEO paragraph -->
+          <section class="tool-section" aria-label="Cookie analyzer guide">
+            <h2>Cookie analyzer: what it checks and how to interpret results</h2>
+
             <p>
-              <strong>How to use:</strong> Open your site, then open this tool in the same browser. Click “Analyze”.
-              If you see tracking signals, make sure your consent banner blocks non-essential cookies before consent.
+              A <strong>cookie & GDPR analyzer</strong> helps you quickly review what your browser can read through
+              <code>document.cookie</code>. This is useful to spot common analytics or advertising identifiers, and to
+              compare them with an expected list (for example, cookies your consent banner should allow only after opt-in).
             </p>
-            <p style="margin-bottom:0;">
-              Always review your CMP settings and documentation (Privacy Policy, Cookie Policy, consent logs).
+
+            <p>
+              This tool uses <strong>simple local heuristics</strong> (keyword matching) to flag cookies that look like
+              tracking or analytics identifiers. It also highlights cookies that are <strong>unexpected</strong> compared
+              to your own list. Because it runs 100% in your browser, no cookie values are uploaded.
             </p>
-          </article>
+
+            <p>
+              Keep in mind: many important cookies can be <strong>invisible to JavaScript</strong> (for example
+              <code>HttpOnly</code> cookies). A proper compliance review usually involves checking your consent platform (CMP),
+              tag manager setup, and documentation (privacy/cookie policy, consent logs).
+            </p>
+          </section>
+
+          <!-- RELATED TOOLS (maillage interne) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
 
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
         <span>© <span id="year"></span> Universe Tools</span>
-        <div class="footer-links">
-          <a href="/privacy.html">Privacy</a>
-          <a href="/legal.html">Legal</a>
-          <a href="/#tools">All tools</a>
-        </div>
+        <span>Local calculation only</span>
       </div>
     </footer>
+
   </div>
+
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
 
   <script>
     const $ = (id) => document.getElementById(id);
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
     // --- Heuristics (local, no API) ---
     const TRACK_KEYS_NORMAL = [
@@ -393,17 +296,10 @@ sessionid"></textarea>
       const n = name.toLowerCase();
       const keys = strict ? TRACK_KEYS_STRICT : TRACK_KEYS_NORMAL;
 
-      // tracking
-      if (keys.some(k => n.includes(k))) return { cat: "Tracking / Analytics", risk: "High", cls: "danger", score: 3 };
-
-      // session-ish
-      if (n.includes("sess") || n.includes("session") || n.startsWith("sid")) return { cat: "Session", risk: "Medium", cls: "warn", score: 2 };
-
-      // preference
-      if (n.includes("pref") || n.includes("lang") || n.includes("theme")) return { cat: "Preferences", risk: "Low", cls: "ok", score: 1 };
-
-      // fallback
-      return { cat: "Functional", risk: "Low", cls: "ok", score: 1 };
+      if (keys.some(k => n.includes(k))) return { cat: "Tracking / Analytics", risk: "High", score: 3 };
+      if (n.includes("sess") || n.includes("session") || n.startsWith("sid")) return { cat: "Session", risk: "Medium", score: 2 };
+      if (n.includes("pref") || n.includes("lang") || n.includes("theme")) return { cat: "Preferences", risk: "Low", score: 1 };
+      return { cat: "Functional", risk: "Low", score: 1 };
     }
 
     function buildReport(rows, totals){
@@ -428,42 +324,43 @@ sessionid"></textarea>
       const filter = ($("filter").value || "").trim().toLowerCase();
       const sort = $("sort").value;
 
-      const cookies = getReadableCookies()
+      const base = getReadableCookies();
+      const rows = base
         .map(name => {
           const meta = classify(name, strict);
-          const isExp = expected.size ? expected.has(name.toLowerCase()) : true; // if no list, treat as expected
+          const isExp = expected.size ? expected.has(name.toLowerCase()) : true;
           return { name, expected: isExp, ...meta };
         })
         .filter(r => !filter || r.name.toLowerCase().includes(filter));
 
-      if (sort === "name") cookies.sort((a,b) => a.name.localeCompare(b.name));
-      else cookies.sort((a,b) => (b.score - a.score) || a.name.localeCompare(b.name));
+      if (sort === "name") rows.sort((a,b) => a.name.localeCompare(b.name));
+      else rows.sort((a,b) => (b.score - a.score) || a.name.localeCompare(b.name));
 
-      const totalAll = getReadableCookies().length;
-      const trackingAll = getReadableCookies().filter(n => classify(n, strict).risk === "High").length;
-      const unexpectedAll = expected.size
-        ? getReadableCookies().filter(n => !expected.has(n.toLowerCase())).length
-        : 0;
+      const totalAll = base.length;
+      const trackingAll = base.filter(n => classify(n, strict).risk === "High").length;
+      const unexpectedAll = expected.size ? base.filter(n => !expected.has(n.toLowerCase())).length : 0;
 
-      $("quickResults").style.display = "grid";
-      $("cTotal").textContent = String(totalAll);
-      $("cTrack").textContent = String(trackingAll);
-      $("cUnexpected").textContent = expected.size ? String(unexpectedAll) : "—";
+      // quick summary (simple, using existing classes)
+      $("quickResults").style.display = "block";
+      $("quickResults").innerHTML = `
+        <strong>Readable cookies: ${totalAll}</strong>
+        <span>Tracking signals: ${trackingAll}</span>
+        <span>Unexpected: ${expected.size ? unexpectedAll : "—"}</span>
+      `;
 
       $("tableWrap").style.display = "block";
 
-      // table
       const tbody = $("tbody");
-      tbody.innerHTML = cookies.length ? "" : `<tr><td colspan="4">No readable cookies matched your filter.</td></tr>`;
+      tbody.innerHTML = rows.length ? "" : `<tr><td colspan="4" style="padding:10px;">No readable cookies matched your filter.</td></tr>`;
 
-      cookies.forEach(r => {
-        const expTxt = expected.size ? (r.expected ? `<span class="pill ok">yes</span>` : `<span class="pill danger">no</span>`) : `<span class="pill">n/a</span>`;
+      rows.forEach(r => {
+        const expTxt = expected.size ? (r.expected ? "yes" : "no") : "n/a";
         tbody.insertAdjacentHTML("beforeend", `
           <tr>
-            <td>${r.name}</td>
-            <td>${r.cat}</td>
-            <td><span class="pill ${r.cls}">${r.risk}</span></td>
-            <td>${expTxt}</td>
+            <td style="padding:10px;">${escapeHtml(r.name)}</td>
+            <td style="padding:10px;">${escapeHtml(r.cat)}</td>
+            <td style="padding:10px;">${escapeHtml(r.risk)}</td>
+            <td style="padding:10px;">${escapeHtml(expTxt)}</td>
           </tr>
         `);
       });
@@ -472,16 +369,16 @@ sessionid"></textarea>
       if (!totalAll){
         $("msg").textContent = "No readable cookies detected via document.cookie.";
       } else if (trackingAll){
-        $("msg").innerHTML = `<span class="pill danger">Action</span> Tracking signals detected. Ensure non-essential cookies are blocked until consent.`;
+        $("msg").textContent = "Tracking signals detected. Ensure non-essential cookies are blocked until consent.";
       } else {
-        $("msg").innerHTML = `<span class="pill ok">Good</span> No obvious tracking signals detected in readable cookies.`;
+        $("msg").textContent = "No obvious tracking signals detected in readable cookies.";
       }
 
       // enable copy
       $("btnCopy").disabled = (totalAll === 0);
 
       // store report for copy
-      const rowsAll = getReadableCookies().map(name => {
+      const rowsAll = base.map(name => {
         const meta = classify(name, strict);
         const isExp = expected.size ? expected.has(name.toLowerCase()) : true;
         return { name, expected: isExp, cat: meta.cat, risk: meta.risk };
@@ -499,9 +396,9 @@ sessionid"></textarea>
       if (!txt) return;
       try{
         await navigator.clipboard.writeText(txt);
-        $("msg").innerHTML = `<span class="pill ok">Copied</span> Report copied to clipboard.`;
+        $("msg").textContent = "Report copied to clipboard.";
       }catch{
-        $("msg").innerHTML = `<span class="pill danger">Error</span> Copy failed (browser restriction).`;
+        $("msg").textContent = "Copy failed (browser restriction).";
       }
     }
 
@@ -518,10 +415,21 @@ sessionid"></textarea>
       $("btnCopy").dataset.report = "";
     }
 
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
-      $("year").textContent = new Date().getFullYear();
+      resetAll();
       $("btnAnalyze").addEventListener("click", render);
       $("btnReset").addEventListener("click", resetAll);
+      $("btnCopy").addEventListener("click", copyReport);
+
       $("filter").addEventListener("input", () => {
         if ($("tableWrap").style.display !== "none") render();
       });
@@ -531,11 +439,93 @@ sessionid"></textarea>
       $("strictMode").addEventListener("change", () => {
         if ($("tableWrap").style.display !== "none") render();
       });
-      $("btnCopy").addEventListener("click", copyReport);
-
-      // page starts empty (no auto run)
-      resetAll();
     });
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+    })();
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>

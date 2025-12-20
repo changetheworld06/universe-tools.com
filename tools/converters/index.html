@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Converters Tools – Universe Tools</title>
+  <meta name="description" content="Free online converters tools: currency, units, temperature, and more.">
+</head>
+<body>
+
+<h1>Online Converters Tools</h1>
+
+<p>
+Free and fast online converters tools to convert currencies, units, temperatures and more.
+</p>
+
+<ul id="tools-list"></ul>
+
+<script src="/assets/tools-data.js"></script>
+<script>
+  const list = document.getElementById("tools-list");
+
+  TOOLS_DATA
+    .filter(tool => tool.category === "converters")
+    .forEach(tool => {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="/tools/${tool.slug}.html">${tool.name}</a>`;
+      list.appendChild(li);
+    });
+</script>
+
+</body>
+</html>

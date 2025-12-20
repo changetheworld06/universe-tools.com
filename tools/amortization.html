@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Analytics -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Loan amortization calculator – Linear or annuity schedule | Universe Tools</title>
+  <meta name="description" content="Free loan amortization calculator. Build a yearly schedule with linear (constant principal) or annuity (constant payment) and see interest, principal and remaining balance.">
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
   </script>
 
-  <!-- SEO JSON-LD -->
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
+    }
+  </script>
+
+  <!-- SEO JSON-LD WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -20,10 +46,21 @@
   }
   </script>
 
-  <meta charset="UTF-8" />
-  <title>Loan amortization calculator – Linear or annuity schedule | Universe Tools</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Free loan amortization calculator. Build a yearly schedule with linear (constant principal) or annuity (constant payment) and see interest, principal and remaining balance.">
+  <!-- Structured Data : WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Loan amortization calculator",
+    "url": "https://universe-tools.com/tools/amortization.html",
+    "description": "Build a yearly amortization schedule with linear (constant principal) or annuity (constant payment). Calculations run locally in your browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
+
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -36,420 +73,17 @@
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/amortization.html" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/amortization.html" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/amortization.html" />
-
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () { if (url) window.location = url; };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-        'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-
-  <!-- STYLES : même base que les autres pages outils -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* HEADER */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow:
-        0 0 30px rgba(79, 70, 229, 0.45),
-        0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.3rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
-    }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
-
-    /* SECTION / TOOL STYLES */
-
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.5;
-    }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.8rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 1000px) {
-      .tool-form {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 650px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field small {
-      color: #6b7280;
-      font-size: 0.72rem;
-    }
-
-    .field input,
-    .field select {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-      transition: border-color var(--transition-fast),
-        box-shadow var(--transition-fast), background var(--transition-fast);
-    }
-
-    .field input::placeholder {
-      color: #6b7280;
-    }
-
-    .field input:focus,
-    .field select:focus {
-      border-color: #818cf8;
-      box-shadow:
-        0 0 0 1px rgba(129, 140, 248, 0.6),
-        0 14px 32px rgba(15, 23, 42, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform var(--transition-fast),
-        box-shadow var(--transition-fast), opacity var(--transition-fast);
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-    }
-
-    .btn-tool:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 36px rgba(79, 70, 229, 0.7);
-    }
-
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
-
-    .tool-result strong {
-      color: #e5e7eb;
-    }
-
-    .tool-result span {
-      color: var(--muted);
-      font-size: 0.8rem;
-      display: block;
-      margin-top: 0.25rem;
-    }
-
-    .amort-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.9rem;
-      font-size: 0.8rem;
-    }
-
-    .amort-table th,
-    .amort-table td {
-      padding: 0.45rem 0.6rem;
-      border-bottom: 1px solid rgba(55, 65, 81, 0.9);
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    .amort-table th:first-child,
-    .amort-table td:first-child {
-      text-align: left;
-    }
-
-    .amort-table th {
-      color: #e5e7eb;
-      font-weight: 600;
-    }
-
-    .amort-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-      transition: color var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .footer-links a:hover {
-      color: #e5e7eb;
-      transform: translateY(-0.5px);
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
 </head>
 
 <body>
   <div class="page">
-    <!-- HEADER -->
+
+    <!-- HEADER (copié-collé, simple) -->
     <header>
       <div class="container nav">
-        <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -459,75 +93,69 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
-        <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
-          <a href="/fr/">FR</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">Tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
         </nav>
 
-        <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
           <span>→</span>
         </button>
       </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <h1 class="section-title">Linear / declining loan amortization</h1>
+            <h1 class="section-title">Loan amortization calculator</h1>
             <p class="section-subtitle">
               Build a yearly amortization schedule from a loan amount, interest rate and duration.
-              You can choose between constant principal (linear) and constant payments
-              (annuity / declining balance).
+              Compare linear (constant principal) vs annuity (constant payment).
             </p>
           </div>
 
           <article id="tool-amortization" class="tool-section">
             <p>
               Fill in the loan details and select the amortization method.
-              The tool will compute, year by year:
-              opening balance, interest paid, principal repaid, yearly payment,
-              and remaining balance.
+              The tool computes year by year: opening balance, interest, principal, payment, and remaining balance.
+              Everything runs locally in your browser.
             </p>
 
             <form class="tool-form" onsubmit="event.preventDefault(); calculateAmortization();">
               <div class="field">
                 <label for="loanAmount">Loan amount</label>
-                <input id="loanAmount" type="number" step="0.01" min="0" placeholder="Ex: 100000" />
-                <small>Total amount borrowed.</small>
+                <input id="loanAmount" type="number" step="0.01" min="0" placeholder="e.g. 100000" />
               </div>
 
               <div class="field">
                 <label for="annualRate">Interest rate (% / year)</label>
-                <input id="annualRate" type="number" step="0.01" min="0" placeholder="Ex: 4" />
-                <small>Nominal yearly rate.</small>
+                <input id="annualRate" type="number" step="0.01" min="0" placeholder="e.g. 4" />
               </div>
 
               <div class="field">
                 <label for="loanYears">Duration (years)</label>
-                <input id="loanYears" type="number" step="1" min="1" placeholder="Ex: 20" />
-                <small>Number of yearly periods.</small>
+                <input id="loanYears" type="number" step="1" min="1" placeholder="e.g. 20" />
               </div>
 
               <div class="field">
                 <label for="amortType">Amortization type</label>
                 <select id="amortType">
                   <option value="linear">Linear – constant principal</option>
-                  <option value="annuity">Declining balance – constant payment</option>
+                  <option value="annuity">Annuity – constant payment</option>
                 </select>
-                <small>Common mortgages use constant payments (annuity).</small>
               </div>
 
               <div class="field">
@@ -537,48 +165,67 @@
               </div>
             </form>
 
-            <div id="amortResult" class="tool-result"></div>
+            <div id="amortResult" class="tool-result" aria-live="polite"></div>
 
-            <section class="tool-section seo-text" aria-label="SEO content">
-              <h2 class="section-title" style="font-size:1.1rem; margin-bottom:0.5rem;">
-                About this loan amortization calculator
-              </h2>
-            
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About this loan amortization calculator">
+              <h2>About this loan amortization calculator</h2>
+
               <p>
-                This free loan amortization calculator helps you build a clear yearly amortization schedule from
-                three simple inputs: loan amount, annual interest rate and duration. In a few seconds, you can compare
-                two common repayment methods: <strong>linear amortization</strong> (constant principal repayments)
-                and <strong>annuity amortization</strong> (constant yearly payments).
+                A loan can look simple on paper—borrow an amount, repay it over time—but the real cost is often hidden in the
+                interest schedule. This free <strong>loan amortization calculator</strong> helps you build a clear yearly repayment
+                table so you can understand how your balance changes over time. Enter your <strong>loan amount</strong>,
+                <strong>annual interest rate</strong>, and <strong>duration</strong>, then choose an amortization method to generate
+                a schedule showing the key numbers for each year: opening balance, interest paid, principal repaid, total payment,
+                and closing balance.
               </p>
-            
+
               <p>
-                The generated table shows, year by year, the opening balance, interest paid, principal repaid, total payment,
-                and the remaining balance. This is useful to estimate the total cost of a loan, understand how interest evolves
-                over time, and compare scenarios before contacting a lender. All calculations run locally in your browser:
-                <strong>no account, no upload, no tracking of your inputs</strong>.
+                This tool is useful when you want to compare scenarios before taking a mortgage, a personal loan, or any long-term
+                financing. For example, you can test how a small change in interest rate affects total interest paid, or how choosing
+                a shorter duration increases yearly payments but reduces the overall cost. Seeing the amortization table can also help
+                you plan savings, anticipate cash flow, or compare offers from different lenders in a more objective way.
               </p>
-            
-              <h3 style="font-size:1rem; margin:0.9rem 0 0.4rem; color:#e5e7eb;">
-                Linear vs annuity amortization: what’s the difference?
-              </h3>
-            
+
               <p>
-                With <strong>linear amortization</strong>, you repay the same amount of principal each year, so interest decreases
-                faster and payments typically go down over time. With <strong>annuity amortization</strong>, the payment stays
-                constant, meaning interest is higher at the beginning and the principal portion increases progressively.
-                This tool helps you visualize both approaches and choose the one that matches your budget strategy.
+                The calculator supports two common repayment models. With <strong>linear amortization</strong> (also known as constant
+                principal), you repay the same amount of principal each year. Because the outstanding balance decreases faster,
+                <strong>interest typically drops more quickly</strong>, and the total payment usually becomes smaller over time.
+                With <strong>annuity amortization</strong> (constant payment), the yearly payment stays stable (when the rate is fixed),
+                meaning you pay more interest at the beginning and progressively repay more principal later. Both approaches are valid,
+                and the “best” one depends on your budget strategy and financial goals.
               </p>
-            
+
+              <p>
+                Everything is computed <strong>locally in your browser</strong>. This page does not upload your data and does not require
+                an account. Keep in mind that the schedule is simplified to a yearly view and does not include insurance, fees, taxes,
+                or bank-specific rounding rules. Still, it’s an excellent way to estimate repayments, understand interest mechanics,
+                and make smarter decisions when evaluating a loan.
+              </p>
+
               <p class="small-note">
-                Note: results are simplified to a yearly schedule and do not include insurance, fees, or specific banking rounding rules.
+                Tip: try generating both “linear” and “annuity” schedules for the same loan to quickly see how interest and principal
+                shift over time.
               </p>
             </section>
 
             <div class="small-note">
               This is a simplified yearly schedule and does not replace official bank documents.
-              For exact figures, always refer to your lender's amortization table.
+              For exact figures, refer to your lender’s amortization table.
             </div>
           </article>
+
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
+
         </div>
       </section>
     </main>
@@ -586,15 +233,19 @@
     <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. Tous droits réservés.</span>
+        <span>© <span id="year"></span> Universe Tools</span>
         <div class="footer-links">
-          <a href="/privacy.html">Confidentialité</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/#tools">Tous les outils</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
         </div>
       </div>
     </footer>
+
   </div>
+
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
 
   <!-- SCRIPTS -->
   <script>
@@ -604,27 +255,31 @@
       return parseFloat(String(v || "").replace(",", "."));
     }
 
+    function fmt(n) {
+      if (!isFinite(n)) return "0.00";
+      return Number(n).toFixed(2);
+    }
+
     function calculateAmortization() {
       const amount = parseNum(document.getElementById("loanAmount").value);
       const ratePct = parseNum(document.getElementById("annualRate").value);
-      const years = parseNum(document.getElementById("loanYears").value);
+      const yearsRaw = parseNum(document.getElementById("loanYears").value);
       const type = document.getElementById("amortType").value;
       const resultEl = document.getElementById("amortResult");
 
-      if (!amount || amount <= 0 || !ratePct || ratePct < 0 || !years || years <= 0) {
+      if (!isFinite(amount) || amount <= 0 || !isFinite(ratePct) || ratePct < 0 || !isFinite(yearsRaw) || yearsRaw <= 0) {
         resultEl.innerHTML = "<span>Please enter a valid amount, interest rate and duration.</span>";
         return;
       }
 
+      const n = Math.max(1, Math.round(yearsRaw));
       const r = ratePct / 100;
-      const n = Math.round(years);
-      let balance = amount;
 
-      const rows = [];
+      let balance = amount;
       let totalInterest = 0;
       let totalPrincipal = 0;
-      let payment = 0;
 
+      let payment = 0;
       if (type === "annuity") {
         if (r === 0) {
           payment = amount / n;
@@ -633,36 +288,35 @@
         }
       }
 
-      const principalLinear = type === "linear" ? amount / n : null;
+      const principalLinear = (type === "linear") ? (amount / n) : 0;
+
+      const rows = [];
 
       for (let year = 1; year <= n; year++) {
         const opening = balance;
+
         let interest = opening * r;
-        let principal;
+        let principal = 0;
+        let pay = payment;
 
         if (type === "linear") {
           principal = principalLinear;
-          let yearlyPayment = principal + interest;
-          if (year === n) {
-            principal = opening; // ajuste la dernière année pour effacer le solde
-            yearlyPayment = principal + interest;
-          }
-          payment = yearlyPayment;
+          if (year === n) principal = opening; // clear balance
+          pay = principal + interest;
         } else {
-          // annuity
+          principal = pay - interest;
+
+          if (principal > opening) {
+            principal = opening;
+            pay = principal + interest;
+          }
           if (year === n) {
-            // ajuste pour éviter un solde négatif dû aux arrondis
-            interest = opening * r;
-            principal = payment - interest;
-            if (principal > opening) {
-              principal = opening;
-              payment = principal + interest;
-            }
-          } else {
-            principal = payment - interest;
+            principal = opening;
+            pay = principal + interest;
           }
         }
 
+        if (principal < 0) principal = 0;
         if (principal > opening) principal = opening;
 
         const closing = opening - principal;
@@ -670,22 +324,15 @@
         totalInterest += interest;
         totalPrincipal += principal;
 
-        rows.push({
-          year,
-          opening,
-          payment,
-          interest,
-          principal,
-          closing: closing < 1e-6 ? 0 : closing
-        });
-
+        rows.push({ year, opening, pay, interest, principal, closing: (closing < 1e-8 ? 0 : closing) });
         balance = closing;
       }
 
       let html = `
-        <strong>Loan amount: ${amount.toFixed(2)}</strong>
-        <span>Interest rate: ${ratePct.toFixed(2)}% / year – Duration: ${n} years</span>
+        <strong>Loan amount: ${fmt(amount)}</strong>
+        <span>Interest rate: ${fmt(ratePct)}% / year – Duration: ${n} years</span>
         <span>Amortization: ${type === "linear" ? "Linear (constant principal)" : "Annuity (constant payment)"}.</span>
+
         <table class="amort-table">
           <thead>
             <tr>
@@ -700,28 +347,127 @@
           <tbody>
       `;
 
-      rows.forEach(row => {
+      for (const row of rows) {
         html += `
           <tr>
             <td>${row.year}</td>
-            <td>${row.opening.toFixed(2)}</td>
-            <td>${row.payment.toFixed(2)}</td>
-            <td>${row.interest.toFixed(2)}</td>
-            <td>${row.principal.toFixed(2)}</td>
-            <td>${row.closing.toFixed(2)}</td>
+            <td>${fmt(row.opening)}</td>
+            <td>${fmt(row.pay)}</td>
+            <td>${fmt(row.interest)}</td>
+            <td>${fmt(row.principal)}</td>
+            <td>${fmt(row.closing)}</td>
           </tr>
         `;
-      });
+      }
 
       html += `
           </tbody>
         </table>
-        <span>Total principal repaid: ${totalPrincipal.toFixed(2)}</span>
-        <span>Total interest paid: ${totalInterest.toFixed(2)}</span>
+
+        <span>Total principal repaid: ${fmt(totalPrincipal)}</span>
+        <span>Total interest paid: ${fmt(totalInterest)}</span>
       `;
 
       resultEl.innerHTML = html;
     }
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+
+      const currentCategory = current && current.category ? current.category : null;
+
+      // Same category first, excluding current tool
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      // Fallback: if not enough, fill with anything else
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>

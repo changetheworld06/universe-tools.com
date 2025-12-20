@@ -9,7 +9,22 @@
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#4f46e5" />
 
-  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/ai-prompt-generator.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/ai-prompt-generator.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/ai-prompt-generator.html" />
+
+  <!-- Google tag (gtag.js) - GA4 + Google Ads -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -57,201 +72,15 @@
     "isAccessibleForFree": true
   }
   </script>
-
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://universe-tools.com/tools/ai-prompt-generator.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/ai-prompt-generator.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/ai-prompt-generator.html" />
-
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --max-width: 1120px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-    a { color: inherit; text-decoration: none; }
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
-    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
-
-    header {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 1rem; }
-    .brand { display: flex; align-items: center; gap: 0.65rem; }
-    .brand-logo {
-      width: 34px; height: 34px; border-radius: 999px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-      flex: 0 0 auto;
-    }
-    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
-    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
-    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 1.1rem;
-      font-size: 0.9rem; flex-wrap: wrap; justify-content: flex-end;
-    }
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-    }
-    .nav-links a:hover { color: #e5e7eb; border-color: rgba(129, 140, 248, 0.7); transform: translateY(-1px); }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
-
-    .section { padding: 1.5rem 0 3.5rem; }
-    .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
-    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
-    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 680px; line-height: 1.5; }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.9rem;
-    }
-    @media (max-width: 900px) { .tool-grid { grid-template-columns: 1fr; } }
-
-    .field { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.82rem; }
-    .field label { color: var(--muted); }
-
-    input, select, textarea {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.55rem 0.6rem;
-      font-size: 0.9rem;
-      outline: none;
-      width: 100%;
-    }
-    textarea { min-height: 110px; resize: vertical; }
-
-    .row {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: 0.9rem;
-    }
-
-    .btn {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.6rem 0.95rem;
-      font-size: 0.9rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 650;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-      user-select: none;
-    }
-    .btn.secondary {
-      background: transparent;
-      border: 1px solid rgba(129, 140, 248, 0.55);
-      box-shadow: none;
-    }
-
-    .output {
-      margin-top: 1rem;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(55, 65, 81, 0.8);
-      background: rgba(2, 6, 23, 0.65);
-      padding: 0.9rem;
-    }
-    .output pre {
-      white-space: pre-wrap;
-      word-break: break-word;
-      color: #e5e7eb;
-      font-size: 0.92rem;
-      line-height: 1.55;
-    }
-    .hint { color: var(--muted); font-size: 0.8rem; margin-top: 0.55rem; line-height: 1.55; }
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
-    .footer-links a { color: #6b7280; }
-    .footer-links a:hover { color: #e5e7eb; }
-  </style>
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER (copié-collé, simple) -->
     <header>
       <div class="container nav">
-        <div class="brand">
+        <a class="brand" href="/">
           <div class="brand-logo" aria-hidden="true">
             <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
@@ -263,25 +92,29 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="/#tools">All tools</a>
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <button class="nav-cta" type="button" onclick="window.location.href='/'">
-            <span>Try another tool</span><span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
@@ -364,7 +197,7 @@
               <button class="btn secondary" type="button" onclick="resetForm()">Reset</button>
             </div>
 
-            <div class="output" aria-live="polite" style="margin-top:1rem;">
+            <div class="output" aria-live="polite">
               <pre id="out">Fill the fields, then click “Generate”.</pre>
             </div>
 
@@ -373,18 +206,66 @@
             </div>
           </article>
 
-          <article class="tool-section">
-            <p style="color:#9ca3af; font-size:0.9rem; line-height:1.6;">
-              This prompt generator helps you structure better instructions for popular AI tools.
-              Use it for marketing copy, coding tasks, image creation prompts, or video generation prompts.
-              Everything is generated locally in your browser — no file uploads, no tracking of your inputs.
+          <!-- SEO TEXT (300+ words) -->
+          <section class="tool-section" aria-label="About this AI prompt generator">
+            <h2>About this AI Prompt Generator</h2>
+
+            <p>
+              Writing a good prompt is often the difference between a generic output and a result that feels truly useful.
+              This <strong>AI Prompt Generator</strong> is designed to help you structure clear, detailed instructions for
+              popular tools like <strong>ChatGPT</strong>, <strong>Midjourney</strong>, and modern video generators such as
+              <strong>Veo</strong> and <strong>Sora</strong>. Instead of starting from a blank page, you fill in a few key fields
+              (goal, subject, context, style, constraints), and the generator produces a ready-to-use prompt you can paste
+              directly into your favorite AI.
             </p>
-          </article>
+
+            <p>
+              The idea is simple: a strong prompt usually answers “what you want”, “what it should look like”, and
+              “what must not happen”. For text assistants, this means defining the role (expert, teacher, copywriter),
+              the objective, the audience, and the required format (bullet list, steps, code, tone). For image generation,
+              it means describing the subject, environment, lighting, composition, and style — and optionally adding
+              constraints such as aspect ratio or negative elements you want to avoid. For video generation prompts,
+              clarity matters even more: the scene, actions, camera movement, pacing, mood, and duration should be explicit.
+              This tool guides you toward that structure without forcing you to learn a complex prompt framework.
+            </p>
+
+            <p>
+              Practical examples include: creating marketing copy for a landing page, generating a clean logo concept,
+              writing a job description, building a study plan, drafting an email, producing a cinematic short video idea,
+              or describing a hyper-realistic product photo. If you switch the “Mode”, the generator adapts the prompt layout
+              for the target AI. You can also choose the output language, which is useful when you want English prompts for
+              better model compatibility, or French prompts for local content and communication.
+            </p>
+
+            <p>
+              Everything runs <strong>locally in your browser</strong>. This page does not call external AI APIs and does not upload
+              your inputs. It simply helps you craft better prompts, faster. If you want to iterate, try changing only one field
+              at a time (style, detail level, constraints) and generate several variants — that small habit usually improves results
+              more than rewriting everything from scratch.
+            </p>
+
+            <p class="small-note">
+              Tip: if you are using video generators, always include format constraints like “9:16”, “8 seconds”, and whether you want
+              subtitles, voice-over, or on-screen text. Consistent constraints reduce randomness.
+            </p>
+          </section>
+
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
 
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
         <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
@@ -395,7 +276,11 @@
         </div>
       </div>
     </footer>
+
   </div>
+
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -507,7 +392,6 @@
       try {
         await navigator.clipboard.writeText(text);
       } catch (e) {
-        // fallback
         const ta = document.createElement("textarea");
         ta.value = text;
         document.body.appendChild(ta);
@@ -530,6 +414,104 @@
       $("extras").value = "";
       $("out").textContent = "Fill the fields, then click “Generate”.";
     }
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+
+      const currentCategory = current && current.category ? current.category : null;
+
+      // Same category first, excluding current tool
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      // Fallback: if not enough, fill with anything else
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>
