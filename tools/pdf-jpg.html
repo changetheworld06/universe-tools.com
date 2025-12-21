@@ -1,365 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google tag (gtag.js) - GA4 -->
+  <title>PDF ↔ JPG converter – Convert PDF to JPG or image to PDF | Universe Tools</title>
+  <meta name="description" content="Convert a PDF page to JPG, or convert a JPG/PNG image to PDF directly in your browser — no upload, no server, no data sent." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
   </script>
 
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "PDF ↔ JPG Converter",
-      "url": "https://universe-tools.com/tools/pdf-jpg.html",
-      "description": "Convert a PDF page to JPG, or convert a JPG/PNG image to PDF directly in your browser — no upload, no server.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript",
-      "isAccessibleForFree": true
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
     }
-    </script>
-  
-  <meta charset="UTF-8" />
-  <title>PDF ↔ JPG Converter – Universe Tools</title>
-  <meta name="description" content="Convert a PDF page to JPG, or turn a JPG/PNG image into a PDF — directly in your browser. No upload, no server, no data sent.">  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </script>
 
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PDF ↔ JPG Converter",
+    "url": "https://universe-tools.com/tools/pdf-jpg.html",
+    "description": "Convert the first page of a PDF to a JPG image, or convert a JPG/PNG image to PDF directly in your browser — no upload, no server.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang (tu adapteras si besoin) -->
+  <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://universe-tools.com/tools/pdf-jpg.html" />
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/pdf-jpg.html" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/pdf-jpg.html" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/pdf-jpg.html" />
-
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
-
-  <!-- TON GROS CSS INLINE (copié de la home) -->
-  <style>
-    /* 👇 tout le CSS que tu as collé dans ton message, inchangé */
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow:
-        0 0 30px rgba(79, 70, 229, 0.45),
-        0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.3rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
-    }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
-
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 480px;
-      line-height: 1.5;
-    }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
-      align-items: end;
-    }
-
-    @media (max-width: 600px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field input,
-    .field select {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-    }
-
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
-
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-    }
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-    }
-  </style>
-
-  <!-- Event snippet pour conversion (inchangé) -->
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-          'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER (copié-collé, simple) -->
     <header>
       <div class="container nav">
-        <div class="brand">
-          <div class="brand-logo">
-            <!-- même logo que sur la home -->
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -369,267 +93,405 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
-        <nav class="nav-links">
-            <a href="/#tools">All tools</a>
-            <a href="/legal.html">Legal</a>
-            <a href="/privacy.html">Privacy</a>
-          <a href="/fr/">FR</a>
-          <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Try another tool</span>
-            <span>→</span>
-          </button>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">Tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <h1 class="section-title">PDF ↔ JPG Converter</h1>
+            <h1 class="section-title">PDF ↔ JPG converter</h1>
             <p class="section-subtitle">
-              Convert the first page of a PDF to a JPG image, or convert a JPG/PNG image to a PDF.
-              Everything runs locally in your browser — no upload to a server.
+              Convert the first page of a PDF to a JPG image, or convert a JPG/PNG image to PDF.
+              Everything runs locally in your browser — no upload.
             </p>
           </div>
 
           <article id="tool-pdf-jpg" class="tool-section">
             <p>
-                First choose the conversion type, then pick your file.
-              </p>
+              Select the conversion type, choose your file, then start the conversion.
+              PDF → JPG exports the <strong>first page</strong> for now.
+            </p>
 
             <form class="tool-form" onsubmit="event.preventDefault(); convertPdfJpg();">
               <div class="field">
                 <label for="pdfJpgMode">Conversion type</label>
-                <select id="pdfJpgMode" onchange="updatePdfJpgAccept()">
-                    <option value="pdf-to-jpg">PDF → JPG (first page)</option>
-                    <option value="jpg-to-pdf">JPG/PNG → PDF</option>
+                <select id="pdfJpgMode">
+                  <option value="pdf-to-jpg">PDF → JPG (first page)</option>
+                  <option value="img-to-pdf">JPG/PNG → PDF</option>
                 </select>
               </div>
 
               <div class="field">
                 <label for="pdfJpgFile">File to convert</label>
-                <input
-                  id="pdfJpgFile"
-                  type="file"
-                  accept="application/pdf"
-                />
+                <input id="pdfJpgFile" type="file" accept="application/pdf" />
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="convertPdfJpg()">
+                  Start conversion
+                </button>
               </div>
             </form>
 
-            <div style="margin-top:0.9rem;">
-                <button class="btn-tool" type="button" onclick="convertPdfJpg()">
-                    Start conversion
-                  </button>
-            </div>
-
-            <div class="tool-result" id="pdfJpgResult"></div>
-
-            <section class="tool-section" aria-label="About the PDF JPG converter">
-                <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">Convert PDF to JPG or JPG/PNG to PDF (no upload)</h2>
-                <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
-                  This PDF ↔ JPG converter lets you export the first page of a PDF as a JPG image, or turn a JPG/PNG image into a PDF.
-                  Processing happens locally in your browser, so your files are not sent to any server.
-                </p>
-                <p style="color:var(--muted);line-height:1.65;">
-                  Useful for sharing a single PDF page as an image, creating a PDF from a photo, or preparing a document for printing.
-                </p>
-              </section>
+            <div id="pdfJpgResult" class="tool-result" aria-live="polite"></div>
 
             <canvas
               id="pdfJpgCanvas"
-              style="display:none; margin-top:1rem; max-width:100%; border-radius:12px; background:#020617;"
+              style="display:none; margin-top:1rem; max-width:100%; border-radius:12px; background:rgba(255,255,255,.03);"
             ></canvas>
 
             <div style="margin-top:0.9rem;">
               <a
                 id="pdfJpgDownloadLink"
                 href="#"
-                style="display:none; font-size:0.85rem; color:#a5b4fc; text-decoration:underline;"
+                style="display:none; font-size:0.85rem; text-decoration:underline;"
               >
-                Télécharger le fichier converti
+                Download converted file
               </a>
             </div>
 
+<!-- SEO TEXT -->
+<section class="tool-section" aria-label="About this PDF JPG converter">
+  <h2>About this PDF ↔ JPG converter</h2>
+
+  <p>
+    Converting files should be quick, private, and simple. This free <strong>PDF ↔ JPG converter</strong> lets you transform a document
+    into an image or an image into a document without installing anything. You can export the <strong>first page of a PDF to a JPG</strong>
+    to share a preview, create a thumbnail, or send a single page in a format that opens everywhere. You can also convert a
+    <strong>JPG or PNG image to PDF</strong> to create a printable document from a photo, a scan, a screenshot, or a design.
+  </p>
+
+  <p>
+    A key advantage of this tool is privacy: <strong>everything runs locally in your browser</strong>. Your files are not uploaded to a server,
+    nothing is stored online, and you don’t need an account. This is especially useful when you work with sensitive documents such as invoices,
+    IDs, contracts, medical papers, school documents, or private photos. Since conversion happens client-side, the process is fast and remains under
+    your control. The generated output is provided as a downloadable file directly from your device.
+  </p>
+
+  <p>
+    The PDF → JPG mode is practical when you need an image for a website, a chat app, a slide deck, or a quick review. The image → PDF mode is useful
+    when you want to bundle a picture into a standard document format that prints cleanly and is easy to archive. For best results, use a sharp image,
+    avoid heavy compression, and prefer a high-resolution scan. If your PDF contains multiple pages, you can repeat the process for each page until a
+    multi-page export is available.
+  </p>
+
+  <p class="small-note">
+    Limitation: at the moment, <strong>PDF → JPG converts only the first page</strong>. Image → PDF supports JPG and PNG files.
+  </p>
+</section>
+
             <div class="small-note">
-                Limitations: for now, PDF → JPG converts only the first page.
-                The tool supports JPG and PNG images for JPG/PNG → PDF.
-              </div>
+              Client-side only – No data sent.
+            </div>
           </article>
+
+          <!-- RELATED TOOLS -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
+
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <span>© <span id="year"></span> Universe Tools</span>
         <div class="footer-links">
-            <a href="/privacy.html">Privacy</a>
-            <a href="/legal.html">Legal</a>
-            <a href="/#tools">All tools</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
         </div>
       </div>
     </footer>
+
   </div>
 
-  <!-- pdf.js pour PDF → JPG -->
+  <!-- Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script>
-    (function () {
-      const pdfLib = window["pdfjs-dist/build/pdf"];
-      if (!pdfLib) {
-        console.error("pdf.js is not loaded correctly.");
-        return;
-      }
-      window.pdfjsLib = pdfLib;
-      pdfjsLib.GlobalWorkerOptions.workerSrc =
-        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
-    })();
-  </script>
-
-  <!-- jsPDF pour JPG → PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Tools data -->
+  <script src="/assets/tools-data.js"></script>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    function updatePdfJpgAccept() {
-      const modeSelect = document.getElementById("pdfJpgMode");
-      const fileInput = document.getElementById("pdfJpgFile");
-      if (!modeSelect || !fileInput) return;
+    // ===== Setup pdf.js worker =====
+    (function initPdfJs(){
+      const pdfLib = window["pdfjs-dist/build/pdf"];
+      if (!pdfLib) return;
+      window.pdfjsLib = pdfLib;
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    })();
 
-      const mode = modeSelect.value;
+    // ===== UI accept switch =====
+    const modeEl = document.getElementById("pdfJpgMode");
+    const fileEl = document.getElementById("pdfJpgFile");
+
+    function updateAccept() {
+      const mode = modeEl.value;
       if (mode === "pdf-to-jpg") {
-        fileInput.accept = "application/pdf";
+        fileEl.accept = "application/pdf";
       } else {
-        fileInput.accept = "image/jpeg,image/png";
+        fileEl.accept = "image/jpeg,image/png";
       }
+      // reset UI
+      const link = document.getElementById("pdfJpgDownloadLink");
+      const canvas = document.getElementById("pdfJpgCanvas");
+      const resultEl = document.getElementById("pdfJpgResult");
+      if (link) { link.style.display = "none"; link.href = "#"; }
+      if (canvas) canvas.style.display = "none";
+      if (resultEl) resultEl.innerHTML = "";
+    }
+    modeEl.addEventListener("change", updateAccept);
+    updateAccept();
+
+    // ===== Helpers =====
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
+    function setResult(html) {
+      document.getElementById("pdfJpgResult").innerHTML = html;
+    }
+
+    // ===== Main conversion =====
     async function convertPdfJpg() {
-      const modeSelect = document.getElementById("pdfJpgMode");
-      const fileInput = document.getElementById("pdfJpgFile");
+      const mode = modeEl.value;
       const resultEl = document.getElementById("pdfJpgResult");
       const canvas = document.getElementById("pdfJpgCanvas");
       const link = document.getElementById("pdfJpgDownloadLink");
 
-      if (!modeSelect || !fileInput || !resultEl || !canvas || !link) return;
-
-      const mode = modeSelect.value;
-
-      if (!fileInput.files || fileInput.files.length === 0) {
-        resultEl.textContent = "Please choose a file to convert first.";
+      if (!fileEl.files || fileEl.files.length === 0) {
+        setResult("<span>Please choose a file to convert first.</span>");
         return;
       }
 
-      const file = fileInput.files[0];
+      const file = fileEl.files[0];
+
+      // Clean previous
+      link.style.display = "none";
+      canvas.style.display = "none";
 
       if (mode === "pdf-to-jpg") {
         if (!window.pdfjsLib) {
-          resultEl.textContent = "Error: pdf.js library is not loaded.";
+          setResult("<span>Error: pdf.js library is not loaded.</span>");
           return;
         }
 
-        resultEl.textContent = "Converting PDF to JPG...";
-        const reader = new FileReader();
+        setResult("<span>Converting PDF to JPG…</span>");
 
-        reader.onload = async function (e) {
-          try {
-            const typedarray = new Uint8Array(e.target.result);
-            const pdf = await pdfjsLib.getDocument({ data: typedarray }).promise;
-            const page = await pdf.getPage(1);
+        try {
+          const buffer = await file.arrayBuffer();
+          const typedarray = new Uint8Array(buffer);
+          const pdf = await pdfjsLib.getDocument({ data: typedarray }).promise;
+          const page = await pdf.getPage(1);
 
-            const scale = 2;
-            const viewport = page.getViewport({ scale: scale });
-            const ctx = canvas.getContext("2d");
+          const scale = 2;
+          const viewport = page.getViewport({ scale });
+          const ctx = canvas.getContext("2d", { alpha: false });
 
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
+          canvas.width = Math.floor(viewport.width);
+          canvas.height = Math.floor(viewport.height);
 
-            await page.render({
-              canvasContext: ctx,
-              viewport: viewport
-            }).promise;
+          await page.render({ canvasContext: ctx, viewport }).promise;
 
-            canvas.style.display = "block";
+          canvas.style.display = "block";
 
-            canvas.toBlob(function (blob) {
-              if (!blob) {
-                resultEl.textContent = "Unable to generate the image.";
-                return;
-              }
-              const url = URL.createObjectURL(blob);
-              link.href = url;
-              link.download = "page-1.jpg";
-              link.style.display = "inline-block";
-              resultEl.innerHTML =
-                "<strong>Done.</strong> You can now download the JPG image.";
-            }, "image/jpeg", 0.92);
-          } catch (err) {
-            console.error(err);
-            resultEl.textContent =
-              "Error while converting the PDF. Please check that the file is not corrupted.";
-          }
-        };
+          canvas.toBlob(function (blob) {
+            if (!blob) {
+              setResult("<span>Unable to generate the image.</span>");
+              return;
+            }
+            const url = URL.createObjectURL(blob);
+            link.href = url;
+            link.download = "page-1.jpg";
+            link.style.display = "inline-block";
+            setResult("<strong>Done.</strong><span>You can now download the JPG image.</span>");
+          }, "image/jpeg", 0.92);
 
-        reader.readAsArrayBuffer(file);
+        } catch (err) {
+          console.error(err);
+          setResult("<span>Error while converting the PDF. Please check that the file is not corrupted.</span>");
+        }
+
       } else {
+        // image -> pdf
         if (!window.jspdf || !window.jspdf.jsPDF) {
-          resultEl.textContent = "Error: jsPDF library is not loaded.";
+          setResult("<span>Error: jsPDF library is not loaded.</span>");
           return;
         }
 
-        resultEl.textContent = "Converting image to PDF...";
+        const isPng = (file.type === "image/png");
+        const isJpeg = (file.type === "image/jpeg");
 
-        const img = new Image();
-        img.onload = function () {
-          const { jsPDF } = window.jspdf;
-          const pdf = new jsPDF({ unit: "pt", format: "a4", compress: true });
+        if (!isPng && !isJpeg) {
+          setResult("<span>Please use a JPG or PNG image.</span>");
+          return;
+        }
 
-          const pageWidth = pdf.internal.pageSize.getWidth();
-          const pageHeight = pdf.internal.pageSize.getHeight();
+        setResult("<span>Converting image to PDF…</span>");
 
-          let imgWidth = img.width;
-          let imgHeight = img.height;
+        try {
+          const imgUrl = URL.createObjectURL(file);
+          const img = new Image();
 
-          const ratio = Math.min(pageWidth / imgWidth, pageHeight / imgHeight);
-          imgWidth *= ratio;
-          imgHeight *= ratio;
+          img.onload = function () {
+            try {
+              const { jsPDF } = window.jspdf;
+              const pdf = new jsPDF({ unit: "pt", format: "a4", compress: true });
 
-          const x = (pageWidth - imgWidth) / 2;
-          const y = (pageHeight - imgHeight) / 2;
+              const pageWidth = pdf.internal.pageSize.getWidth();
+              const pageHeight = pdf.internal.pageSize.getHeight();
 
-          pdf.addImage(img, "JPEG", x, y, imgWidth, imgHeight);
+              // Fit image into A4
+              const ratio = Math.min(pageWidth / img.width, pageHeight / img.height);
+              const w = img.width * ratio;
+              const h = img.height * ratio;
 
-          const blob = pdf.output("blob");
-          const url = URL.createObjectURL(blob);
+              const x = (pageWidth - w) / 2;
+              const y = (pageHeight - h) / 2;
 
-          link.href = url;
-          link.download = "image.pdf";
-          link.style.display = "inline-block";
+              const format = isPng ? "PNG" : "JPEG";
+              pdf.addImage(img, format, x, y, w, h);
 
-          canvas.style.display = "none";
+              const blob = pdf.output("blob");
+              const url = URL.createObjectURL(blob);
 
-          resultEl.innerHTML =
-            "<strong>PDF created.</strong> You can now download it.";
-        };
+              link.href = url;
+              link.download = "image.pdf";
+              link.style.display = "inline-block";
 
-        img.onerror = function () {
-          resultEl.textContent =
-            "Unable to read the image. Please make sure the file is a JPG or PNG.";
-        };
+              setResult("<strong>PDF created.</strong><span>You can now download it.</span>");
+            } finally {
+              URL.revokeObjectURL(imgUrl);
+            }
+          };
 
-        img.src = URL.createObjectURL(file);
+          img.onerror = function () {
+            URL.revokeObjectURL(imgUrl);
+            setResult("<span>Unable to read the image. Please make sure the file is a valid JPG or PNG.</span>");
+          };
+
+          img.src = imgUrl;
+
+        } catch (err) {
+          console.error(err);
+          setResult("<span>Error while converting the image to PDF.</span>");
+        }
       }
     }
+
+    // ===== Related tools cards =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+    })();
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>

@@ -7,19 +7,22 @@
   <title>Running Power Zones Calculator (FTP / Critical Power) | Universe Tools</title>
   <meta name="description" content="Calculate running power training zones from your FTP (critical power). Get easy, endurance, tempo, threshold and VO2 ranges in watts. 100% local." />
   <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta name="theme-color" content="#4f46e5">
 
-  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C'); // GA4
-    gtag('config', 'AW-325165312'); // Google Ads
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
   </script>
 
-  <!-- Event snippet conversion -->
+  <!-- Event snippet (conversion) -->
   <script>
     function gtag_report_conversion(url) {
       var callback = function () { if (url) window.location = url; };
@@ -43,14 +46,14 @@
   }
   </script>
 
-  <!-- Structured Data : WebApplication (page-specific) -->
+  <!-- Structured Data : WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Running Power Zones Calculator",
     "url": "https://universe-tools.com/tools/running-power.html",
-    "description": "Calculate running power training zones from FTP (critical power) as watt ranges. Runs locally in the browser.",
+    "description": "Calculate running power training zones from FTP (critical power). Runs locally in the browser.",
     "applicationCategory": "Utility",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript",
@@ -65,207 +68,20 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang (page-specific) -->
+  <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://universe-tools.com/tools/running-power.html" />
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/running-power.html" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/running-power.html" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/running-power.html" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Universe Tools" />
-  <meta property="og:title" content="Running Power Zones Calculator" />
-  <meta property="og:description" content="Calculate running power zones from FTP (critical power) as watt ranges. Local-only tool." />
-  <meta property="og:url" content="https://universe-tools.com/tools/running-power.html" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Running Power Zones | Universe Tools" />
-  <meta name="twitter:description" content="Compute running power zones from FTP (critical power). 100% local." />
-
-  <!-- Styles : same base (kept) -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
-
-    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
-
-    header {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
-    .brand { display: flex; align-items: center; gap: 0.65rem; }
-
-    .brand-logo {
-      width: 34px; height: 34px; border-radius: 999px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
-    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
-    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
-
-    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; }
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-    }
-    .nav-links a:hover { color: #e5e7eb; border-color: rgba(129, 140, 248, 0.7); transform: translateY(-1px); }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
-
-    .section { padding: 1.5rem 0 3.5rem; }
-    .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
-    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
-    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-section p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem; line-height: 1.55; }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.8rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-    @media (max-width: 900px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
-
-    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
-    .field label { color: var(--muted); }
-    .field small { color: #6b7280; font-size: 0.72rem; }
-
-    .field input, .field select {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-    }
-
-    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
-
-    .zones-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.8rem;
-      font-size: 0.8rem;
-    }
-    .zones-table th, .zones-table td {
-      padding: 0.45rem 0.5rem;
-      border-bottom: 1px solid rgba(55, 65, 81, 0.9);
-      text-align: left;
-    }
-    .zones-table th { color: #e5e7eb; font-weight: 600; }
-    .zones-table tr:last-child td { border-bottom: none; }
-
-    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
-    .footer-links a { color: #6b7280; }
-    .footer-links a:hover { color: #e5e7eb; }
-  </style>
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER -->
     <header>
       <div class="container nav">
-        <div class="brand">
+        <a class="brand" href="/">
           <div class="brand-logo" aria-hidden="true">
             <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
@@ -277,93 +93,131 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="/#tools">All tools</a>
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <a href="/fr/">FR</a>
-          <button class="nav-cta" type="button" onclick="window.location.href='/'">
-            <span>Try another tool</span><span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <h1 class="section-title">Running Power Zones</h1>
+            <h1 class="section-title">Running Power Zones Calculator</h1>
             <p class="section-subtitle">
-              Calculate your running training zones from your FTP (critical power).
-              Zones are expressed as power ranges in watts.
+              Convert your FTP (critical power) into structured running power zones.
+              Results are expressed in watts and calculated locally.
             </p>
           </div>
 
           <article id="tool-running-power" class="tool-section">
             <p>
-              Enter your running FTP (critical power) in watts. The calculator estimates common training zones
-              (easy, endurance, tempo, threshold, intervals) as % of FTP. Use this for guidance only.
+              Enter your running FTP (also called critical power). This tool converts it into
+              practical training zones commonly used for endurance, tempo, threshold and interval sessions.
             </p>
 
+            <!-- IMPORTANT: IDs and function name now match the JS -->
             <form class="tool-form" onsubmit="event.preventDefault(); calculateRunningPowerZones();">
               <div class="field">
                 <label for="ftpPower">FTP / Critical power (W)</label>
-                <input id="ftpPower" type="number" step="1" min="1" placeholder="e.g. 260" />
-                <small>Your best ~30–60 min power, or the value from your watch/platform.</small>
+                <input id="ftpPower" type="number" min="1" step="1" placeholder="e.g. 260">
               </div>
 
               <div class="field">
                 <label for="roundTo">Round to (W)</label>
-                <input id="roundTo" type="number" step="1" min="1" value="1" />
-                <small>Round values to the nearest watt (1, 5, 10, …).</small>
+                <input id="roundTo" type="number" min="1" step="1" value="1">
               </div>
 
               <div class="field">
-                <button class="btn-tool" type="button" onclick="calculateRunningPowerZones()">
-                  Calculate zones
-                </button>
+                <button class="btn-tool" type="button" onclick="calculateRunningPowerZones()">Calculate</button>
               </div>
             </form>
 
             <div id="runningPowerResult" class="tool-result" aria-live="polite"></div>
 
-            <div class="small-note">
-              Example ranges used here (as % of FTP): Z1 &lt;80%, Z2 80–90%, Z3 90–100%, Z4 100–110%, Z5 110–130%.
-              Different platforms/coaches may use different definitions.
-            </div>
+            <p class="small-note">
+              Example ranges used here: Z1 &lt;80%, Z2 80–90%, Z3 90–100%, Z4 100–110%, Z5 110–130%.
+              Some platforms use different boundaries.
+            </p>
+
+            <!-- SEO TEXT -->
+            <section class="tool-section" aria-label="About running power zones">
+              <h2>About running power zones</h2>
+
+              <p>
+                Running power zones are a modern way to structure training using objective effort instead of pace or heart rate.
+                Unlike pace, power responds instantly to terrain, wind, fatigue, and gradient changes. This makes it especially
+                useful for trail running, hilly routes, treadmill sessions, or variable conditions where pace alone can be misleading.
+              </p>
+
+              <p>
+                The reference value used by most systems is <strong>FTP</strong>, also known as <strong>critical power</strong>.
+                It represents the highest power you can sustain for approximately 30 to 60 minutes.
+                From this single number, training zones are defined as percentages of FTP, each corresponding to a physiological intensity.
+              </p>
+
+              <p>
+                Lower zones (easy and endurance) are typically used for aerobic base building and recovery runs.
+                Mid zones (tempo and threshold) target sustainable performance and lactate clearance.
+                Higher zones (VO2 max and intervals) focus on maximal oxygen uptake, speed, and neuromuscular power.
+                By training within specific watt ranges, athletes can better control effort and avoid overtraining.
+              </p>
+
+              <p>
+                This running power zones calculator uses commonly accepted percentage ranges.
+                However, it is important to understand that zones may vary depending on your watch brand,
+                coaching methodology, or training platform. Always adapt zone boundaries to your personal experience
+                and professional guidance.
+              </p>
+
+              <p>
+                Privacy is a key principle of Universe Tools. All calculations are performed
+                <strong>100% locally in your browser</strong>. Your FTP value is never uploaded,
+                stored, or shared.
+              </p>
+
+              <p class="small-note">
+                Tip: reassess your FTP regularly, especially after training blocks or races, to keep zones accurate.
+              </p>
+            </section>
           </article>
 
-          <!-- Mini SEO text -->
-          <section class="tool-section" aria-label="About running power zones">
-            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">
-              Running power zones from FTP (local & private)
-            </h2>
-            <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
-              Running power zones help structure training by turning your FTP (also called critical power) into watt ranges.
-              They can be used for easy runs, endurance, tempo workouts, threshold sessions, and higher-intensity intervals.
-            </p>
-            <p style="color:var(--muted);line-height:1.65;">
-              This calculator runs fully in your browser. Your FTP value is not uploaded, which keeps your data private.
-              If your watch or app uses different zone boundaries, adjust the results accordingly.
-            </p>
+          <!-- RELATED TOOLS (same block as your other pages) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
           </section>
 
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <span>© <span id="year"></span> Universe Tools</span>
         <div class="footer-links">
           <a href="/privacy.html">Privacy</a>
           <a href="/legal.html">Legal</a>
@@ -371,7 +225,11 @@
         </div>
       </div>
     </footer>
+
   </div>
+
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -386,6 +244,15 @@
       return Math.round(value / step) * step;
     }
 
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
     function calculateRunningPowerZones() {
       const ftpInput = document.getElementById("ftpPower");
       const roundInput = document.getElementById("roundTo");
@@ -397,7 +264,11 @@
       const step = parseNumber(roundInput.value) || 1;
 
       if (!Number.isFinite(ftp) || ftp <= 0) {
-        resultEl.innerHTML = "<span>Please enter a valid FTP (critical power) in watts.</span>";
+        resultEl.innerHTML = "<span>Please enter a valid FTP (critical power) in watts (&gt; 0).</span>";
+        return;
+      }
+      if (!Number.isFinite(step) || step <= 0) {
+        resultEl.innerHTML = "<span>Please enter a valid rounding step (W) (&gt; 0).</span>";
         return;
       }
 
@@ -410,7 +281,7 @@
       ];
 
       let html = `
-        <strong>FTP used: ${ftp.toFixed(0)} W</strong>
+        <strong>FTP used: ${Math.round(ftp)} W</strong>
         <span>Zones are computed as % of FTP and rounded to the nearest ${Math.max(1, Math.round(step))} W.</span>
         <table class="zones-table">
           <thead>
@@ -423,20 +294,18 @@
           <tbody>
       `;
 
-      zones.forEach(z => {
+      for (const z of zones) {
         const minW = roundToStep(z.minPct * ftp, step);
         const maxW = roundToStep(z.maxPct * ftp, step);
-        const minPctDisplay = (z.minPct * 100).toFixed(0);
-        const maxPctDisplay = (z.maxPct * 100).toFixed(0);
 
         html += `
           <tr>
-            <td>${z.name}</td>
-            <td>${minPctDisplay}–${maxPctDisplay}%</td>
-            <td>${minW.toFixed(0)}–${maxW.toFixed(0)} W</td>
+            <td>${escapeHtml(z.name)}</td>
+            <td>${Math.round(z.minPct * 100)}–${Math.round(z.maxPct * 100)}%</td>
+            <td>${Math.round(minW)}–${Math.round(maxW)} W</td>
           </tr>
         `;
-      });
+      }
 
       html += `
           </tbody>
@@ -445,6 +314,89 @@
 
       resultEl.innerHTML = html;
     }
+
+    // Expose for inline onclick/onsubmit
+    window.calculateRunningPowerZones = calculateRunningPowerZones;
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) { grid.innerHTML = ""; return; }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+    })();
   </script>
 </body>
 </html>
+
+<!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+<style>
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+  @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+  .tool-card {
+    display: block;
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.03);
+    text-decoration: none;
+    color: inherit;
+  }
+  .tool-card:hover {
+    border-color: rgba(120,140,255,.45);
+    box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+  }
+  .tool-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .tool-title { font-weight: 700; line-height: 1.2; }
+  .tool-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(120,140,255,.45);
+    background: rgba(120,140,255,.08);
+    white-space: nowrap;
+  }
+  .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+  .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+</style>

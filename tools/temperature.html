@@ -5,21 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>°C ↔ °F Converter | Universe Tools</title>
-  <meta name="description" content="Convert temperatures between Celsius and Fahrenheit instantly. Everything runs locally in your browser." />
+  <meta name="description" content="Convert temperatures between Celsius and Fahrenheit instantly. 100% local in your browser (no upload)." />
   <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta name="theme-color" content="#4f46e5">
 
-  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C'); // GA4
-    gtag('config', 'AW-325165312'); // Google Ads
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
   </script>
 
-  <!-- Event snippet conversion -->
+  <!-- Event snippet (conversion) -->
   <script>
     function gtag_report_conversion(url) {
       var callback = function () { if (url) window.location = url; };
@@ -43,14 +46,14 @@
   }
   </script>
 
-  <!-- Structured Data : WebApplication (page-specific) -->
+  <!-- Structured Data : WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Temperature Converter (°C ↔ °F)",
     "url": "https://universe-tools.com/tools/temperature.html",
-    "description": "Convert temperatures between Celsius and Fahrenheit instantly. Local-only calculation in your browser.",
+    "description": "Convert temperatures between Celsius and Fahrenheit instantly. Calculations run locally in your browser.",
     "applicationCategory": "Utility",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript",
@@ -65,7 +68,7 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang (page-specific) -->
+  <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://universe-tools.com/tools/temperature.html" />
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/temperature.html" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/temperature.html" />
@@ -81,184 +84,16 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="°C ↔ °F Converter | Universe Tools" />
-  <meta name="twitter:description" content="Convert temperatures instantly. Local-only." />
-
-  <!-- Styles : same base as your other tools -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-    a { color: inherit; text-decoration: none; }
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
-    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
-
-    header {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
-    .brand { display: flex; align-items: center; gap: 0.65rem; }
-
-    .brand-logo {
-      width: 34px; height: 34px; border-radius: 999px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
-    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
-    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 1.3rem;
-      font-size: 0.9rem; flex-wrap: wrap; justify-content: flex-end;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-
-    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
-
-    .section { padding: 1.5rem 0 3.5rem; }
-    .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
-    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
-    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-section p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem; }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.8rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 900px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
-
-    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
-    .field label { color: var(--muted); }
-
-    .field input {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-      user-select: none;
-      white-space: nowrap;
-    }
-
-    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
-    .footer-links a { color: #6b7280; }
-  </style>
+  <meta name="twitter:description" content="Convert temperatures instantly (local-only)." />
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER (same structure as salary converter) -->
     <header>
       <div class="container nav">
-        <div class="brand">
+        <a class="brand" href="/">
           <div class="brand-logo" aria-hidden="true">
             <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
@@ -270,26 +105,29 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="/#tools">All tools</a>
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <a href="/fr/">FR</a>
-          <button class="nav-cta" type="button" onclick="window.location.href='/'">
-            <span>Try another tool</span><span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
@@ -301,18 +139,23 @@
             </p>
           </div>
 
-          <article class="tool-section">
-            <p>Enter a temperature in either Celsius or Fahrenheit. The conversion updates instantly.</p>
+          <article id="tool-temperature" class="tool-section">
+            <p>
+              Enter a temperature in either Celsius or Fahrenheit. The other field updates automatically.
+              No data is sent anywhere.
+            </p>
 
             <form class="tool-form" onsubmit="event.preventDefault();">
               <div class="field">
                 <label for="celsius">Celsius (°C)</label>
-                <input id="celsius" type="number" step="0.1" placeholder="Ex: 20" oninput="fromCelsius()" />
+                <input id="celsius" type="number" step="0.1" inputmode="decimal" placeholder="e.g. 20"
+                       oninput="fromCelsius()" />
               </div>
 
               <div class="field">
                 <label for="fahrenheit">Fahrenheit (°F)</label>
-                <input id="fahrenheit" type="number" step="0.1" placeholder="Ex: 68" oninput="fromFahrenheit()" />
+                <input id="fahrenheit" type="number" step="0.1" inputmode="decimal" placeholder="e.g. 68"
+                       oninput="fromFahrenheit()" />
               </div>
 
               <div class="field">
@@ -320,40 +163,68 @@
               </div>
             </form>
 
-            <div class="small-note">Formula used: °F = (°C × 9/5) + 32</div>
+            <div class="small-note">
+              Formulas: °F = (°C × 9/5) + 32 — and — °C = (°F − 32) × 5/9
+            </div>
+
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About Celsius and Fahrenheit">
+              <h2>About this temperature converter</h2>
+
+              <p>
+                Temperature is measured with different scales around the world. The most common are
+                <strong>Celsius (°C)</strong> and <strong>Fahrenheit (°F)</strong>. Celsius is used in most countries
+                and in the scientific community for everyday reporting (weather, cooking, health, industry). It is
+                historically linked to water at standard pressure: water freezes at <strong>0°C</strong> and boils at
+                <strong>100°C</strong>. Fahrenheit is mainly used in the United States and a few other places. On that
+                scale, water freezes at <strong>32°F</strong> and boils at <strong>212°F</strong>.
+              </p>
+
+              <p>
+                This free converter helps you switch instantly between °C and °F for common situations:
+                checking international weather forecasts, following recipes written in another country, comparing
+                lab values, or understanding temperature settings on devices. Type a value in one field and the
+                other field updates automatically. The conversion is precise and uses the standard linear formulas.
+              </p>
+
+              <p>
+                The relationship between the two scales is based on a fixed ratio: one degree Celsius equals
+                <strong>1.8°F</strong> (that is 9/5). To convert from Celsius to Fahrenheit, multiply by 9/5 and add 32.
+                To convert from Fahrenheit to Celsius, subtract 32 and multiply by 5/9. Because these are linear
+                conversions, the tool works for negative values too (for example winter temperatures).
+              </p>
+
+              <p>
+                Privacy is a key principle of Universe Tools: all calculations run <strong>100% locally in your browser</strong>.
+                Your inputs are not uploaded, stored, or shared.
+              </p>
+
+              <p class="small-note">
+                Tip: the exact same conversion applies whether you are converting room temperature, cooking temperatures,
+                or outdoor weather values.
+              </p>
+            </section>
           </article>
 
-          <!-- Mini SEO text -->
-<section class="tool-section" aria-label="About Celsius and Fahrenheit">
-    <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">
-      Celsius vs Fahrenheit: what’s the difference?
-    </h2>
-  
-    <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
-      Celsius (°C) is commonly used in most countries and is based on water’s freezing point (0°C) and boiling point (100°C) at standard pressure.
-      Fahrenheit (°F) is mainly used in the United States; water freezes at 32°F and boils at 212°F.
-    </p>
-  
-    <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
-      Use this temperature converter to switch instantly between °C and °F for weather, cooking, science, travel, and everyday needs.
-      All calculations run locally in your browser — no data is sent anywhere.
-    </p>
-  
-    <p style="color:var(--muted);line-height:1.65;margin-bottom:.2rem;">
-      Conversion formulas:
-    </p>
-    <p style="color:var(--muted);line-height:1.65;">
-      °F = (°C × 9/5) + 32 — and — °C = (°F − 32) × 5/9
-    </p>
-  </section>
+          <!-- RELATED TOOLS -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
 
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <span>© <span id="year"></span> Universe Tools</span>
         <div class="footer-links">
           <a href="/privacy.html">Privacy</a>
           <a href="/legal.html">Legal</a>
@@ -361,51 +232,172 @@
         </div>
       </div>
     </footer>
+
   </div>
 
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
+  <!-- SCRIPTS -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     let isUpdating = false;
 
-    function fromCelsius() {
+    function parseNum(v){
+      const n = parseFloat(String(v ?? "").replace(",", "."));
+      return Number.isFinite(n) ? n : NaN;
+    }
+
+    function round2(n){
+      return Number.isFinite(n) ? (Math.round(n * 100) / 100).toFixed(2) : "";
+    }
+
+    function fromCelsius(){
       if (isUpdating) return;
       isUpdating = true;
 
-      const c = parseFloat(document.getElementById("celsius").value);
-      const fInput = document.getElementById("fahrenheit");
+      const cEl = document.getElementById("celsius");
+      const fEl = document.getElementById("fahrenheit");
+      if (!cEl || !fEl) { isUpdating = false; return; }
 
-      if (Number.isNaN(c)) {
-        fInput.value = "";
+      const c = parseNum(cEl.value);
+      if (!Number.isFinite(c)) {
+        fEl.value = "";
         isUpdating = false;
         return;
       }
 
-      fInput.value = ((c * 9) / 5 + 32).toFixed(2);
+      const f = (c * 9) / 5 + 32;
+      fEl.value = round2(f);
       isUpdating = false;
     }
 
-    function fromFahrenheit() {
+    function fromFahrenheit(){
       if (isUpdating) return;
       isUpdating = true;
 
-      const f = parseFloat(document.getElementById("fahrenheit").value);
-      const cInput = document.getElementById("celsius");
+      const cEl = document.getElementById("celsius");
+      const fEl = document.getElementById("fahrenheit");
+      if (!cEl || !fEl) { isUpdating = false; return; }
 
-      if (Number.isNaN(f)) {
-        cInput.value = "";
+      const f = parseNum(fEl.value);
+      if (!Number.isFinite(f)) {
+        cEl.value = "";
         isUpdating = false;
         return;
       }
 
-      cInput.value = (((f - 32) * 5) / 9).toFixed(2);
+      const c = ((f - 32) * 5) / 9;
+      cEl.value = round2(c);
       isUpdating = false;
     }
 
-    function resetTemp() {
-      document.getElementById("celsius").value = "";
-      document.getElementById("fahrenheit").value = "";
+    function resetTemp(){
+      const cEl = document.getElementById("celsius");
+      const fEl = document.getElementById("fahrenheit");
+      if (cEl) cEl.value = "";
+      if (fEl) fEl.value = "";
     }
+
+    window.fromCelsius = fromCelsius;
+    window.fromFahrenheit = fromFahrenheit;
+    window.resetTemp = resetTemp;
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc  = escapeHtml(t.desc || "");
+        const href  = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>

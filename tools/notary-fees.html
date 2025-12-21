@@ -1,32 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google tag (gtag.js) - GA4 -->
+  <title>Notary / closing costs calculator | Universe Tools</title>
+  <meta name="description" content="Estimate notary / closing costs and total property purchase cost from price and fee percentage. Local calculation in the browser." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
   </script>
 
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools – Notary / closing costs calculator",
-      "url": "https://universe-tools.com/tools/notary-fees.html",
-      "description": "Estimate notary / closing costs and total property purchase cost from price and fee percentage. Local calculation in the browser.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
     }
   </script>
-  
-  <meta charset="UTF-8" />
-  <title>Notary / closing costs calculator | Universe Tools</title>  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Estimate notary / closing costs and total property purchase cost from price and fee percentage. Local calculator in your browser.">
 
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Notary / closing costs calculator",
+    "url": "https://universe-tools.com/tools/notary-fees.html",
+    "description": "Estimate notary / closing costs and total property purchase cost from price and fee percentage. Local calculation in the browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -35,365 +70,20 @@
 
   <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://universe-tools.com/tools/notary-fees.html" />
-<link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/notary-fees.html" />
-<link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/notary-fees.html" />
-<link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/notary-fees.html" />
-
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
-
-  <!-- Styles : même base que les autres outils -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow:
-        0 0 30px rgba(79, 70, 229, 0.45),
-        0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.3rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
-    }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
-
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.5;
-    }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.8rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 900px) {
-      .tool-form {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 650px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field small {
-      color: #6b7280;
-      font-size: 0.72rem;
-    }
-
-    .field input {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    .field input::placeholder {
-      color: #6b7280;
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-    }
-
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
-
-    .tool-result strong {
-      color: #e5e7eb;
-    }
-
-    .tool-result span {
-      color: var(--muted);
-      display: block;
-      margin-top: 0.25rem;
-      font-size: 0.8rem;
-    }
-
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-    }
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-    }
-  </style>
-
-  <!-- Event snippet conversion -->
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-          'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-
-  <!-- Structured Data : WebApplication -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools",
-      "url": "https://universe-tools.com/",
-      "description": "60+ free online tools: converters, calculators, generators, security tools and more.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/notary-fees.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/notary-fees.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/notary-fees.html" />
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER (copié-collé, simple) -->
     <header>
       <div class="container nav">
-        <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -403,112 +93,271 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
-        <nav class="nav-links">
-          <a href="/#tools">All tools</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <a href="/fr/">FR</a>
-          <button class="nav-cta" onclick="window.location.href='/'">
-            <span>Try another tool</span>
-            <span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
-<main>
-<section class="section">
-<div class="container">
+    <!-- CONTENT -->
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h1 class="section-title">Notary / closing costs calculator</h1>
+            <p class="section-subtitle">
+              Estimate purchase fees and total property cost from a simple percentage.
+              Local calculation only — results are indicative.
+            </p>
+          </div>
 
-    <div class="section-header">
-        <h1 class="section-title">Notary / closing costs</h1>
-        <p class="section-subtitle">
-          Estimate notary or closing costs and total property purchase cost from price and fee percentage.
-        </p>
+          <article id="tool-notary-fees" class="tool-section">
+            <p>
+              Enter the property price and a fee percentage. The tool estimates closing costs and the total purchase cost.
+              Everything runs locally in your browser.
+            </p>
+
+            <form class="tool-form" onsubmit="event.preventDefault(); calcNotary();">
+              <div class="field">
+                <label for="price">Property price</label>
+                <input id="price" type="number" step="0.01" min="0" placeholder="e.g. 250000" />
+              </div>
+
+              <div class="field">
+                <label for="rate">Fees (%)</label>
+                <input id="rate" type="number" step="0.1" min="0" placeholder="e.g. 8" />
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="calcNotary()">
+                  Calculate
+                </button>
+              </div>
+            </form>
+
+            <div id="result" class="tool-result" aria-live="polite"></div>
+
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About this notary and closing costs calculator">
+              <h2>About this notary / closing costs calculator</h2>
+
+              <p>
+                When you buy a property, the advertised price is rarely the full amount you will pay. In many countries,
+                the final bill includes <strong>closing costs</strong>, which can cover taxes, registration charges, notary fees,
+                and other administrative expenses. Because the structure of these costs depends on the country, the type of property
+                (new build vs existing), the buyer status, and the transaction specifics, it is useful to start with a simple estimate.
+                This free <strong>notary / closing costs calculator</strong> provides that quick approximation by applying a single
+                percentage to the purchase price.
+              </p>
+
+              <p>
+                The calculation is straightforward: <strong>fees = price × (rate / 100)</strong>, and the total estimated purchase cost is
+                <strong>total = price + fees</strong>. This approach is helpful for budgeting, comparing listings, or checking whether
+                you can still meet a financing constraint once you include transaction costs. It’s also useful if you already know the
+                “typical” percentage in your context and want a fast way to test multiple prices.
+              </p>
+
+              <p>
+                To use the tool, enter the <strong>property price</strong> and a <strong>fee rate</strong> (for example 7–8% is commonly used
+                as a rough benchmark for existing properties in some markets, while new builds can be lower—depending on local rules).
+                Then click <em>Calculate</em> to get an estimated fee amount and an estimated total cost. If you want to explore scenarios,
+                change the rate or the price and recalculate.
+              </p>
+
+              <p>
+                Everything runs <strong>locally in your browser</strong>. This page does not upload your inputs and does not store personal data.
+                Keep in mind that this is an indicative model: real transactions can include additional items (agency fees, loan setup fees,
+                guarantees, insurance, VAT differences, fixed minimum charges, and rounding). For exact figures, always rely on the official
+                estimate provided by your notary, lawyer, bank, or local authority.
+              </p>
+
+              <p class="small-note">
+                Tip: if you are unsure about the right rate, run a range (for example 6%, 7%, 8%) to see a realistic budget interval.
+              </p>
+            </section>
+
+            <div class="small-note">
+              Indicative estimate only. This tool does not provide legal or financial advice.
+            </div>
+          </article>
+
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
       </div>
+    </footer>
 
-<article class="tool-section" id="tool-notary-fees">
-
-<form class="tool-form" onsubmit="event.preventDefault(); calcNotary();">
-
-  <div class="field">
-    <label for="price">Property price</label>
-    <input id="price" type="number" step="0.01" min="0" placeholder="Ex: 250000">
   </div>
 
-  <div class="field">
-    <label for="rate">Fees (%)</label>
-    <input id="rate" type="number" step="0.1" min="0" placeholder="Ex: 8">
-  </div>
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
 
-  <div class="field">
-    <label>&nbsp;</label>
-    <button class="btn-tool" type="button" onclick="calcNotary()">Calculate</button>
-  </div>
+  <!-- SCRIPTS -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-</form>
+    function parseNum(v){
+      const n = parseFloat(String(v ?? "").replace(",", "."));
+      return Number.isFinite(n) ? n : null;
+    }
 
-<div id="result" class="tool-result"></div>
+    function fmt(n){
+      if (!Number.isFinite(n)) return "0.00";
+      return Number(n).toFixed(2);
+    }
 
-<div class="tool-section">
-    <p>
-      This notary / closing costs calculator provides a quick estimate of purchase fees based on a simple percentage.
-      Enter the property price and a fee rate (for example, 7–8% for older property or lower for new builds, depending on country and situation).
-      The result is indicative only: actual closing costs may include taxes, registration fees, notary fees, agency fees, and other charges.
-      All calculations run locally in your browser.
-    </p>
-  </div>
+    function calcNotary(){
+      const price = parseNum(document.getElementById("price").value);
+      const rate = parseNum(document.getElementById("rate").value);
+      const el = document.getElementById("result");
 
-</article>
-</div>
-</section>
-</main>
+      if (price === null || rate === null || price <= 0 || rate < 0) {
+        el.innerHTML = "<span>Please enter a valid property price and fee percentage.</span>";
+        return;
+      }
 
-<footer>
-    <div class="container footer-inner">
-      <span>© <span id="year"></span> Universe Tools</span>
-      <span>Indicative result – no financial advice</span>
-    </div>
-  </footer>
+      const fees = price * rate / 100;
+      const total = price + fees;
 
-</div>
+      el.innerHTML = `
+        <strong>Notary / closing costs: ${fmt(fees)}</strong>
+        <span>Property price: ${fmt(price)}</span>
+        <span>Fee rate: ${rate.toFixed(1)}%</span>
+        <span>Total purchase cost: ${fmt(total)}</span>
+      `;
+    }
 
-<script>
-document.getElementById("year").textContent=new Date().getFullYear();
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
 
-function parseNum(v){
-  const n=parseFloat(String(v||"").replace(",","."));
-  return Number.isFinite(n)?n:null;
-}
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
 
-function calcNotary(){
-  const price=parseNum(document.getElementById("price").value);
-  const rate=parseNum(document.getElementById("rate").value);
-  const el=document.getElementById("result");
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
 
-  if(price===null||rate===null||price<=0||rate<0){
-    el.innerHTML="<span>Please enter a valid price and fee percentage.</span>";
-    return;
-  }
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
 
-  const fees=price*rate/100;
-  const total=price+fees;
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
 
-  el.innerHTML=`
-    <strong>Notary / closing costs: ${fees.toFixed(2)}</strong>
-    <span>Property price: ${price.toFixed(2)}</span>
-    <span>Total purchase cost: ${total.toFixed(2)}</span>
-  `;
-}
-</script>
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
+  </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
 
 </body>
 </html>

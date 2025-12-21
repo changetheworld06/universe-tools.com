@@ -1,31 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google tag (gtag.js) - GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C');
-  </script>
-
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools – Meters to feet converter",
-      "url": "https://universe-tools.com/tools/meters-feet.html",
-      "description": "Convert meters (m) to feet (ft) and feet to meters instantly using 1 m = 3.28084 ft. Local calculation in the browser.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-    </script>
-  
   <meta charset="UTF-8" />
-  <title>Meters ↔ feet converter (m to ft) | Universe Tools</title>  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convert meters to feet (m to ft) and feet to meters instantly. Accurate conversion factor: 1 meter = 3.28084 feet. Local calculator in your browser.">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Meters ↔ feet converter (m to ft) | Universe Tools</title>
+  <meta name="description" content="Convert meters (m) to feet (ft) and feet to meters instantly using 1 m = 3.28084 ft. Fast, accurate, and calculated locally in your browser." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,329 +25,331 @@
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/meters-feet.html" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/meters-feet.html" />
 
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
+  <!-- Google tag (gtag.js) - GA4 + Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
     gtag('config', 'AW-325165312');
   </script>
-
-  <!-- Styles : même base que les autres outils -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand { display: flex; align-items: center; gap: 0.65rem; }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(79,70,229,.45), 0 0 4px rgba(148,163,184,.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-name { font-weight: 700; font-size: .95rem; }
-    .brand-tagline { font-size: .72rem; color: var(--muted); }
-
-    .nav-links { display: flex; gap: 1.3rem; font-size: .9rem; }
-
-    .nav-links a { color: var(--muted); }
-
-    .nav-cta {
-      padding: .45rem .9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129,140,248,.6);
-      background: radial-gradient(circle at top left,#4f46e5,#0f172a);
-      font-size: .8rem;
-      font-weight: 600;
-      display: flex;
-      gap: .3rem;
-      cursor: pointer;
-    }
-
-    .section { padding: 1.5rem 0 3.5rem; }
-
-    .section-title { font-size: 1.5rem; }
-    .section-subtitle { font-size: .9rem; color: var(--muted); max-width: 520px; }
-
-    .tool-section {
-      margin-top: 1.4rem;
-      border-radius: 20px;
-      border: 1px solid rgba(55,65,81,.9);
-      background: radial-gradient(circle at top left,#020617,#020617);
-      padding: 1.2rem;
-      box-shadow: var(--shadow-card);
-    }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: .8rem;
-      margin-top: .8rem;
-    }
-
-    @media (max-width: 800px) {
-      .tool-form { grid-template-columns: 1fr; }
-    }
-
-    .field { display: flex; flex-direction: column; font-size: .8rem; }
-    .field label { color: var(--muted); }
-
-    .field input {
-      margin-top: .25rem;
-      padding: .45rem;
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75,85,99,.9);
-      background: #020617;
-      color: var(--text);
-    }
-
-    .btn-tool {
-      margin-top: auto;
-      padding: .55rem;
-      border: none;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg,#4f46e5,#6366f1);
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .tool-result { margin-top: .8rem; font-size: .9rem; }
-    .tool-result span { display: block; color: var(--muted); margin-top: .25rem; }
-
-    .small-note { font-size: .72rem; color: #6b7280; margin-top: .5rem; }
-
-    footer {
-      border-top: 1px solid rgba(30,64,175,.6);
-      background: radial-gradient(circle at top,#020617,#020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem;
-      font-size: .75rem;
-      color: #6b7280;
-      display: flex;
-      justify-content: space-between;
-    }
-  </style>
 
   <!-- Event snippet conversion -->
   <script>
     function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
           'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
           'event_callback': callback
-      });
+        });
+      }
       return false;
     }
   </script>
 
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
   <!-- Structured Data : WebApplication -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Lumens to Watts LED Converter",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Meters ↔ feet converter",
+    "url": "https://universe-tools.com/tools/meters-feet.html",
+    "description": "Convert meters (m) to feet (ft) and feet to meters instantly using 1 m = 3.28084 ft. Local calculation in the browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
   </script>
 </head>
 
 <body>
-<div class="page">
+  <div class="page">
 
-<header>
-  <div class="container nav">
-    <div class="brand">
-      <div class="brand-logo"></div>
-      <div>
-        <div class="brand-name">Universe Tools</div>
-        <div class="brand-tagline">60+ free online tools</div>
+    <!-- HEADER (copié-collé, simple) -->
+    <header>
+      <div class="container nav">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">Tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+        </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
-    </div>
+    </header>
 
-    <nav class="nav-links">
-      <a href="/#tools">All tools</a>
-      <a href="/legal.html">Legal</a>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/fr/">FR</a>
-      <button class="nav-cta" onclick="window.location.href='/'">Try another tool →</button>
-    </nav>
-  </div>
-</header>
+    <!-- CONTENT -->
+    <main>
+      <section class="section">
+        <div class="container">
 
-<main>
-    <section class="section">
-    <div class="container">
-    
-    <div class="section-header">
-        <h1 class="section-title">Meters to feet converter (m ↔ ft)</h1>      <p class="section-subtitle">
-        Convert lengths between meters and feet instantly.
-        Useful for construction plans, real estate and international standards.
-      </p>
-    </div>
-    
-    <article class="tool-section">
-      <form class="tool-form" onsubmit="event.preventDefault(); convertMetersFeet();">
-    
-        <div class="field">
-          <label>Meters (m)</label>
-          <input id="metersInput" type="number" step="0.001" placeholder="Ex: 10">
-        </div>
-    
-        <div class="field">
-          <label>Feet (ft)</label>
-          <input id="feetInput" type="number" step="0.001" placeholder="Ex: 32.808">
-        </div>
-    
-        <div class="field">
-          <button class="btn-tool" type="button" onclick="convertMetersFeet()">
-            Convert
-          </button>
-        </div>
-    
-      </form>
-    
-      <div id="metersFeetResult" class="tool-result"></div>
+          <div class="section-header">
+            <h1 class="section-title">Meters ↔ feet converter (m to ft)</h1>
+            <p class="section-subtitle">
+              Convert lengths between meters and feet instantly. Everything runs locally in your browser.
+            </p>
+          </div>
 
-      <p class="section-subtitle" style="margin-top:1.5rem">
-        This meters to feet converter allows you to quickly convert metric measurements
-        (meters) into imperial units (feet) and vice versa. It is commonly used in
-        construction, architecture, real estate listings, engineering projects and
-        international specifications. All calculations are performed locally in your
-        browser using the exact conversion factor: <strong>1 meter = 3.28084 feet</strong>.
-      </p>
-    
-      <div class="small-note">
-        Conversion factor: 1 meter = 3.28084 feet.
-      </div>
-    </article>
-    
-    </div>
-    </section>
+          <article class="tool-section">
+            <form class="tool-form" onsubmit="event.preventDefault(); convertMetersFeet();">
+              <div class="field">
+                <label for="metersInput">Meters (m)</label>
+                <input id="metersInput" type="number" step="0.001" placeholder="Example: 10" />
+                <small>Enter meters to convert to feet.</small>
+              </div>
+
+              <div class="field">
+                <label for="feetInput">Feet (ft)</label>
+                <input id="feetInput" type="number" step="0.001" placeholder="Example: 32.808" />
+                <small>Enter feet to convert to meters.</small>
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="convertMetersFeet()">
+                  Convert
+                </button>
+              </div>
+            </form>
+
+            <div id="metersFeetResult" class="tool-result" aria-live="polite"></div>
+
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About meters and feet conversion">
+              <h2>About this meters to feet converter</h2>
+
+              <p>
+                Meters (m) are the standard unit of length in the metric system and are used in most countries for
+                everyday measurements and technical documents. Feet (ft) are part of the imperial / US customary system
+                and are still common in the United States and in some industries worldwide. If you read construction plans,
+                real estate listings, product specs, architecture drawings, or international engineering references, you may
+                need to convert between meters and feet to avoid misinterpretation.
+              </p>
+
+              <p>
+                This calculator converts <strong>meters to feet</strong> and <strong>feet to meters</strong> instantly using the exact
+                conversion factor: <strong>1 meter = 3.28084 feet</strong>. To convert meters to feet, multiply by 3.28084.
+                To convert feet to meters, divide by 3.28084. The tool applies these operations automatically and shows a clear
+                result you can copy.
+              </p>
+
+              <p>
+                To use it, type a value in <strong>one</strong> field (meters or feet) and click “Convert”.
+                The other field will be filled automatically. If both fields are filled, the tool prioritizes the meters field,
+                so it’s best to clear one field before converting.
+              </p>
+
+              <p>
+                Everything runs <strong>locally in your browser</strong>: no upload, no server processing, and no external API calls.
+                Results are provided instantly. For critical work (engineering tolerances, compliance documents), always confirm the
+                required rounding rules (for example, 2 vs 3 decimals) depending on your standard or project specifications.
+              </p>
+
+              <p class="small-note">
+                Reference: 1 meter = 3.28084 feet. Tip: 1 foot ≈ 0.3048 meters.
+              </p>
+            </section>
+
+            <div class="small-note">Conversion factor: 1 m = 3.28084 ft.</div>
+          </article>
+
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
+
+        </div>
+      </section>
     </main>
-    
+
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools</span>
-        <span>Local calculation</span>
+        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
       </div>
     </footer>
-    
-    </div>
-    
-    <script>
+
+  </div>
+
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
+  <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    
-    function parseNum(v){
+    const $ = (id) => document.getElementById(id);
+
+    const M_TO_FT = 3.28084;
+
+    function parseNum(v) {
       return parseFloat(String(v || "").replace(",", "."));
     }
-    
-    function convertMetersFeet(){
-      const mInput = document.getElementById("metersInput");
-      const fInput = document.getElementById("feetInput");
-      const res = document.getElementById("metersFeetResult");
-    
+
+    function convertMetersFeet() {
+      const mInput = $("metersInput");
+      const fInput = $("feetInput");
+      const res = $("metersFeetResult");
+
       const meters = parseNum(mInput.value);
       const feet = parseNum(fInput.value);
-    
-      if (!isNaN(meters)) {
-        const ft = meters * 3.28084;
+
+      if (!isNaN(meters) && isFinite(meters)) {
+        const ft = meters * M_TO_FT;
         fInput.value = ft.toFixed(3);
-        res.innerHTML = `
-          <strong>${meters} m</strong>
-          <span>= ${ft.toFixed(3)} ft</span>
-        `;
+        res.innerHTML = `<strong>${meters} m</strong><span>= ${ft.toFixed(3)} ft</span>`;
         return;
       }
-    
-      if (!isNaN(feet)) {
-        const m = feet / 3.28084;
+
+      if (!isNaN(feet) && isFinite(feet)) {
+        const m = feet / M_TO_FT;
         mInput.value = m.toFixed(3);
-        res.innerHTML = `
-          <strong>${feet} ft</strong>
-          <span>= ${m.toFixed(3)} m</span>
-        `;
+        res.innerHTML = `<strong>${feet} ft</strong><span>= ${m.toFixed(3)} m</span>`;
         return;
       }
-    
+
       res.innerHTML = "<span>Please enter a value in meters or feet.</span>";
     }
-    </script>
-    
-    </body>
-    </html>
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
+  </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
+</body>
+</html>

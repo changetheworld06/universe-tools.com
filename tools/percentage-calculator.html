@@ -4,18 +4,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google tag (gtag.js) - GA4 -->
+  <title>Percentage Calculator (Increase / Discount) | Universe Tools</title>
+  <meta name="description" content="Calculate percentage increase or discount from an initial value. Get the final value and the amount of change. Runs 100% locally in your browser." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
   </script>
 
-  <title>Percentage Calculator (Increase / Discount) – Universe Tools</title>
-  <meta name="description" content="Calculate percentage increase or discount from an initial value. Get the final value and the amount of change. Runs 100% locally in your browser." />
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
+    }
+  </script>
 
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Percentage Calculator",
+    "url": "https://universe-tools.com/tools/percentage-calculator.html",
+    "description": "Calculate percentage increase or discount from an initial value. Runs locally in your browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -27,218 +73,17 @@
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/percentage-calculator.html" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/percentage-calculator.html" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/percentage-calculator.html" />
-
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-325165312');
-  </script>
-
-  <!-- Event snippet conversion -->
-  <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) !== 'undefined') window.location = url;
-      };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-        'event_callback': callback
-      });
-      return false;
-    }
-  </script>
-
-  <!-- Structured Data : WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Universe Tools",
-    "url": "https://universe-tools.com"
-  }
-  </script>
-
-  <!-- Structured Data : WebApplication (page-specific) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Percentage Calculator",
-    "url": "https://universe-tools.com/tools/percentage-calculator.html",
-    "description": "Calculate a percentage increase or discount from an initial value. Runs locally in your browser.",
-    "applicationCategory": "Utility",
-    "operatingSystem": "All",
-    "browserRequirements": "Requires JavaScript",
-    "isAccessibleForFree": true
-  }
-  </script>
-
-  <!-- Styles : same base as your other tools -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
-    .brand { display: flex; align-items: center; gap: 0.65rem; }
-
-    .brand-logo {
-      width: 34px; height: 34px; border-radius: 999px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
-    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
-    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
-
-    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; }
-    .nav-links a { color: var(--muted); }
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      display: flex;
-      gap: 0.3rem;
-      cursor: pointer;
-    }
-
-    .section { padding: 1.5rem 0 3.5rem; }
-    .section-title { font-size: 1.5rem; }
-    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
-
-    .tool-section {
-      margin-top: 1.2rem;
-      border-radius: 20px;
-      border: 1px solid rgba(55,65,81,.9);
-      background: radial-gradient(circle at top left,#020617,#020617);
-      padding: 1.2rem;
-      box-shadow: var(--shadow-card);
-    }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: .8rem;
-      margin-top: .8rem;
-      align-items: end;
-    }
-
-    @media (max-width: 900px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 650px) { .tool-form { grid-template-columns: 1fr; } }
-
-    .field { display: flex; flex-direction: column; font-size: .8rem; gap: .25rem; }
-    .field label { color: var(--muted); }
-
-    .field input, .field select {
-      padding: .45rem .55rem;
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75,85,99,.9);
-      background: #020617;
-      color: var(--text);
-      font-size: .85rem;
-    }
-
-    .btn-tool {
-      padding: .55rem .85rem;
-      border: none;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg,#4f46e5,#6366f1);
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .tool-result { margin-top: .8rem; font-size: .9rem; }
-    .tool-result span { display: block; color: var(--muted); margin-top: .25rem; }
-
-    .small-note { font-size: .72rem; color: #6b7280; margin-top: .6rem; }
-
-    footer {
-      border-top: 1px solid rgba(30,64,175,.6);
-      background: radial-gradient(circle at top,#020617,#020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem;
-      font-size: .75rem;
-      color: #6b7280;
-      display: flex;
-      justify-content: space-between;
-      gap: .75rem;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-  </style>
 </head>
 
 <body>
   <div class="page">
 
+    <!-- HEADER (same structure as amortization page) -->
     <header>
       <div class="container nav">
-        <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -248,47 +93,55 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="/#tools">All tools</a>
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <a href="/fr/">FR</a>
-          <button class="nav-cta" onclick="window.location.href='/'" type="button">Try another tool →</button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
-
           <div class="section-header">
             <h1 class="section-title">Percentage Calculator</h1>
             <p class="section-subtitle">
               Calculate a percentage increase or discount from an initial value.
-              Runs 100% locally in your browser.
+              Everything runs locally in your browser.
             </p>
           </div>
 
-          <article class="tool-section" id="tool-percentage">
-            <form class="tool-form" onsubmit="event.preventDefault(); calculatePercentage();">
+          <article id="tool-percentage" class="tool-section">
+            <p>
+              Enter an initial value and a percentage, then choose whether it’s an increase or a discount.
+              The tool shows the final value and the amount of change.
+            </p>
 
+            <form class="tool-form" onsubmit="event.preventDefault(); calculatePercentage();">
               <div class="field">
                 <label for="baseValue">Initial value</label>
-                <input id="baseValue" type="number" step="0.01" min="0" placeholder="e.g. 100">
+                <input id="baseValue" type="number" step="0.01" min="0" placeholder="e.g. 100" />
               </div>
 
               <div class="field">
                 <label for="percentValue">Percentage (%)</label>
-                <input id="percentValue" type="number" step="0.01" min="0" placeholder="e.g. 20">
+                <input id="percentValue" type="number" step="0.01" min="0" placeholder="e.g. 20" />
               </div>
 
               <div class="field">
@@ -300,45 +153,92 @@
               </div>
 
               <div class="field">
-                <button class="btn-tool" type="button" onclick="calculatePercentage()">Calculate</button>
+                <button class="btn-tool" type="button" onclick="calculatePercentage()">
+                  Calculate
+                </button>
               </div>
-
             </form>
 
             <div id="percentageResult" class="tool-result" aria-live="polite"></div>
 
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About this percentage calculator">
+              <h2>About this percentage calculator</h2>
+
+              <p>
+                Percentages are everywhere: discounts in online shops, yearly price changes, taxes, tips, salary adjustments,
+                inflation estimates, and budget planning. This free <strong>percentage calculator</strong> is designed to help you
+                compute a final value after applying a percentage <strong>increase</strong> or a percentage <strong>discount</strong>
+                to an initial number. Instead of doing the math manually, you can enter your starting value, type the percentage,
+                choose the operation (increase or discount), and instantly get the result along with the absolute change amount.
+              </p>
+
+              <p>
+                The calculation is straightforward. A percentage change is computed as <strong>initial value × (percentage ÷ 100)</strong>.
+                That amount is then added (for an increase) or subtracted (for a discount). For example, an initial value of 100 with
+                a 20% increase results in 120, while a 20% discount results in 80. Seeing both the <strong>final value</strong> and the
+                <strong>change amount</strong> is useful when you want to compare scenarios: “How much do I actually save?” or
+                “What is the real impact of a price rise?” This is common in shopping, invoicing, finance, and everyday decisions.
+              </p>
+
+              <p>
+                Typical use cases include calculating a sale price after a discount, estimating VAT or service charges when you know the
+                tax rate, adjusting a budget line by a given percentage, or applying a markup to a cost to get a selling price.
+                In business contexts, it can also help you measure the effect of a percentage-based increase in costs, rent, or wages.
+                If you work with spreadsheets, this tool is a quick alternative when you only need a single calculation.
+              </p>
+
+              <p>
+                Privacy matters too. This tool runs <strong>100% locally in your browser</strong>: your inputs are not sent to a server,
+                nothing is stored, and no account is required. It’s fast, simple, and works on desktop or mobile.
+                If you need exact accounting results, remember that real invoices may include rounding rules and currency formatting,
+                so you may want to round to 2 decimals and double-check with your official documents.
+              </p>
+
+              <p class="small-note">
+                Tip: if you’re applying multiple successive changes (for example, +10% then -10%), compute each step separately,
+                because percentages apply to the updated value, not the original.
+              </p>
+            </section>
+
             <div class="small-note">
-              Examples: 100 + 20% = 120 · 100 − 20% = 80
+              Client-side only — no data is sent to a server.
             </div>
           </article>
 
-          <!-- Mini SEO text -->
-          <section class="tool-section" aria-label="About this percentage calculator">
-            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">How to calculate a percentage increase or discount</h2>
-            <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
-              Use this percentage calculator to compute a final value after applying an increase or a discount.
-              It also shows the absolute change (the amount added or subtracted).
-              Everything runs locally in your browser for faster results and better privacy.
-            </p>
-            <p style="color:var(--muted);line-height:1.65;">
-              Common uses include sales discounts, VAT estimation, price increases, tips, and budget adjustments.
-              Enter your initial value, the percentage, pick “Increase” or “Discount”, then calculate.
-            </p>
+          <!-- RELATED TOOLS (same “maillage” everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
           </section>
 
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
         <span>© <span id="year"></span> Universe Tools</span>
-        <span>Client-side only</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
       </div>
     </footer>
 
   </div>
 
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
+  <!-- SCRIPTS -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -347,31 +247,131 @@
       return Number.isFinite(n) ? n : null;
     }
 
+    function fmt(n) {
+      if (!Number.isFinite(n)) return "0.00";
+      return Number(n).toFixed(2);
+    }
+
     function calculatePercentage() {
       const base = parseNum(document.getElementById("baseValue").value);
-      const percent = parseNum(document.getElementById("percentValue").value);
+      const pct = parseNum(document.getElementById("percentValue").value);
       const type = document.getElementById("percentType").value;
       const res = document.getElementById("percentageResult");
 
-      if (base === null || percent === null) {
+      if (base === null || pct === null) {
         res.innerHTML = "<span>Please enter valid numbers.</span>";
         return;
       }
-      if (base < 0 || percent < 0) {
+      if (base < 0 || pct < 0) {
         res.innerHTML = "<span>Values must be 0 or greater.</span>";
         return;
       }
 
-      const delta = base * (percent / 100);
+      const delta = base * (pct / 100);
       const finalValue = (type === "increase") ? (base + delta) : (base - delta);
 
       res.innerHTML = `
-        <strong>${finalValue.toFixed(2)}</strong>
-        <span>${type === "increase" ? "Increase" : "Discount"}: ${percent.toFixed(2)}%</span>
-        <span>Change amount: ${delta.toFixed(2)}</span>
-        <span>Initial value: ${base.toFixed(2)}</span>
+        <strong>${fmt(finalValue)}</strong>
+        <span>Initial value: ${fmt(base)}</span>
+        <span>${type === "increase" ? "Increase" : "Discount"}: ${fmt(pct)}%</span>
+        <span>Change amount: ${fmt(delta)}</span>
       `;
     }
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>

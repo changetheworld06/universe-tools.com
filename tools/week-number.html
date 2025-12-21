@@ -5,21 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Date ↔ ISO Week Number (ISO 8601) | Universe Tools</title>
-  <meta name="description" content="Convert a date to its ISO 8601 week number, or get the Monday date for a given ISO week. Local calculation in your browser." />
+  <meta name="description" content="Convert a date to its ISO 8601 week number, or get the Monday date for a given ISO week. 100% local in your browser (no upload)." />
   <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta name="theme-color" content="#4f46e5">
 
-  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C'); // GA4
-    gtag('config', 'AW-325165312'); // Google Ads
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
   </script>
 
-  <!-- Event snippet conversion (optional) -->
+  <!-- Event snippet (conversion) -->
   <script>
     function gtag_report_conversion(url) {
       var callback = function () { if (url) window.location = url; };
@@ -43,14 +46,14 @@
   }
   </script>
 
-  <!-- Structured Data : WebApplication (page-specific) -->
+  <!-- Structured Data : WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Date ↔ ISO Week Number (ISO 8601)",
     "url": "https://universe-tools.com/tools/week-number.html",
-    "description": "Convert a date to its ISO 8601 week number, or get the Monday date of a given ISO week. Local-only calculation in your browser.",
+    "description": "Convert a date to its ISO 8601 week number, or get the Monday date of a given ISO week. Calculations run locally in your browser.",
     "applicationCategory": "Utility",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript",
@@ -65,7 +68,7 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang (page-specific) -->
+  <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://universe-tools.com/tools/week-number.html" />
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/week-number.html" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/week-number.html" />
@@ -75,209 +78,22 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Universe Tools" />
   <meta property="og:title" content="Date ↔ ISO Week Number" />
-  <meta property="og:description" content="Convert a date to ISO 8601 week number or get Monday of an ISO week. Local-only." />
+  <meta property="og:description" content="Convert a date to ISO 8601 week number or get Monday of an ISO week. Local-only tool." />
   <meta property="og:url" content="https://universe-tools.com/tools/week-number.html" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Date ↔ ISO Week Number | Universe Tools" />
   <meta name="twitter:description" content="Convert dates to ISO 8601 week numbers instantly. Local-only." />
-
-  <!-- STYLES : same base as your other tools -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
-    .brand { display: flex; align-items: center; gap: 0.65rem; }
-
-    .brand-logo {
-      width: 34px; height: 34px; border-radius: 999px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
-    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
-    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
-
-    .nav-links {
-      display: flex; align-items: center; gap: 1.3rem;
-      font-size: 0.9rem; flex-wrap: wrap; justify-content: flex-end;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-    }
-    .nav-links a:hover { color: #e5e7eb; border-color: rgba(129, 140, 248, 0.7); transform: translateY(-1px); }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
-
-    .section { padding: 1.5rem 0 3.5rem; }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
-    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-section p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem; }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.8rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 1000px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 650px)  { .tool-form { grid-template-columns: minmax(0, 1fr); } }
-
-    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
-    .field label { color: var(--muted); }
-    .field small { color: #6b7280; font-size: 0.72rem; }
-
-    .field input {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-      user-select: none;
-      white-space: nowrap;
-    }
-
-    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
-    .tool-result strong { color: #e5e7eb; }
-    .tool-result span { color: var(--muted); font-size: 0.8rem; display: block; margin-top: 0.25rem; }
-
-    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
-    .footer-links a { color: #6b7280; }
-    .footer-links a:hover { color: #e5e7eb; }
-  </style>
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER (same structure as salary converter) -->
     <header>
       <div class="container nav">
-        <div class="brand">
+        <a class="brand" href="/">
           <div class="brand-logo" aria-hidden="true">
             <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
@@ -289,26 +105,29 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="/#tools">All tools</a>
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <a href="/fr/">FR</a>
-          <button class="nav-cta" type="button" onclick="window.location.href='/'">
-            <span>Try another tool</span><span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
@@ -316,62 +135,98 @@
           <div class="section-header">
             <h1 class="section-title">Date ↔ ISO week number</h1>
             <p class="section-subtitle">
-              Convert a calendar date to its ISO 8601 week number, or get the Monday date for a given ISO week.
+              Convert a calendar date to its ISO 8601 week number, or get the Monday date for a given ISO week (year + week).
+              Everything runs locally in your browser.
             </p>
           </div>
 
-          <article class="tool-section" id="tool-week-number">
-            <p>Use either method: date → week number, or (year + week) → Monday date.</p>
+          <article id="tool-week-number" class="tool-section">
+            <p>
+              Use either method: <strong>date → ISO week</strong>, or <strong>(ISO year + week) → Monday date</strong>.
+              You can fill one side and click Convert.
+            </p>
 
             <form class="tool-form" onsubmit="event.preventDefault(); convertWeek();">
               <div class="field">
                 <label for="dateInput">Date</label>
                 <input id="dateInput" type="date" />
-                <small>Convert date → ISO week</small>
               </div>
 
               <div class="field">
-                <label for="weekYear">Year</label>
-                <input id="weekYear" type="number" min="1" placeholder="Ex: 2025" />
-                <small>For week → date</small>
+                <label for="weekYear">ISO year</label>
+                <input id="weekYear" type="number" min="1" placeholder="e.g. 2025" />
               </div>
 
               <div class="field">
-                <label for="weekNumber">ISO week number</label>
-                <input id="weekNumber" type="number" min="1" max="53" placeholder="Ex: 12" />
-                <small>ISO 8601</small>
+                <label for="weekNumber">ISO week (1–53)</label>
+                <input id="weekNumber" type="number" min="1" max="53" placeholder="e.g. 12" />
               </div>
 
               <div class="field">
-                <button class="btn-tool" type="button" onclick="convertWeek()">Convert</button>
+                <button class="btn-tool" type="button" onclick="convertWeek()">
+                  Convert
+                </button>
               </div>
             </form>
 
-            <div id="weekResult" class="tool-result"></div>
+            <div id="result" class="tool-result" aria-live="polite"></div>
+
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About ISO week numbers">
+              <h2>About ISO week numbers (ISO 8601)</h2>
+
+              <p>
+                ISO week numbers (defined by the ISO 8601 standard) are widely used in business planning, logistics, project
+                management, manufacturing, and reporting. Instead of identifying dates by month and day, ISO weeks group days into
+                numbered weeks that always start on <strong>Monday</strong>. This makes weekly schedules easier to compare across
+                months and across years, especially when teams share timelines and deliverables using “week 12”, “week 37”, etc.
+              </p>
+
+              <p>
+                The key rule is: <strong>week 1</strong> of an ISO year is the first week that contains at least <strong>four days</strong>
+                of January. Another common way to say it: week 1 is the week that contains the first <strong>Thursday</strong> of the
+                year. Because of that rule, the ISO week-year can differ from the calendar year near New Year’s Day. For example, a
+                date in early January can belong to the last ISO week of the previous year, and a date in late December can belong to
+                ISO week 1 of the next year.
+              </p>
+
+              <p>
+                This tool provides two fast conversions. First, it converts a calendar date into its ISO week number and ISO week-year.
+                Second, it converts an ISO week (year + week number) into the <strong>Monday</strong> date that starts that ISO week.
+                That is useful when you get a planning document that says “ISO 2025-W12” and you want the actual calendar date.
+              </p>
+
+              <p>
+                Privacy is a key principle of Universe Tools: everything is computed <strong>locally in your browser</strong>. No data
+                is uploaded, stored, or shared.
+              </p>
+
+              <p class="small-note">
+                Note: Some years have a <strong>week 53</strong>. Whether it exists depends on how the year starts/ends in the ISO week system.
+              </p>
+            </section>
 
             <div class="small-note">
-              ISO 8601: weeks start on Monday. Week 1 is the first week with at least 4 days in the new year.
+              ISO 8601: weeks start on Monday. Week 1 is the first week with at least 4 days in January.
             </div>
           </article>
 
-          <!-- SEO text -->
-          <section class="tool-section" aria-label="About ISO week numbers">
-            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">ISO week numbers explained</h2>
-            <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
-              ISO 8601 week numbers are widely used in business planning, logistics, project management and reporting.
-              This tool lets you quickly find the ISO week for any date and retrieve the Monday starting date for an ISO week.
-            </p>
-            <ul style="color:var(--muted);line-height:1.65;padding-left:1.1rem;margin:0;">
-              <li>Weeks start on <strong>Monday</strong>.</li>
-              <li>Week <strong>1</strong> is the first week with at least <strong>4 days</strong> in January.</li>
-              <li>Some years include a <strong>week 53</strong>.</li>
-            </ul>
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
           </section>
 
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
         <span>© <span id="year"></span> Universe Tools</span>
@@ -382,8 +237,13 @@
         </div>
       </div>
     </footer>
+
   </div>
 
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
+  <!-- SCRIPTS -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -392,14 +252,16 @@
       return d.getUTCFullYear() + "-" + pad2(d.getUTCMonth()+1) + "-" + pad2(d.getUTCDate());
     }
 
+    // ISO week number (1..53) for a given date
     function getISOWeek(date) {
       const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-      const dayNum = d.getUTCDay() || 7; // Mon=1..Sun=7
+      const dayNum = d.getUTCDay() || 7;     // Mon=1..Sun=7
       d.setUTCDate(d.getUTCDate() + 4 - dayNum); // nearest Thursday
       const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
       return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
     }
 
+    // ISO week-year for a given date
     function getISOWeekYear(date) {
       const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
       const dayNum = d.getUTCDay() || 7;
@@ -407,6 +269,7 @@
       return d.getUTCFullYear();
     }
 
+    // Monday date (UTC) of ISO week (year + week)
     function getMondayOfISOWeek(year, week) {
       const simple = new Date(Date.UTC(year, 0, 1 + (week - 1) * 7));
       const dayOfWeek = simple.getUTCDay() || 7;
@@ -418,48 +281,145 @@
       const dateVal = document.getElementById("dateInput").value;
       const yearRaw = document.getElementById("weekYear").value;
       const weekRaw = document.getElementById("weekNumber").value;
-      const res = document.getElementById("weekResult");
+      const res = document.getElementById("result");
 
       const year = yearRaw ? parseInt(yearRaw, 10) : null;
       const week = weekRaw ? parseInt(weekRaw, 10) : null;
 
-      let htmlParts = [];
+      const parts = [];
 
+      // Date -> ISO week
       if (dateVal) {
         const d = new Date(dateVal);
         if (Number.isNaN(d.getTime())) {
-          htmlParts.push("<span>Please enter a valid date.</span>");
+          parts.push("<span>Please enter a valid date.</span>");
         } else {
           const isoWeek = getISOWeek(d);
           const isoYear = getISOWeekYear(d);
-          htmlParts.push(`
+          parts.push(`
             <strong>Date → ISO week</strong>
             <span>${dateVal} = ISO week <strong>${isoWeek}</strong> (ISO year <strong>${isoYear}</strong>)</span>
           `);
         }
       }
 
+      // ISO week -> Monday date
       if (year !== null || week !== null) {
         if (year === null || !Number.isFinite(year) || year <= 0) {
-          htmlParts.push("<span>Please enter a valid year.</span>");
+          parts.push("<span>Please enter a valid year.</span>");
         } else if (week === null || !Number.isFinite(week) || week < 1 || week > 53) {
-          htmlParts.push("<span>Please enter a valid ISO week number (1–53).</span>");
+          parts.push("<span>Please enter a valid ISO week number (1–53).</span>");
         } else {
           const monday = getMondayOfISOWeek(year, week);
-          htmlParts.push(`
+          parts.push(`
             <strong>ISO week → Monday date</strong>
             <span>ISO week <strong>${week}</strong>, ${year} starts on <strong>${fmtDateUTC(monday)}</strong> (Monday)</span>
           `);
         }
       }
 
-      if (htmlParts.length === 0) {
-        res.innerHTML = "<span>Please enter a date or a year + week number.</span>";
+      if (parts.length === 0) {
+        res.innerHTML = "<span>Please enter a date or an ISO year + week.</span>";
         return;
       }
 
-      res.innerHTML = htmlParts.join("<div style='height:.5rem'></div>");
+      res.innerHTML = parts.join("<div style='height:.5rem'></div>");
     }
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc  = escapeHtml(t.desc || "");
+        const href  = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>

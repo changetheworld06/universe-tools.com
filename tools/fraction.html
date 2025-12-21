@@ -1,30 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C');
-  </script>
-
-  <!-- SEO JSON-LD WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Universe Tools",
-    "url": "https://universe-tools.com"
-  }
-  </script>
-
   <meta charset="UTF-8" />
-  <title>Fraction ↔ Decimal ↔ Percentage | Universe Tools</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Convert a fraction (like 1/4) into a decimal and a percentage, or the other way around. All calculations are done locally in your browser.">
+
+  <title>Fraction ↔ Decimal ↔ Percentage | Universe Tools</title>
+  <meta name="description" content="Convert a fraction (like 1/4) into a decimal and a percentage, or the other way around. All calculations run locally in your browser." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -39,388 +25,65 @@
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/fraction.html" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/fraction.html" />
 
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
+  <!-- Google tag (gtag.js) - GA4 + Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
     gtag('config', 'AW-325165312');
   </script>
+
+  <!-- Event snippet conversion -->
   <script>
     function gtag_report_conversion(url) {
       var callback = function () { if (url) window.location = url; };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-        'event_callback': callback
-      });
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
       return false;
     }
   </script>
 
-  <!-- STYLES globaux + mise en forme outil -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* HEADER */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow:
-        0 0 30px rgba(79, 70, 229, 0.45),
-        0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.05rem;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      font-size: 0.95rem;
-    }
-
-    .brand-tagline {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.3rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast),
-        transform var(--transition-fast);
-    }
-
-    .nav-links a:hover {
-      color: #e5e7eb;
-      border-color: rgba(129, 140, 248, 0.7);
-      transform: translateY(-1px);
-    }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-
-    .nav-cta span:last-child {
-      font-size: 1rem;
-      transform: translateY(0.5px);
-    }
-
-    /* SECTION / TOOL STYLES */
-
-    .section {
-      padding: 1.5rem 0 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.5;
-    }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-section p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.8rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 900px) {
-      .tool-form {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 650px) {
-      .tool-form {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field small {
-      color: #6b7280;
-      font-size: 0.72rem;
-    }
-
-    .field input {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-      transition: border-color var(--transition-fast),
-        box-shadow var(--transition-fast), background var(--transition-fast);
-    }
-
-    .field input::placeholder {
-      color: #6b7280;
-    }
-
-    .field input:focus {
-      border-color: #818cf8;
-      box-shadow:
-        0 0 0 1px rgba(129, 140, 248, 0.6),
-        0 14px 32px rgba(15, 23, 42, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform var(--transition-fast),
-        box-shadow var(--transition-fast), opacity var(--transition-fast);
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-    }
-
-    .btn-tool:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 36px rgba(79, 70, 229, 0.7);
-    }
-
-    .tool-result {
-      margin-top: 0.7rem;
-      font-size: 0.86rem;
-    }
-
-    .tool-result strong {
-      color: #e5e7eb;
-    }
-
-    .tool-result span {
-      color: var(--muted);
-      font-size: 0.8rem;
-      display: block;
-      margin-top: 0.25rem;
-    }
-
-    .small-note {
-      font-size: 0.72rem;
-      color: #6b7280;
-      margin-top: 0.4rem;
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: #6b7280;
-      transition: color var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .footer-links a:hover {
-      color: #e5e7eb;
-      transform: translateY(-0.5px);
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
-
-  <!-- Structured Data : WebApplication (tool) -->
+  <!-- SEO JSON-LD WebSite -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools – Fraction converter",
-      "url": "https://universe-tools.com/tools/fraction.html",
-      "description": "Convert between fractions, decimals and percentages.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- Structured Data : WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Fraction ↔ Decimal ↔ Percentage",
+    "url": "https://universe-tools.com/tools/fraction.html",
+    "description": "Convert between fractions, decimals and percentages locally in your browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
   </script>
 </head>
 
 <body>
   <div class="page">
-    <!-- HEADER -->
+
+    <!-- HEADER (copié-collé, simple) -->
     <header>
       <div class="container nav">
-        <div class="brand">
-          <div class="brand-logo">
-            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -430,68 +93,68 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
-            <div class="brand-name">Outils de l'univers</div>
-            <div class="brand-tagline">Plus de 60 outils en ligne gratuits</div>
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
-        <nav class="nav-links">
-          <a href="/#tools">Tous les outils</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/privacy.html">Confidentialité</a>
-          <a href="/fr/">FR</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">Tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
         </nav>
 
-        <button class="nav-cta" onclick="window.location.href='/'">
-          <span>Essayez un autre outil</span>
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
           <span>→</span>
         </button>
       </div>
     </header>
 
-    <!-- MAIN -->
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
+
           <div class="section-header">
             <h1 class="section-title">Fraction ↔ Decimal ↔ Percentage</h1>
             <p class="section-subtitle">
-              Convert a fraction (like 1/4) into a decimal and a percentage,
-              or the other way around, in one click. All calculations are done locally
-              in your browser.
+              Convert a fraction (like <strong>1/4</strong>) into a decimal and a percentage,
+              or the other way around, in one click. Everything runs locally in your browser.
             </p>
           </div>
 
-          <article id="tool-fraction" class="tool-section">
+          <article class="tool-section">
             <p>Fill exactly one of the fields below:</p>
-          
+
             <ul class="seo-list">
-              <li><strong>Fraction</strong> (e.g. <code>1/4</code>, <code>3/8</code>)</li>
-              <li><strong>Decimal</strong> (e.g. <code>0.25</code>)</li>
-              <li><strong>Percentage</strong> (e.g. <code>25</code> for 25%)</li>
+              <li><strong>Fraction</strong> (example: <code>1/4</code>, <code>3/8</code>)</li>
+              <li><strong>Decimal</strong> (example: <code>0.25</code>)</li>
+              <li><strong>Percentage</strong> (example: <code>25</code> for 25%)</li>
             </ul>
-          
-            <p>The tool will compute all three representations for you.</p>
+
+            <p>The tool will compute the three representations for you.</p>
 
             <form class="tool-form" onsubmit="event.preventDefault(); convertFractionTool();">
               <div class="field">
                 <label for="fractionInput">Fraction</label>
-                <input id="fractionInput" type="text" placeholder="Ex: 1/4 ou 3/8" />
-                <small>Format: a/b (e.g. 1/2, 3/5, 7/10).</small>
+                <input id="fractionInput" type="text" placeholder="Example: 1/4 or 3/8" />
+                <small>Format: a/b (example: 1/2, 3/5, 7/10).</small>
               </div>
 
               <div class="field">
                 <label for="decimalInput">Decimal</label>
-                <input id="decimalInput" type="number" step="0.000001" placeholder="Ex: 0.25" />
+                <input id="decimalInput" type="number" step="0.000001" placeholder="Example: 0.25" />
                 <small>Use a dot for decimals (0.75, 0.333...).</small>
               </div>
 
               <div class="field">
                 <label for="percentInput">Percentage (%)</label>
-                <input id="percentInput" type="number" step="0.01" placeholder="Ex: 25" />
+                <input id="percentInput" type="number" step="0.01" placeholder="Example: 25" />
                 <small>Enter 25 for 25% (not 0.25).</small>
               </div>
 
@@ -502,25 +165,66 @@
               </div>
             </form>
 
-            <div id="fractionResult" class="tool-result"></div>
+            <div id="fractionResult" class="tool-result" aria-live="polite"></div>
 
-            <p class="seo-text">
-                This <strong>fraction to decimal and percentage converter</strong> helps you transform values like
-                <strong>1/2</strong>, <strong>3/4</strong> or <strong>7/10</strong> into their exact decimal form and
-                the corresponding percentage. You can also start from a decimal (like <strong>0.125</strong>)
-                or a percentage (like <strong>12.5</strong>) and get a simplified fraction.
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About this fraction decimal percentage converter">
+              <h2>About this fraction, decimal and percentage converter</h2>
+
+              <p>
+                Fractions, decimals and percentages all describe the same value, but they are used in different contexts.
+                A fraction like <strong>1/4</strong> is common in cooking, measurements, and ratios. A decimal like <strong>0.25</strong>
+                is easier to manipulate in calculators and spreadsheets. A percentage like <strong>25%</strong> is often the most
+                readable format for discounts, statistics, interest rates, or progress indicators. This tool helps you switch between
+                these three representations instantly, without doing manual division or mental math.
               </p>
-              
-              <p class="seo-text">
-                It’s useful for math homework, cooking ratios, measurements, discounts, finance calculations and quick checks.
-                Everything runs <strong>locally in your browser</strong>: no accounts, no API calls, and no data sent.
+
+              <p>
+                The workflow is intentionally simple: you fill <strong>exactly one</strong> field (fraction, decimal, or percentage),
+                then click “Convert values”. The converter computes the other two formats and updates all fields so you can copy the
+                result wherever you need it. This is practical for school exercises (fractions to decimals, decimals to percentages),
+                for recipes that use fractions but require decimal scaling, and for business tasks where a percentage must be converted
+                into a decimal rate (for example, converting <strong>12.5%</strong> into <strong>0.125</strong>).
               </p>
+
+              <p>
+                When you enter a fraction, the tool parses the <strong>a/b</strong> format, validates the denominator, and then converts
+                it into a decimal value. It also shows a simplified fraction when possible (for example, <strong>2/4</strong> becomes
+                <strong>1/2</strong>). When you start from a decimal, the converter builds a fraction by interpreting the number of
+                decimal places (for instance, <strong>0.75</strong> becomes <strong>75/100</strong> then simplifies to <strong>3/4</strong>).
+                Finally, if you enter a percentage, the tool converts it to a decimal by dividing by 100 and then generates the fraction.
+                Percentages are displayed with two decimals for readability, while decimals are displayed with up to six decimals and trimmed
+                to remove unnecessary trailing zeros.
+              </p>
+
+              <p>
+                Everything runs <strong>locally in your browser</strong>. No account is required, no API calls are made, and no data is sent
+                to a server. That makes the converter fast, private, and reliable for quick checks on any device.
+              </p>
+
+              <p class="small-note">
+                Tip: enter only one value at a time. If you type a rounded decimal (like 0.33), the fraction will match that rounded input
+                (33/100), not the exact repeating value (1/3).
+              </p>
+            </section>
 
             <div class="small-note">
-              Fractions are simplified when possible (e.g. 2/4 → 1/2).  
+              Fractions are simplified when possible (example: 2/4 → 1/2).
               Decimals and percentages are rounded for readability.
             </div>
           </article>
+
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
+
         </div>
       </section>
     </main>
@@ -528,19 +232,23 @@
     <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. Tous droits réservés.</span>
+        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
         <div class="footer-links">
-          <a href="/privacy.html">Confidentialité</a>
-          <a href="/legal.html">Mentions légales</a>
-          <a href="/#tools">Tous les outils</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
         </div>
       </div>
     </footer>
+
   </div>
 
-  <!-- SCRIPTS -->
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+    const $ = (id) => document.getElementById(id);
 
     function parseNum(v) {
       if (v === null || v === undefined || v === "") return NaN;
@@ -558,37 +266,35 @@
       return a || 1;
     }
 
+    function simplifyFraction(num, den) {
+      if (!isFinite(num) || !isFinite(den) || den === 0) return null;
+      const sign = den < 0 ? -1 : 1;
+      num = num * sign;
+      den = Math.abs(den);
+      const g = gcd(num, den);
+      return { num: num / g, den: den / g };
+    }
+
     function decimalToFraction(decimal) {
       if (!isFinite(decimal)) return null;
       if (decimal === 0) return { num: 0, den: 1 };
 
-      // Handle integers
-      if (Number.isInteger(decimal)) {
-        return { num: decimal, den: 1 };
-      }
+      if (Number.isInteger(decimal)) return { num: decimal, den: 1 };
 
-      const str = String(decimal);
-      const parts = str.split(".");
-      if (parts.length === 1) {
-        return { num: decimal, den: 1 };
-      }
+      const s = String(decimal);
+      const parts = s.split(".");
+      if (parts.length === 1) return { num: decimal, den: 1 };
 
       const decimals = parts[1].length;
-      let den = Math.pow(10, decimals);
-      let num = Math.round(decimal * den);
+      const den = Math.pow(10, decimals);
+      const num = Math.round(decimal * den);
 
-      const g = gcd(num, den);
-      num /= g;
-      den /= g;
-
-      return { num, den };
+      return simplifyFraction(num, den);
     }
 
     function parseFractionString(str) {
       if (!str) return NaN;
-      str = String(str).trim();
-      str = str.replace(",", "."); // handle comma as decimal
-
+      str = String(str).trim().replace(",", ".");
       if (str.includes("/")) {
         const parts = str.split("/");
         if (parts.length !== 2) return NaN;
@@ -596,21 +302,22 @@
         const den = parseNum(parts[1]);
         if (!isFinite(num) || !isFinite(den) || den === 0) return NaN;
         return num / den;
-      } else {
-        // fallback: treat as decimal number
-        const val = parseNum(str);
-        if (!isFinite(val)) return NaN;
-        return val;
       }
+      const val = parseNum(str);
+      return isFinite(val) ? val : NaN;
+    }
+
+    function fmtDecimal(x) {
+      return x.toFixed(6).replace(/0+$/,"").replace(/\.$/,"");
     }
 
     function convertFractionTool() {
-      const fractionInput = document.getElementById("fractionInput");
-      const decimalInput = document.getElementById("decimalInput");
-      const percentInput = document.getElementById("percentInput");
-      const resultEl = document.getElementById("fractionResult");
+      const fractionInput = $("fractionInput");
+      const decimalInput = $("decimalInput");
+      const percentInput = $("percentInput");
+      const resultEl = $("fractionResult");
 
-      const fracStr = fractionInput.value.trim();
+      const fracStr = String(fractionInput.value || "").trim();
       const decVal = parseNum(decimalInput.value);
       const pctVal = parseNum(percentInput.value);
 
@@ -626,55 +333,136 @@
         return;
       }
 
-      let decimal;
-      let fractionObj;
-      let percent;
+      let decimal = NaN;
 
-      // 1) Cas fraction
       if (fracStr !== "") {
-        const val = parseFractionString(fracStr);
-        if (isNaN(val)) {
-          resultEl.innerHTML = "<span>Invalid fraction. Use format a/b (e.g. 1/2, 3/4).</span>";
+        const v = parseFractionString(fracStr);
+        if (isNaN(v)) {
+          resultEl.innerHTML = "<span>Invalid fraction. Use format a/b (example: 1/2, 3/4).</span>";
           return;
         }
-        decimal = val;
-        fractionObj = decimalToFraction(decimal); // pour simplifier si possible
-      }
-      // 2) Cas décimal
-      else if (!isNaN(decVal)) {
+        decimal = v;
+      } else if (!isNaN(decVal)) {
         decimal = decVal;
-        fractionObj = decimalToFraction(decimal);
-      }
-      // 3) Cas pourcentage
-      else if (!isNaN(pctVal)) {
+      } else if (!isNaN(pctVal)) {
         decimal = pctVal / 100;
-        fractionObj = decimalToFraction(decimal);
       }
 
-      percent = decimal * 100;
-
-      // Formater fraction
-      let fractionDisplay = "";
-      if (fractionObj) {
-        fractionDisplay = fractionObj.num + "/" + fractionObj.den;
-      } else if (fracStr !== "") {
-        fractionDisplay = fracStr;
-      } else {
-        fractionDisplay = "?";
+      if (!isFinite(decimal)) {
+        resultEl.innerHTML = "<span>Please enter a valid number.</span>";
+        return;
       }
 
-      // Mettre à jour les champs
+      const percent = decimal * 100;
+      const fracObj = decimalToFraction(decimal);
+      const fractionDisplay = fracObj ? `${fracObj.num}/${fracObj.den}` : (fracStr || "?");
+
       fractionInput.value = fractionDisplay;
-      decimalInput.value = decimal.toFixed(6).replace(/0+$/,"").replace(/\.$/,"");
+      decimalInput.value = fmtDecimal(decimal);
       percentInput.value = percent.toFixed(2);
 
       resultEl.innerHTML = `
         <strong>Result:</strong>
         <span>Fraction: ${fractionDisplay}</span>
-        <span>Decimal: ${decimal.toFixed(6).replace(/0+$/,"").replace(/\.$/,"")}</span>
+        <span>Decimal: ${fmtDecimal(decimal)}</span>
         <span>Percentage: ${percent.toFixed(2)} %</span>
       `;
     }
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>

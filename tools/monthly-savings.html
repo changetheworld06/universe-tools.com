@@ -1,31 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <!-- Google tag (gtag.js) - GA4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C');
-  </script>
-
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Universe Tools – Monthly savings simulator",
-      "url": "https://universe-tools.com/tools/monthly-savings.html",
-      "description": "Simulate monthly savings growth with compound interest: final amount, total invested and interest gained. Local calculation in the browser.",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
-  </script>
-  
   <meta charset="UTF-8" />
-  <title>Monthly savings simulator | Universe Tools</title>  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Monthly savings simulator: estimate final amount, invested total and interest gained with monthly contributions and a fixed annual rate. Local calculation in your browser.">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Monthly savings simulator | Universe Tools</title>
+  <meta name="description" content="Monthly savings simulator: estimate final amount, invested total and interest gained with monthly contributions and a fixed annual rate. Local calculation in your browser." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5" />
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,327 +25,244 @@
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/monthly-savings.html" />
   <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/monthly-savings.html" />
 
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
+  <!-- Google tag (gtag.js) - GA4 + Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
     gtag('config', 'AW-325165312');
   </script>
-
-  <!-- Styles : même base que les autres outils -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .brand { display: flex; align-items: center; gap: 0.65rem; }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(79,70,229,.45), 0 0 4px rgba(148,163,184,.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-name { font-weight: 700; font-size: .95rem; }
-    .brand-tagline { font-size: .72rem; color: var(--muted); }
-
-    .nav-links { display: flex; gap: 1.3rem; font-size: .9rem; }
-
-    .nav-links a { color: var(--muted); }
-
-    .nav-cta {
-      padding: .45rem .9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129,140,248,.6);
-      background: radial-gradient(circle at top left,#4f46e5,#0f172a);
-      font-size: .8rem;
-      font-weight: 600;
-      display: flex;
-      gap: .3rem;
-      cursor: pointer;
-    }
-
-    .section { padding: 1.5rem 0 3.5rem; }
-
-    .section-title { font-size: 1.5rem; }
-    .section-subtitle { font-size: .9rem; color: var(--muted); max-width: 520px; }
-
-    .tool-section {
-      margin-top: 1.4rem;
-      border-radius: 20px;
-      border: 1px solid rgba(55,65,81,.9);
-      background: radial-gradient(circle at top left,#020617,#020617);
-      padding: 1.2rem;
-      box-shadow: var(--shadow-card);
-    }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);      
-      gap: .8rem;
-      margin-top: .8rem;
-    }
-
-    @media (max-width: 800px) {
-      .tool-form { grid-template-columns: 1fr; }
-    }
-
-    .field { display: flex; flex-direction: column; font-size: .8rem; }
-    .field label { color: var(--muted); }
-
-    .field input {
-      margin-top: .25rem;
-      padding: .45rem;
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75,85,99,.9);
-      background: #020617;
-      color: var(--text);
-    }
-
-    .btn-tool {
-      margin-top: auto;
-      padding: .55rem;
-      border: none;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg,#4f46e5,#6366f1);
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .tool-result { margin-top: .8rem; font-size: .9rem; }
-    .tool-result span { display: block; color: var(--muted); margin-top: .25rem; }
-
-    .small-note { font-size: .72rem; color: #6b7280; margin-top: .5rem; }
-
-    footer {
-      border-top: 1px solid rgba(30,64,175,.6);
-      background: radial-gradient(circle at top,#020617,#020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem;
-      font-size: .75rem;
-      color: #6b7280;
-      display: flex;
-      justify-content: space-between;
-    }
-  </style>
 
   <!-- Event snippet conversion -->
   <script>
     function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
           'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
           'event_callback': callback
-      });
+        });
+      }
       return false;
     }
   </script>
 
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
   <!-- Structured Data : WebApplication -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Lumens to Watts LED Converter",
-      "applicationCategory": "Utility",
-      "operatingSystem": "All"
-    }
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Monthly savings simulator",
+    "url": "https://universe-tools.com/tools/monthly-savings.html",
+    "description": "Simulate monthly savings growth with compound interest: final amount, total invested and interest gained. Local calculation in the browser.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
+  }
   </script>
 </head>
 
 <body>
-<div class="page">
+  <div class="page">
 
-<header>
-  <div class="container nav">
-    <div class="brand">
-      <div class="brand-logo"></div>
-      <div>
-        <div class="brand-name">Universe Tools</div>
-        <div class="brand-tagline">60+ free online tools</div>
+    <!-- HEADER (copié-collé, simple) -->
+    <header>
+      <div class="container nav">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">Tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+        </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
-    </div>
+    </header>
 
-    <nav class="nav-links">
-      <a href="/#tools">All tools</a>
-      <a href="/legal.html">Legal</a>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/fr/">FR</a>
-      <button class="nav-cta" onclick="window.location.href='/'">Try another tool →</button>
-    </nav>
-  </div>
-</header>
+    <!-- CONTENT -->
+    <main>
+      <section class="section">
+        <div class="container">
 
-<main>
-    <section class="section">
-    <div class="container">
-    
-    <div class="section-header">
-      <h1 class="section-title">Monthly savings simulator</h1>
-      <p class="section-subtitle">
-        Simulate the growth of monthly savings with compound interest,
-        using a fixed annual rate.
-      </p>
-    </div>
-    
-    <article class="tool-section">
-      <form class="tool-form" onsubmit="event.preventDefault(); simulateSavings();">
-    
-        <div class="field">
-          <label>Monthly saving (€)</label>
-          <input id="saveMonthly" type="number" step="0.01" min="0" placeholder="Ex: 200">
-          <small>Amount saved every month.</small>
-        </div>
-    
-        <div class="field">
-          <label>Annual interest rate (%)</label>
-          <input id="saveRate" type="number" step="0.1" min="0" placeholder="Ex: 5">
-          <small>Average yearly return.</small>
-        </div>
-    
-        <div class="field">
-          <label>Duration (years)</label>
-          <input id="saveYears" type="number" step="1" min="1" placeholder="Ex: 20">
-          <small>Total saving period.</small>
-        </div>
-    
-        <div class="field">
-          <button class="btn-tool" type="button" onclick="simulateSavings()">
-            Simulate
-          </button>
-        </div>
-    
-      </form>
-    
-      <div id="savingsResult" class="tool-result"></div>
+          <div class="section-header">
+            <h1 class="section-title">Monthly savings simulator</h1>
+            <p class="section-subtitle">
+              Simulate the growth of monthly savings with compound interest using a fixed annual rate.
+              Everything runs locally in your browser — no upload.
+            </p>
+          </div>
 
-      <p class="section-subtitle" style="margin-top:1.5rem">
-        This monthly savings simulator estimates how your savings can grow over time with monthly contributions and a fixed annual interest rate.
-        It shows the final amount, the total money you contributed, and the interest gained with monthly compounding.
-        The calculation runs locally in your browser, so no data is sent anywhere.
-      </p>
-    
-      <div class="small-note">
-        Calculation uses monthly compounding. Results are indicative only.
-      </div>
-    </article>
-    
-    </div>
-    </section>
+          <article class="tool-section">
+            <form class="tool-form" onsubmit="event.preventDefault(); simulateSavings();">
+              <div class="field">
+                <label for="saveMonthly">Monthly saving (€)</label>
+                <input id="saveMonthly" type="number" step="0.01" min="0" placeholder="Example: 200" />
+                <small>Amount saved every month.</small>
+              </div>
+
+              <div class="field">
+                <label for="saveRate">Annual interest rate (%)</label>
+                <input id="saveRate" type="number" step="0.1" min="0" placeholder="Example: 5" />
+                <small>Average yearly return.</small>
+              </div>
+
+              <div class="field">
+                <label for="saveYears">Duration (years)</label>
+                <input id="saveYears" type="number" step="1" min="1" placeholder="Example: 20" />
+                <small>Total saving period.</small>
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="simulateSavings()">
+                  Simulate
+                </button>
+              </div>
+            </form>
+
+            <div id="savingsResult" class="tool-result" aria-live="polite"></div>
+
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About this monthly savings simulator">
+              <h2>About this monthly savings simulator</h2>
+
+              <p>
+                Saving a fixed amount every month is one of the simplest ways to build long-term wealth. This
+                <strong>monthly savings simulator</strong> helps you estimate how your savings could grow when you combine
+                regular contributions with a fixed annual return and <strong>monthly compounding</strong>.
+                You enter three inputs: how much you save each month, the annual interest rate (or expected return),
+                and the duration in years. The tool then shows the <strong>final amount</strong>, the
+                <strong>total invested</strong> (your contributions only), and the <strong>interest gained</strong>.
+              </p>
+
+              <p>
+                The key idea is compound interest: each month, your balance earns interest, and future interest is calculated
+                on a larger amount. Over long periods, this effect can become more significant than your monthly deposits.
+                That is why time matters so much in savings plans. A few extra years often changes the outcome dramatically,
+                even when the monthly contribution stays the same.
+              </p>
+
+              <p>
+                This calculator uses a simple monthly compounding model with a constant annual rate. Real investments can vary
+                from month to month, and returns are never guaranteed. Still, a simulator like this is useful for planning:
+                you can compare scenarios (saving more per month, changing the expected rate, or extending the duration) and
+                quickly see how each variable affects your results.
+              </p>
+
+              <p>
+                Everything runs <strong>locally in your browser</strong>. Your inputs are not uploaded or stored by this page.
+                Use it as a planning tool to understand the relationship between contribution, rate, and time — and to set a
+                realistic savings target for the years ahead.
+              </p>
+
+              <p class="small-note">
+                Results are indicative only. The rate is applied evenly each month (annual rate ÷ 12).
+              </p>
+            </section>
+
+            <div class="small-note">
+              Calculation uses monthly compounding. Results are indicative only.
+            </div>
+          </article>
+
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
+
+        </div>
+      </section>
     </main>
-    
+
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools</span>
-        <span>Local calculation – no data sent</span>
+        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
       </div>
     </footer>
-    
-    </div>
-    
-    <script>
+
+  </div>
+
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
+  <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    
+    const $ = (id) => document.getElementById(id);
+
     function parseNum(v){
-  const n = parseFloat(String(v ?? "").replace(",", "."));
-  return Number.isFinite(n) ? n : null;
-}
-    
+      const n = parseFloat(String(v ?? "").replace(",", "."));
+      return Number.isFinite(n) ? n : null;
+    }
+
     function simulateSavings(){
-      const monthly = parseNum(document.getElementById("saveMonthly").value);
-      const rate = parseNum(document.getElementById("saveRate").value);
-      const years = parseNum(document.getElementById("saveYears").value);
-      const res = document.getElementById("savingsResult");
-    
-      if(monthly === null || monthly <= 0 || rate === null || rate < 0 || years === null || years <= 0){        res.innerHTML = "<span>Please enter valid values.</span>";
+      const monthly = parseNum($("saveMonthly").value);
+      const rate = parseNum($("saveRate").value);
+      const years = parseNum($("saveYears").value);
+      const res = $("savingsResult");
+
+      if (monthly === null || monthly <= 0 || rate === null || rate < 0 || years === null || years <= 0) {
+        res.innerHTML = "<span>Please enter valid values.</span>";
         return;
       }
-    
-      const months = years * 12;
-      const monthlyRate = rate / 100 / 12;
-    
+
+      const months = Math.round(years * 12);
+      const monthlyRate = (rate / 100) / 12;
+
       let total = 0;
-      for(let i = 0; i < months; i++){
+      for (let i = 0; i < months; i++) {
         total = total * (1 + monthlyRate) + monthly;
       }
-    
+
       const invested = monthly * months;
       const gain = total - invested;
-    
+
       res.innerHTML = `
         <strong>Final amount: ${total.toFixed(2)} €</strong>
         <span>Total invested: ${invested.toFixed(2)} €</span>
@@ -366,7 +270,101 @@
         <span>Duration: ${years} years (${months} months)</span>
       `;
     }
-    </script>
-    
-    </body>
-    </html>
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
+  </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
+</body>
+</html>

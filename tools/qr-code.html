@@ -4,57 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google tag (gtag.js) - GA4 -->
+  <title>QR Code Generator (PNG download) | Universe Tools</title>
+  <meta name="description" content="Generate a QR code from any URL or text and download it as PNG. Works 100% locally in your browser—no upload, no server." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-15ST5Y0Z1C');
-  </script>
-
-  <title>QR Code Generator (PNG download) – Universe Tools</title>
-  <meta name="description" content="Generate a QR code from any URL or text and download it as PNG. Works 100% locally in your browser—no file upload, no server." />
-
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <!-- Canonical + hreflang (page-specific) -->
-  <link rel="canonical" href="https://universe-tools.com/tools/qr-code.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/qr-code.html" />
-  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/qr-code.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/qr-code.html" />
-
-  <meta name="theme-color" content="#4f46e5">
-
-  <!-- Google Ads (conversion) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-325165312"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
     gtag('config', 'AW-325165312');
   </script>
 
-  <!-- Event snippet conversion -->
+  <!-- Event snippet (conversion) -->
   <script>
     function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) !== 'undefined') window.location = url;
-      };
-      gtag('event', 'conversion', {
-        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
-        'event_callback': callback
-      });
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
       return false;
     }
   </script>
 
-  <!-- Structured Data : WebSite -->
+  <!-- SEO JSON-LD WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -64,7 +46,7 @@
   }
   </script>
 
-  <!-- Structured Data : WebApplication (page-specific) -->
+  <!-- Structured Data : WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -79,214 +61,27 @@
   }
   </script>
 
-  <!-- Styles (unchanged base) -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
-
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 23, 42, 0.92),
-        rgba(15, 23, 42, 0.75),
-        transparent
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
-    .brand { display: flex; align-items: center; gap: 0.65rem; }
-
-    .brand-logo {
-      width: 34px; height: 34px; border-radius: 999px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
-    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
-    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
-
-    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; }
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-    }
-    .nav-links a:hover { color: #e5e7eb; border-color: rgba(129, 140, 248, 0.7); transform: translateY(-1px); }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
-
-    .section { padding: 1.5rem 0 3.5rem; }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
-    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.2rem;
-    }
-
-    .tool-section p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.9rem; line-height: 1.55; }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr);
-      gap: 0.8rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-    @media (max-width: 600px) { .tool-form { grid-template-columns: 1fr; } }
-
-    .field { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.8rem; }
-    .field label { color: var(--muted); }
-
-    .field textarea, .field select {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: #020617;
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-      resize: vertical;
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-    }
-
-    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
-
-    .qrcode-wrapper {
-      margin-top: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .qrcode-box {
-      padding: 0.75rem;
-      border-radius: 16px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      min-height: 160px;
-      min-width: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-links { display: flex; gap: 0.9rem; flex-wrap: wrap; }
-    .footer-links a { color: #6b7280; }
-    .footer-links a:hover { color: #e5e7eb; }
-  </style>
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/qr-code.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/qr-code.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/qr-code.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/qr-code.html" />
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER (same structure as other tools) -->
     <header>
       <div class="container nav">
-        <div class="brand">
+        <a class="brand" href="/">
           <div class="brand-logo" aria-hidden="true">
             <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
@@ -298,30 +93,32 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="/#tools">All tools</a>
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <a href="/fr/">FR</a>
-          <button class="nav-cta" type="button" onclick="window.location.href='/'">
-            <span>Try another tool</span><span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
-
           <div class="section-header">
             <h1 class="section-title">QR Code Generator</h1>
             <p class="section-subtitle">
@@ -332,8 +129,8 @@
 
           <article id="tool-qrcode" class="tool-section">
             <p>
-              Enter any URL (https://...) or a short piece of text.
-              The QR code is generated directly in your browser and is never sent to a server.
+              Enter any URL (https://...) or a short piece of text. The QR code is generated directly in your browser and is never
+              sent to a server. Then download it as a PNG image for printing or digital sharing.
             </p>
 
             <form class="tool-form" onsubmit="event.preventDefault(); generateQrCode();">
@@ -349,24 +146,23 @@
                   <option value="200">200 × 200</option>
                   <option value="256" selected>256 × 256</option>
                   <option value="320">320 × 320</option>
+                  <option value="512">512 × 512</option>
                 </select>
               </div>
-            </form>
 
-            <div>
-              <button class="btn-tool" type="button" onclick="generateQrCode()">Generate QR Code</button>
-            </div>
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="generateQrCode()">
+                  Generate
+                </button>
+              </div>
+            </form>
 
             <div class="qrcode-wrapper">
               <div id="qrContainer" class="qrcode-box" aria-live="polite">
                 <span class="small-note">Your QR code will appear here.</span>
               </div>
 
-              <a
-                id="qrDownload"
-                href="#"
-                style="display:none; font-size:0.85rem; color:#a5b4fc; text-decoration:underline;"
-              >
+              <a id="qrDownload" class="download-link" href="#" style="display:none;">
                 Download QR Code (PNG)
               </a>
             </div>
@@ -374,28 +170,71 @@
             <div class="small-note">
               Tip: scan your QR code with your phone camera before printing it or sharing it widely.
             </div>
+
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About this QR code generator">
+              <h2>About this QR code generator</h2>
+
+              <p>
+                QR codes have become one of the fastest ways to share information in the real world. Instead of typing a long web
+                address, a person can simply scan a square code with a phone camera and open a page instantly. This free
+                <strong>QR code generator</strong> helps you create a scannable QR code from any <strong>URL</strong> or plain
+                <strong>text</strong>, and then download it as a <strong>PNG image</strong>. It’s useful for business cards,
+                restaurant menus, product packaging, posters, flyers, event tickets, social profiles, or any situation where you want
+                a quick “scan to open” experience.
+              </p>
+
+              <p>
+                The workflow is simple: paste your link or message, choose a size (for example 256×256 for standard digital use, or
+                512×512 for higher-quality printing), then generate the QR code. Once it appears, you can download the image and place
+                it in a document, a design template, or a website. If you plan to print the code, prefer a larger size and keep enough
+                white space around it (quiet zone) so scanners can detect the pattern reliably. For posters or outdoor prints, testing
+                your QR code on multiple phones before distribution is always a good idea.
+              </p>
+
+              <p>
+                A common concern with online QR tools is privacy: some services upload your text or track what you generate.
+                This page is designed differently. The QR code is generated <strong>100% locally in your browser</strong>. Your input
+                is not uploaded to a server, nothing is stored, and no account is required. That makes it convenient for sensitive
+                use cases such as internal links, private documents, short notes, or drafts you don’t want to share with third parties.
+              </p>
+
+              <p>
+                QR codes can encode many types of content, but the most popular is a URL. When sharing a link, always include the full
+                <strong>https://</strong> address so scanners open the correct page. For best results, avoid extremely long text and
+                keep your content simple. If you need to change the destination later, consider using a short link you control, then
+                generate a QR code from that short URL. This way, the printed code stays valid even if you update the final target.
+              </p>
+
+              <p class="small-note">
+                Tip: after downloading the PNG, zoom in to ensure the code is crisp, and test scan it from a screen and from paper.
+              </p>
+            </section>
+
+            <div class="small-note">
+              Client-side only — no data is sent to a server.
+            </div>
           </article>
 
-          <!-- Mini SEO text -->
-          <section class="tool-section" aria-label="About this QR code generator">
-            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">Create a QR code from a link or text (local & private)</h2>
-            <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
-              This QR code generator turns any URL, Wi-Fi note, contact info or short message into a scannable QR code.
-              It is useful for menus, flyers, business cards, packaging, and quick sharing.
-              The tool runs locally in your browser, so your content is not uploaded to a server.
-            </p>
-            <p style="color:var(--muted);line-height:1.65;">
-              Choose a size, generate the code, then download it as a PNG image for printing or digital use.
-            </p>
+          <!-- RELATED TOOLS -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
           </section>
 
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
+        <span>© <span id="year"></span> Universe Tools</span>
         <div class="footer-links">
           <a href="/privacy.html">Privacy</a>
           <a href="/legal.html">Legal</a>
@@ -403,13 +242,26 @@
         </div>
       </div>
     </footer>
+
   </div>
 
   <!-- Lib QRCode -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    function safeText(v) {
+      return String(v || "").trim();
+    }
+
+    function parseIntSafe(v, fallback) {
+      const n = parseInt(String(v || ""), 10);
+      return Number.isFinite(n) ? n : fallback;
+    }
 
     function generateQrCode() {
       const textEl = document.getElementById("qrText");
@@ -417,14 +269,13 @@
       const container = document.getElementById("qrContainer");
       const downloadLink = document.getElementById("qrDownload");
 
-      // Safety checks
       if (!textEl || !sizeEl || !container || !downloadLink || typeof QRCode === "undefined") {
         console.error("QR generator: missing DOM elements or QRCode library not loaded.");
         return;
       }
 
-      const value = (textEl.value || "").trim();
-      const size = parseInt(sizeEl.value || "256", 10);
+      const value = safeText(textEl.value);
+      const size = parseIntSafe(sizeEl.value, 256);
 
       if (!value) {
         container.innerHTML = "<span class='small-note'>Please enter a URL or some text.</span>";
@@ -433,12 +284,12 @@
         return;
       }
 
-      // Reset container and hide download until ready
+      // Reset UI
       container.innerHTML = "";
       downloadLink.style.display = "none";
       downloadLink.href = "#";
 
-      // Create QRCode (qrcodejs usually renders an <img>)
+      // Generate
       new QRCode(container, {
         text: value,
         width: size,
@@ -446,22 +297,125 @@
         correctLevel: QRCode.CorrectLevel.M
       });
 
-      // Build download link once rendered
+      // Build download link after render
       setTimeout(() => {
         const img = container.querySelector("img");
         const canvas = container.querySelector("canvas");
 
         let dataUrl = null;
         if (img && img.src) dataUrl = img.src;
-        if (!dataUrl && canvas && canvas.toDataURL) dataUrl = canvas.toDataURL("image/png");
+        if (!dataUrl && canvas && typeof canvas.toDataURL === "function") {
+          dataUrl = canvas.toDataURL("image/png");
+        }
 
         if (!dataUrl) return;
 
         downloadLink.href = dataUrl;
         downloadLink.download = "qrcode.png";
         downloadLink.style.display = "inline-block";
-      }, 200);
+      }, 120);
     }
+
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+
+    /* Optional: link style if your global CSS doesn't include it */
+    .download-link {
+      font-size: 0.9rem;
+      text-decoration: underline;
+    }
+  </style>
+
 </body>
 </html>

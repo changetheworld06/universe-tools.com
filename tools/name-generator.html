@@ -9,7 +9,22 @@
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#4f46e5" />
 
-  <!-- GA4 + Ads -->
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/name-generator.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/name-generator.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/name-generator.html" />
+
+  <!-- Google tag (gtag.js) - GA4 + Google Ads -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,183 +34,53 @@
     gtag('config', 'AW-325165312');
   </script>
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://universe-tools.com/tools/name-generator.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/name-generator.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/name-generator.html" />
+  <!-- Event snippet conversion -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
+    }
+  </script>
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
 
-  <!-- JSON-LD -->
+  <!-- Structured Data : WebApplication -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"WebApplication",
     "name":"Name Generator (Business / Baby / Brand)",
     "url":"https://universe-tools.com/tools/name-generator.html",
-    "description":"Generate names for a business, baby or brand with styles, language feel and length filters. Local tool.",
+    "description":"Generate names for a business, baby or brand with styles, language feel and length filters. Local tool, no upload.",
     "applicationCategory":"Utility",
     "operatingSystem":"All",
-    "isAccessibleForFree":true,
-    "browserRequirements":"Requires JavaScript"
+    "browserRequirements":"Requires JavaScript",
+    "isAccessibleForFree": true
   }
   </script>
-
-  <style>
-    :root{
-      --bg:#050816;--bg-soft:#0b1020;--accent:#4f46e5;--accent-soft:rgba(79,70,229,.12);
-      --text:#f9fafb;--muted:#9ca3af;--border:#1f2937;
-      --radius-lg:18px;--radius-md:12px;--radius-sm:8px;
-      --shadow-card:0 14px 35px rgba(15,23,42,.7);
-      --max-width:1120px;--t:.18s ease-out;
-      --danger:#ef4444;--ok:#22c55e;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
-      background:radial-gradient(circle at top,#111827,#020617 55%,#000 100%);
-      color:var(--text);min-height:100vh;
-    }
-    a{color:inherit;text-decoration:none}
-    .page{min-height:100vh;display:flex;flex-direction:column}
-    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.5rem}
-
-    header{
-      position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);
-      background:linear-gradient(to bottom,rgba(15,23,42,.92),rgba(15,23,42,.75),transparent);
-      border-bottom:1px solid rgba(148,163,184,.18);
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
-    .brand{display:flex;align-items:center;gap:.65rem}
-    .brand-logo{
-      width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;overflow:hidden;
-      box-shadow:0 0 30px rgba(79,70,229,.45),0 0 4px rgba(148,163,184,.8);
-      background:radial-gradient(circle at 30% 0%,#e5e7eb,#4f46e5 55%,#020617);
-      flex:0 0 auto;
-    }
-    .brand-name{font-weight:700;letter-spacing:.04em;font-size:.95rem}
-    .brand-tagline{font-size:.72rem;color:var(--muted)}
-    .nav-links{display:flex;align-items:center;gap:1.1rem;font-size:.9rem;flex-wrap:wrap;justify-content:flex-end}
-    .nav-links a{color:var(--muted);border-bottom:2px solid transparent;padding:.25rem 0;transition:color var(--t),border-color var(--t),transform var(--t)}
-    .nav-links a:hover{color:#e5e7eb;border-color:rgba(129,140,248,.7);transform:translateY(-1px)}
-    .nav-cta{
-      padding:.45rem .9rem;border-radius:999px;border:1px solid rgba(129,140,248,.6);
-      background:radial-gradient(circle at top left,#4f46e5,#0f172a);
-      font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
-      display:inline-flex;align-items:center;gap:.3rem;box-shadow:0 8px 25px rgba(79,70,229,.4);
-      cursor:pointer;white-space:nowrap;
-    }
-
-    .section{padding:1.5rem 0 3.5rem}
-    .section-header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.2rem}
-    .section-title{font-size:1.5rem;letter-spacing:-.03em}
-    .section-subtitle{font-size:.9rem;color:var(--muted);max-width:760px;line-height:1.5}
-
-    .tool-section{
-      border-radius:20px;border:1px solid rgba(55,65,81,.9);
-      background:radial-gradient(circle at top left,#020617,#020617);
-      padding:1.2rem 1.1rem 1.4rem;box-shadow:var(--shadow-card);margin-bottom:1.2rem;
-    }
-    .tool-section p{font-size:.85rem;color:var(--muted);margin-bottom:.9rem;line-height:1.55}
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap:.8rem;
-      align-items:end;
-    }
-    @media (max-width:1000px){.grid{grid-template-columns:1fr;}}
-    .field{display:flex;flex-direction:column;gap:.35rem;font-size:.8rem}
-    .field label{color:var(--muted)}
-    .field input, .field select, .field textarea{
-      border-radius:var(--radius-sm);
-      border:1px solid rgba(75,85,99,.9);
-      background:radial-gradient(circle at top left,#020617,#020617);
-      color:var(--text);
-      padding:.55rem .6rem;
-      font-size:.9rem;outline:none;
-    }
-    .field textarea{min-height:84px;resize:vertical;line-height:1.55}
-    .hint{font-size:.74rem;color:#6b7280;line-height:1.45;margin-top:.2rem}
-
-    .controls{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin-top:.6rem}
-    .btn{
-      border-radius:var(--radius-sm);border:none;padding:.62rem .95rem;font-size:.86rem;
-      background:linear-gradient(135deg,#4f46e5,#6366f1);color:#e5e7eb;font-weight:800;
-      cursor:pointer;box-shadow:0 12px 28px rgba(79,70,229,.5);user-select:none;
-    }
-    .btn.secondary{background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none;font-weight:600}
-    .btn[disabled]{opacity:.55;cursor:not-allowed}
-
-    .pill-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
-    .pill{
-      font-size:.74rem;color:#e5e7eb;
-      border:1px solid rgba(129,140,248,.35);
-      background:rgba(79,70,229,.10);
-      padding:.25rem .55rem;border-radius:999px;
-    }
-
-    .results-top{
-      display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;
-      margin-top:.2rem;
-    }
-    .count{color:var(--muted);font-size:.82rem}
-    .list{margin-top:.8rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
-    @media (max-width:900px){.list{grid-template-columns:1fr}}
-    .name-card{
-      border-radius:var(--radius-md);
-      border:1px solid rgba(55,65,81,.8);
-      background:rgba(2,6,23,.55);
-      padding:1rem;
-    }
-    .name-title{
-      display:flex;justify-content:space-between;gap:.8rem;align-items:baseline;flex-wrap:wrap;
-    }
-    .name{
-      font-size:1.08rem;font-weight:900;letter-spacing:-.02em;
-    }
-    .score{font-size:.78rem;color:var(--muted)}
-    .name-meta{margin-top:.45rem;display:flex;gap:.5rem;flex-wrap:wrap}
-    .tag{
-      font-size:.72rem;color:#e5e7eb;
-      border:1px solid rgba(55,65,81,.8);
-      background:rgba(2,6,23,.45);
-      padding:.22rem .5rem;border-radius:999px;
-    }
-    .actions{margin-top:.65rem;display:flex;gap:.55rem;flex-wrap:wrap}
-    .mini{
-      padding:.45rem .7rem;font-size:.78rem;font-weight:800;
-    }
-    .mini.secondary{font-weight:700}
-    .status{margin-top:.65rem;font-size:.78rem;color:var(--muted);line-height:1.45}
-    .status b{color:#e5e7eb}
-    .warn{color:var(--danger)}
-    .ok{color:var(--ok)}
-    .note{
-      font-size:.74rem;color:#6b7280;margin-top:.85rem;line-height:1.55
-    }
-
-    footer{border-top:1px solid rgba(30,64,175,.6);background:radial-gradient(circle at top,#020617,#020617);margin-top:auto}
-    .footer-inner{
-      padding:1rem 0 1.4rem;font-size:.75rem;color:#6b7280;
-      display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center
-    }
-    .footer-links{display:flex;gap:.9rem;flex-wrap:wrap}
-    .footer-links a{color:#6b7280}
-    .footer-links a:hover{color:#e5e7eb}
-  </style>
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER (copié-collé, simple) -->
     <header>
       <div class="container nav">
-        <div class="brand">
+        <a class="brand" href="/">
           <div class="brand-logo" aria-hidden="true">
             <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
@@ -207,28 +92,33 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
-          <div>
+          <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="/#tools">All tools</a>
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <button class="nav-cta" type="button" onclick="window.location.href='/'">
-            <span>Try another tool</span><span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
+
           <div class="section-header">
             <h1 class="section-title">Name Generator (Business / Baby / Brand)</h1>
             <p class="section-subtitle">
@@ -238,7 +128,7 @@
           </div>
 
           <article class="tool-section">
-            <div class="grid">
+            <div class="tool-grid">
               <div class="field">
                 <label for="keywords">Keywords (comma separated)</label>
                 <textarea id="keywords" placeholder="Example: water, clean, secure, scan"></textarea>
@@ -307,7 +197,7 @@
               </div>
             </div>
 
-            <div class="controls">
+            <div class="row">
               <button id="btnGen" class="btn" type="button">Generate</button>
               <button id="btnShuffle" class="btn secondary" type="button">Shuffle</button>
               <button id="btnCopyAll" class="btn secondary" type="button" disabled>Copy all</button>
@@ -315,35 +205,77 @@
               <button id="btnReset" class="btn secondary" type="button">Reset</button>
             </div>
 
-            <div id="status" class="note"></div>
+            <div id="status" class="hint" style="margin-top:12px;"></div>
 
-            <div class="results-top">
-              <div class="count" id="countLabel"></div>
+            <div class="results-top" style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-top:8px;">
+              <div class="hint" id="countLabel"></div>
             </div>
 
-            <div id="list" class="list"></div>
+            <div id="list" class="tools-grid" style="margin-top:14px;"></div>
 
-            <div class="note">
+            <div class="hint" style="margin-top:16px;">
               <strong>Availability checks:</strong> “Domain check” opens a new tab (no API). Trademark checks are not included.
             </div>
           </article>
 
-          <article class="tool-section">
+          <!-- SEO TEXT (300+ words) -->
+          <section class="tool-section" aria-label="About this name generator">
+            <h2>About this Name Generator</h2>
+
             <p>
-              <strong>Tips:</strong> Use 2–3 strong keywords, keep names short, and try different styles (Tech / Luxury).
-              For baby names, you can use themes like “nature, sky, ocean” or “strong, brave”.
+              Finding a strong name can be surprisingly hard. Whether you are naming a <strong>business</strong>, a
+              <strong>brand</strong>, a <strong>product</strong>, or looking for a <strong>baby name</strong>, you usually want something
+              that is easy to remember, easy to pronounce, and consistent with the “feel” you are aiming for. This
+              <strong>Name Generator</strong> helps you explore name ideas by mixing your keywords with different structures:
+              combined words, short variants, prefixes, suffixes, and “brandable” syllable-based names.
             </p>
-            <p style="margin-bottom:0;">
-              This is an idea generator — always check pronunciation, meaning in other languages, and domain/trademark availability.
+
+            <p>
+              Start with a few keywords (for example your industry, your values, or a theme). Then choose a type:
+              for business and brands, the tool can propose names that include common endings (like “Labs”, “Studio”, or “Solutions”).
+              For baby names, it uses a different set of seeds and variations. The <strong>style</strong> affects the suggestions:
+              “Tech” tends to generate more modern, sharp names; “Luxury” leans into elegant sounds and premium cues; “Cute” aims for
+              friendly and playful results. The “language feel” option adjusts the syllables and endings to produce names that
+              sound more English-ish, French-ish, Latin-ish, or Nordic-ish.
             </p>
-          </article>
+
+            <p>
+              The “max length” filter is especially useful for brandability: short names often work better in logos, domains, and social handles.
+              However, you should always verify real-world availability. This tool does <strong>not</strong> call any external API and does not check
+              trademark databases. It simply gives you ideas quickly, then provides convenient shortcuts to run your own searches.
+            </p>
+
+            <p>
+              Everything runs <strong>locally in your browser</strong>. Your keywords and choices are not uploaded or stored. Use the generator to
+              iterate: change one parameter at a time (style, language feel, max length), generate multiple batches, and shortlist the best options.
+              Once you have a shortlist, test pronunciation, check meaning in other languages, and validate domain and trademark availability.
+            </p>
+
+            <p class="small-note">
+              Tip: for brand names, try 2–3 strong keywords and keep max length at 8–12. For baby names, try themes like nature, sky, ocean,
+              strength, or calm.
+            </p>
+          </section>
+
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
+
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools</span>
+        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
         <div class="footer-links">
           <a href="/privacy.html">Privacy</a>
           <a href="/legal.html">Legal</a>
@@ -351,9 +283,14 @@
         </div>
       </div>
     </footer>
+
   </div>
 
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
   <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
     const $ = (id) => document.getElementById(id);
 
     // ---------- Utils ----------
@@ -386,7 +323,6 @@
       return cleanWord(s).replace(/\s+/g,"").replace(/-+/g,"");
     }
     function scoreName(name){
-      // Simple heuristic score (0..100)
       const raw = String(name||"").trim();
       const n = raw.replace(/\s+/g,"");
       let score = 50;
@@ -396,10 +332,11 @@
       else score -= 8;
 
       if (/^[A-Z]/.test(raw)) score += 4;
-      if (/[aeiou]/i.test(n) && /[bcdfghjklmnpqrstvwxyz]/i.test(n)) score += 8; // pronounceable-ish
-      if (/(.)\1\1/.test(n)) score -= 10; // triple letters
+      if (/[aeiou]/i.test(n) && /[bcdfghjklmnpqrstvwxyz]/i.test(n)) score += 8;
+      if (/(.)\1\1/.test(n)) score -= 10;
       if (/[0-9]/.test(n)) score -= 6;
-      if (/\s/.test(raw)) score -= 2; // multiword slightly less brandable (depends)
+      if (/\s/.test(raw)) score -= 2;
+
       return Math.max(0, Math.min(100, Math.round(score)));
     }
 
@@ -447,7 +384,6 @@
       }
     };
 
-    // Baby name seeds (simple, local)
     const BABY_BASE = {
       modern: ["Luna","Noah","Mila","Liam","Nina","Leo","Maya","Eden","Ava","Elio","Milo","Iris"],
       classic: ["Emma","Lucas","Alice","Hugo","Chloe","Louis","Arthur","Sarah","Julie","Paul","Anna","David"],
@@ -479,7 +415,6 @@
         out.push(titleCase(pick(pref)) + base);
         out.push(base + titleCase(pick(pref)).replace(/\s+/g,""));
 
-        // merge with another word
         const w2 = pick(words);
         if (w2 && w2 !== w){
           const b2 = titleCase(w2);
@@ -487,7 +422,6 @@
           out.push(base + " " + b2);
         }
 
-        // short brandy truncations
         if (base.length >= 6){
           out.push(base.slice(0,4) + base.slice(-2));
           out.push(base.slice(0,5));
@@ -504,31 +438,25 @@
       const out = [];
       const s = SYLLABLES[feel] || SYLLABLES.neutral;
 
-      const attempts = 220; // generate many then filter/unique
-      for (let i=0;i<attempts;i++){
+      for (let i=0;i<220;i++){
         let name = "";
-        if (feel === "english"){
-          // english-ish: consonant cluster + vowel + ending
-          name = pick(s.start) + pick(s.mid) + pick(s.end);
-        } else if (feel === "french"){
+
+        if (feel === "english" || feel === "french"){
           name = pick(s.start) + pick(s.mid) + pick(s.end);
         } else {
-          // neutral/latin/nordic: 2-3 syllables + ending
           const parts = [pick(s.start), pick(s.mid)];
           if (Math.random() < 0.55) parts.push(pick(s.mid));
           parts.push(pick(s.end));
           name = parts.join("");
         }
 
-        name = name.replace(/--+/g,"-").replace(/\s+/g,"").trim();
+        name = name.replace(/\s+/g,"").trim();
         name = name.charAt(0).toUpperCase() + name.slice(1);
 
-        // style tweaks
         if (style === "short") name = name.slice(0, Math.min(name.length, randInt(3,6)));
         if (style === "luxury" && Math.random()<0.35) name = name + (Math.random()<0.5 ? "é" : "a");
         if (style === "tech" && Math.random()<0.25) name = name + (Math.random()<0.5 ? "X" : "AI");
 
-        // length filter
         if (name.length <= maxLen && name.length >= 3) out.push(name);
       }
       return out;
@@ -536,12 +464,8 @@
 
     function buildBabyNames(style, feel, maxLen){
       const base = BABY_BASE[style] || BABY_BASE.modern;
-      const out = [];
+      const out = [...base];
 
-      // direct base
-      out.push(...base);
-
-      // variants
       const suffix = (feel === "french") ? ["a","e","ine","ette","on","el","éo"] :
                      (feel === "latin") ? ["us","a","ia","io","or"] :
                      (feel === "nordic") ? ["son","sen","vik","ly"] :
@@ -562,6 +486,7 @@
 
         if (v.length <= maxLen && v.length >= 3) out.push(v);
       }
+
       return out;
     }
 
@@ -572,12 +497,8 @@
         out.push(n);
         const s = pick(suffixes);
         if (!s) continue;
-
-        // sometimes separate word, sometimes merged
         if (Math.random() < 0.55) out.push(`${n} ${s}`);
         else out.push(`${n}${s}`);
-
-        // check per-word maxLen
       }
       return out
         .map(x => x.replace(/\s+/g," ").trim())
@@ -592,7 +513,6 @@
       const maxLen = parseInt($("maxLen").value, 10) || 10;
       const count = parseInt($("count").value, 10) || 20;
 
-      // parse keywords
       const words = uniq(
         raw.split(",")
           .map(x => cleanWord(x))
@@ -605,8 +525,7 @@
       const suffixes = getSuffixList(type, style);
 
       let names = [];
-
-      if (type === "baby"){
+      if (type === "baby") {
         names = buildBabyNames(style, feel, maxLen);
       } else {
         if (words.length) names.push(...buildFromKeywords(words, style, maxLen));
@@ -616,26 +535,30 @@
 
       names = uniq(names);
 
-      // filter: no very short unless short style
       names = names.filter(n => {
         const compact = n.replace(/\s+/g,"");
         if (style === "short") return compact.length >= 3;
         return compact.length >= 4;
       });
 
-      // score + sort by score desc, then length asc
       const scored = names.map(n => ({ n, s: scoreName(n), len: n.replace(/\s+/g,"").length }));
       scored.sort((a,b) => (b.s - a.s) || (a.len - b.len) || a.n.localeCompare(b.n));
 
-      // keep
-      const final = scored.slice(0, count);
-
-      return { final, words };
+      return { final: scored.slice(0, count), words };
     }
 
     // ---------- UI ----------
     function setStatus(html){
       $("status").innerHTML = html || "";
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
     function render(results){
@@ -644,55 +567,48 @@
 
       $("countLabel").textContent = results.length ? `${results.length} results` : "";
 
-      const items = results.map((it, idx) => {
+      list.innerHTML = results.map(it => {
         const name = it.n;
         const score = it.s;
 
         const domainBase = slugify(name);
         const domainQuery = domainBase ? `${domainBase}.com` : "";
-        const tld = ".com";
 
-        // links (no API, just open searches)
         const duck = `https://duckduckgo.com/?q=${encodeURIComponent(name + " brand")}`;
         const whois = `https://duckduckgo.com/?q=${encodeURIComponent(domainQuery + " whois")}`;
-        const check = `https://duckduckgo.com/?q=${encodeURIComponent("site:" + tld + " " + domainBase)}`;
 
         return `
-          <div class="name-card">
-            <div class="name-title">
-              <div class="name">${name}</div>
-              <div class="score">Score: <b>${score}</b>/100</div>
+          <div class="tool-card" style="padding:16px;">
+            <div class="tool-card-top">
+              <div class="tool-title">${escapeHtml(name)}</div>
+              <div class="tool-badge">Score ${score}/100</div>
             </div>
-            <div class="name-meta">
-              <span class="tag">${name.replace(/\s+/g,"").length} chars</span>
-              <span class="tag">${/ /.test(name) ? "multi-word" : "single-word"}</span>
-              <span class="tag">${domainQuery ? domainQuery : "—"}</span>
+            <div class="tool-desc" style="min-height:auto;">
+              <div style="margin-top:6px;opacity:.95;font-size:13px;">
+                <span style="opacity:.8;">${name.replace(/\s+/g,"").length} chars</span>
+                <span style="opacity:.45;"> • </span>
+                <span style="opacity:.8;">${/\s/.test(name) ? "multi-word" : "single-word"}</span>
+                <span style="opacity:.45;"> • </span>
+                <span style="opacity:.8;">${domainQuery ? escapeHtml(domainQuery) : "—"}</span>
+              </div>
             </div>
-
-            <div class="actions">
-              <button class="btn mini secondary" type="button" data-copy="${encodeURIComponent(name)}">Copy</button>
-              <button class="btn mini secondary" type="button" data-copy="${encodeURIComponent(domainQuery)}" ${domainQuery ? "" : "disabled"}>Copy .com</button>
-              <a class="btn mini secondary" href="${whois}" target="_blank" rel="noopener">Domain check</a>
-              <a class="btn mini secondary" href="${duck}" target="_blank" rel="noopener">Web search</a>
-            </div>
-
-            <div class="status">
-              <span class="muted">Tip:</span> search “${name}” + “trademark” in your target country.
+            <div class="tool-foot" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;opacity:1;">
+              <button class="btn secondary" type="button" data-copy="${encodeURIComponent(name)}">Copy</button>
+              <button class="btn secondary" type="button" data-copy="${encodeURIComponent(domainQuery)}" ${domainQuery ? "" : "disabled"}>Copy .com</button>
+              <a class="btn secondary" href="${whois}" target="_blank" rel="noopener">Domain check</a>
+              <a class="btn secondary" href="${duck}" target="_blank" rel="noopener">Web search</a>
             </div>
           </div>
         `;
-      });
+      }).join("");
 
-      list.innerHTML = items.join("");
-
-      // bind copy buttons
       list.querySelectorAll("button[data-copy]").forEach(btn => {
         btn.addEventListener("click", async () => {
           const val = decodeURIComponent(btn.getAttribute("data-copy") || "");
           if (!val) return;
           try {
             await navigator.clipboard.writeText(val);
-            setStatus(`Copied: <b>${val}</b>`);
+            setStatus(`Copied: <b>${escapeHtml(val)}</b>`);
           } catch {
             setStatus(`<span class="warn">Copy failed (browser restriction).</span>`);
           }
@@ -701,22 +617,27 @@
     }
 
     async function copyAll(){
-      const cards = Array.from(document.querySelectorAll(".name-card .name")).map(x => x.textContent.trim()).filter(Boolean);
-      if (!cards.length) return;
-      const txt = cards.join("\n");
+      const cards = Array.from(document.querySelectorAll("#list [data-copy]"))
+        .map(b => decodeURIComponent(b.getAttribute("data-copy") || ""))
+        .filter(Boolean);
+
+      // First button per card is the name itself => easiest: read titles
+      const names = Array.from(document.querySelectorAll("#list .tool-title")).map(x => x.textContent.trim()).filter(Boolean);
+
+      if (!names.length) return;
       try {
-        await navigator.clipboard.writeText(txt);
-        setStatus(`Copied <b>${cards.length}</b> names to clipboard.`);
+        await navigator.clipboard.writeText(names.join("\n"));
+        setStatus(`Copied <b>${names.length}</b> names to clipboard.`);
       } catch {
         setStatus(`<span class="warn">Copy failed (browser restriction).</span>`);
       }
     }
 
     function downloadTxt(){
-      const cards = Array.from(document.querySelectorAll(".name-card .name")).map(x => x.textContent.trim()).filter(Boolean);
-      if (!cards.length) return;
-      const txt = cards.join("\n");
-      const blob = new Blob([txt], {type:"text/plain;charset=utf-8"});
+      const names = Array.from(document.querySelectorAll("#list .tool-title")).map(x => x.textContent.trim()).filter(Boolean);
+      if (!names.length) return;
+
+      const blob = new Blob([names.join("\n")], {type:"text/plain;charset=utf-8"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -753,7 +674,10 @@
         return;
       }
 
-      const previewWords = words.length ? words.map(w => `<span class="pill">${w}</span>`).join(" ") : `<span class="pill">no keywords</span>`;
+      const previewWords = words.length
+        ? words.map(w => `<span class="pill">${escapeHtml(w)}</span>`).join(" ")
+        : `<span class="pill">no keywords</span>`;
+
       setStatus(`Generated using: ${previewWords}`);
 
       render(final);
@@ -762,16 +686,97 @@
       $("btnDownload").disabled = false;
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      $("year").textContent = new Date().getFullYear();
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
 
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+    })();
+
+    document.addEventListener("DOMContentLoaded", () => {
       $("btnGen").addEventListener("click", run);
       $("btnShuffle").addEventListener("click", run);
       $("btnCopyAll").addEventListener("click", copyAll);
       $("btnDownload").addEventListener("click", downloadTxt);
       $("btnReset").addEventListener("click", resetAll);
-
     });
   </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>

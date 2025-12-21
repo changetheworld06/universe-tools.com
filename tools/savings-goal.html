@@ -7,19 +7,22 @@
   <title>Savings goal simulator | Universe Tools</title>
   <meta name="description" content="Estimate how much you should save each month to reach a savings goal in a given time. Optional annual return rate. 100% local in your browser." />
   <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta name="theme-color" content="#4f46e5">
 
-  <!-- Google tag (gtag.js) - GA4 + Google Ads (single loader) -->
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-15ST5Y0Z1C'); // GA4
-    gtag('config', 'AW-325165312'); // Google Ads
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
   </script>
 
-  <!-- Event snippet conversion -->
+  <!-- Event snippet (conversion) -->
   <script>
     function gtag_report_conversion(url) {
       var callback = function () { if (url) window.location = url; };
@@ -43,7 +46,7 @@
   }
   </script>
 
-  <!-- Structured Data : WebApplication (page-specific) -->
+  <!-- Structured Data : WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -65,7 +68,7 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Canonical + hreflang (page-specific) -->
+  <!-- Canonical + hreflang -->
   <link rel="canonical" href="https://universe-tools.com/tools/savings-goal.html" />
   <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/savings-goal.html" />
   <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/savings-goal.html" />
@@ -82,173 +85,15 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Savings goal simulator | Universe Tools" />
   <meta name="twitter:description" content="Monthly savings needed to reach a goal (optional return rate). Local-only." />
-
-  <!-- Styles : same base as your other tools (kept) -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-soft: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.12);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --danger: #ef4444;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
-      --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.7);
-      --transition-fast: 0.18s ease-out;
-      --transition-med: 0.25s ease-out;
-      --max-width: 1120px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text","Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%, #000 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .page { min-height: 100vh; display: flex; flex-direction: column; }
-
-    .container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
-
-    header {
-      position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
-    .brand { display: flex; align-items: center; gap: 0.65rem; }
-
-    .brand-logo {
-      width: 34px; height: 34px; border-radius: 999px;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 30px rgba(79, 70, 229, 0.45), 0 0 4px rgba(148, 163, 184, 0.8);
-      background: radial-gradient(circle at 30% 0%, #e5e7eb, #4f46e5 55%, #020617);
-    }
-
-    .brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
-    .brand-name { font-weight: 700; letter-spacing: 0.04em; font-size: 0.95rem; }
-    .brand-tagline { font-size: 0.72rem; color: var(--muted); }
-
-    .nav-links { display: flex; align-items: center; gap: 1.3rem; font-size: 0.9rem; }
-    .nav-links a {
-      color: var(--muted);
-      padding: 0.25rem 0;
-      border-bottom: 2px solid transparent;
-      transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-    }
-    .nav-links a:hover { color: #e5e7eb; border-color: rgba(129, 140, 248, 0.7); transform: translateY(-1px); }
-
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 140, 248, 0.6);
-      background: radial-gradient(circle at top left, #4f46e5, #0f172a);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-      cursor: pointer;
-    }
-    .nav-cta span:last-child { font-size: 1rem; transform: translateY(0.5px); }
-
-    .section { padding: 1.5rem 0 3.5rem; }
-
-    .section-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
-    .section-title { font-size: 1.5rem; letter-spacing: -0.03em; }
-    .section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 520px; line-height: 1.5; }
-
-    .tool-section {
-      border-radius: 20px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      padding: 1.2rem 1.1rem 1.4rem;
-      box-shadow: var(--shadow-card);
-      margin-bottom: 1.4rem;
-    }
-
-    .tool-form {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.8rem;
-      align-items: end;
-      margin-bottom: 1rem;
-    }
-    @media (max-width: 900px) { .tool-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 650px) { .tool-form { grid-template-columns: minmax(0, 1fr); } }
-
-    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; }
-    .field label { color: var(--muted); }
-    .field small { color: #6b7280; font-size: 0.72rem; }
-
-    .field input {
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: radial-gradient(circle at top left, #020617, #020617);
-      color: var(--text);
-      padding: 0.45rem 0.55rem;
-      font-size: 0.85rem;
-      outline: none;
-    }
-
-    .btn-tool {
-      border-radius: var(--radius-sm);
-      border: none;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.84rem;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #e5e7eb;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.5);
-    }
-
-    .tool-result { margin-top: 0.7rem; font-size: 0.86rem; }
-    .tool-result span { display:block; margin-top:.25rem; color: var(--muted); }
-
-    .small-note { font-size: 0.72rem; color: #6b7280; margin-top: 0.4rem; }
-
-    footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #020617, #020617);
-      margin-top: auto;
-    }
-    .footer-inner {
-      padding: 1rem 0 1.4rem;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-  </style>
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER -->
     <header>
       <div class="container nav">
-        <div class="brand">
+        <a class="brand" href="/">
           <div class="brand-logo" aria-hidden="true">
             <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
@@ -260,30 +105,32 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
           <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="/#tools">All tools</a>
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <a href="/fr/">FR</a>
-          <button class="nav-cta" type="button" onclick="window.location.href='/'">
-            <span>Try another tool</span><span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
-
           <div class="section-header">
             <h1 class="section-title">Savings goal simulator</h1>
             <p class="section-subtitle">
@@ -292,33 +139,30 @@
             </p>
           </div>
 
-          <article class="tool-section" id="tool-savings-goal">
+          <article id="tool-savings-goal" class="tool-section">
             <p>
               Set a target amount and number of months. Optionally add an annual return rate.
               Everything runs locally in your browser.
             </p>
 
-            <form class="tool-form" onsubmit="event.preventDefault(); calculateGoal();">
+            <form class="tool-form" onsubmit="event.preventDefault(); calculateSavingsGoal();">
               <div class="field">
-                <label for="goalAmount">Savings goal (€)</label>
+                <label for="goalAmount">Savings goal</label>
                 <input id="goalAmount" type="number" step="0.01" min="0" placeholder="e.g. 10000" />
-                <small>Target amount you want to reach.</small>
               </div>
 
               <div class="field">
                 <label for="goalMonths">Duration (months)</label>
                 <input id="goalMonths" type="number" step="1" min="1" placeholder="e.g. 24" />
-                <small>How long you plan to save.</small>
               </div>
 
               <div class="field">
                 <label for="goalRate">Annual return (%) (optional)</label>
                 <input id="goalRate" type="number" step="0.01" min="0" placeholder="e.g. 3" />
-                <small>Set 0 if no interest.</small>
               </div>
 
               <div class="field">
-                <button class="btn-tool" type="button" onclick="calculateGoal()">Calculate</button>
+                <button class="btn-tool" type="button" onclick="calculateSavingsGoal()">Calculate</button>
               </div>
             </form>
 
@@ -328,82 +172,236 @@
               Estimation only. If a return rate is set, it assumes a constant monthly rate (annual/12)
               and contributions at the end of each month.
             </div>
+
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About this savings goal simulator">
+              <h2>About this savings goal simulator</h2>
+
+              <p>
+                Setting a financial goal is easy—“save 10,000 in two years”—but translating that into a realistic monthly plan can be
+                harder than it looks. This free <strong>savings goal simulator</strong> helps you estimate how much you should set aside
+                each month to reach a target amount within a chosen timeframe. You only need two inputs: the <strong>goal amount</strong>
+                and the <strong>duration in months</strong>. Optionally, you can add an <strong>annual return rate</strong> to simulate
+                growth if you plan to invest the money rather than keeping it in cash.
+              </p>
+
+              <p>
+                If you set the return rate to 0%, the calculation is straightforward: the required monthly saving is the goal divided by
+                the number of months. If you enter a positive return rate, the calculator assumes a constant <strong>monthly rate</strong>
+                (annual rate / 12) and contributions at the <strong>end of each month</strong>. In that case, the tool uses the standard
+                future value formula for an “ordinary annuity” to estimate how much a fixed monthly contribution can grow over time.
+                This provides a more realistic projection when saving into an account or portfolio that earns interest.
+              </p>
+
+              <p>
+                This tool is useful for many scenarios: building an emergency fund, preparing a vacation budget, planning a down payment,
+                saving for a car, funding a project, or simply staying consistent with a monthly plan. Keep in mind that real returns are
+                not guaranteed and may vary month to month. Inflation, taxes, fees, and account-specific rules are not included here.
+                Still, this simulator gives you a clear baseline and helps you compare “save more monthly” vs “save longer” strategies.
+              </p>
+
+              <p>
+                Privacy is a key principle of Universe Tools. All calculations are performed <strong>100% locally in your browser</strong>.
+                Your numbers are never uploaded, stored, or shared.
+              </p>
+
+              <p class="small-note">
+                Tip: if you want a conservative plan, try running the simulator with a return rate of 0% even if you plan to invest.
+              </p>
+            </section>
+
+              <p class="small-note">
+                Tip: for a conservative plan, try 0% return even if you plan to invest.
+              </p>
+            </section>
           </article>
 
-          <!-- Mini SEO text -->
-          <section class="tool-section" aria-label="About this savings goal calculator">
-            <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.6rem;">
-              How much should you save per month to reach your goal?
-            </h2>
-            <p style="color:var(--muted);line-height:1.65;margin-bottom:.75rem;">
-              This simulator estimates the monthly amount needed to reach a savings target in a given time frame.
-              It can be useful for emergency funds, vacations, big purchases, or budgeting challenges.
-            </p>
-            <p style="color:var(--muted);line-height:1.65;">
-              Add an optional annual return rate to simulate simple growth, while keeping the calculation private:
-              your inputs are never sent to a server.
-            </p>
+          <!-- RELATED TOOLS (maillage interne) -->
+          <section class="section" aria-label="Related tools">
+            <div class="container">
+          
+              <div class="section-header" style="margin-top:24px;">
+                <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+                <p class="section-subtitle" style="font-size:13px;">
+                  More tools you may like (same category when possible).
+                </p>
+              </div>
+          
+              <div id="relatedGrid" class="tools-grid"></div>
+          
+            </div>
           </section>
 
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
-        <span>© <span id="year"></span> Universe Tools. All rights reserved.</span>
-        <span>Local calculation</span>
+        <span>© <span id="year"></span> Universe Tools</span>
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/#tools">All tools</a>
+        </div>
       </div>
     </footer>
+
   </div>
 
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
+  <!-- SCRIPTS -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    function parseNum(v){
-      const n = parseFloat(String(v ?? "").replace(",", "."));
-      return Number.isFinite(n) ? n : null;
+    function parseNum(v) {
+      return parseFloat(String(v || "").replace(",", "."));
     }
 
-    function calculateGoal(){
-      const goalEl = document.getElementById("goalAmount");
-      const monthsEl = document.getElementById("goalMonths");
-      const rateEl = document.getElementById("goalRate");
-      const res = document.getElementById("goalResult");
+    function fmt(n) {
+      if (!isFinite(n)) return "0.00";
+      return Number(n).toFixed(2);
+    }
 
-      if (!goalEl || !monthsEl || !rateEl || !res) return;
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
 
-      const goal = parseNum(goalEl.value);
-      const months = parseInt(monthsEl.value, 10);
-      const annualRatePct = parseNum(rateEl.value) ?? 0;
+    function calculateSavingsGoal() {
+      const goal = parseNum(document.getElementById("goalAmount").value);
+      const monthsRaw = parseNum(document.getElementById("goalMonths").value);
+      const ratePctRaw = parseNum(document.getElementById("goalRate").value);
+      const resultEl = document.getElementById("goalResult");
 
-      if (!goal || goal <= 0 || !months || months <= 0) {
-        res.innerHTML = "<span>Please enter a valid goal amount and duration.</span>";
+      const months = Math.max(0, Math.round(monthsRaw));
+      const ratePct = isFinite(ratePctRaw) ? ratePctRaw : 0;
+
+      if (!isFinite(goal) || goal <= 0 || !isFinite(monthsRaw) || months <= 0 || !isFinite(ratePct) || ratePct < 0) {
+        resultEl.innerHTML = "<span>Please enter a valid goal amount, duration (months), and optional return rate (≥ 0).</span>";
         return;
       }
 
-      const r = (annualRatePct > 0) ? (annualRatePct / 100) / 12 : 0;
+      const r = (ratePct > 0) ? (ratePct / 100) / 12 : 0; // monthly rate
 
       let monthly = 0;
       if (r === 0) {
         monthly = goal / months;
       } else {
-        // FV (ordinary annuity): FV = P * [((1+r)^n - 1)/r]  =>  P = FV / factor
+        // FV ordinary annuity: FV = P * [((1+r)^n - 1)/r]  =>  P = FV / factor
         const factor = (Math.pow(1 + r, months) - 1) / r;
         monthly = goal / factor;
       }
 
       const totalContrib = monthly * months;
-      const growth = (r === 0) ? 0 : (goal - totalContrib);
+      const estGrowth = goal - totalContrib;
 
-      res.innerHTML = `
-        <strong>Required monthly saving: ${monthly.toFixed(2)} €</strong>
-        <span>Goal: ${goal.toFixed(2)} € in ${months} months</span>
-        <span>Assumed annual return: ${annualRatePct.toFixed(2)}%</span>
-        <span>Total contributions: ${totalContrib.toFixed(2)} €</span>
-        <span>${r === 0 ? "Estimated growth: 0.00 €" : ("Estimated net growth: " + growth.toFixed(2) + " €")}</span>
+      resultEl.innerHTML = `
+        <strong>Required monthly saving: ${fmt(monthly)}</strong>
+        <span>Goal: ${fmt(goal)} in ${months} months</span>
+        <span>Assumed annual return: ${fmt(ratePct)}%</span>
+        <span>Total contributions: ${fmt(totalContrib)}</span>
+        <span>${r === 0 ? "Estimated net growth: 0.00" : ("Estimated net growth: " + fmt(Math.max(0, estGrowth)))}</span>
       `;
     }
+
+    // Expose (optional, like your other pages)
+    window.calculateSavingsGoal = calculateSavingsGoal;
+
+    // ===== Related tools cards (maillage interne) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      // Same category first, excluding current tool
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      // Fallback: if not enough, fill with anything else
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc = escapeHtml(t.desc || "");
+        const href = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+    })();
   </script>
+
+   <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
 </body>
 </html>

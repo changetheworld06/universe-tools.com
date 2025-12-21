@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Text / PDF Summarizer (local) | Universe Tools</title>
-  <meta name="description" content="Summarize text or extract text from a PDF and summarize it locally in your browser. No upload, no server." />
+  <meta name="description" content="Summarize text or extract text from a PDF and summarize it locally in your browser. 100% local (no upload)." />
   <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta name="theme-color" content="#4f46e5">
 
-  <!-- GA4 + Ads (single loader) -->
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google tag (GA4 + Ads) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,19 +22,31 @@
     gtag('config', 'AW-325165312');
   </script>
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://universe-tools.com/tools/text-pdf-summarizer.html" />
-  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/text-pdf-summarizer.html" />
-  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/text-pdf-summarizer.html" />
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      if (typeof gtag === "function") {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+          'event_callback': callback
+        });
+      }
+      return false;
+    }
+  </script>
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="manifest" href="/site.webmanifest">
+  <!-- SEO JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
 
-  <!-- JSON-LD -->
+  <!-- Structured Data : WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -41,132 +56,44 @@
     "description": "Summarize text or extract text from a PDF and summarize it locally in your browser. No upload.",
     "applicationCategory": "Utility",
     "operatingSystem": "All",
-    "isAccessibleForFree": true,
-    "browserRequirements": "Requires JavaScript"
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true
   }
   </script>
 
-  <!-- Styles (same vibe as your tools) -->
-  <style>
-    :root{
-      --bg:#050816;--bg-soft:#0b1020;--accent:#4f46e5;--accent-soft:rgba(79,70,229,.12);
-      --text:#f9fafb;--muted:#9ca3af;--border:#1f2937;--radius-lg:18px;--radius-md:12px;--radius-sm:8px;
-      --shadow-card:0 14px 35px rgba(15,23,42,.7);--max-width:1120px;--t:.18s ease-out;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
-      background:radial-gradient(circle at top,#111827,#020617 55%,#000 100%);
-      color:var(--text);min-height:100vh;
-    }
-    a{color:inherit;text-decoration:none}
-    .page{min-height:100vh;display:flex;flex-direction:column}
-    .container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 1.5rem}
-    header{
-      position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);
-      background:linear-gradient(to bottom,rgba(15,23,42,.92),rgba(15,23,42,.75),transparent);
-      border-bottom:1px solid rgba(148,163,184,.18);
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
-    .brand{display:flex;align-items:center;gap:.65rem}
-    .brand-logo{
-      width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;overflow:hidden;
-      box-shadow:0 0 30px rgba(79,70,229,.45),0 0 4px rgba(148,163,184,.8);
-      background:radial-gradient(circle at 30% 0%,#e5e7eb,#4f46e5 55%,#020617);
-      flex:0 0 auto;
-    }
-    .brand-name{font-weight:700;letter-spacing:.04em;font-size:.95rem}
-    .brand-tagline{font-size:.72rem;color:var(--muted)}
-    .nav-links{display:flex;align-items:center;gap:1.1rem;font-size:.9rem;flex-wrap:wrap;justify-content:flex-end}
-    .nav-links a{color:var(--muted);border-bottom:2px solid transparent;padding:.25rem 0;transition:color var(--t),border-color var(--t),transform var(--t)}
-    .nav-links a:hover{color:#e5e7eb;border-color:rgba(129,140,248,.7);transform:translateY(-1px)}
-    .nav-cta{
-      padding:.45rem .9rem;border-radius:999px;border:1px solid rgba(129,140,248,.6);
-      background:radial-gradient(circle at top left,#4f46e5,#0f172a);
-      font-size:.8rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
-      display:inline-flex;align-items:center;gap:.3rem;box-shadow:0 8px 25px rgba(79,70,229,.4);
-      cursor:pointer;white-space:nowrap;
-    }
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
 
-    .section{padding:1.5rem 0 3.5rem}
-    .section-header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
-    .section-title{font-size:1.5rem;letter-spacing:-.03em}
-    .section-subtitle{font-size:.9rem;color:var(--muted);max-width:680px;line-height:1.5}
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/text-pdf-summarizer.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/text-pdf-summarizer.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/text-pdf-summarizer.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/text-pdf-summarizer.html" />
 
-    .tool-section{
-      border-radius:20px;border:1px solid rgba(55,65,81,.9);
-      background:radial-gradient(circle at top left,#020617,#020617);
-      padding:1.2rem 1.1rem 1.4rem;box-shadow:var(--shadow-card);margin-bottom:1.4rem;
-    }
-    .tool-section p{font-size:.85rem;color:var(--muted);margin-bottom:.9rem;line-height:1.55}
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Universe Tools" />
+  <meta property="og:title" content="Text / PDF Summarizer (local)" />
+  <meta property="og:description" content="Summarize text or extract text from a PDF locally in your browser (no upload)." />
+  <meta property="og:url" content="https://universe-tools.com/tools/text-pdf-summarizer.html" />
 
-    .row{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem}
-    @media (max-width:900px){.row{grid-template-columns:1fr}}
-
-    .field{display:flex;flex-direction:column;gap:.35rem;font-size:.8rem}
-    .field label{color:var(--muted)}
-    textarea, input[type="file"]{
-      border-radius:var(--radius-sm);
-      border:1px solid rgba(75,85,99,.9);
-      background:radial-gradient(circle at top left,#020617,#020617);
-      color:var(--text);
-      padding:.6rem .65rem;
-      font-size:.9rem;outline:none;
-    }
-    textarea{min-height:220px;resize:vertical;line-height:1.55}
-    .controls{display:flex;gap:.8rem;flex-wrap:wrap;align-items:end}
-    .btn{
-      border-radius:var(--radius-sm);border:none;padding:.6rem .9rem;font-size:.84rem;
-      background:linear-gradient(135deg,#4f46e5,#6366f1);color:#e5e7eb;font-weight:600;
-      cursor:pointer;box-shadow:0 12px 28px rgba(79,70,229,.5);user-select:none;
-    }
-    .btn.secondary{background:transparent;border:1px solid rgba(129,140,248,.55);box-shadow:none}
-    .btn[disabled]{opacity:.55;cursor:not-allowed}
-
-    .slider{
-      width:100%;
-      accent-color: var(--accent);
-    }
-    .hint{font-size:.75rem;color:#6b7280;margin-top:.35rem;line-height:1.5}
-
-    .result{
-      margin-top:.8rem;
-      border-radius:var(--radius-md);
-      border:1px solid rgba(55,65,81,.8);
-      background:rgba(2,6,23,.55);
-      padding:1rem;
-    }
-    .result h2{font-size:1rem;margin-bottom:.6rem}
-    .result pre{
-      white-space:pre-wrap;word-break:break-word;
-      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-      font-size:.88rem;color:#e5e7eb;
-    }
-
-    .progress{
-      margin-top:.9rem;padding:.8rem .9rem;border-radius:var(--radius-md);
-      border:1px solid rgba(55,65,81,.8);background:rgba(2,6,23,.65);display:none;
-    }
-    .progress-row{display:flex;justify-content:space-between;gap:1rem;font-size:.82rem;color:var(--muted)}
-    .bar{margin-top:.55rem;width:100%;height:8px;border-radius:999px;background:rgba(148,163,184,.16);overflow:hidden}
-    .bar>div{height:100%;width:0%;background:linear-gradient(90deg,#4f46e5,#7c3aed,#ec4899);transition:width .2s ease-out}
-
-    footer{border-top:1px solid rgba(30,64,175,.6);background:radial-gradient(circle at top,#020617,#020617);margin-top:auto}
-    .footer-inner{
-      padding:1rem 0 1.4rem;font-size:.75rem;color:#6b7280;display:flex;flex-wrap:wrap;gap:.75rem;justify-content:space-between;align-items:center
-    }
-    .footer-links{display:flex;gap:.9rem;flex-wrap:wrap}
-    .footer-links a{color:#6b7280}
-    .footer-links a:hover{color:#e5e7eb}
-  </style>
-
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Text / PDF Summarizer (local) | Universe Tools" />
+  <meta name="twitter:description" content="Summarize text or PDF locally (no upload)." />
 </head>
 
 <body>
   <div class="page">
+
+    <!-- HEADER (same structure as salary/temperature) -->
     <header>
       <div class="container nav">
-        <div class="brand">
+        <a class="brand" href="/">
           <div class="brand-logo" aria-hidden="true">
             <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" focusable="false">
               <defs>
@@ -178,101 +105,156 @@
               </defs>
               <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
               <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
             </svg>
           </div>
-          <div>
+          <div class="brand-text">
             <div class="brand-name">Universe Tools</div>
-            <div class="brand-tagline">60+ free online tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
           </div>
-        </div>
+        </a>
 
         <nav class="nav-links" aria-label="Primary">
-          <a href="/#tools">All tools</a>
+          <a href="/#tools">Tools</a>
           <a href="/legal.html">Legal</a>
           <a href="/privacy.html">Privacy</a>
-          <button class="nav-cta" type="button" onclick="window.location.href='/'">
-            <span>Try another tool</span><span>→</span>
-          </button>
         </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
       </div>
     </header>
 
+    <!-- CONTENT -->
     <main>
       <section class="section">
         <div class="container">
+
           <div class="section-header">
             <h1 class="section-title">Text / PDF Summarizer (local)</h1>
             <p class="section-subtitle">
-              Paste text or select a <strong>text-based PDF</strong>. The summary is created locally in your browser (no upload).
+              Paste text or load a <strong>text-based PDF</strong>. Everything runs locally in your browser (no upload).
             </p>
           </div>
 
-          <article class="tool-section">
-            <div class="row">
-              <div class="field">
-                <label for="inputText">Text to summarize</label>
-                <textarea id="inputText" placeholder="Paste your text here..."></textarea>
-                <div class="hint">
-                  Tip: you can also load a PDF below to auto-fill this field (only works if the PDF contains selectable text).
-                </div>
-              </div>
-
-              <div>
-                <div class="field" style="margin-bottom:1rem;">
-                  <label for="pdfFile">PDF (optional)</label>
-                  <input id="pdfFile" type="file" accept="application/pdf" />
-                  <div class="hint">
-                    If your PDF is a scanned image, there is no selectable text → it will extract nothing (OCR not included).
-                  </div>
-                </div>
-
-                <div class="field" style="margin-bottom:.6rem;">
-                  <label for="ratio">Summary length</label>
-                  <input id="ratio" class="slider" type="range" min="10" max="60" value="25" />
-                  <div class="hint">
-                    Target: <span id="ratioLabel">25%</span> of the original length.
-                  </div>
-                </div>
-
-                <div class="controls">
-                  <button id="btnSummarize" class="btn" type="button">Summarize</button>
-                  <button id="btnClear" class="btn secondary" type="button">Clear</button>
-                  <button id="btnCopy" class="btn secondary" type="button" disabled>Copy</button>
-                  <button id="btnDownload" class="btn secondary" type="button" disabled>Download .txt</button>
-                </div>
-
-                <div id="progressBox" class="progress" aria-live="polite">
-                  <div class="progress-row">
-                    <span id="progressText">Preparing…</span>
-                    <span id="progressPct">0%</span>
-                  </div>
-                  <div class="bar"><div id="progressBar"></div></div>
-                </div>
-
-                <div id="status" class="hint" style="margin-top:.75rem;"></div>
-              </div>
-            </div>
-
-            <div id="resultBox" class="result" style="display:none;">
-              <h2>Summary</h2>
-              <pre id="summaryOut"></pre>
-            </div>
-          </article>
-
-          <article class="tool-section">
+          <article id="tool-text-pdf-summarizer" class="tool-section">
             <p>
-              This summarizer uses a simple extractive method (sentence scoring). It works great for articles, notes,
-              reports and long messages — but it won’t perfectly preserve complex structure like tables.
+              Paste your text, or optionally load a PDF to extract selectable text. Choose a target summary length and generate an
+              extractive summary instantly. Your data stays on your device.
             </p>
-            <p style="margin-bottom:0;">
-              Everything runs on your device: your text and your PDF never leave your browser.
-            </p>
+
+            <form class="tool-form" onsubmit="event.preventDefault();">
+              <div class="field" style="grid-column:1 / -1;">
+                <label for="inputText">Text to summarize</label>
+                <textarea id="inputText" class="tool-textarea" placeholder="Paste your text here..."></textarea>
+                <div class="small-note">
+                  Tip: loading a PDF below can auto-fill this box (works only if the PDF contains selectable text — no OCR).
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="pdfFile">PDF (optional)</label>
+                <input id="pdfFile" type="file" accept="application/pdf" />
+                <div class="small-note">If your PDF is scanned (image-only), extraction will return nothing.</div>
+              </div>
+
+              <div class="field">
+                <label for="ratio">Summary length</label>
+                <input id="ratio" type="range" min="10" max="60" value="25" />
+                <div class="small-note">Target: <span id="ratioLabel">25%</span></div>
+              </div>
+
+              <div class="field">
+                <button id="btnSummarize" class="btn-tool" type="button">Summarize</button>
+              </div>
+
+              <div class="field">
+                <button id="btnClear" class="btn-tool" type="button" style="background:transparent;border:1px solid rgba(120,140,255,.45);box-shadow:none;">
+                  Clear
+                </button>
+              </div>
+
+              <div class="field">
+                <button id="btnCopy" class="btn-tool" type="button" disabled style="background:transparent;border:1px solid rgba(120,140,255,.45);box-shadow:none;">
+                  Copy
+                </button>
+              </div>
+
+              <div class="field">
+                <button id="btnDownload" class="btn-tool" type="button" disabled style="background:transparent;border:1px solid rgba(120,140,255,.45);box-shadow:none;">
+                  Download .txt
+                </button>
+              </div>
+            </form>
+
+            <div id="progressBox" class="tool-result" style="display:none;margin-top:10px;">
+              <strong id="progressText">Preparing…</strong>
+              <span id="progressPct" style="display:block;opacity:.78;margin-top:4px;">0%</span>
+              <div style="margin-top:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.10);overflow:hidden;">
+                <div id="progressBar" style="height:100%;width:0%;background:linear-gradient(90deg,#4f46e5,#7c3aed,#ec4899);"></div>
+              </div>
+            </div>
+
+            <div id="status" class="small-note" style="margin-top:10px;"></div>
+
+            <div id="resultBox" class="tool-section" style="display:none;margin-top:14px;">
+              <h2>Summary</h2>
+              <pre id="summaryOut" style="white-space:pre-wrap;word-break:break-word;"></pre>
+            </div>
+
+            <!-- SEO TEXT (300+ words) -->
+            <section class="tool-section" aria-label="About this text and PDF summarizer">
+              <h2>About this text &amp; PDF summarizer</h2>
+
+              <p>
+                Summarizing long content is useful when you need to capture the main ideas quickly: articles, meeting notes,
+                reports, emails, or study material. This tool provides a simple <strong>extractive summarizer</strong>, meaning it
+                selects the most relevant sentences from your original text rather than inventing new wording. That makes it
+                predictable and easy to verify: every sentence in the summary comes from your input.
+              </p>
+
+              <p>
+                You can paste text directly, or load a <strong>text-based PDF</strong> (a PDF where you can select and copy text).
+                When a PDF is scanned as an image, it contains no selectable text. In that case, this tool will not extract
+                anything because <strong>OCR is not included</strong>.
+              </p>
+
+              <p>
+                The “Summary length” slider controls how many sentences are kept. A smaller percentage produces a shorter summary,
+                while a higher percentage keeps more context. This is ideal for producing a quick overview first, then refining
+                the ratio if you need more detail.
+              </p>
+
+              <p>
+                Privacy is a key principle of Universe Tools: everything runs <strong>100% locally in your browser</strong>. Your
+                text and your PDF are not uploaded, stored, or shared.
+              </p>
+
+              <p class="small-note">
+                Tip: if your input contains headings or bullet lists, keeping a slightly higher ratio often preserves the structure
+                better. Tables may not be preserved perfectly.
+              </p>
+            </section>
           </article>
+
+          <!-- RELATED TOOLS (same maillage as temperature/salary) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
 
         </div>
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <div class="container footer-inner">
         <span>© <span id="year"></span> Universe Tools</span>
@@ -283,69 +265,70 @@
         </div>
       </div>
     </footer>
+
   </div>
 
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
 
   <script type="module">
-import * as pdfjsLib from "/tools/vendor/pdf.min.js";
-pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
-  
-    // ---------- Helpers ----------
+    import * as pdfjsLib from "/tools/vendor/pdf.min.js";
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
+
     const $ = (id) => document.getElementById(id);
-  
+
     function setProgress(show, pct = 0, text = "") {
       const box = $("progressBox");
+      if (!box) return;
       box.style.display = show ? "block" : "none";
       $("progressBar").style.width = Math.max(0, Math.min(100, pct)) + "%";
       $("progressPct").textContent = Math.round(pct) + "%";
       $("progressText").textContent = text || "";
     }
-  
+
     function setStatus(msg) {
-      $("status").textContent = msg || "";
+      const el = $("status");
+      if (el) el.textContent = msg || "";
     }
-  
+
     function enableResultActions(enabled) {
       $("btnCopy").disabled = !enabled;
       $("btnDownload").disabled = !enabled;
     }
-  
+
     function normalizeSpaces(s) {
       return String(s || "").replace(/\s+/g, " ").trim();
     }
-  
-    // ---------- PDF extraction (local) ----------
+
     async function extractTextFromPdf(file) {
       if (!file) return "";
-  
+
       setProgress(true, 5, "Reading PDF…");
       const buf = await file.arrayBuffer();
-  
       const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
-  
+
       let all = "";
       for (let i = 1; i <= pdf.numPages; i++) {
         const pct = 5 + (i - 1) * (70 / Math.max(1, pdf.numPages));
         setProgress(true, pct, `Extracting text (${i}/${pdf.numPages})…`);
-  
+
         const page = await pdf.getPage(i);
         const content = await page.getTextContent();
-  
+
         const pageText = (content.items || [])
           .map((it) => (it && it.str ? it.str : ""))
           .join(" ");
-  
+
         all += "\n" + pageText;
       }
-  
+
       setProgress(true, 80, "Cleaning text…");
       const cleaned = normalizeSpaces(all);
       setProgress(false);
-  
+
       return cleaned;
     }
-  
-    // ---------- Summarizer (extractive) ----------
+
     function splitSentences(text) {
       const raw = String(text || "").replace(/\s+/g, " ").trim();
       if (!raw) return [];
@@ -354,7 +337,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
         .map((s) => s.trim())
         .filter(Boolean);
     }
-  
+
     function tokenize(text) {
       return String(text || "")
         .toLowerCase()
@@ -363,7 +346,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
         .map((w) => w.trim())
         .filter(Boolean);
     }
-  
+
     function buildWordFreq(sentences) {
       const freq = Object.create(null);
       const stop = new Set([
@@ -378,7 +361,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
       }
       return freq;
     }
-  
+
     function scoreSentence(sentence, freq) {
       const words = tokenize(sentence);
       if (!words.length) return 0;
@@ -386,26 +369,25 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
       for (const w of words) score += (freq[w] || 0);
       return score / Math.sqrt(words.length);
     }
-  
+
     function summarize(text, ratioPct) {
       const sentences = splitSentences(text);
       if (sentences.length <= 2) return sentences.join(" ");
-  
+
       const freq = buildWordFreq(sentences);
       const scored = sentences.map((s, idx) => ({ s, idx, score: scoreSentence(s, freq) }));
-  
+
       const keep = Math.max(
         2,
         Math.min(sentences.length, Math.round(sentences.length * (ratioPct / 100)))
       );
-  
+
       scored.sort((a, b) => b.score - a.score);
       const top = scored.slice(0, keep).sort((a, b) => a.idx - b.idx);
-  
+
       return top.map((x) => x.s).join(" ");
     }
-  
-    // ---------- UI actions ----------
+
     function clearAll() {
       $("inputText").value = "";
       $("pdfFile").value = "";
@@ -415,11 +397,11 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
       setStatus("");
       setProgress(false);
     }
-  
+
     async function onPdfSelected() {
       const file = $("pdfFile").files && $("pdfFile").files[0];
       if (!file) return;
-  
+
       try {
         setStatus("");
         const txt = await extractTextFromPdf(file);
@@ -435,16 +417,16 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
         console.error(e);
       }
     }
-  
+
     function onSummarize() {
       const cleaned = normalizeSpaces($("inputText").value || "");
       if (!cleaned) {
         setStatus("Please paste some text or load a text-based PDF first.");
         return;
       }
-  
+
       const ratio = parseInt($("ratio").value, 10) || 25;
-  
+
       setProgress(true, 30, "Summarizing…");
       setTimeout(() => {
         const out = summarize(cleaned, ratio);
@@ -455,7 +437,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
         setStatus("Done.");
       }, 30);
     }
-  
+
     async function copySummary() {
       const txt = $("summaryOut").textContent || "";
       if (!txt) return;
@@ -466,7 +448,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
         setStatus("Copy failed (browser restriction).");
       }
     }
-  
+
     function downloadSummary() {
       const txt = $("summaryOut").textContent || "";
       if (!txt) return;
@@ -481,23 +463,120 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = "/tools/vendor/pdf.worker.min.js";
       URL.revokeObjectURL(url);
       setStatus("Downloaded summary.txt");
     }
-  
-    // ---------- Init ----------
+
     document.addEventListener("DOMContentLoaded", () => {
       $("year").textContent = new Date().getFullYear();
-  
+
       const r = $("ratio");
       const lbl = $("ratioLabel");
       lbl.textContent = r.value + "%";
       r.addEventListener("input", () => (lbl.textContent = r.value + "%"));
-  
+
       $("pdfFile").addEventListener("change", onPdfSelected);
       $("btnSummarize").addEventListener("click", onSummarize);
       $("btnClear").addEventListener("click", clearAll);
       $("btnCopy").addEventListener("click", copySummary);
       $("btnDownload").addEventListener("click", downloadSummary);
-  
+
       setStatus("Tip: paste text or load a PDF.");
-      console.log("PDF.js loaded:", typeof pdfjsLib.getDocument === "function");
     });
   </script>
+
+  <script>
+    // ===== Related tools cards (same “maillage” everywhere) =====
+    (function renderRelated(){
+      const grid = document.getElementById("relatedGrid");
+      if (!grid) return;
+
+      const data = window.TOOLS_DATA;
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = "";
+        return;
+      }
+
+      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+      const current = data.find(t => t.slug === currentSlug);
+      const currentCategory = current && current.category ? current.category : null;
+
+      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+
+      if (picks.length < 6) {
+        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
+        picks = picks.concat(rest);
+      }
+
+      picks = picks.slice(0, 6);
+
+      grid.innerHTML = picks.map(t => {
+        const title = escapeHtml(t.name || t.slug || "Tool");
+        const badge = escapeHtml(t.category || "Tool");
+        const desc  = escapeHtml(t.desc || "");
+        const href  = t.path || (`/tools/${t.slug}.html`);
+        return `
+          <a class="tool-card" href="${href}">
+            <div class="tool-card-top">
+              <div class="tool-title">${title}</div>
+              <div class="tool-badge">${badge}</div>
+            </div>
+            <div class="tool-desc">${desc}</div>
+            <div class="tool-foot">Local</div>
+          </a>
+        `;
+      }).join("");
+
+      function escapeHtml(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+    })();
+  </script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
+</body>
+</html>
