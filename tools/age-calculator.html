@@ -207,112 +207,110 @@
   <!-- Tools data (global TOOLS_DATA) -->
   <script src="/assets/tools-data.js"></script>
 
-  <script>
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
+<script>
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Optional: set max date to today to prevent future DOB selection in the UI
-    (function setDateMax(){
-      const input = document.getElementById("birthDate");
-      if (!input) return;
-      const today = new Date();
-      const yyyy = today.getFullYear();
-      const mm = String(today.getMonth() + 1).padStart(2, "0");
-      const dd = String(today.getDate()).padStart(2, "0");
-      input.max = `${yyyy}-${mm}-${dd}`;
-    })();
+  // Optional: set max date to today to prevent future DOB selection in the UI
+  (function setDateMax(){
+    const input = document.getElementById("birthDate");
+    if (!input) return;
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+    input.max = `${yyyy}-${mm}-${dd}`;
+  })();
 
-    function calculateAge(){
-      const birth = document.getElementById("birthDate").value;
-      const res = document.getElementById("ageResult");
+  function calculateAge(){
+    const birth = document.getElementById("birthDate").value;
+    const res = document.getElementById("ageResult");
 
-      if (!birth){
-        res.innerHTML = "<strong>Please select a valid date.</strong>";
-        return;
-      }
-
-      const birthDate = new Date(birth);
-      const today = new Date();
-
-      // Guard: invalid date parsing
-      if (isNaN(birthDate.getTime())) {
-        res.innerHTML = "<strong>Please select a valid date.</strong>";
-        return;
-      }
-
-      // Guard: future DOB (should not happen thanks to max, but keep safe)
-      if (birthDate > today) {
-        res.innerHTML = "<strong>Date of birth cannot be in the future.</strong>";
-        return;
-      }
-
-      let age = today.getFullYear() - birthDate.getFullYear();
-      const m = today.getMonth() - birthDate.getMonth();
-
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-      }
-
-      // Ensure non-negative
-      if (age < 0) age = 0;
-
-      res.innerHTML = `<strong>Your age: ${age} years</strong>`;
+    if (!birth){
+      res.innerHTML = "<strong>Please select a valid date.</strong>";
+      return;
     }
 
-    // ===== Related tools cards (same “maillage” everywhere) =====
-    (function renderRelated(){
-      const grid = document.getElementById("relatedGrid");
-      if (!grid) return;
+    const birthDate = new Date(birth);
+    const today = new Date();
 
-      const data = window.TOOLS_DATA;
-      if (!Array.isArray(data) || data.length === 0) {
-        grid.innerHTML = "";
-        return;
+    if (isNaN(birthDate.getTime())) {
+      res.innerHTML = "<strong>Please select a valid date.</strong>";
+      return;
+    }
+
+    if (birthDate > today) {
+      res.innerHTML = "<strong>Date of birth cannot be in the future.</strong>";
+      return;
+    }
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+    if (age < 0) age = 0;
+
+    res.innerHTML = `<strong>Your age: ${age} years</strong>`;
+  }
+
+  // ===== Related tools cards (RANDOM each load) =====
+  (function renderRelated(){
+    const grid = document.getElementById("relatedGrid");
+    if (!grid) return;
+
+    const data = window.TOOLS_DATA;
+    if (!Array.isArray(data) || data.length === 0) {
+      grid.innerHTML = "";
+      return;
+    }
+
+    const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+    const current = data.find(t => t.slug === currentSlug);
+    const cat = current?.category || null;
+
+    const pool = data.filter(t => t.slug && t.slug !== currentSlug);
+
+    const sameCat = cat ? pool.filter(t => t.category === cat) : [];
+    const other   = cat ? pool.filter(t => t.category !== cat) : pool;
+
+    const picks = shuffle(sameCat.slice())
+      .concat(shuffle(other.slice()))
+      .slice(0, 6);
+
+    grid.innerHTML = picks.map(t => {
+      const title = escapeHtml(t.name || t.slug || "Tool");
+      const badge = escapeHtml(t.category || "Tool");
+      const desc  = escapeHtml(t.desc || "");
+      const href  = t.path || (`/tools/${t.slug}.html`);
+      return `
+        <a class="tool-card" href="${href}">
+          <div class="tool-card-top">
+            <div class="tool-title">${title}</div>
+            <div class="tool-badge">${badge}</div>
+          </div>
+          <div class="tool-desc">${desc}</div>
+          <div class="tool-foot">Local</div>
+        </a>
+      `;
+    }).join("");
+
+    function shuffle(arr){
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
       }
+      return arr;
+    }
 
-      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
-      const current = data.find(t => t.slug === currentSlug);
-
-      const currentCategory = current && current.category ? current.category : null;
-
-      // Same category first, excluding current tool
-      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
-
-      // Fallback: if not enough, fill with anything else
-      if (picks.length < 6) {
-        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
-        picks = picks.concat(rest);
-      }
-
-      picks = picks.slice(0, 6);
-
-      grid.innerHTML = picks.map(t => {
-        const title = escapeHtml(t.name || t.slug || "Tool");
-        const badge = escapeHtml(t.category || "Tool");
-        const desc = escapeHtml(t.desc || "");
-        const href = t.path || (`/tools/${t.slug}.html`);
-        return `
-          <a class="tool-card" href="${href}">
-            <div class="tool-card-top">
-              <div class="tool-title">${title}</div>
-              <div class="tool-badge">${badge}</div>
-            </div>
-            <div class="tool-desc">${desc}</div>
-            <div class="tool-foot">Local</div>
-          </a>
-        `;
-      }).join("");
-
-      function escapeHtml(str) {
-        return String(str)
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#039;");
-      }
-    })();
-  </script>
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  })();
+</script>
 
   <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
   <style>

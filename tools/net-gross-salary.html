@@ -290,55 +290,51 @@
     }
 
     // ===== Related tools cards (same “maillage” everywhere) =====
-    (function renderRelated(){
-      const grid = document.getElementById("relatedGrid");
-      if (!grid) return;
+    (function renderRelatedRandom(){
+  const grid = document.getElementById("relatedGrid");
+  if (!grid || !window.TOOLS_DATA) return;
 
-      const data = window.TOOLS_DATA;
-      if (!Array.isArray(data) || data.length === 0) {
-        grid.innerHTML = "";
-        return;
-      }
+  const data = window.TOOLS_DATA;
+  const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+  const current = data.find(t => t.slug === currentSlug);
+  const category = current?.category || null;
 
-      const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
-      const current = data.find(t => t.slug === currentSlug);
-      const currentCategory = current && current.category ? current.category : null;
+  const pool = data.filter(t => t.slug && t.slug !== currentSlug);
+  if (pool.length === 0) return;
 
-      let picks = data.filter(t => t.slug !== currentSlug && currentCategory && t.category === currentCategory);
+  const sameCat = category ? pool.filter(t => t.category === category) : [];
+  const other   = category ? pool.filter(t => t.category !== category) : pool;
 
-      if (picks.length < 6) {
-        const rest = data.filter(t => t.slug !== currentSlug && (!currentCategory || t.category !== currentCategory));
-        picks = picks.concat(rest);
-      }
+  const picks = shuffle([...sameCat, ...other]).slice(0, 6);
 
-      picks = picks.slice(0, 6);
+  grid.innerHTML = picks.map(t => `
+    <a class="tool-card" href="${t.path || `/tools/${t.slug}.html`}">
+      <div class="tool-card-top">
+        <div class="tool-title">${escapeHtml(t.name || t.slug)}</div>
+        <div class="tool-badge">${escapeHtml(t.category || "Tool")}</div>
+      </div>
+      <div class="tool-desc">${escapeHtml(t.desc || "")}</div>
+      <div class="tool-foot">Local</div>
+    </a>
+  `).join("");
 
-      grid.innerHTML = picks.map(t => {
-        const title = escapeHtml(t.name || t.slug || "Tool");
-        const badge = escapeHtml(t.category || "Tool");
-        const desc = escapeHtml(t.desc || "");
-        const href = t.path || (`/tools/${t.slug}.html`);
-        return `
-          <a class="tool-card" href="${href}">
-            <div class="tool-card-top">
-              <div class="tool-title">${title}</div>
-              <div class="tool-badge">${badge}</div>
-            </div>
-            <div class="tool-desc">${desc}</div>
-            <div class="tool-foot">Local</div>
-          </a>
-        `;
-      }).join("");
+  function shuffle(arr){
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
 
-      function escapeHtml(str) {
-        return String(str)
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#039;");
-      }
-    })();
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+})();
   </script>
 
   <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
