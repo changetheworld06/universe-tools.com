@@ -228,6 +228,63 @@ sessionid"></textarea>
             </p>
           </section>
 
+          <section class="tool-explanation">
+
+            <h2>What is this Cookie & GDPR Analyzer used for?</h2>
+            <p>
+              This Cookie & GDPR Analyzer is used to <strong>inspect cookies that are readable by your browser</strong>
+              via <code>document.cookie</code> and to highlight common patterns associated with
+              analytics or tracking technologies. It provides a quick, local overview of cookies
+              that may require user consent under GDPR rules.
+            </p>
+          
+            <h2>Who is this tool useful for?</h2>
+            <ul>
+              <li><strong>Website owners</strong> checking what cookies are visible client-side</li>
+              <li><strong>Developers</strong> debugging consent banner or tag manager behavior</li>
+              <li><strong>Marketers</strong> reviewing analytics and advertising setups</li>
+              <li><strong>Privacy-conscious users</strong> wanting transparency about cookies</li>
+            </ul>
+          
+            <h2>Concrete examples</h2>
+            <ul>
+              <li>Checking whether analytics cookies appear before user consent</li>
+              <li>Comparing expected cookies with actual readable cookies</li>
+              <li>Spotting unexpected third-party tracking identifiers</li>
+            </ul>
+          
+            <h2>Common mistakes to avoid</h2>
+            <ul>
+              <li>❌ Assuming this tool can see all cookies (HttpOnly cookies are invisible)</li>
+              <li>❌ Treating heuristic results as a legal compliance verdict</li>
+              <li>❌ Ignoring server-side or tag-manager-set cookies</li>
+            </ul>
+            <p>
+              The results are <strong>indicators only</strong> and should always be interpreted
+              alongside a full consent and compliance review.
+            </p>
+          
+            <h2>Limits and possible alternatives</h2>
+            <p>
+              This analyzer only inspects cookies that are accessible to JavaScript in the current
+              browser context. It does not analyze server logs, consent records, or third-party
+              requests made outside of <code>document.cookie</code>.
+            </p>
+            <ul>
+              <li>Browser developer tools (Network & Application panels)</li>
+              <li>Consent Management Platform (CMP) audits</li>
+              <li>Professional GDPR compliance reviews</li>
+            </ul>
+          
+            <h2>Educational summary</h2>
+            <p>
+              In summary, this Cookie & GDPR Analyzer helps you quickly understand which cookies are
+              visible client-side and whether they resemble common tracking patterns. It is a useful
+              educational and diagnostic tool, but it does not replace a full legal or technical audit.
+            </p>
+          
+          </section>
+
           <!-- RELATED TOOLS (maillage interne) -->
           <section class="section" aria-label="Related tools">
             <div class="section-header" style="margin-top:24px;">

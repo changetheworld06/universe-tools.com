@@ -148,8 +148,7 @@
             <form class="tool-form" onsubmit="event.preventDefault(); generateSha256();">
               <div class="field">
                 <label for="shaInput">Text to hash</label>
-                <input id="shaInput" type="text" placeholder="Enter any text" />
-              </div>
+                <textarea id="shaInput" rows="4" placeholder="Enter any text (supports line breaks)" style="resize:vertical;"></textarea>              </div>
 
               <div class="field">
                 <button class="btn-tool" type="button" onclick="generateSha256()">Generate</button>
@@ -197,6 +196,31 @@
 
               <p class="small-note">
                 Tip: if you want identical results across systems, ensure the exact same text (including spaces, line breaks, and casing).
+              </p>
+            </section>
+
+            <section class="tool-explanation">
+              <h2>What is a SHA-256 hash used for?</h2>
+              <p>
+                This tool computes a deterministic fingerprint of a text input so you can compare, verify, and reference the exact same content.
+              </p>
+            
+              <h2>Concrete examples</h2>
+              <ul>
+                <li>Verify that a configuration string did not change between two systems</li>
+                <li>Compare two messages quickly (same input → same output)</li>
+                <li>Create a reproducible identifier from a text value</li>
+              </ul>
+            
+              <h2>Common mistakes</h2>
+              <ul>
+                <li>Hashing vs encryption: hashing does not allow you to recover the original text</li>
+                <li>Invisible differences: spaces, line breaks, casing will change the result</li>
+              </ul>
+            
+              <h2>Privacy</h2>
+              <p>
+                The calculation runs locally in your browser and the text is not uploaded.
               </p>
             </section>
           </article>
