@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Compound Interest Calculator – Reinvest Gains Over Time</title>
+  <meta name="description" content="Calculate compound growth from an initial investment with a percentage rate and reinvested gains. 100% local calculator in your browser. No data stored.">
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/compound-interest-calculator.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/compound-interest-calculator.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/compound-interest-calculator.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/compound-interest-calculator.html" />
+
+  <!-- Google tag (GA4 + Ads) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
+  </script>
+
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+  <!-- JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- JSON-LD WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Compound interest calculator",
+    "url": "https://universe-tools.com/tools/compound-interest-calculator.html",
+    "description": "Calculate compound growth from an initial investment with reinvested gains. 100% local calculation in your browser.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header>
+      <div class="container nav">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">Tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+        </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h1>Compound Interest Calculator – Reinvest Gains Over Time</h1>
+            <p class="section-subtitle">
+              Enter an initial amount, a rate, and a number of periods. Gains are reinvested automatically.
+              No data is stored or sent.
+            </p>
+          </div>
+
+          <article class="tool-section">
+            <form class="tool-form" onsubmit="event.preventDefault(); calculateCompound();">
+              <div class="field">
+                <label for="principal">Initial investment</label>
+                <input id="principal" type="number" inputmode="decimal" min="0" step="0.01" placeholder="e.g., 1000">
+              </div>
+
+              <div class="field">
+                <label for="rate">Rate per period (%)</label>
+                <input id="rate" type="number" inputmode="decimal" step="0.01" placeholder="e.g., 8">
+              </div>
+
+              <div class="field">
+                <label for="periods">Number of periods</label>
+                <input id="periods" type="number" inputmode="numeric" min="1" step="1" placeholder="e.g., 10">
+              </div>
+
+              <div class="field">
+                <label for="currency">Currency</label>
+                <select id="currency">
+                  <option value="EUR" selected>EUR (€)</option>
+                  <option value="USD">USD ($)</option>
+                  <option value="GBP">GBP (£)</option>
+                  <option value="CHF">CHF (CHF)</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="calculateCompound()">
+                  Calculate
+                </button>
+              </div>
+            </form>
+
+            <div id="compoundResult" class="tool-result" aria-live="polite"></div>
+
+            <div id="compoundTableWrap" class="tool-section" style="display:none; margin-top:14px;">
+              <h2 style="margin-bottom:10px;">Period-by-period breakdown</h2>
+              <div style="overflow:auto;">
+                <table class="table" style="width:100%; border-collapse:collapse;">
+                  <thead>
+                    <tr>
+                      <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12);">Period</th>
+                      <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12);">Start</th>
+                      <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12);">Interest</th>
+                      <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(255,255,255,.12);">End</th>
+                    </tr>
+                  </thead>
+                  <tbody id="compoundTableBody"></tbody>
+                </table>
+              </div>
+              <div class="small-note" style="margin-top:10px;">
+                Formula: final = initial × (1 + rate)^periods (rate per period).
+              </div>
+            </div>
+
+            <!-- SEO paragraph -->
+            <section class="tool-section" aria-label="Compound interest guide">
+              <h2>Compound interest: how reinvesting gains changes everything</h2>
+
+              <p>
+                A <strong>compound interest calculator</strong> shows how an investment can grow when your gains are
+                <strong>reinvested</strong> instead of withdrawn. With compounding, each period’s interest is added to
+                the capital, and future interest is then calculated on a larger base. This creates an accelerating effect
+                over time, especially for long durations and higher rates.
+              </p>
+
+              <p>
+                This tool uses a simple and standard model: you enter an <strong>initial investment</strong>, a
+                <strong>percentage rate per period</strong>, and a <strong>number of periods</strong>. The result is computed locally
+                in your browser and displayed instantly, along with a detailed table showing how the balance evolves at each step.
+              </p>
+
+              <p>
+                Common use cases include simulating long-term investing, estimating growth of a portfolio, comparing different rates,
+                or understanding how much time can matter even when the rate looks small. Because everything runs
+                <strong>100% locally</strong>, no personal or financial data is sent anywhere.
+              </p>
+
+              <p>
+                Important: this calculator assumes a constant rate and full reinvestment of gains. Real investments can vary due to
+                fees, taxes, volatility, or changing returns. Use this as an educational estimate.
+              </p>
+            </section>
+
+            <section class="tool-explanation">
+
+              <h2>What is this compound calculator used for?</h2>
+              <p>
+                This tool estimates the <strong>final value</strong> of an investment when gains are reinvested each period.
+                It answers: “If I start with X, earn Y% per period, and reinvest, how much do I have after N periods?”
+              </p>
+
+              <h2>Who is this tool useful for?</h2>
+              <ul>
+                <li><strong>Investors</strong> comparing strategies with reinvestment</li>
+                <li><strong>Students</strong> learning how compounding works</li>
+                <li><strong>Anyone</strong> wanting a quick projection for saving or investing goals</li>
+              </ul>
+
+              <h2>Concrete examples</h2>
+              <ul>
+                <li>Simulating an investment that returns 7% per year over 20 years</li>
+                <li>Comparing 5% vs 8% over the same time horizon</li>
+                <li>Understanding how reinvesting gains changes the curve</li>
+              </ul>
+
+              <h2>Common mistakes to avoid</h2>
+              <ul>
+                <li>❌ Confusing “rate per period” with annual rate (choose consistent periods)</li>
+                <li>❌ Entering negative values</li>
+                <li>❌ Expecting real markets to behave like a fixed-rate model</li>
+              </ul>
+
+              <h2>Limits and possible alternatives</h2>
+              <p>
+                This calculator uses a constant rate and does not include deposits, withdrawals, fees, or taxes.
+                For more advanced simulations, you may need a model with contributions, variable returns, and costs.
+              </p>
+
+              <h2>Educational summary</h2>
+              <p>
+                Compounding means “earning returns on your returns”. Over time, reinvestment can have a strong effect, and this tool
+                makes that effect visible instantly with a period-by-period table.
+              </p>
+
+            </section>
+
+            <div class="small-note">
+              Calculation is performed locally in your browser.
+            </div>
+          </article>
+
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <span>Local calculation only</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
+<script>
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function calculateCompound(){
+    const principalEl = document.getElementById("principal");
+    const rateEl = document.getElementById("rate");
+    const periodsEl = document.getElementById("periods");
+    const currencyEl = document.getElementById("currency");
+
+    const res = document.getElementById("compoundResult");
+    const wrap = document.getElementById("compoundTableWrap");
+    const tbody = document.getElementById("compoundTableBody");
+
+    const principal = Number(principalEl.value);
+    const ratePct = Number(rateEl.value);
+    const periods = Number(periodsEl.value);
+    const currency = currencyEl.value || "EUR";
+
+    // Basic validation
+    if (!isFinite(principal) || !isFinite(ratePct) || !isFinite(periods)) {
+      res.innerHTML = "<strong>Please enter valid numbers.</strong>";
+      wrap.style.display = "none";
+      return;
+    }
+    if (principal < 0) {
+      res.innerHTML = "<strong>Initial investment cannot be negative.</strong>";
+      wrap.style.display = "none";
+      return;
+    }
+    if (periods < 1 || !Number.isInteger(periods)) {
+      res.innerHTML = "<strong>Number of periods must be an integer ≥ 1.</strong>";
+      wrap.style.display = "none";
+      return;
+    }
+
+    const r = ratePct / 100;
+
+    // Compute final
+    const final = principal * Math.pow(1 + r, periods);
+    const gain = final - principal;
+
+    const fmt = new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency,
+      maximumFractionDigits: 2
+    });
+
+    // Build table
+    tbody.innerHTML = "";
+    let balance = principal;
+    for (let i = 1; i <= periods; i++){
+      const start = balance;
+      const interest = start * r;
+      const end = start + interest;
+      balance = end;
+
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08);">${i}</td>
+        <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08);">${escapeHtml(fmt.format(start))}</td>
+        <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08);">${escapeHtml(fmt.format(interest))}</td>
+        <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,.08);"><strong>${escapeHtml(fmt.format(end))}</strong></td>
+      `;
+      tbody.appendChild(tr);
+    }
+
+    res.innerHTML = `
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <div><strong>Final value:</strong> ${escapeHtml(fmt.format(final))}</div>
+        <div><strong>Total gain:</strong> ${escapeHtml(fmt.format(gain))}</div>
+        <div style="opacity:.75; font-size:13px;">
+          Initial ${escapeHtml(fmt.format(principal))} at ${escapeHtml(ratePct)}% for ${escapeHtml(periods)} periods (reinvested).
+        </div>
+      </div>
+    `;
+
+    wrap.style.display = "block";
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  // ===== Related tools cards (RANDOM each load) =====
+  (function renderRelated(){
+    const grid = document.getElementById("relatedGrid");
+    if (!grid) return;
+
+    const data = window.TOOLS_DATA;
+    if (!Array.isArray(data) || data.length === 0) {
+      grid.innerHTML = "";
+      return;
+    }
+
+    const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+    const current = data.find(t => t.slug === currentSlug);
+    const cat = current?.category || null;
+
+    const pool = data.filter(t => t.slug && t.slug !== currentSlug);
+
+    const sameCat = cat ? pool.filter(t => t.category === cat) : [];
+    const other   = cat ? pool.filter(t => t.category !== cat) : pool;
+
+    const picks = shuffle(sameCat.slice())
+      .concat(shuffle(other.slice()))
+      .slice(0, 6);
+
+    grid.innerHTML = picks.map(t => {
+      const title = escapeHtml2(t.name || t.slug || "Tool");
+      const badge = escapeHtml2(t.category || "Tool");
+      const desc  = escapeHtml2(t.desc || "");
+      const href  = t.path || (`/tools/${t.slug}.html`);
+      return `
+        <a class="tool-card" href="${href}">
+          <div class="tool-card-top">
+            <div class="tool-title">${title}</div>
+            <div class="tool-badge">${badge}</div>
+          </div>
+          <div class="tool-desc">${desc}</div>
+          <div class="tool-foot">Local</div>
+        </a>
+      `;
+    }).join("");
+
+    function shuffle(arr){
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function escapeHtml2(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  })();
+</script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    /* This block is safe even if style.css already defines those classes */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
+</body>
+</html>
