@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>FIRE Calculator – Financial Independence & Early Retirement</title>
+  <meta name="description" content="Calculate your FIRE number, years to financial independence, and portfolio growth. Simple, fast and 100% local in your browser. No data stored.">
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://universe-tools.com/tools/fire-calculator.html" />
+  <link rel="alternate" hreflang="en" href="https://universe-tools.com/tools/fire-calculator.html" />
+  <link rel="alternate" hreflang="fr" href="https://universe-tools.com/fr/tools/fire-calculator.html" />
+  <link rel="alternate" hreflang="x-default" href="https://universe-tools.com/tools/fire-calculator.html" />
+
+  <!-- Google tag (GA4 + Ads) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15ST5Y0Z1C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-15ST5Y0Z1C');
+    gtag('config', 'AW-325165312');
+  </script>
+
+  <!-- Event snippet (conversion) -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () { if (url) window.location = url; };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-325165312/4_GXCKLGqcgbEIDChpsB',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+  <!-- JSON-LD WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Universe Tools",
+    "url": "https://universe-tools.com"
+  }
+  </script>
+
+  <!-- JSON-LD WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "FIRE calculator",
+    "url": "https://universe-tools.com/tools/fire-calculator.html",
+    "description": "Calculate your FIRE number and estimate how many years it may take to reach financial independence. 100% local calculation in your browser.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header>
+      <div class="container nav">
+        <a class="brand" href="/">
+          <div class="brand-logo" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="120%" y2="120%">
+                  <stop offset="0%" stop-color="#4f46e5"/>
+                  <stop offset="40%" stop-color="#7c3aed"/>
+                  <stop offset="100%" stop-color="#ec4899"/>
+                </linearGradient>
+              </defs>
+              <circle cx="30" cy="30" r="22" fill="none" stroke="url(#grad2)" stroke-width="3"/>
+              <circle cx="30" cy="12" r="5" fill="url(#grad2)"/>
+              <ellipse cx="30" cy="30" rx="28" ry="10" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-name">Universe Tools</div>
+            <div class="brand-tagline">All your everyday tools in one place.</div>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/#tools">Tools</a>
+          <a href="/legal.html">Legal</a>
+          <a href="/privacy.html">Privacy</a>
+        </nav>
+
+        <button class="nav-cta" type="button" onclick="window.location.href='/'">
+          <span>Try another tool</span>
+          <span>→</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h1>FIRE Calculator – Financial Independence & Early Retirement</h1>
+            <p class="section-subtitle">
+              Estimate your FIRE number (target portfolio) and how long it may take to get there.
+              100% local — no data stored or sent.
+            </p>
+          </div>
+
+          <article class="tool-section">
+            <form class="tool-form" onsubmit="event.preventDefault(); calculateFIRE();">
+              <div class="field">
+                <label for="annualExpenses">Annual expenses (€/year)</label>
+                <input id="annualExpenses" type="number" inputmode="decimal" min="0" step="100" placeholder="e.g., 30000">
+              </div>
+
+              <div class="field">
+                <label for="withdrawRate">Safe withdrawal rate (%)</label>
+                <input id="withdrawRate" type="number" inputmode="decimal" min="0.1" max="20" step="0.1" value="4.0">
+              </div>
+
+              <div class="field">
+                <label for="currentPortfolio">Current portfolio (€)</label>
+                <input id="currentPortfolio" type="number" inputmode="decimal" min="0" step="1000" placeholder="e.g., 50000">
+              </div>
+
+              <div class="field">
+                <label for="annualContribution">Annual contribution (€/year)</label>
+                <input id="annualContribution" type="number" inputmode="decimal" min="0" step="100" placeholder="e.g., 12000">
+              </div>
+
+              <div class="field">
+                <label for="returnRate">Expected annual return (%)</label>
+                <input id="returnRate" type="number" inputmode="decimal" min="-50" max="50" step="0.1" value="5.0">
+              </div>
+
+              <div class="field">
+                <label for="inflationRate">Inflation (%)</label>
+                <input id="inflationRate" type="number" inputmode="decimal" min="-5" max="30" step="0.1" value="2.0">
+              </div>
+
+              <div class="field">
+                <button class="btn-tool" type="button" onclick="calculateFIRE()">
+                  Calculate FIRE
+                </button>
+              </div>
+            </form>
+
+            <div id="fireResult" class="tool-result" aria-live="polite"></div>
+
+            <!-- SEO paragraph -->
+            <section class="tool-section" aria-label="FIRE calculator guide">
+              <h2>FIRE calculator: how it works and why it’s useful</h2>
+
+              <p>
+                A <strong>FIRE calculator</strong> helps you estimate the amount of money you may need to reach
+                <strong>financial independence</strong> (often called your <strong>FIRE number</strong>).
+                The core idea is simple: if your invested portfolio is large enough, you may be able to
+                withdraw a small percentage each year to cover your living costs.
+              </p>
+
+              <p>
+                Many people use a rule of thumb such as a <strong>4% withdrawal rate</strong>. In that case,
+                the FIRE number is approximately <strong>25× your annual expenses</strong> (because 1 / 0.04 = 25).
+                This tool lets you adjust the withdrawal rate, include your current portfolio, add yearly contributions,
+                and model growth over time using an expected return and inflation assumption.
+              </p>
+
+              <p>
+                This <strong>financial independence calculator</strong> runs <strong>locally in your browser</strong>.
+                No account is needed and no personal data is uploaded. You can try multiple scenarios quickly:
+                reducing expenses, increasing contributions, changing assumptions, or testing more conservative returns.
+              </p>
+
+              <p>
+                The result is an estimate, not financial advice. Markets vary, inflation changes, and real-life spending
+                is never perfectly constant. Still, having a clear FIRE target can help you plan, track progress, and stay motivated.
+              </p>
+            </section>
+
+            <section class="tool-explanation">
+
+              <h2>What is this FIRE calculator used for?</h2>
+              <p>
+                This tool estimates your <strong>FIRE number</strong> and an approximate timeline to reach it,
+                based on your expenses, current portfolio, yearly contributions, and return assumptions.
+              </p>
+
+              <h2>Who is this tool useful for?</h2>
+              <ul>
+                <li><strong>Beginners</strong> who want a simple FIRE target based on expenses</li>
+                <li><strong>Investors</strong> tracking progress toward financial independence</li>
+                <li><strong>Families</strong> comparing lifestyle scenarios and savings rates</li>
+                <li><strong>Anyone</strong> exploring early retirement planning</li>
+              </ul>
+
+              <h2>Concrete examples</h2>
+              <ul>
+                <li>“If I spend €30,000/year and use 4%, what is my target portfolio?”</li>
+                <li>“If I invest €12,000/year at 5% return, how many years could it take?”</li>
+                <li>“What if inflation is higher or returns are lower?”</li>
+              </ul>
+
+              <h2>Common mistakes to avoid</h2>
+              <ul>
+                <li>❌ Mixing nominal returns with real (after inflation) assumptions</li>
+                <li>❌ Ignoring irregular costs (repairs, kids, health, taxes)</li>
+                <li>❌ Assuming returns are stable every year</li>
+              </ul>
+              <p>
+                This calculator uses a simplified year-by-year model. Real life is more complex,
+                but scenarios like this help build intuition.
+              </p>
+
+              <h2>Limits and possible alternatives</h2>
+              <p>
+                This tool provides an estimate using a constant yearly contribution and constant rates.
+                For detailed retirement planning, some people use full cash-flow models or professional advice.
+              </p>
+              <ul>
+                <li>Detailed spreadsheet cash-flow projections</li>
+                <li>Monte Carlo simulation tools</li>
+                <li>Professional financial planning</li>
+              </ul>
+
+              <h2>Educational summary</h2>
+              <p>
+                In short, your FIRE number is commonly estimated by dividing annual expenses by a withdrawal rate
+                (for example expenses / 0.04). This tool adds portfolio growth and contributions to estimate
+                how long it may take to reach that target.
+              </p>
+
+            </section>
+
+            <div class="small-note">
+              This is an educational estimate. Local calculation only.
+            </div>
+          </article>
+
+          <!-- RELATED TOOLS (same card style everywhere) -->
+          <section class="section" aria-label="Related tools">
+            <div class="section-header" style="margin-top:24px;">
+              <h2 class="section-title" style="font-size:18px;">Related tools</h2>
+              <p class="section-subtitle" style="font-size:13px;">
+                More tools you may like (same category when possible).
+              </p>
+            </div>
+            <div id="relatedGrid" class="tools-grid"></div>
+          </section>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Universe Tools</span>
+        <span>Local calculation only</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Tools data (global TOOLS_DATA) -->
+  <script src="/assets/tools-data.js"></script>
+
+<script>
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function calculateFIRE(){
+    const res = document.getElementById("fireResult");
+
+    const annualExpenses = parseFloat(document.getElementById("annualExpenses").value);
+    const withdrawRateP  = parseFloat(document.getElementById("withdrawRate").value);
+    const currentPort    = parseFloat(document.getElementById("currentPortfolio").value || "0");
+    const annualContrib  = parseFloat(document.getElementById("annualContribution").value || "0");
+    const returnRateP    = parseFloat(document.getElementById("returnRate").value);
+    const inflationP     = parseFloat(document.getElementById("inflationRate").value);
+
+    if (!isFinite(annualExpenses) || annualExpenses <= 0){
+      res.innerHTML = "<strong>Please enter valid annual expenses.</strong>";
+      return;
+    }
+    if (!isFinite(withdrawRateP) || withdrawRateP <= 0){
+      res.innerHTML = "<strong>Please enter a valid withdrawal rate.</strong>";
+      return;
+    }
+    if (!isFinite(currentPort) || currentPort < 0){
+      res.innerHTML = "<strong>Please enter a valid current portfolio amount.</strong>";
+      return;
+    }
+    if (!isFinite(annualContrib) || annualContrib < 0){
+      res.innerHTML = "<strong>Please enter a valid annual contribution.</strong>";
+      return;
+    }
+    if (!isFinite(returnRateP)){
+      res.innerHTML = "<strong>Please enter a valid expected return.</strong>";
+      return;
+    }
+    if (!isFinite(inflationP)){
+      res.innerHTML = "<strong>Please enter a valid inflation value.</strong>";
+      return;
+    }
+
+    const wr = withdrawRateP / 100;
+    const fireNumber = annualExpenses / wr;
+
+    // Use real return approximation: (1+r)/(1+i) - 1
+    const r = returnRateP / 100;
+    const i = inflationP / 100;
+    const realReturn = (1 + r) / (1 + i) - 1;
+
+    // Simulate years to reach FIRE (real terms)
+    // Portfolio grows by realReturn each year, then contribution is added (end of year).
+    let years = 0;
+    let port = currentPort;
+
+    const MAX_YEARS = 100; // keep it bounded
+    while (years < MAX_YEARS && port < fireNumber){
+      port = port * (1 + realReturn) + annualContrib;
+      years++;
+    }
+
+    const progress = Math.min(100, (currentPort / fireNumber) * 100);
+
+    let timelineText = "";
+    if (currentPort >= fireNumber){
+      timelineText = "You have reached your FIRE number (based on your inputs).";
+    } else if (years >= MAX_YEARS){
+      timelineText = "With these assumptions, FIRE may take more than 100 years. Try increasing contributions or adjusting assumptions.";
+    } else {
+      timelineText = `Estimated time to FIRE: <strong>${years} year${years > 1 ? "s" : ""}</strong> (simplified model).`;
+    }
+
+    res.innerHTML = `
+      <div style="display:grid; gap:10px;">
+        <div><strong>FIRE number:</strong> €${formatMoney(fireNumber)}</div>
+        <div><strong>Current progress:</strong> ${isFinite(progress) ? progress.toFixed(1) : "0.0"}%</div>
+        <div><strong>Real return used (after inflation):</strong> ${(realReturn * 100).toFixed(2)}%</div>
+        <div>${timelineText}</div>
+        <div style="opacity:.75; font-size:13px;">
+          Rule of thumb: FIRE number ≈ annual expenses ÷ withdrawal rate (e.g., 4% → 25× expenses).
+        </div>
+      </div>
+    `;
+
+    function formatMoney(n){
+      // format without relying on locale specifics too much
+      return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+  }
+
+  // ===== Related tools cards (RANDOM each load) =====
+  (function renderRelated(){
+    const grid = document.getElementById("relatedGrid");
+    if (!grid) return;
+
+    const data = window.TOOLS_DATA;
+    if (!Array.isArray(data) || data.length === 0) {
+      grid.innerHTML = "";
+      return;
+    }
+
+    const currentSlug = (location.pathname.split("/").pop() || "").replace(".html", "");
+    const current = data.find(t => t.slug === currentSlug);
+    const cat = current?.category || null;
+
+    const pool = data.filter(t => t.slug && t.slug !== currentSlug);
+
+    const sameCat = cat ? pool.filter(t => t.category === cat) : [];
+    const other   = cat ? pool.filter(t => t.category !== cat) : pool;
+
+    const picks = shuffle(sameCat.slice())
+      .concat(shuffle(other.slice()))
+      .slice(0, 6);
+
+    grid.innerHTML = picks.map(t => {
+      const title = escapeHtml(t.name || t.slug || "Tool");
+      const badge = escapeHtml(t.category || "Tool");
+      const desc  = escapeHtml(t.desc || "");
+      const href  = t.path || (`/tools/${t.slug}.html`);
+      return `
+        <a class="tool-card" href="${href}">
+          <div class="tool-card-top">
+            <div class="tool-title">${title}</div>
+            <div class="tool-badge">${badge}</div>
+          </div>
+          <div class="tool-desc">${desc}</div>
+          <div class="tool-foot">Local</div>
+        </a>
+      `;
+    }).join("");
+
+    function shuffle(arr){
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  })();
+</script>
+
+  <!-- Minimal CSS fallback for related cards if your global style.css doesn't include it -->
+  <style>
+    /* This block is safe even if style.css already defines those classes */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      display: block;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      text-decoration: none;
+      color: inherit;
+    }
+    .tool-card:hover {
+      border-color: rgba(120,140,255,.45);
+      box-shadow: 0 0 0 1px rgba(120,140,255,.20) inset;
+    }
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .tool-title { font-weight: 700; line-height: 1.2; }
+    .tool-badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(120,140,255,.45);
+      background: rgba(120,140,255,.08);
+      white-space: nowrap;
+    }
+    .tool-desc { opacity: .78; font-size: 13px; line-height: 1.35; min-height: 34px; }
+    .tool-foot { margin-top: 10px; font-size: 12px; opacity: .65; }
+  </style>
+
+</body>
+</html>
